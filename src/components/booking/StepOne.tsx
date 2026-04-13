@@ -46,7 +46,7 @@ const StepOne = ({ onNext }: StepOneProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center px-5 py-4 md:min-h-[calc(100vh-88px)] md:justify-center md:py-8" style={{ backgroundColor: "#EBEAE8" }}>
+    <div className="flex flex-col items-center px-5 py-4 md:min-h-[calc(100vh-88px)] md:justify-start md:py-10" style={{ backgroundColor: "#EBEAE8" }}>
       <h1
         className="mx-auto max-w-xl text-center uppercase"
         style={{
