@@ -221,7 +221,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
             <div
               key={card.num}
               className="flex gap-4 rounded-2xl p-4"
-              style={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.1)" }}
+              style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
             >
               <span style={{ fontFamily: headingFont, fontSize: 24, color: "#E8670A", lineHeight: 1 }}>{card.num}</span>
               <div>
