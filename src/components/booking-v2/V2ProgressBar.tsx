@@ -1,57 +1,71 @@
-const steps = ["You", "Your Visit", "Your Time", "Confirmed"];
+const phaseLabels = ["YOU", "YOUR VISIT", "YOUR TIME", "CONFIRMED"];
 
 interface V2ProgressBarProps {
-  currentStep: number;
-  onStepClick?: (step: number) => void;
+  currentStep: number; // 1-7
 }
 
-const V2ProgressBar = ({ currentStep, onStepClick }: V2ProgressBarProps) => {
-  const dotColor = (i: number) => (i + 1 <= currentStep ? "#E8670A" : "#9CA3AF");
-  const lineColor = (i: number) => (i + 1 < currentStep ? "#E8670A" : "rgba(255,255,255,0.15)");
-  const labelColor = (i: number) => (i + 1 <= currentStep ? "#FFFFFF" : "#9CA3AF");
+/**
+ * Maps internal step (1-7) to phase index (0-3) and fill fraction within that phase.
+ * Phase 0: Step 1 (YOU)
+ * Phase 1: Steps 2-4 (YOUR VISIT)
+ * Phase 2: Steps 5-6 (YOUR TIME)
+ * Phase 3: Step 7 (CONFIRMED)
+ */
+const getPhaseInfo = (step: number) => {
+  if (step <= 1) return { phase: 0, fill: 1 };
+  if (step <= 4) return { phase: 1, fill: (step - 1) / 3 };
+  if (step <= 6) return { phase: 2, fill: (step - 4) / 2 };
+  return { phase: 3, fill: 1 };
+};
+
+const V2ProgressBar = ({ currentStep }: V2ProgressBarProps) => {
+  const { phase, fill } = getPhaseInfo(currentStep);
+  const font = "'Montserrat', sans-serif";
 
   return (
-    <div className="mx-auto flex w-full max-w-sm items-center justify-between py-5 md:py-6">
-      {steps.map((label, i) => (
-        <div key={label} className="flex items-center" style={{ flex: i < steps.length - 1 ? 1 : 0 }}>
-          <button
-            type="button"
-            className="flex flex-col items-center gap-1.5"
-            onClick={() => i + 1 < currentStep && onStepClick?.(i + 1)}
-            disabled={i + 1 >= currentStep}
-            style={{ cursor: i + 1 < currentStep ? "pointer" : "default", background: "none", border: "none", padding: 0 }}
-            aria-label={`Step ${i + 1}: ${label}`}
+    <div className="w-full px-4 pt-3 pb-1">
+      {/* Segmented bar */}
+      <div className="flex gap-1">
+        {[0, 1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="relative h-1 flex-1 overflow-hidden"
+            style={{
+              borderRadius: 2,
+              backgroundColor: "rgba(255,255,255,0.08)",
+            }}
           >
             <div
-              className="rounded-full transition-all duration-300"
+              className="absolute inset-y-0 left-0"
               style={{
-                width: i + 1 === currentStep ? 14 : 10,
-                height: i + 1 === currentStep ? 14 : 10,
-                backgroundColor: dotColor(i),
-                boxShadow: i + 1 === currentStep ? "0 0 0 4px rgba(232,103,10,0.25)" : "none",
+                width:
+                  i < phase
+                    ? "100%"
+                    : i === phase
+                    ? `${fill * 100}%`
+                    : "0%",
+                backgroundColor: "#E8670A",
+                borderRadius: 2,
+                transition: "width 300ms ease-out",
               }}
             />
-            <span
-              className="block text-center uppercase"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: 10,
-                letterSpacing: "0.08em",
-                color: labelColor(i),
-                fontWeight: 600,
-              }}
-            >
-              {label}
-            </span>
-          </button>
-          {i < steps.length - 1 && (
-            <div
-              className="mx-1 h-0.5 flex-1 rounded-full transition-colors duration-300"
-              style={{ backgroundColor: lineColor(i) }}
-            />
-          )}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Phase label */}
+      <p
+        className="mt-2 text-center uppercase"
+        style={{
+          fontFamily: font,
+          fontWeight: 600,
+          fontSize: 11,
+          color: "#9CA3AF",
+          letterSpacing: "0.1em",
+        }}
+      >
+        {phaseLabels[phase]}
+      </p>
     </div>
   );
 };

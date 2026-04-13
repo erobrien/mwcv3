@@ -62,7 +62,7 @@ const V2StepFour = (props: V2StepFourProps) => {
     { icon: Clock, text: "Arrive 15 minutes early" },
     { icon: CreditCard, text: "Bring a photo ID" },
     { icon: Phone, text: "Wear a short-sleeve shirt (for blood draw)" },
-    { icon: Phone, text: "Questions? Text or call 866-344-4955" },
+    { icon: Phone, text: "Questions? Text or call (866) 344-4955" },
   ];
 
   return (
@@ -72,30 +72,45 @@ const V2StepFour = (props: V2StepFourProps) => {
           <AnimatedCheckmark />
         </div>
 
-        <h1 className="mb-8 text-center uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(26px, 5.5vw, 38px)", color: "#fff", letterSpacing: "0.05em" }}>
+        <h1
+          className="mb-8 text-center uppercase"
+          style={{ fontFamily: headingFont, fontSize: "clamp(26px, 5.5vw, 38px)", color: "#fff", letterSpacing: "0.05em" }}
+        >
           You're Confirmed, {props.firstName}.
         </h1>
 
         {/* Summary card */}
-        <div className="mb-6 rounded-2xl p-5" style={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.1)" }}>
+        <div
+          className="mb-6 rounded-2xl p-5"
+          style={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.1)" }}
+        >
           {summaryRows.map((row) => (
-            <div key={row.label} className="flex items-center justify-between border-b py-3 last:border-0" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-              <span className="uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#9CA3AF", letterSpacing: "0.08em" }}>{row.label}</span>
-              <span style={{ fontFamily: font, fontWeight: 500, fontSize: 15, color: "#fff" }}>{row.value}</span>
+            <div
+              key={row.label}
+              className="flex items-center justify-between border-b py-3 last:border-0"
+              style={{ borderColor: "rgba(255,255,255,0.08)" }}
+            >
+              <span className="uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#9CA3AF", letterSpacing: "0.08em" }}>
+                {row.label}
+              </span>
+              <span style={{ fontFamily: font, fontWeight: 500, fontSize: 15, color: "#fff" }}>
+                {row.value}
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Calendar add buttons */}
+        {/* Calendar add buttons — glassmorphism cards */}
         <div className="mb-8 flex flex-col gap-2 md:flex-row">
           {["Google Calendar", "Outlook", "Apple Calendar"].map((cal) => (
             <button
               key={cal}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 transition-all"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-4 transition-all"
               style={{
                 fontFamily: font, fontWeight: 500, fontSize: 13, color: "#fff",
-                backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
-                cursor: "pointer",
+                backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer",
+                minHeight: 48,
               }}
               aria-label={`Add to ${cal}`}
             >
@@ -105,7 +120,13 @@ const V2StepFour = (props: V2StepFourProps) => {
         </div>
 
         {/* Health form upsell */}
-        <div className="mb-8 rounded-2xl p-6" style={{ backgroundColor: "rgba(255,255,255,0.08)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.12)", borderLeft: "4px solid #E8670A" }}>
+        <div
+          className="mb-8 rounded-2xl p-6"
+          style={{
+            backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)",
+            border: "1px solid rgba(255,255,255,0.1)", borderLeft: "4px solid #E8670A",
+          }}
+        >
           <h2 className="mb-2 uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#fff", letterSpacing: "0.05em" }}>
             Want to Skip the Waiting Room?
           </h2>
@@ -114,7 +135,11 @@ const V2StepFour = (props: V2StepFourProps) => {
           </p>
           <button
             className="mb-3 flex w-full items-center justify-center rounded-xl uppercase transition-all"
-            style={{ height: 52, backgroundColor: "#E8670A", color: "#fff", fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em", cursor: "pointer", border: "none" }}
+            style={{
+              height: 56, backgroundColor: "#E8670A", color: "#fff",
+              fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
+              cursor: "pointer", border: "none", borderRadius: 12, padding: "16px 24px",
+            }}
             onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
             aria-label="Finish my health form"
