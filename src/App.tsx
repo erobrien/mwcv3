@@ -46,6 +46,7 @@ import GHLWLLandingPage from "./pages/GHLWLLandingPage";
 import GHLGeneralLandingPage from "./pages/GHLGeneralLandingPage";
 import IntakePage from "./pages/IntakePage";
 import BrandComparison from "./pages/BrandComparison";
+import BookingFunnelV2 from "./pages/BookingFunnelV2";
 import LocationsHub from "./pages/locations/LocationsHub";
 import RichmondLocation from "./pages/locations/RichmondLocation";
 import NewportNewsLocation from "./pages/locations/NewportNewsLocation";
@@ -98,6 +99,7 @@ const App = () => (
           <Route path="/lp/OG-trt" element={<OGTRTLandingPage />} />
           <Route path="/lp/OG-weight-loss" element={<OGWeightLossLandingPage />} />
           <Route path="/book" element={<BookingFunnel />} />
+          <Route path="/bookv2" element={<BookingFunnelV2 />} />
           <Route path="/lp/ghl-trt" element={<GHLTRTLandingPage />} />
           <Route path="/lp/ghl-ed" element={<GHLEDLandingPage />} />
           <Route path="/lp/ghl-wl" element={<GHLWLLandingPage />} />
