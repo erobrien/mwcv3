@@ -43,14 +43,14 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
 
   const isValid = concern && duration && prior !== null && email.trim() && email.includes("@");
 
-  const cardStyle = (selected: boolean): React.CSSProperties => ({
+  const cardStyleLight = (selected: boolean): React.CSSProperties => ({
     minHeight: 56,
     fontFamily: font,
     fontWeight: 500,
     fontSize: 15,
-    color: "#fff",
-    backgroundColor: selected ? "rgba(232,103,10,0.08)" : "rgba(255,255,255,0.05)",
-    border: selected ? "2px solid #E8670A" : "1px solid rgba(255,255,255,0.1)",
+    color: "#1A1A2E",
+    backgroundColor: selected ? "rgba(232,103,10,0.08)" : "#F5F0EB",
+    border: selected ? "2px solid #E8670A" : "1px solid #E5E0DA",
     cursor: "pointer",
     width: "100%",
     textAlign: "left" as const,
@@ -62,10 +62,10 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
     transition: "all 0.15s ease",
   });
 
-  const RadioDot = ({ selected }: { selected: boolean }) => (
+  const RadioDotLight = ({ selected }: { selected: boolean }) => (
     <div style={{
       width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
-      border: selected ? "2px solid #E8670A" : "2px solid rgba(255,255,255,0.2)",
+      border: selected ? "2px solid #E8670A" : "2px solid #D1D5DB",
       display: "flex", alignItems: "center", justifyContent: "center",
     }}>
       {selected && <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#E8670A" }} />}
@@ -98,101 +98,106 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
         So we can match you with the right physician. Takes about 30 seconds.
       </p>
 
-      <div className="w-full max-w-[480px] space-y-8">
-        {/* Q1 */}
-        <div>
-          <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-            What brings you in?
-          </label>
-          <div className="space-y-2">
-            {concerns.map((c) => (
-              <button key={c.value} type="button" onClick={() => setConcern(c.value)} style={cardStyle(concern === c.value)} aria-label={c.label}>
-                <RadioDot selected={concern === c.value} /> {c.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Q2 */}
-        <SectionReveal show={!!concern} refProp={q2Ref}>
-          <div className="pt-2">
-            <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-              How long has this been going on?
+      <div
+        className="w-full max-w-[480px] rounded-2xl p-6 md:p-8"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 40px rgba(0,0,0,0.25)" }}
+      >
+        <div className="space-y-6">
+          {/* Q1 */}
+          <div>
+            <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#6B7280", letterSpacing: "0.08em" }}>
+              What brings you in?
             </label>
             <div className="space-y-2">
-              {durations.map((d) => (
-                <button key={d.value} type="button" onClick={() => setDuration(d.value)} style={cardStyle(duration === d.value)} aria-label={d.label}>
-                  <RadioDot selected={duration === d.value} /> {d.label}
+              {concerns.map((c) => (
+                <button key={c.value} type="button" onClick={() => setConcern(c.value)} style={cardStyleLight(concern === c.value)} aria-label={c.label}>
+                  <RadioDotLight selected={concern === c.value} /> {c.label}
                 </button>
               ))}
             </div>
           </div>
-        </SectionReveal>
 
-        {/* Q3 */}
-        <SectionReveal show={!!duration} refProp={q3Ref}>
-          <div className="pt-2">
-            <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-              Have you tried other treatments?
-            </label>
-            <div className="flex gap-3">
-              {[true, false].map((val) => (
-                <button
-                  key={String(val)}
-                  type="button"
-                  onClick={() => setPrior(val)}
-                  className="flex-1 rounded-xl transition-all"
-                  style={{
-                    minWidth: 140,
-                    height: 48,
-                    fontFamily: font,
-                    fontWeight: 600,
-                    fontSize: 15,
-                    color: "#fff",
-                    backgroundColor: prior === val ? "rgba(232,103,10,0.08)" : "rgba(255,255,255,0.05)",
-                    border: prior === val ? "2px solid #E8670A" : "1px solid rgba(255,255,255,0.1)",
-                    cursor: "pointer",
-                  }}
-                  aria-label={val ? "Yes" : "No"}
-                >
-                  {val ? "Yes" : "No"}
-                </button>
-              ))}
+          {/* Q2 */}
+          <SectionReveal show={!!concern} refProp={q2Ref}>
+            <div className="pt-2">
+              <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#6B7280", letterSpacing: "0.08em" }}>
+                How long has this been going on?
+              </label>
+              <div className="space-y-2">
+                {durations.map((d) => (
+                  <button key={d.value} type="button" onClick={() => setDuration(d.value)} style={cardStyleLight(duration === d.value)} aria-label={d.label}>
+                    <RadioDotLight selected={duration === d.value} /> {d.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        </SectionReveal>
+          </SectionReveal>
 
-        {/* Q4 */}
-        <SectionReveal show={prior !== null} refProp={q4Ref}>
-          <div className="pt-2">
-            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-              Where should we send your consultation details?
-            </label>
-            <input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{
-                height: 52, borderRadius: 10, backgroundColor: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.12)", color: "#fff", padding: "14px 16px",
-                fontSize: 16, width: "100%", outline: "none", fontFamily: font,
-              }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.boxShadow = "none"; }}
-              aria-label="Email address"
-            />
-          </div>
-        </SectionReveal>
+          {/* Q3 */}
+          <SectionReveal show={!!duration} refProp={q3Ref}>
+            <div className="pt-2">
+              <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#6B7280", letterSpacing: "0.08em" }}>
+                Have you tried other treatments?
+              </label>
+              <div className="flex gap-3">
+                {[true, false].map((val) => (
+                  <button
+                    key={String(val)}
+                    type="button"
+                    onClick={() => setPrior(val)}
+                    className="flex-1 rounded-xl transition-all"
+                    style={{
+                      minWidth: 140,
+                      height: 48,
+                      fontFamily: font,
+                      fontWeight: 600,
+                      fontSize: 15,
+                      color: "#1A1A2E",
+                      backgroundColor: prior === val ? "rgba(232,103,10,0.08)" : "#F5F0EB",
+                      border: prior === val ? "2px solid #E8670A" : "1px solid #E5E0DA",
+                      cursor: "pointer",
+                    }}
+                    aria-label={val ? "Yes" : "No"}
+                  >
+                    {val ? "Yes" : "No"}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </SectionReveal>
+
+          {/* Q4 */}
+          <SectionReveal show={prior !== null} refProp={q4Ref}>
+            <div className="pt-2">
+              <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#6B7280", letterSpacing: "0.08em" }}>
+                Where should we send your consultation details?
+              </label>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  height: 56, borderRadius: 12, backgroundColor: "#F5F0EB",
+                  border: "1px solid #E5E0DA", color: "#1A1A2E", padding: "0 18px",
+                  fontSize: 16, width: "100%", outline: "none", fontFamily: font,
+                }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#E8670A"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.12)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "#E5E0DA"; e.currentTarget.style.boxShadow = "none"; }}
+                aria-label="Email address"
+              />
+            </div>
+          </SectionReveal>
+        </div>
 
         {/* CTA */}
         <button
           onClick={() => isValid && onNext({ primaryConcern: concern, duration, priorTreatment: prior!, email: email.trim() })}
           disabled={!isValid}
-          className="flex w-full items-center justify-center gap-2 rounded-xl uppercase transition-all"
+          className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
-            height: 56, backgroundColor: "#E8670A", color: "#fff",
-            fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
+            height: 56, borderRadius: 9999, backgroundColor: "#E8670A", color: "#fff",
+            fontFamily: font, fontWeight: 700, fontSize: 15, letterSpacing: "0.08em",
             cursor: isValid ? "pointer" : "default", opacity: isValid ? 1 : 0.4, border: "none",
           }}
           onMouseEnter={(e) => { if (isValid) e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
