@@ -18,7 +18,7 @@ const StepOne = ({ onNext }: StepOneProps) => {
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [consent, setConsent] = useState(false);
+  const [consent, setConsent] = useState(true);
 
   const validate = () => {
     setErrors({});
