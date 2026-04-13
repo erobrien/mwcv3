@@ -55,7 +55,7 @@ const V2StepConcern = ({ initialValue, onNext }: V2StepConcernProps) => {
                   fontFamily: font, fontWeight: 500, fontSize: 15,
                   color: "#0B1029",
                   backgroundColor: isSelected ? "rgba(232,103,10,0.05)" : "#F5F3F0",
-                  border: isSelected ? "2px solid #E8670A" : "1px solid #E5E2DD",
+                  border: isSelected ? "2px solid #E8670A" : "1px solid #D1CCC5",
                   cursor: "pointer",
                 }}
                 aria-label={c.label}

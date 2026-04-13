@@ -99,7 +99,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </p>
 
         {/* Calendar */}
-        <div className="mb-6 rounded-xl p-4" style={{ backgroundColor: "#F5F3F0", border: "1px solid #E5E2DD" }}>
+        <div className="mb-6 rounded-xl p-4" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
           <div className="mb-4 flex items-center justify-between">
             <button type="button" onClick={prevMonth} disabled={isPrevDisabled} className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ color: isPrevDisabled ? "#D1D5DB" : "#0B1029", cursor: isPrevDisabled ? "default" : "pointer", background: "none", border: "none" }} aria-label="Previous month">
               <ChevronLeft className="h-5 w-5" />
@@ -166,7 +166,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
                     color: selectedTime === t ? "#fff" : "#0B1029",
                     cursor: "pointer",
                     backgroundColor: selectedTime === t ? "#E8670A" : "#F5F3F0",
-                    border: selectedTime === t ? "2px solid #E8670A" : "1px solid #E5E2DD",
+                    border: selectedTime === t ? "2px solid #E8670A" : "1px solid #D1CCC5",
                   }}
                   aria-label={`Select time ${t}`}
                 >
@@ -178,7 +178,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </div>
 
         {/* Booking summary */}
-        <div className="mb-4 rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F3F0", border: "1px solid #E5E2DD" }}>
+        <div className="mb-4 rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
           <span style={{ fontFamily: font, fontSize: 13, color: "#6B7280" }}>
             Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "—"}</strong> · {phone || "—"} · {email || "—"}
           </span>
