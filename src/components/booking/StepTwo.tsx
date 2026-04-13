@@ -1,0 +1,239 @@
+import { useState, useEffect } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+
+interface StepTwoProps {
+  onNext: (data: {
+    referralSource: string;
+    location: string;
+    primaryConcern: string;
+    duration: string;
+    screenerAnswers: Record<string, boolean>;
+  }) => void;
+  onDQ: () => void;
+}
+
+const concerns = [
+  { id: "energy", label: "Low energy / fatigue" },
+  { id: "sexual", label: "Low sex drive / ED" },
+  { id: "weight", label: "Weight gain / difficulty losing weight" },
+  { id: "mood", label: "Mood changes / irritability" },
+  { id: "wellness", label: "General wellness check" },
+];
+
+
+const durations = ["< 6 months", "6–12 months", "1–2 years", "2+ years"];
+
+const referralOptions = ["Google Search", "Social Media (Facebook/Instagram)", "Friend or Family Referral", "Physician Referral", "Online Ad", "TV/Radio", "Other"];
+const locationOptions = ["Richmond", "Newport News", "Virginia Beach"];
+
+const screenersByPath: Record<string, string[]> = {
+  energy: ["Have you been diagnosed with prostate or breast cancer?", "Are you currently trying to conceive?", "Blood clots (DVT or PE) in the past 6 months?"],
+  mood: ["Have you been diagnosed with prostate or breast cancer?", "Are you currently trying to conceive?", "Blood clots (DVT or PE) in the past 6 months?"],
+  wellness: ["Have you been diagnosed with prostate or breast cancer?", "Are you currently trying to conceive?", "Blood clots (DVT or PE) in the past 6 months?"],
+  sexual: ["Do you take nitrate medications (e.g., nitroglycerin)?", "Active or unstable heart disease?"],
+  weight: ["History of thyroid cancer or MEN2 syndrome?", "History of pancreatitis?", "Severe digestive disorder (e.g., gastroparesis)?"],
+};
+
+const CustomSelect = ({ value, onChange, options, placeholder }: { value: string; onChange: (v: string) => void; options: string[]; placeholder: string }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between transition-colors"
+        style={{
+          height: 52, borderRadius: 10, backgroundColor: "#fff",
+          border: open ? "1px solid #E8670A" : "1px solid #D1D5DB",
+          color: value ? "#1A1A2E" : "#9CA3AF", padding: "0 16px", fontSize: 16,
+          boxShadow: open ? "0 0 0 3px rgba(232,103,10,0.15)" : "none",
+        }}
+      >
+        <span>{value || placeholder}</span>
+        <ChevronDown className="h-4 w-4" style={{ color: "#9CA3AF", transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }} />
+      </button>
+      {open && (
+        <div className="absolute left-0 right-0 top-full z-20 mt-1 overflow-hidden rounded-lg bg-white" style={{ border: "1px solid #E5E7EB", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
+          {options.map((opt) => (
+            <button
+              key={opt}
+              type="button"
+              onClick={() => { onChange(opt); setOpen(false); }}
+              className="block w-full px-4 py-3 text-left text-sm transition-colors hover:bg-gray-50"
+              style={{ color: "#1A1A2E", borderBottom: "1px solid #F3F4F6" }}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
+  const [referral, setReferral] = useState("");
+  const [location, setLocation] = useState("");
+  const [concern, setConcern] = useState("");
+  const [duration, setDuration] = useState("");
+  const [screenerAnswers, setScreenerAnswers] = useState<Record<string, boolean>>({});
+  const [showGroupB, setShowGroupB] = useState(false);
+  const [showGroupC, setShowGroupC] = useState(false);
+
+  useEffect(() => {
+    if (referral && location) {
+      const t = setTimeout(() => setShowGroupB(true), 200);
+      return () => clearTimeout(t);
+    }
+  }, [referral, location]);
+
+  useEffect(() => {
+    if (concern) {
+      setScreenerAnswers({});
+      const t = setTimeout(() => setShowGroupC(true), 300);
+      return () => clearTimeout(t);
+    }
+  }, [concern]);
+
+  const screenerQuestions = concern ? (screenersByPath[concern] || []) : [];
+  const allScreenerAnswered = screenerQuestions.length > 0 && screenerQuestions.every((q) => q in screenerAnswers);
+  const canSubmit = referral && location && concern && duration && allScreenerAnswered;
+
+  const handleSubmit = () => {
+    if (!canSubmit) return;
+    const hasDQ = Object.values(screenerAnswers).some((v) => v === true);
+    if (hasDQ) { onDQ(); return; }
+    onNext({ referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers });
+  };
+
+  const YNPills = ({ question }: { question: string }) => {
+    const val = screenerAnswers[question];
+    return (
+      <div className="mb-3">
+        <p className="mb-2 text-sm font-medium" style={{ color: "#1A1A2E" }}>{question}</p>
+        <div className="flex gap-2">
+          {[false, true].map((isYes) => (
+            <button
+              key={String(isYes)}
+              type="button"
+              onClick={() => setScreenerAnswers((p) => ({ ...p, [question]: isYes }))}
+              className="flex-1 rounded-full py-2.5 text-sm font-medium transition-all"
+              style={{
+                backgroundColor: val === isYes ? (isYes ? "rgba(245,158,11,0.15)" : "rgba(232,103,10,0.1)") : "#fff",
+                border: val === isYes ? (isYes ? "1px solid #F59E0B" : "1px solid #E8670A") : "1px solid #D1D5DB",
+                color: val === isYes ? "#1A1A2E" : "#555555",
+              }}
+            >
+              {isYes ? "Yes" : "No"}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex min-h-[calc(100vh-88px)] flex-col items-center px-5 py-8" style={{ backgroundColor: "#EBEAE8" }}>
+      <div className="w-full max-w-[560px]">
+        <h2
+          className="mb-3 text-center uppercase"
+          style={{ fontFamily: "'Oswald', sans-serif", fontWeight: 800, fontStyle: "italic", fontSize: "clamp(1.3rem, 4vw, 2rem)", color: "#000033", letterSpacing: "-0.01em", transform: "skewX(-3deg)" }}
+        >
+          Let's Personalize Your Visit
+        </h2>
+        <p className="mb-8 text-center" style={{ color: "#555555", fontSize: 15 }}>
+          Answer a few quick questions so we can match you with the right physician.
+        </p>
+
+        {/* Group A */}
+        <div className="mb-6 space-y-4">
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How did you hear about us?</label>
+            <CustomSelect value={referral} onChange={setReferral} options={referralOptions} placeholder="Select one…" />
+          </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Location</label>
+            <CustomSelect value={location} onChange={setLocation} options={locationOptions} placeholder="Select a location…" />
+          </div>
+        </div>
+
+        {/* Group B */}
+        {showGroupB && (
+          <div className="animate-fade-in mb-6">
+            <label className="mb-3 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>What is your primary concern?</label>
+            <div className="space-y-2">
+                {concerns.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setConcern(c.id)}
+                  className="flex w-full items-center rounded-xl bg-white p-4 text-left transition-all"
+                  style={{
+                    border: concern === c.id ? "2px solid #E8670A" : "1px solid #E5E7EB",
+                    backgroundColor: concern === c.id ? "rgba(232,103,10,0.04)" : "#fff",
+                  }}
+                >
+                  <span className="text-sm" style={{ color: "#1A1A2E", fontWeight: concern === c.id ? 700 : 500 }}>{c.label}</span>
+                </button>
+              ))}
+            </div>
+
+
+            {/* Duration */}
+            {concern && (
+              <div className="mt-6 animate-fade-in">
+                <label className="mb-3 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How long have you been experiencing this?</label>
+                <div className="flex flex-wrap gap-2">
+                  {durations.map((d) => (
+                    <button
+                      key={d}
+                      type="button"
+                      onClick={() => setDuration(d)}
+                      className="rounded-full px-4 py-2.5 text-sm font-medium transition-all"
+                      style={{
+                        backgroundColor: duration === d ? "#E8670A" : "#fff",
+                        border: duration === d ? "1px solid #E8670A" : "1px solid #D1D5DB",
+                        color: duration === d ? "#fff" : "#555555",
+                      }}
+                    >
+                      {d}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Group C — Medical Screener */}
+        {showGroupC && concern && screenerQuestions.length > 0 && (
+          <div className="animate-fade-in mb-6 rounded-2xl bg-white p-5" style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+            <p className="mb-4 text-xs font-medium uppercase" style={{ color: "#888888", letterSpacing: "0.06em" }}>
+              Safety screening so our physicians can prepare for your visit
+            </p>
+            {screenerQuestions.map((q) => (
+              <YNPills key={q} question={q} />
+            ))}
+          </div>
+        )}
+
+        {/* CTA */}
+        <button
+          onClick={handleSubmit}
+          disabled={!canSubmit}
+          className="mt-4 flex w-full items-center justify-center gap-2 font-bold transition-all"
+          style={{
+            height: 56, borderRadius: 9999, backgroundColor: canSubmit ? "#E8670A" : "rgba(0,0,0,0.12)",
+            color: canSubmit ? "#fff" : "rgba(0,0,0,0.35)", fontSize: 16, cursor: canSubmit ? "pointer" : "not-allowed", border: "none",
+          }}
+          onMouseEnter={(e) => { if (canSubmit) { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.backgroundColor = "#D45A06"; } }}
+          onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; if (canSubmit) e.currentTarget.style.backgroundColor = "#E8670A"; }}
+        >
+          See Available Times <ArrowRight className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default StepTwo;
