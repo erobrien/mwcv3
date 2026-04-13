@@ -247,7 +247,7 @@ select:focus {
 
 .bookv2-funnel input::placeholder,
 .bookv2-funnel textarea::placeholder {
-  color: rgba(11, 16, 41, 0.4) !important;
+  color: #0B1029 !important;
 }
 
 .bookv2-funnel input:focus,
