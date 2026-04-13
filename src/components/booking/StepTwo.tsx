@@ -19,12 +19,10 @@ const concerns = [
   { id: "energy", label: "Low energy / fatigue" },
   { id: "sexual", label: "Low sex drive / ED" },
   { id: "weight", label: "Weight gain / difficulty losing weight" },
-  { id: "mood", label: "Mood changes / irritability" },
-  { id: "wellness", label: "General wellness check" },
+  { id: "other", label: "Other" },
 ];
 
-
-const durations = ["< 6 months", "6–12 months", "1–2 years", "2+ years"];
+const durations = ["< 6 mo", "6–12 mo", "1–2 yr", "2+ yr"];
 
 const referralOptions = ["Google Search", "Social Media (Facebook/Instagram)", "Friend or Family Referral", "Physician Referral", "Online Ad", "TV/Radio", "Other"];
 const locationOptions = ["Richmond", "Newport News", "Virginia Beach"];
