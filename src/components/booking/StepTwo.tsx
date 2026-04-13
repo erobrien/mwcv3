@@ -75,6 +75,7 @@ const CustomSelect = ({ value, onChange, options, placeholder }: { value: string
 const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
   const [referral, setReferral] = useState("");
   const [location, setLocation] = useState("");
+  const [contactMethod, setContactMethod] = useState<"voice" | "sms" | "">("");
   const [concern, setConcern] = useState("");
   const [duration, setDuration] = useState("");
   const [screenerAnswers, setScreenerAnswers] = useState<Record<string, boolean>>({});
@@ -82,11 +83,11 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
   const [showGroupC, setShowGroupC] = useState(false);
 
   useEffect(() => {
-    if (referral && location) {
+    if (referral && location && contactMethod) {
       const t = setTimeout(() => setShowGroupB(true), 200);
       return () => clearTimeout(t);
     }
-  }, [referral, location]);
+  }, [referral, location, contactMethod]);
 
   useEffect(() => {
     if (concern) {
@@ -98,13 +99,13 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
 
   const screenerQuestions = concern ? (screenersByPath[concern] || []) : [];
   const allScreenerAnswered = screenerQuestions.length > 0 && screenerQuestions.every((q) => q in screenerAnswers);
-  const canSubmit = referral && location && concern && duration && allScreenerAnswered;
+  const canSubmit = referral && location && contactMethod && concern && duration && allScreenerAnswered;
 
   const handleSubmit = () => {
     if (!canSubmit) return;
     const hasDQ = Object.values(screenerAnswers).some((v) => v === true);
     if (hasDQ) { onDQ(); return; }
-    onNext({ referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers });
+    onNext({ referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
   };
 
   const YNPills = ({ question }: { question: string }) => {
@@ -156,7 +157,41 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
             <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Location</label>
             <CustomSelect value={location} onChange={setLocation} options={locationOptions} placeholder="Select a location…" />
           </div>
-        </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Contact Method</label>
+            <div className="flex gap-3">
+              {([{ value: "voice", label: "Voice Call" }, { value: "sms", label: "Text / SMS" }] as const).map((opt) => (
+                <label
+                  key={opt.value}
+                  className="flex flex-1 cursor-pointer items-center gap-2.5 rounded-xl bg-white p-4 transition-all"
+                  style={{
+                    border: contactMethod === opt.value ? "2px solid #E8670A" : "1px solid #D1D5DB",
+                    backgroundColor: contactMethod === opt.value ? "rgba(232,103,10,0.04)" : "#fff",
+                  }}
+                >
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value={opt.value}
+                    checked={contactMethod === opt.value}
+                    onChange={() => setContactMethod(opt.value)}
+                    className="sr-only"
+                  />
+                  <span
+                    className="flex h-5 w-5 items-center justify-center rounded-full border-2"
+                    style={{
+                      borderColor: contactMethod === opt.value ? "#E8670A" : "#D1D5DB",
+                    }}
+                  >
+                    {contactMethod === opt.value && (
+                      <span className="block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "#E8670A" }} />
+                    )}
+                  </span>
+                  <span className="text-sm font-medium" style={{ color: "#1A1A2E" }}>{opt.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
 
         {/* Group B */}
         {showGroupB && (
