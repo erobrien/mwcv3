@@ -155,7 +155,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
                 className="relative flex h-10 w-full items-center justify-center rounded-lg transition-all"
                 style={{
                   fontFamily: font, fontSize: 14, fontWeight: 400,
-                  color: cell.day === 0 ? "transparent" : !cell.available ? "rgba(156,163,175,0.4)" : selectedDay === cell.day ? "#fff" : "#fff",
+                  color: cell.day === 0 ? "transparent" : !cell.available ? "rgba(174,181,191,0.5)" : selectedDay === cell.day ? "#fff" : "#fff",
                   backgroundColor: selectedDay === cell.day ? "#E8670A" : "transparent",
                   cursor: cell.available && cell.day > 0 ? "pointer" : "default",
                   border: "none",
