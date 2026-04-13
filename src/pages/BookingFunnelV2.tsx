@@ -74,7 +74,7 @@ const BookingFunnelV2 = () => {
       };
 
   return (
-    <div className="flex min-h-screen flex-col" style={{ backgroundColor: "#0B1029" }}>
+    <div className="bookv2-funnel flex min-h-screen flex-col" style={{ backgroundColor: "#0B1029" }}>
       <V2Header />
 
       <main className="flex flex-1 flex-col">
