@@ -8,6 +8,7 @@ interface StepTwoProps {
     location: string;
     primaryConcern: string;
     duration: string;
+    triedOther: boolean;
     screenerAnswers: Record<string, boolean>;
     contactMethod: "voice" | "sms";
   }) => void;
@@ -18,12 +19,10 @@ const concerns = [
   { id: "energy", label: "Low energy / fatigue" },
   { id: "sexual", label: "Low sex drive / ED" },
   { id: "weight", label: "Weight gain / difficulty losing weight" },
-  { id: "mood", label: "Mood changes / irritability" },
-  { id: "wellness", label: "General wellness check" },
+  { id: "other", label: "Other" },
 ];
 
-
-const durations = ["< 6 months", "6–12 months", "1–2 years", "2+ years"];
+const durations = ["< 6 mo", "6–12 mo", "1–2 yr", "2+ yr"];
 
 const referralOptions = ["Google Search", "Social Media (Facebook/Instagram)", "Friend or Family Referral", "Physician Referral", "Online Ad", "TV/Radio", "Other"];
 const locationOptions = ["Richmond", "Newport News", "Virginia Beach"];
@@ -74,24 +73,27 @@ const CustomSelect = ({ value, onChange, options, placeholder }: { value: string
 };
 
 const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
+  const [concern, setConcern] = useState("");
+  const [duration, setDuration] = useState("");
+  const [triedOther, setTriedOther] = useState<boolean | null>(null);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [referral, setReferral] = useState("");
   const [location, setLocation] = useState("");
   const [contactMethod, setContactMethod] = useState<"voice" | "sms" | "">("");
-  const [concern, setConcern] = useState("");
-  const [duration, setDuration] = useState("");
   const [screenerAnswers, setScreenerAnswers] = useState<Record<string, boolean>>({});
   const [showGroupB, setShowGroupB] = useState(false);
   const [showGroupC, setShowGroupC] = useState(false);
 
+  const topQuestionsComplete = concern && duration && triedOther !== null;
+
   useEffect(() => {
-    if (email && referral && location && contactMethod) {
+    if (topQuestionsComplete && email && referral && location && contactMethod) {
       setEmailError("");
       const t = setTimeout(() => setShowGroupB(true), 200);
       return () => clearTimeout(t);
     }
-  }, [email, referral, location, contactMethod]);
+  }, [topQuestionsComplete, email, referral, location, contactMethod]);
 
   useEffect(() => {
     if (concern) {
@@ -102,16 +104,16 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
   }, [concern]);
 
   const screenerQuestions = concern ? (screenersByPath[concern] || []) : [];
-  const allScreenerAnswered = screenerQuestions.length > 0 && screenerQuestions.every((q) => q in screenerAnswers);
+  const allScreenerAnswered = screenerQuestions.length > 0 ? screenerQuestions.every((q) => q in screenerAnswers) : true;
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const canSubmit = email && validEmail && referral && location && contactMethod && concern && duration && allScreenerAnswered;
+  const canSubmit = topQuestionsComplete && email && validEmail && referral && location && contactMethod && allScreenerAnswered;
 
   const handleSubmit = () => {
     if (!validEmail) { setEmailError("Enter a valid email address"); return; }
     if (!canSubmit) return;
     const hasDQ = Object.values(screenerAnswers).some((v) => v === true);
     if (hasDQ) { onDQ(); return; }
-    onNext({ email: email.trim(), referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
+    onNext({ email: email.trim(), referralSource: referral, location, primaryConcern: concern, duration, triedOther: triedOther!, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
   };
 
   const YNPills = ({ question }: { question: string }) => {
@@ -153,115 +155,131 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
           Answer a few quick questions so we can match you with the right physician.
         </p>
 
-        {/* Group A */}
-        <div className="mb-6 space-y-4">
+        {/* Top Questions: Primary Concern, Duration, Tried Other */}
+        <div className="mb-6 space-y-6">
+          {/* Primary Concern */}
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Email Address</label>
-            <input
-              style={{ height: 52, borderRadius: 10, backgroundColor: "#fff", border: "1px solid #D1D5DB", color: "#1A1A2E", padding: "0 16px", fontSize: 16, width: "100%", outline: "none" }}
-              type="email"
-              placeholder="john@example.com"
-              value={email}
-              onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
-              onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
-              onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
-            />
-            {emailError && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{emailError}</p>}
-          </div>
-          <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How did you hear about us?</label>
-            <CustomSelect value={referral} onChange={setReferral} options={referralOptions} placeholder="Select one…" />
-          </div>
-          <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Location</label>
-            <CustomSelect value={location} onChange={setLocation} options={locationOptions} placeholder="Select a location…" />
-          </div>
-          <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Contact Method</label>
-            <div className="flex gap-3">
-              {([{ value: "voice", label: "Voice Call" }, { value: "sms", label: "Text / SMS" }] as const).map((opt) => (
-                <label
-                  key={opt.value}
-                  className="flex flex-1 cursor-pointer items-center gap-2.5 rounded-xl bg-white p-4 transition-all"
-                  style={{
-                    border: contactMethod === opt.value ? "2px solid #E8670A" : "1px solid #D1D5DB",
-                    backgroundColor: contactMethod === opt.value ? "rgba(232,103,10,0.04)" : "#fff",
-                  }}
-                >
-                  <input
-                    type="radio"
-                    name="contactMethod"
-                    value={opt.value}
-                    checked={contactMethod === opt.value}
-                    onChange={() => setContactMethod(opt.value)}
-                    className="sr-only"
-                  />
-                  <span
-                    className="flex h-5 w-5 items-center justify-center rounded-full border-2"
-                    style={{
-                      borderColor: contactMethod === opt.value ? "#E8670A" : "#D1D5DB",
-                    }}
-                  >
-                    {contactMethod === opt.value && (
-                      <span className="block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "#E8670A" }} />
-                    )}
-                  </span>
-                  <span className="text-sm font-medium" style={{ color: "#1A1A2E" }}>{opt.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Group B */}
-        {showGroupB && (
-          <div className="animate-fade-in mb-6">
-            <label className="mb-3 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>What is your primary concern?</label>
+            <label className="mb-3 block text-sm font-medium" style={{ color: "#555555" }}>Primary Concern <span style={{ color: "#DC2626" }}>*</span></label>
             <div className="space-y-2">
-                {concerns.map((c) => (
-                <button
+              {concerns.map((c) => (
+                <label
                   key={c.id}
-                  type="button"
-                  onClick={() => setConcern(c.id)}
-                  className="flex w-full items-center rounded-xl bg-white p-4 text-left transition-all"
+                  className="flex cursor-pointer items-center gap-3 rounded-xl bg-white p-4 transition-all"
                   style={{
                     border: concern === c.id ? "2px solid #E8670A" : "1px solid #E5E7EB",
                     backgroundColor: concern === c.id ? "rgba(232,103,10,0.04)" : "#fff",
                   }}
                 >
-                  <span className="text-sm" style={{ color: "#1A1A2E", fontWeight: concern === c.id ? 700 : 500 }}>{c.label}</span>
-                </button>
+                  <input type="radio" name="concern" value={c.id} checked={concern === c.id} onChange={() => setConcern(c.id)} className="sr-only" />
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full border-2" style={{ borderColor: concern === c.id ? "#E8670A" : "#D1D5DB" }}>
+                    {concern === c.id && <span className="block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "#E8670A" }} />}
+                  </span>
+                  <span className="text-sm" style={{ color: "#1A1A2E", fontWeight: concern === c.id ? 600 : 400 }}>{c.label}</span>
+                </label>
               ))}
             </div>
+          </div>
 
-
-            {/* Duration */}
-            {concern && (
-              <div className="mt-6 animate-fade-in">
-                <label className="mb-3 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How long have you been experiencing this?</label>
-                <div className="flex flex-wrap gap-2">
-                  {durations.map((d) => (
-                    <button
-                      key={d}
-                      type="button"
-                      onClick={() => setDuration(d)}
-                      className="rounded-full px-4 py-2.5 text-sm font-medium transition-all"
-                      style={{
-                        backgroundColor: duration === d ? "#E8670A" : "#fff",
-                        border: duration === d ? "1px solid #E8670A" : "1px solid #D1D5DB",
-                        color: duration === d ? "#fff" : "#555555",
-                      }}
-                    >
-                      {d}
-                    </button>
-                  ))}
-                </div>
+          {/* How long experiencing */}
+          {concern && (
+            <div className="animate-fade-in">
+              <label className="mb-3 block text-sm font-medium" style={{ color: "#555555" }}>How long experiencing? <span style={{ color: "#DC2626" }}>*</span></label>
+              <div className="space-y-2">
+                {durations.map((d) => (
+                  <label
+                    key={d}
+                    className="flex cursor-pointer items-center gap-3 rounded-xl bg-white p-4 transition-all"
+                    style={{
+                      border: duration === d ? "2px solid #E8670A" : "1px solid #E5E7EB",
+                      backgroundColor: duration === d ? "rgba(232,103,10,0.04)" : "#fff",
+                    }}
+                  >
+                    <input type="radio" name="duration" value={d} checked={duration === d} onChange={() => setDuration(d)} className="sr-only" />
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full border-2" style={{ borderColor: duration === d ? "#E8670A" : "#D1D5DB" }}>
+                      {duration === d && <span className="block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "#E8670A" }} />}
+                    </span>
+                    <span className="text-sm" style={{ color: "#1A1A2E", fontWeight: duration === d ? 600 : 400 }}>{d}</span>
+                  </label>
+                ))}
               </div>
-            )}
+            </div>
+          )}
+
+          {/* Tried other treatments */}
+          {concern && duration && (
+            <div className="animate-fade-in">
+              <label className="mb-3 block text-sm font-medium" style={{ color: "#555555" }}>Tried other treatments? <span style={{ color: "#DC2626" }}>*</span></label>
+              <div className="flex gap-3">
+                {([{ value: true, label: "Yes" }, { value: false, label: "No" }] as const).map((opt) => (
+                  <label
+                    key={String(opt.value)}
+                    className="flex flex-1 cursor-pointer items-center gap-2.5 rounded-xl bg-white p-4 transition-all"
+                    style={{
+                      border: triedOther === opt.value ? "2px solid #E8670A" : "1px solid #D1D5DB",
+                      backgroundColor: triedOther === opt.value ? "rgba(232,103,10,0.04)" : "#fff",
+                    }}
+                  >
+                    <input type="radio" name="triedOther" checked={triedOther === opt.value} onChange={() => setTriedOther(opt.value)} className="sr-only" />
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full border-2" style={{ borderColor: triedOther === opt.value ? "#E8670A" : "#D1D5DB" }}>
+                      {triedOther === opt.value && <span className="block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "#E8670A" }} />}
+                    </span>
+                    <span className="text-sm font-medium" style={{ color: "#1A1A2E" }}>{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Group A - Contact details (shown after top questions) */}
+        {topQuestionsComplete && (
+          <div className="animate-fade-in mb-6 space-y-4">
+            <div>
+              <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Email Address</label>
+              <input
+                style={{ height: 52, borderRadius: 10, backgroundColor: "#fff", border: "1px solid #D1D5DB", color: "#1A1A2E", padding: "0 16px", fontSize: 16, width: "100%", outline: "none" }}
+                type="email"
+                placeholder="john@example.com"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
+                onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
+                onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
+              />
+              {emailError && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{emailError}</p>}
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How did you hear about us?</label>
+              <CustomSelect value={referral} onChange={setReferral} options={referralOptions} placeholder="Select one…" />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Location</label>
+              <CustomSelect value={location} onChange={setLocation} options={locationOptions} placeholder="Select a location…" />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Preferred Contact Method</label>
+              <div className="flex gap-3">
+                {([{ value: "voice", label: "Voice Call" }, { value: "sms", label: "Text / SMS" }] as const).map((opt) => (
+                  <label
+                    key={opt.value}
+                    className="flex flex-1 cursor-pointer items-center gap-2.5 rounded-xl bg-white p-4 transition-all"
+                    style={{
+                      border: contactMethod === opt.value ? "2px solid #E8670A" : "1px solid #D1D5DB",
+                      backgroundColor: contactMethod === opt.value ? "rgba(232,103,10,0.04)" : "#fff",
+                    }}
+                  >
+                    <input type="radio" name="contactMethod" value={opt.value} checked={contactMethod === opt.value} onChange={() => setContactMethod(opt.value)} className="sr-only" />
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full border-2" style={{ borderColor: contactMethod === opt.value ? "#E8670A" : "#D1D5DB" }}>
+                      {contactMethod === opt.value && <span className="block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "#E8670A" }} />}
+                    </span>
+                    <span className="text-sm font-medium" style={{ color: "#1A1A2E" }}>{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
           </div>
         )}
 
-        {/* Group C — Medical Screener */}
+        {/* Medical Screener */}
         {showGroupC && concern && screenerQuestions.length > 0 && (
           <div className="animate-fade-in mb-6 rounded-2xl bg-white p-5" style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
             <p className="mb-4 text-xs font-medium uppercase" style={{ color: "#888888", letterSpacing: "0.06em" }}>
