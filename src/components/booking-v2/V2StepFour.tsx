@@ -105,7 +105,7 @@ const V2StepFour = (props: V2StepFourProps) => {
         </div>
 
         {/* Health form upsell */}
-        <div className="mb-8 rounded-2xl p-6" style={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.1)", borderLeft: "4px solid #E8670A" }}>
+        <div className="mb-8 rounded-2xl p-6" style={{ backgroundColor: "rgba(255,255,255,0.08)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.12)", borderLeft: "4px solid #E8670A" }}>
           <h2 className="mb-2 uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#fff", letterSpacing: "0.05em" }}>
             Want to Skip the Waiting Room?
           </h2>

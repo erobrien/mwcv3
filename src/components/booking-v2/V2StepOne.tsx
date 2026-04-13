@@ -183,7 +183,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         {/* Trust badges */}
         <div className="mt-5 grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center md:gap-4">
           {trustBadges.map((b) => (
-            <div key={b.label} className="flex items-center gap-1.5" style={{ fontFamily: font, fontSize: 11, color: "#9CA3AF" }}>
+            <div key={b.label} className="flex items-center gap-1.5" style={{ fontFamily: font, fontSize: 11, color: "#6B7280" }}>
               <b.icon className="h-3.5 w-3.5" />
               <span>{b.label}</span>
             </div>

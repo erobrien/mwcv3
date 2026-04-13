@@ -3,7 +3,7 @@ import { Phone } from "lucide-react";
 const V2Header = () => (
   <header
     className="sticky top-0 z-50 flex items-center justify-between px-5"
-    style={{ backgroundColor: "#0B1029", height: 60, borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+    style={{ backgroundColor: "#0B1029", height: 60, borderBottom: "1px solid rgba(255,255,255,0.12)" }}
   >
     <div
       className="flex flex-col leading-none uppercase"
