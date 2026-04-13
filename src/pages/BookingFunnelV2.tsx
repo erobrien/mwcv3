@@ -91,7 +91,7 @@ const BookingFunnelV2 = () => {
               onClick={goBack}
               className="mb-2 flex items-center gap-1 transition-all"
               style={{
-                fontFamily: font, fontWeight: 500, fontSize: 14, color: "#B0ADA8",
+                fontFamily: font, fontWeight: 500, fontSize: 14, color: "#B8B6B2",
                 cursor: "pointer", background: "none", border: "none",
               }}
               aria-label="Go back"
@@ -180,9 +180,9 @@ const BookingFunnelV2 = () => {
 
         {/* Minimal footer */}
         <div className="py-6 text-center">
-          <span style={{ fontFamily: font, fontSize: 13, color: "#9CA3AF" }}>
+          <span style={{ fontFamily: font, fontSize: 13, color: "#AEB5BF" }}>
             Questions? Text or call{" "}
-            <a href="tel:8663444955" style={{ color: "#9CA3AF", textDecoration: "underline" }}>
+            <a href="tel:8663444955" style={{ color: "#AEB5BF", textDecoration: "underline" }}>
               (866) 344-4955
             </a>
           </span>

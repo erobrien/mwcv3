@@ -40,7 +40,7 @@ const V2StepConcern = ({ initialValue, onNext }: V2StepConcernProps) => {
       </h1>
       <p
         className="mb-8 text-center"
-        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B0ADA8" }}
+        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B8B6B2" }}
       >
         Select your primary concern.
       </p>
@@ -74,7 +74,7 @@ const V2StepConcern = ({ initialValue, onNext }: V2StepConcernProps) => {
             >
               <Icon
                 className="h-5 w-5 shrink-0"
-                style={{ color: isSelected ? "#E8670A" : "#9CA3AF" }}
+                style={{ color: isSelected ? "#E8670A" : "#AEB5BF" }}
               />
               {c.label}
             </button>

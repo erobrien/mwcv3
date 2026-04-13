@@ -71,7 +71,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
 
       <p
         className="mb-3 text-center"
-        style={{ fontFamily: font, fontWeight: 400, fontSize: 15, color: "#B0ADA8", lineHeight: 1.5 }}
+        style={{ fontFamily: font, fontWeight: 400, fontSize: 15, color: "#B8B6B2", lineHeight: 1.5 }}
       >
         Licensed physician. No obligation. No pressure.
       </p>
@@ -106,7 +106,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           <div>
             <label
               className="mb-1.5 block uppercase"
-              style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}
+              style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#AEB5BF", letterSpacing: "0.08em" }}
             >
               Full Name
             </label>
@@ -125,7 +125,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           <div>
             <label
               className="mb-1.5 block uppercase"
-              style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}
+              style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#AEB5BF", letterSpacing: "0.08em" }}
             >
               Phone Number
             </label>
@@ -145,7 +145,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           <div>
             <label
               className="mb-2 block uppercase"
-              style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}
+              style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#AEB5BF", letterSpacing: "0.08em" }}
             >
               Select Location
             </label>
@@ -170,7 +170,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
                     }}
                     aria-label={loc.label}
                   >
-                    <MapPin className="h-4 w-4 shrink-0" style={{ color: selected ? "#E8670A" : "#9CA3AF" }} />
+                    <MapPin className="h-4 w-4 shrink-0" style={{ color: selected ? "#E8670A" : "#AEB5BF" }} />
                     {loc.label}
                   </button>
                 );
@@ -192,7 +192,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           />
           <label
             htmlFor="v2-sms-consent"
-            style={{ fontFamily: font, fontSize: 13, color: "#B0ADA8", lineHeight: 1.6 }}
+            style={{ fontFamily: font, fontSize: 13, color: "#B8B6B2", lineHeight: 1.6 }}
           >
             I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency
             varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not
@@ -205,11 +205,11 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           className="mt-3 flex items-center justify-center gap-2"
           style={{ fontFamily: font, fontSize: 13 }}
         >
-          <a href="/privacy-policy" style={{ color: "#B0ADA8", textDecoration: "underline" }}>
+          <a href="/privacy-policy" style={{ color: "#B8B6B2", textDecoration: "underline" }}>
             Privacy Policy
           </a>
           <span style={{ color: "rgba(255,255,255,0.2)" }}>|</span>
-          <a href="/terms-of-service" style={{ color: "#B0ADA8", textDecoration: "underline" }}>
+          <a href="/terms-of-service" style={{ color: "#B8B6B2", textDecoration: "underline" }}>
             Terms of Services
           </a>
         </div>
@@ -252,7 +252,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
             <div
               key={b.label}
               className="flex items-center gap-1.5"
-              style={{ fontFamily: font, fontSize: 11, color: "#9CA3AF" }}
+              style={{ fontFamily: font, fontSize: 11, color: "#AEB5BF" }}
             >
               <b.icon className="h-3.5 w-3.5" />
               <span>{b.label}</span>

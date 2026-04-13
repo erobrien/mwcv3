@@ -60,7 +60,7 @@ const V2ProgressBar = ({ currentStep }: V2ProgressBarProps) => {
           fontFamily: font,
           fontWeight: 600,
           fontSize: 11,
-          color: "#9CA3AF",
+          color: "#AEB5BF",
           letterSpacing: "0.1em",
         }}
       >
