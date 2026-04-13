@@ -73,24 +73,27 @@ const CustomSelect = ({ value, onChange, options, placeholder }: { value: string
 };
 
 const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
+  const [concern, setConcern] = useState("");
+  const [duration, setDuration] = useState("");
+  const [triedOther, setTriedOther] = useState<boolean | null>(null);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [referral, setReferral] = useState("");
   const [location, setLocation] = useState("");
   const [contactMethod, setContactMethod] = useState<"voice" | "sms" | "">("");
-  const [concern, setConcern] = useState("");
-  const [duration, setDuration] = useState("");
   const [screenerAnswers, setScreenerAnswers] = useState<Record<string, boolean>>({});
   const [showGroupB, setShowGroupB] = useState(false);
   const [showGroupC, setShowGroupC] = useState(false);
 
+  const topQuestionsComplete = concern && duration && triedOther !== null;
+
   useEffect(() => {
-    if (email && referral && location && contactMethod) {
+    if (topQuestionsComplete && email && referral && location && contactMethod) {
       setEmailError("");
       const t = setTimeout(() => setShowGroupB(true), 200);
       return () => clearTimeout(t);
     }
-  }, [email, referral, location, contactMethod]);
+  }, [topQuestionsComplete, email, referral, location, contactMethod]);
 
   useEffect(() => {
     if (concern) {
@@ -101,16 +104,16 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
   }, [concern]);
 
   const screenerQuestions = concern ? (screenersByPath[concern] || []) : [];
-  const allScreenerAnswered = screenerQuestions.length > 0 && screenerQuestions.every((q) => q in screenerAnswers);
+  const allScreenerAnswered = screenerQuestions.length > 0 ? screenerQuestions.every((q) => q in screenerAnswers) : true;
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const canSubmit = email && validEmail && referral && location && contactMethod && concern && duration && allScreenerAnswered;
+  const canSubmit = topQuestionsComplete && email && validEmail && referral && location && contactMethod && allScreenerAnswered;
 
   const handleSubmit = () => {
     if (!validEmail) { setEmailError("Enter a valid email address"); return; }
     if (!canSubmit) return;
     const hasDQ = Object.values(screenerAnswers).some((v) => v === true);
     if (hasDQ) { onDQ(); return; }
-    onNext({ email: email.trim(), referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
+    onNext({ email: email.trim(), referralSource: referral, location, primaryConcern: concern, duration, triedOther: triedOther!, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
   };
 
   const YNPills = ({ question }: { question: string }) => {
