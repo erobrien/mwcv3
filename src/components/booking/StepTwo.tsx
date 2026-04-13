@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 
 interface StepTwoProps {
   onNext: (data: {
+    email: string;
     referralSource: string;
     location: string;
     primaryConcern: string;
@@ -73,6 +74,8 @@ const CustomSelect = ({ value, onChange, options, placeholder }: { value: string
 };
 
 const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [referral, setReferral] = useState("");
   const [location, setLocation] = useState("");
   const [contactMethod, setContactMethod] = useState<"voice" | "sms" | "">("");
@@ -83,11 +86,12 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
   const [showGroupC, setShowGroupC] = useState(false);
 
   useEffect(() => {
-    if (referral && location && contactMethod) {
+    if (email && referral && location && contactMethod) {
+      setEmailError("");
       const t = setTimeout(() => setShowGroupB(true), 200);
       return () => clearTimeout(t);
     }
-  }, [referral, location, contactMethod]);
+  }, [email, referral, location, contactMethod]);
 
   useEffect(() => {
     if (concern) {
@@ -99,13 +103,15 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
 
   const screenerQuestions = concern ? (screenersByPath[concern] || []) : [];
   const allScreenerAnswered = screenerQuestions.length > 0 && screenerQuestions.every((q) => q in screenerAnswers);
-  const canSubmit = referral && location && contactMethod && concern && duration && allScreenerAnswered;
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const canSubmit = email && validEmail && referral && location && contactMethod && concern && duration && allScreenerAnswered;
 
   const handleSubmit = () => {
+    if (!validEmail) { setEmailError("Enter a valid email address"); return; }
     if (!canSubmit) return;
     const hasDQ = Object.values(screenerAnswers).some((v) => v === true);
     if (hasDQ) { onDQ(); return; }
-    onNext({ referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
+    onNext({ email: email.trim(), referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
   };
 
   const YNPills = ({ question }: { question: string }) => {
