@@ -156,6 +156,19 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
         {/* Group A */}
         <div className="mb-6 space-y-4">
           <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Email Address</label>
+            <input
+              style={{ height: 52, borderRadius: 10, backgroundColor: "#fff", border: "1px solid #D1D5DB", color: "#1A1A2E", padding: "0 16px", fontSize: 16, width: "100%", outline: "none" }}
+              type="email"
+              placeholder="john@example.com"
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
+              onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
+              onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
+            />
+            {emailError && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{emailError}</p>}
+          </div>
+          <div>
             <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How did you hear about us?</label>
             <CustomSelect value={referral} onChange={setReferral} options={referralOptions} placeholder="Select one…" />
           </div>
