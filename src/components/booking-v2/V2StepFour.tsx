@@ -82,7 +82,7 @@ const V2StepFour = (props: V2StepFourProps) => {
         {/* Summary card */}
         <div
           className="mb-6 rounded-2xl p-5"
-          style={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.1)" }}
+          style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
         >
           {summaryRows.map((row) => (
             <div
@@ -108,7 +108,7 @@ const V2StepFour = (props: V2StepFourProps) => {
               className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-4 transition-all"
               style={{
                 fontFamily: font, fontWeight: 500, fontSize: 13, color: "#fff",
-                backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)",
+                backgroundColor: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer",
                 minHeight: 48,
               }}
@@ -123,8 +123,8 @@ const V2StepFour = (props: V2StepFourProps) => {
         <div
           className="mb-8 rounded-2xl p-6"
           style={{
-            backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(16px)",
-            border: "1px solid rgba(255,255,255,0.1)", borderLeft: "4px solid #E8670A",
+            backgroundColor: "rgba(255,255,255,0.05)",
+            border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
           <h2 className="mb-2 uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#fff", letterSpacing: "0.05em" }}>
