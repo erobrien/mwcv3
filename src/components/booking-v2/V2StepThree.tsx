@@ -90,7 +90,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
       <div className="w-full max-w-[480px] rounded-2xl p-6 md:p-8" style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 40px rgba(0,0,0,0.25)" }}>
         <div className="space-y-6">
           {/* Calendar card */}
-          <div className="rounded-2xl p-4" style={{ backgroundColor: "#F5F0EB" }}>
+          <div className="rounded-2xl p-4" style={{ backgroundColor: "#F5F0EB", border: "1px solid #E5E0DA" }}>
             {/* Month nav */}
             <div className="mb-4 flex items-center justify-between">
               <button type="button" onClick={prevMonth} className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ color: "#1A1A2E", cursor: "pointer", background: "none", border: "none" }} aria-label="Previous month">
@@ -122,7 +122,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
                   className="relative flex h-10 w-full flex-col items-center justify-center rounded-lg transition-all"
                   style={{
                     fontFamily: font, fontSize: 14, fontWeight: 400,
-                    color: cell.day === 0 ? "transparent" : !cell.available ? "rgba(156,163,175,0.4)" : selectedDay === cell.day ? "#fff" : "#1A1A2E",
+                    color: cell.day === 0 ? "transparent" : !cell.available ? "#B0ADA8" : selectedDay === cell.day ? "#fff" : "#1A1A2E",
                     backgroundColor: selectedDay === cell.day ? "#E8670A" : "transparent",
                     cursor: cell.available && cell.day > 0 ? "pointer" : "default",
                     border: "none",
@@ -159,7 +159,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
                       minHeight: 44, fontFamily: font, fontWeight: 500, fontSize: 14,
                       color: selectedTime === t ? "#fff" : "#1A1A2E", cursor: "pointer",
                       backgroundColor: selectedTime === t ? "#E8670A" : "#F5F0EB",
-                      border: "none",
+                      border: selectedTime === t ? "2px solid #E8670A" : "1px solid #E5E0DA",
                     }}
                     aria-label={`Select time ${t}`}
                   >
@@ -171,7 +171,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
           </div>
 
           {/* Booking summary */}
-          <div className="rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F0EB" }}>
+          <div className="rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F0EB", border: "1px solid #E5E0DA" }}>
             <span style={{ fontFamily: font, fontSize: 13, color: "#6B7280" }}>
               Booking for: <strong style={{ color: "#1A1A2E" }}>{firstName || "—"}</strong> · {phone || "—"} · {email || "—"}
             </span>
@@ -181,8 +181,8 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
           <div className="flex items-start gap-2">
             <input type="checkbox" checked={smsReminder} onChange={(e) => setSmsReminder(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0" style={{ accentColor: "#E8670A" }} id="sms-reminder-v2" aria-label="SMS reminder opt-in" />
             <div>
-              <label htmlFor="sms-reminder-v2" style={{ fontFamily: font, fontSize: 13, color: "#6B7280" }}>Send me appointment reminders via text</label>
-              <p style={{ fontFamily: font, fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>We'll send a confirmation and reminder. Reply STOP to opt out.</p>
+              <label htmlFor="sms-reminder-v2" style={{ fontFamily: font, fontSize: 13, color: "#4B5563" }}>Send me appointment reminders via text</label>
+              <p style={{ fontFamily: font, fontSize: 11, color: "#6B7280", marginTop: 2 }}>We'll send a confirmation and reminder. Reply STOP to opt out.</p>
             </div>
           </div>
 
