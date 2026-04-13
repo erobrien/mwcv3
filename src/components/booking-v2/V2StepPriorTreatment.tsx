@@ -44,13 +44,16 @@ const V2StepPriorTreatment = ({ initialValue, onNext }: V2StepPriorTreatmentProp
                 style={{
                   minWidth: 140,
                   height: 56,
-                  fontFamily: font, fontWeight: 600, fontSize: 15,
+                  fontFamily: font, fontWeight: isSelected ? 700 : 600, fontSize: 15,
                   color: isSelected ? "#fff" : "#0B1029",
-                  backgroundColor: isSelected ? "#E8670A" : "#F5F3F0",
-                  border: isSelected ? "2px solid #E8670A" : "1px solid #D1CCC5",
+                  backgroundColor: isSelected ? "#E8670A" : "#FFFFFF",
+                  border: isSelected ? "2px solid #E8670A" : "2px solid #D1CCC5",
                   borderRadius: 12,
                   cursor: "pointer",
+                  boxShadow: isSelected ? "0 0 0 3px rgba(232,103,10,0.1)" : "0 1px 3px rgba(0,0,0,0.06)",
                 }}
+                onMouseEnter={(e) => { if (!isSelected) { e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)"; } }}
+                onMouseLeave={(e) => { if (!isSelected) { e.currentTarget.style.borderColor = "#D1CCC5"; e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)"; } }}
                 aria-label={val ? "Yes" : "No"}
               >
                 {val ? "Yes" : "No"}
