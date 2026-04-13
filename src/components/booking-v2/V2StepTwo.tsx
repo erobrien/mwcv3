@@ -170,7 +170,7 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
           <SectionReveal show={prior !== null} refProp={q4Ref}>
             <div className="pt-2">
               <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#6B7280", letterSpacing: "0.08em" }}>
-                Where should we send your consultation details?
+                Where should we email your consultation details?
               </label>
               <input
                 type="email"
