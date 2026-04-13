@@ -55,27 +55,23 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
     if (isPrevDisabled) return;
     if (viewMonth === 0) { setViewMonth(11); setViewYear((y) => y - 1); }
     else setViewMonth((m) => m - 1);
-    setSelectedDay(null);
-    setSelectedTime("");
+    setSelectedDay(null); setSelectedTime("");
   };
   const nextMonth = () => {
     if (viewMonth === 11) { setViewMonth(0); setViewYear((y) => y + 1); }
     else setViewMonth((m) => m + 1);
-    setSelectedDay(null);
-    setSelectedTime("");
+    setSelectedDay(null); setSelectedTime("");
   };
 
   const selectedDateStr = selectedDay
-    ? new Date(viewYear, viewMonth, selectedDay).toLocaleDateString("en-US", {
-        weekday: "long", month: "long", day: "numeric", year: "numeric",
-      })
+    ? new Date(viewYear, viewMonth, selectedDay).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
     : "";
 
   const isValid = selectedDay && selectedTime;
 
   return (
-    <div className="flex flex-col items-center px-5 py-4 md:py-8">
-      {/* Urgency banner */}
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+      {/* Urgency banner — outside white card */}
       <div className="mb-4 flex items-center justify-center gap-2">
         <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#34D399" }} />
         <span style={{ fontFamily: font, fontWeight: 500, fontSize: 13, color: "#B8B6B2", letterSpacing: "0.02em" }}>
@@ -83,68 +79,45 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </span>
       </div>
 
-      <h1
-        className="text-center uppercase"
-        style={{ fontFamily: headingFont, fontSize: "clamp(24px, 5.5vw, 36px)", color: "#fff", letterSpacing: "0.05em", marginBottom: 4 }}
-      >
-        Pick My Time
-      </h1>
-      <p className="mb-4 text-center" style={{ fontFamily: font, fontSize: 14, color: "#B8B6B2" }}>
-        Select a time at our {locationLabel} center.
-      </p>
-
-      {/* Trust signal */}
-      <div className="mb-6 flex flex-wrap items-center justify-center gap-3" style={{ fontFamily: font, fontSize: 12, fontWeight: 500, color: "#B8B6B2" }}>
+      {/* Trust signal — outside white card */}
+      <div className="mb-4 flex flex-wrap items-center justify-center gap-3" style={{ fontFamily: font, fontSize: 12, fontWeight: 500, color: "#B8B6B2" }}>
         <span className="flex items-center gap-1"><Lock className="h-3.5 w-3.5" /> Private &amp; Discreet</span>
         <span className="flex items-center gap-1"><Stethoscope className="h-3.5 w-3.5" /> Physician-Led</span>
         <span className="flex items-center gap-1"><Zap className="h-3.5 w-3.5" /> Results Same Day</span>
       </div>
 
-      {/* Glass card */}
+      {/* White card */}
       <div
-        className="w-full max-w-[480px] rounded-2xl p-5 md:p-8"
-        style={{
-          backgroundColor: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(16px)",
-          border: "1px solid rgba(255,255,255,0.1)",
-        }}
+        className="w-full max-w-[480px] p-5 md:p-8"
+        style={{ backgroundColor: "#FFFFFF", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
       >
+        <h1 className="mb-1 text-center uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(24px, 5.5vw, 36px)", color: "#0B1029", letterSpacing: "0.05em" }}>
+          Pick My Time
+        </h1>
+        <p className="mb-5 text-center" style={{ fontFamily: font, fontSize: 14, color: "#6B7280" }}>
+          Select a time at our {locationLabel} center.
+        </p>
+
         {/* Calendar */}
-        <div className="mb-6 rounded-xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
-          {/* Month nav */}
+        <div className="mb-6 rounded-xl p-4" style={{ backgroundColor: "#F5F3F0", border: "1px solid #E5E2DD" }}>
           <div className="mb-4 flex items-center justify-between">
-            <button
-              type="button"
-              onClick={prevMonth}
-              className="flex h-10 w-10 items-center justify-center rounded-lg"
-              style={{ color: isPrevDisabled ? "#4B5563" : "#fff", cursor: isPrevDisabled ? "default" : "pointer", background: "none", border: "none" }}
-              disabled={isPrevDisabled}
-              aria-label="Previous month"
-            >
+            <button type="button" onClick={prevMonth} disabled={isPrevDisabled} className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ color: isPrevDisabled ? "#D1D5DB" : "#0B1029", cursor: isPrevDisabled ? "default" : "pointer", background: "none", border: "none" }} aria-label="Previous month">
               <ChevronLeft className="h-5 w-5" />
             </button>
-            <span style={{ fontFamily: font, fontWeight: 600, fontSize: 16, color: "#fff" }}>
+            <span style={{ fontFamily: font, fontWeight: 600, fontSize: 16, color: "#0B1029" }}>
               {monthNames[viewMonth]} {viewYear}
             </span>
-            <button
-              type="button"
-              onClick={nextMonth}
-              className="flex h-10 w-10 items-center justify-center rounded-lg"
-              style={{ color: "#fff", cursor: "pointer", background: "none", border: "none" }}
-              aria-label="Next month"
-            >
+            <button type="button" onClick={nextMonth} className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ color: "#0B1029", cursor: "pointer", background: "none", border: "none" }} aria-label="Next month">
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Day headers */}
           <div className="mb-2 grid grid-cols-7 text-center">
             {dayNames.map((d) => (
-              <span key={d} style={{ fontFamily: font, fontWeight: 500, fontSize: 12, color: "#AEB5BF" }}>{d}</span>
+              <span key={d} style={{ fontFamily: font, fontWeight: 500, fontSize: 12, color: "#9CA3AF" }}>{d}</span>
             ))}
           </div>
 
-          {/* Day cells */}
           <div className="grid grid-cols-7 gap-1">
             {calendarDays.map((cell, i) => (
               <button
@@ -155,7 +128,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
                 className="relative flex h-10 w-full items-center justify-center rounded-lg transition-all"
                 style={{
                   fontFamily: font, fontSize: 14, fontWeight: 400,
-                  color: cell.day === 0 ? "transparent" : !cell.available ? "rgba(174,181,191,0.5)" : selectedDay === cell.day ? "#fff" : "#fff",
+                  color: cell.day === 0 ? "transparent" : !cell.available ? "#D1D5DB" : selectedDay === cell.day ? "#fff" : "#0B1029",
                   backgroundColor: selectedDay === cell.day ? "#E8670A" : "transparent",
                   cursor: cell.available && cell.day > 0 ? "pointer" : "default",
                   border: "none",
@@ -173,14 +146,11 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
 
         {/* Time slots */}
         <div className="mb-6">
-          <label
-            className="mb-3 block uppercase"
-            style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#AEB5BF", letterSpacing: "0.08em" }}
-          >
+          <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#9CA3AF", letterSpacing: "0.08em" }}>
             Available Times
           </label>
           {!selectedDay ? (
-            <p className="text-center italic" style={{ fontFamily: font, fontSize: 13, color: "#AEB5BF" }}>
+            <p className="text-center italic" style={{ fontFamily: font, fontSize: 13, color: "#9CA3AF" }}>
               Select a date above to see available times
             </p>
           ) : (
@@ -193,10 +163,10 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
                   className="rounded-lg px-4 transition-all"
                   style={{
                     minHeight: 44, fontFamily: font, fontWeight: 500, fontSize: 14,
-                    color: selectedTime === t ? "#fff" : "#B8B6B2",
+                    color: selectedTime === t ? "#fff" : "#0B1029",
                     cursor: "pointer",
-                    backgroundColor: selectedTime === t ? "#E8670A" : "rgba(255,255,255,0.05)",
-                    border: selectedTime === t ? "2px solid #E8670A" : "1px solid rgba(255,255,255,0.1)",
+                    backgroundColor: selectedTime === t ? "#E8670A" : "#F5F3F0",
+                    border: selectedTime === t ? "2px solid #E8670A" : "1px solid #E5E2DD",
                   }}
                   aria-label={`Select time ${t}`}
                 >
@@ -208,9 +178,9 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </div>
 
         {/* Booking summary */}
-        <div className="mb-4 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
-          <span style={{ fontFamily: font, fontSize: 13, color: "#AEB5BF" }}>
-            Booking for: <strong style={{ color: "#fff" }}>{firstName || "—"}</strong> · {phone || "—"} · {email || "—"}
+        <div className="mb-4 rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F3F0", border: "1px solid #E5E2DD" }}>
+          <span style={{ fontFamily: font, fontSize: 13, color: "#6B7280" }}>
+            Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "—"}</strong> · {phone || "—"} · {email || "—"}
           </span>
         </div>
 
@@ -218,8 +188,8 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         <div className="mb-6 flex items-start gap-2">
           <input type="checkbox" checked={smsReminder} onChange={(e) => setSmsReminder(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0" style={{ accentColor: "#E8670A" }} id="sms-reminder-v2" aria-label="SMS reminder opt-in" />
           <div>
-            <label htmlFor="sms-reminder-v2" style={{ fontFamily: font, fontSize: 13, color: "#B8B6B2" }}>Send me appointment reminders via text</label>
-            <p style={{ fontFamily: font, fontSize: 11, color: "#AEB5BF", marginTop: 2 }}>We'll send a confirmation and reminder. Reply STOP to opt out.</p>
+            <label htmlFor="sms-reminder-v2" style={{ fontFamily: font, fontSize: 13, color: "#4B5563" }}>Send me appointment reminders via text</label>
+            <p style={{ fontFamily: font, fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>We'll send a confirmation and reminder. Reply STOP to opt out.</p>
           </div>
         </div>
 
@@ -231,8 +201,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
           style={{
             height: 56, borderRadius: 12, backgroundColor: "#E8670A", color: "#fff",
             fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
-            cursor: isValid ? "pointer" : "default", opacity: isValid ? 1 : 0.4, border: "none",
-            padding: "16px 24px",
+            cursor: isValid ? "pointer" : "default", opacity: isValid ? 1 : 0.4, border: "none", padding: "16px 24px",
           }}
           onMouseEnter={(e) => { if (isValid) e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
           onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
@@ -242,8 +211,8 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </button>
       </div>
 
-      {/* No Pressure section */}
-      <div className="w-full max-w-[480px] pt-8">
+      {/* No Pressure section — outside white card, on dark bg */}
+      <div className="w-full max-w-[480px] pt-8 pb-4">
         <h2 className="mb-4 text-center uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#fff", letterSpacing: "0.05em" }}>
           No Pressure. Just Answers.
         </h2>
