@@ -13,7 +13,7 @@ const inputStyle: React.CSSProperties = {
   height: 56,
   borderRadius: 10,
   backgroundColor: "#F5F3F0",
-  border: "1px solid #E5E2DD",
+  border: "1px solid #D1CCC5",
   color: "#0B1029",
   padding: "14px 16px",
   fontSize: 16,
@@ -21,6 +21,7 @@ const inputStyle: React.CSSProperties = {
   outline: "none",
   fontFamily: font,
   fontWeight: 400,
+  boxShadow: "inset 0 1px 2px rgba(0,0,0,0.06)",
 };
 
 const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
@@ -53,8 +54,8 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={inputStyle}
-          onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.1)"; }}
-          onBlur={(e) => { e.currentTarget.style.borderColor = "#E5E2DD"; e.currentTarget.style.boxShadow = "none"; }}
+          onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06), 0 0 0 3px rgba(232,103,10,0.1)"; }}
+          onBlur={(e) => { e.currentTarget.style.borderColor = "#D1CCC5"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06)"; }}
           aria-label="Email address"
         />
 

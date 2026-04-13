@@ -47,7 +47,7 @@ const V2StepPriorTreatment = ({ initialValue, onNext }: V2StepPriorTreatmentProp
                   fontFamily: font, fontWeight: 600, fontSize: 15,
                   color: isSelected ? "#fff" : "#0B1029",
                   backgroundColor: isSelected ? "#E8670A" : "#F5F3F0",
-                  border: isSelected ? "2px solid #E8670A" : "1px solid #E5E2DD",
+                  border: isSelected ? "2px solid #E8670A" : "1px solid #D1CCC5",
                   borderRadius: 12,
                   cursor: "pointer",
                 }}
