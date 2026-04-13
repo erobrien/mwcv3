@@ -43,14 +43,14 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
 
   const isValid = concern && duration && prior !== null && email.trim() && email.includes("@");
 
-  const cardStyle = (selected: boolean): React.CSSProperties => ({
+  const cardStyleLight = (selected: boolean): React.CSSProperties => ({
     minHeight: 56,
     fontFamily: font,
     fontWeight: 500,
     fontSize: 15,
-    color: "#fff",
-    backgroundColor: selected ? "rgba(232,103,10,0.08)" : "rgba(255,255,255,0.05)",
-    border: selected ? "2px solid #E8670A" : "1px solid rgba(255,255,255,0.1)",
+    color: "#1A1A2E",
+    backgroundColor: selected ? "rgba(232,103,10,0.08)" : "#F5F0EB",
+    border: selected ? "2px solid #E8670A" : "1px solid #E5E0DA",
     cursor: "pointer",
     width: "100%",
     textAlign: "left" as const,
@@ -62,10 +62,10 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
     transition: "all 0.15s ease",
   });
 
-  const RadioDot = ({ selected }: { selected: boolean }) => (
+  const RadioDotLight = ({ selected }: { selected: boolean }) => (
     <div style={{
       width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
-      border: selected ? "2px solid #E8670A" : "2px solid rgba(255,255,255,0.2)",
+      border: selected ? "2px solid #E8670A" : "2px solid #D1D5DB",
       display: "flex", alignItems: "center", justifyContent: "center",
     }}>
       {selected && <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#E8670A" }} />}
