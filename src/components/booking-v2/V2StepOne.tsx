@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Shield, MapPin, Calendar, CheckCircle, ArrowRight, Star } from "lucide-react";
 
 interface V2StepOneProps {
-  onNext: (data: { firstName: string; phone: string; email: string; location: string }) => void;
-  initialData?: { firstName?: string; phone?: string; email?: string; location?: string };
+  onNext: (data: { firstName: string; phone: string; location: string }) => void;
+  initialData?: { firstName?: string; phone?: string; location?: string };
 }
 
 const trustBadges = [
@@ -32,7 +32,6 @@ const inputStyle: React.CSSProperties = {
 
 const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
   const [firstName, setFirstName] = useState(initialData?.firstName || "");
-  const [email, setEmail] = useState(initialData?.email || "");
   const [phone, setPhone] = useState(initialData?.phone || "");
   const [location, setLocation] = useState(initialData?.location || "");
   const [consent, setConsent] = useState(false);
@@ -103,16 +102,6 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           />
           <input
             style={inputStyle}
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onFocus={focusStyle}
-            onBlur={blurStyle}
-            aria-label="Email address"
-          />
-          <input
-            style={inputStyle}
             type="tel"
             placeholder="Phone Number"
             value={phone}
@@ -168,7 +157,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
 
         {/* CTA */}
         <button
-          onClick={() => isValid && onNext({ firstName: firstName.trim(), phone, email: email.trim(), location })}
+          onClick={() => isValid && onNext({ firstName: firstName.trim(), phone, location })}
           disabled={!isValid}
           className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
