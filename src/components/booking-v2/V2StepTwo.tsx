@@ -23,6 +23,30 @@ const durations = [
 const font = "'Montserrat', sans-serif";
 const headingFont = "'Bebas Neue', sans-serif";
 
+const SectionReveal = ({ show, children, refProp }: { show: boolean; children: React.ReactNode; refProp?: React.RefObject<HTMLDivElement> }) => (
+  <div
+    ref={refProp as React.RefObject<HTMLDivElement>}
+    style={{
+      maxHeight: show ? 600 : 0,
+      opacity: show ? 1 : 0,
+      overflow: show ? "visible" : "hidden",
+      transition: "max-height 0.3s ease, opacity 0.2s ease",
+    }}
+  >
+    {children}
+  </div>
+);
+
+const RadioDotLight = ({ selected }: { selected: boolean }) => (
+  <div style={{
+    width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
+    border: selected ? "2px solid #E8670A" : "2px solid #D1D5DB",
+    display: "flex", alignItems: "center", justifyContent: "center",
+  }}>
+    {selected && <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#E8670A" }} />}
+  </div>
+);
+
 const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
   const [concern, setConcern] = useState(initialData?.primaryConcern || "");
   const [duration, setDuration] = useState(initialData?.duration || "");
@@ -62,29 +86,6 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
     transition: "all 0.15s ease",
   });
 
-  const RadioDotLight = ({ selected }: { selected: boolean }) => (
-    <div style={{
-      width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
-      border: selected ? "2px solid #E8670A" : "2px solid #D1D5DB",
-      display: "flex", alignItems: "center", justifyContent: "center",
-    }}>
-      {selected && <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#E8670A" }} />}
-    </div>
-  );
-
-  const SectionReveal = ({ show, children, refProp }: { show: boolean; children: React.ReactNode; refProp?: React.RefObject<HTMLDivElement> }) => (
-    <div
-      ref={refProp as React.RefObject<HTMLDivElement>}
-      style={{
-        maxHeight: show ? 600 : 0,
-        opacity: show ? 1 : 0,
-        overflow: "hidden",
-        transition: "max-height 0.3s ease, opacity 0.2s ease",
-      }}
-    >
-      {children}
-    </div>
-  );
 
   return (
     <div className="flex flex-col items-center px-5 py-8 md:py-12">
