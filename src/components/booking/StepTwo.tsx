@@ -8,6 +8,7 @@ interface StepTwoProps {
     location: string;
     primaryConcern: string;
     duration: string;
+    triedOther: boolean;
     screenerAnswers: Record<string, boolean>;
     contactMethod: "voice" | "sms";
   }) => void;
