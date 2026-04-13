@@ -87,7 +87,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
       </div>
 
       {/* White card container */}
-      <div className="w-full max-w-[480px] rounded-2xl p-6 md:p-8" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="w-full max-w-[480px] rounded-2xl p-6 md:p-8" style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 40px rgba(0,0,0,0.25)" }}>
         <div className="space-y-6">
           {/* Calendar card */}
           <div className="rounded-2xl p-4" style={{ backgroundColor: "#F5F0EB" }}>
