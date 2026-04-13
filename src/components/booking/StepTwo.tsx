@@ -192,6 +192,7 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
               ))}
             </div>
           </div>
+        </div>
 
         {/* Group B */}
         {showGroupB && (
