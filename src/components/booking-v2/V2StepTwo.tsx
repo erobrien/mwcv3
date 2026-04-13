@@ -171,7 +171,7 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
           <SectionReveal show={prior !== null} refProp={q4Ref}>
             <div className="pt-2">
               <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#6B7280", letterSpacing: "0.08em" }}>
-                Where should we email your consultation details?
+                Where should we email my consultation details?
               </label>
               <input
                 type="email"
@@ -203,9 +203,9 @@ const V2StepTwo = ({ onNext, initialData }: V2StepTwoProps) => {
           }}
           onMouseEnter={(e) => { if (isValid) e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
           onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
-          aria-label="Pick your time"
+          aria-label="Pick my time"
         >
-          Pick Your Time <ArrowRight className="h-4 w-4" />
+          Pick My Time <ArrowRight className="h-4 w-4" />
         </button>
       </div>
     </div>

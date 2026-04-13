@@ -62,7 +62,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           marginBottom: 8,
         }}
       >
-        Your Consultation Is Waiting
+        My Consultation Is Waiting
       </h1>
 
       <p className="mb-3 text-center" style={{ fontFamily: font, fontWeight: 400, fontSize: 15, color: "#B0ADA8", lineHeight: 1.5 }}>

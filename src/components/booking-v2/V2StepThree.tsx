@@ -72,7 +72,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
       </div>
 
       <h1 className="text-center uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(26px, 5.5vw, 38px)", color: "#fff", letterSpacing: "0.05em", marginBottom: 8 }}>
-        Your Consultation Is Ready
+        My Consultation Is Ready
       </h1>
       <p className="mb-4 text-center" style={{ fontFamily: font, fontSize: 15, color: "#B0ADA8" }}>
         Select a time at our {locationLabel} center.
