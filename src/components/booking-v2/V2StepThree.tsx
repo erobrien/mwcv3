@@ -65,9 +65,10 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
   return (
     <div className="flex flex-col items-center px-5 py-0 md:py-8">
       {/* Urgency banner */}
-      <div className="mb-6 w-full max-w-[480px] rounded-xl py-2.5 text-center" style={{ backgroundColor: "#E8670A" }}>
-        <span style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#fff" }}>
-          Same-day appointments are available today.
+      <div className="mb-6 flex w-full max-w-[480px] items-center justify-center gap-2">
+        <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#34D399" }} />
+        <span style={{ fontFamily: font, fontWeight: 500, fontSize: 13, color: "#B0ADA8", letterSpacing: "0.02em" }}>
+          Same-day appointments available today
         </span>
       </div>
 
