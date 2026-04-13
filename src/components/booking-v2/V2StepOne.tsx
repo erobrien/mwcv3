@@ -2,15 +2,9 @@ import { useState } from "react";
 import { Shield, MapPin, Calendar, CheckCircle, ArrowRight, Star } from "lucide-react";
 
 interface V2StepOneProps {
-  onNext: (data: { firstName: string; phone: string; location: string }) => void;
-  initialData?: { firstName?: string; phone?: string; location?: string };
+  onNext: (data: { firstName: string; phone: string; email: string; location: string }) => void;
+  initialData?: { firstName?: string; phone?: string; email?: string; location?: string };
 }
-
-const locations = [
-  { value: "richmond", label: "Richmond, VA" },
-  { value: "newport-news", label: "Newport News, VA" },
-  { value: "virginia-beach", label: "Virginia Beach, VA" },
-];
 
 const trustBadges = [
   { icon: Shield, label: "LegitScript Certified" },
@@ -23,12 +17,12 @@ const font = "'Montserrat', sans-serif";
 const headingFont = "'Bebas Neue', sans-serif";
 
 const inputStyle: React.CSSProperties = {
-  height: 52,
-  borderRadius: 10,
-  backgroundColor: "rgba(255,255,255,0.05)",
-  border: "1px solid rgba(255,255,255,0.12)",
-  color: "#fff",
-  padding: "14px 16px",
+  height: 56,
+  borderRadius: 12,
+  backgroundColor: "#F5F0EB",
+  border: "1px solid #E5E0DA",
+  color: "#1A1A2E",
+  padding: "0 18px",
   fontSize: 16,
   width: "100%",
   outline: "none",
@@ -38,11 +32,21 @@ const inputStyle: React.CSSProperties = {
 
 const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
   const [firstName, setFirstName] = useState(initialData?.firstName || "");
+  const [email, setEmail] = useState(initialData?.email || "");
   const [phone, setPhone] = useState(initialData?.phone || "");
   const [location, setLocation] = useState(initialData?.location || "");
   const [consent, setConsent] = useState(false);
 
-  const isValid = firstName.trim() && phone.trim() && location;
+  const isValid = firstName.trim() && phone.trim() && email.trim() && location;
+
+  const focusStyle = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    e.currentTarget.style.borderColor = "#E8670A";
+    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.12)";
+  };
+  const blurStyle = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    e.currentTarget.style.borderColor = "#E5E0DA";
+    e.currentTarget.style.boxShadow = "none";
+  };
 
   return (
     <div className="flex flex-col items-center px-5 py-8 md:py-12">
@@ -71,98 +75,120 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         <span style={{ color: "#fff" }}>4.9 Google Reviews · 10,000+ Men Treated</span>
       </div>
 
-      {/* Form card */}
+      {/* Form card — white surface */}
       <div
         className="w-full max-w-[480px] rounded-2xl p-6 md:p-8"
         style={{
-          backgroundColor: "rgba(255,255,255,0.05)",
-          backdropFilter: "blur(16px)",
-          border: "1px solid rgba(255,255,255,0.1)",
+          backgroundColor: "#FFFFFF",
+          boxShadow: "0 8px 40px rgba(0,0,0,0.25)",
         }}
       >
+        {/* Card heading */}
+        <h2
+          className="mb-6 text-center uppercase"
+          style={{ fontFamily: headingFont, fontSize: 26, color: "#1A1A2E", letterSpacing: "0.04em" }}
+        >
+          Book My Consultation
+        </h2>
+
         <div className="space-y-4">
-          <div>
-            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-              First Name
-            </label>
-            <input
-              style={inputStyle}
-              placeholder="John"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.boxShadow = "none"; }}
-              aria-label="First name"
-            />
-          </div>
-          <div>
-            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-              Phone Number
-            </label>
-            <input
-              style={inputStyle}
-              type="tel"
-              placeholder="(555) 123-4567"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.boxShadow = "none"; }}
-              aria-label="Phone number"
-            />
-          </div>
-          <div>
-            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
-              Your Location
-            </label>
-            <div className="space-y-2">
-              {locations.map((loc) => (
-                <button
-                  key={loc.value}
-                  type="button"
-                  onClick={() => setLocation(loc.value)}
-                  className="flex w-full items-center gap-3 rounded-xl px-4 transition-all"
-                  style={{
-                    minHeight: 48,
-                    fontFamily: font,
-                    fontWeight: 500,
-                    fontSize: 15,
-                    color: "#fff",
-                    backgroundColor: location === loc.value ? "rgba(232,103,10,0.08)" : "rgba(255,255,255,0.05)",
-                    border: location === loc.value ? "2px solid #E8670A" : "1px solid rgba(255,255,255,0.1)",
-                    cursor: "pointer",
-                  }}
-                  aria-label={`Select ${loc.label}`}
-                >
-                  <MapPin className="h-4 w-4 shrink-0" style={{ color: location === loc.value ? "#E8670A" : "#9CA3AF" }} />
-                  {loc.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          <input
+            style={inputStyle}
+            placeholder="Full Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            onFocus={focusStyle}
+            onBlur={blurStyle}
+            aria-label="Full name"
+          />
+          <input
+            style={inputStyle}
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onFocus={focusStyle}
+            onBlur={blurStyle}
+            aria-label="Email address"
+          />
+          <input
+            style={inputStyle}
+            type="tel"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            onFocus={focusStyle}
+            onBlur={blurStyle}
+            aria-label="Phone number"
+          />
+          <select
+            style={{
+              ...inputStyle,
+              appearance: "none",
+              color: location ? "#1A1A2E" : "#888888",
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 18px center",
+            }}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            onFocus={focusStyle as any}
+            onBlur={blurStyle as any}
+            aria-label="Select location"
+          >
+            <option value="" disabled>Location</option>
+            <option value="richmond">Richmond, VA</option>
+            <option value="newport-news">Newport News, VA</option>
+            <option value="virginia-beach">Virginia Beach, VA</option>
+          </select>
+        </div>
+
+        {/* TCPA Consent */}
+        <div className="mt-5 flex items-start gap-3">
+          <input
+            type="checkbox"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+            className="mt-0.5 h-5 w-5 shrink-0 rounded"
+            style={{ accentColor: "#E8670A" }}
+            aria-label="SMS consent"
+            id="v2-sms-consent"
+          />
+          <label htmlFor="v2-sms-consent" style={{ fontFamily: font, fontSize: 13, color: "#555555", lineHeight: 1.6 }}>
+            I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to receive services.
+          </label>
+        </div>
+
+        {/* Privacy / Terms links */}
+        <div className="mt-3 flex items-center justify-center gap-2" style={{ fontFamily: font, fontSize: 13 }}>
+          <a href="/privacy-policy" style={{ color: "#555555", textDecoration: "underline" }}>Privacy Policy</a>
+          <span style={{ color: "#D1D5DB" }}>|</span>
+          <a href="/terms-of-service" style={{ color: "#555555", textDecoration: "underline" }}>Terms of Services</a>
         </div>
 
         {/* CTA */}
         <button
-          onClick={() => isValid && onNext({ firstName: firstName.trim(), phone, location })}
+          onClick={() => isValid && onNext({ firstName: firstName.trim(), phone, email: email.trim(), location })}
           disabled={!isValid}
-          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl uppercase transition-all"
+          className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
             height: 56,
+            borderRadius: 9999,
             backgroundColor: "#E8670A",
             color: "#fff",
             fontFamily: font,
             fontWeight: 700,
-            fontSize: 14,
-            letterSpacing: "0.1em",
+            fontSize: 15,
+            letterSpacing: "0.08em",
             cursor: isValid ? "pointer" : "default",
             opacity: isValid ? 1 : 0.4,
             border: "none",
           }}
-          onMouseEnter={(e) => { if (isValid) { e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; } }}
+          onMouseEnter={(e) => { if (isValid) e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
           onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
-          aria-label="See available times"
+          aria-label="Schedule my consultation"
         >
-          See Available Times <ArrowRight className="h-4 w-4" />
+          Schedule My Consultation
         </button>
 
         {/* Trust badges */}
@@ -173,24 +199,6 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
               <span>{b.label}</span>
             </div>
           ))}
-        </div>
-
-        {/* TCPA Consent */}
-        <div className="mt-4 flex items-start gap-2">
-          <input
-            type="checkbox"
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-            className="mt-0.5 h-4 w-4 shrink-0 rounded"
-            style={{ accentColor: "#E8670A" }}
-            aria-label="SMS consent"
-            id="v2-sms-consent"
-          />
-          <label htmlFor="v2-sms-consent" style={{ fontFamily: font, fontSize: 11, color: "#9CA3AF", lineHeight: 1.5 }}>
-            I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to receive services.{" "}
-            <a href="/privacy-policy" style={{ color: "#E8670A", textDecoration: "underline" }}>Privacy Policy</a> ·{" "}
-            <a href="/terms-of-service" style={{ color: "#E8670A", textDecoration: "underline" }}>Terms</a>
-          </label>
         </div>
       </div>
     </div>
