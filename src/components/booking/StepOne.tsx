@@ -21,12 +21,8 @@ const StepOne = ({ onNext }: StepOneProps) => {
   const [consent, setConsent] = useState(false);
 
   const validate = () => {
-    const e: Record<string, string> = {};
-    if (!firstName.trim()) e.firstName = "First name is required";
-    if (!/^\d{10,}$/.test(phone.replace(/\D/g, ""))) e.phone = "Enter a valid 10-digit phone number";
-    if (!location) e.location = "Please select a location";
-    setErrors(e);
-    return Object.keys(e).length === 0;
+    setErrors({});
+    return true;
   };
 
   const handleSubmit = () => {
