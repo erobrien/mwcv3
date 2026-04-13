@@ -79,39 +79,42 @@ const V2StepFour = (props: V2StepFourProps) => {
           You're Confirmed, {props.firstName}.
         </h1>
 
-        {/* Summary card */}
+        {/* Summary card — white */}
         <div
           className="mb-6 rounded-2xl p-5"
-          style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
+          style={{ backgroundColor: "#FFFFFF", border: "1px solid #D1CCC5", boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
         >
           {summaryRows.map((row) => (
             <div
               key={row.label}
               className="flex items-center justify-between border-b py-3 last:border-0"
-              style={{ borderColor: "rgba(255,255,255,0.08)" }}
+              style={{ borderColor: "#E5E2DD" }}
             >
-              <span className="uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#AEB5BF", letterSpacing: "0.08em" }}>
+              <span className="uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#6B7280", letterSpacing: "0.08em" }}>
                 {row.label}
               </span>
-              <span style={{ fontFamily: font, fontWeight: 500, fontSize: 15, color: "#fff" }}>
+              <span style={{ fontFamily: font, fontWeight: 500, fontSize: 15, color: "#0B1029" }}>
                 {row.value}
               </span>
             </div>
           ))}
         </div>
 
-        {/* Calendar add buttons — glassmorphism cards */}
+        {/* Calendar add buttons — white cards */}
         <div className="mb-8 flex flex-col gap-2 md:flex-row">
           {["Google Calendar", "Outlook", "Apple Calendar"].map((cal) => (
             <button
               key={cal}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-4 transition-all"
+              className="flex flex-1 items-center justify-center gap-2 px-4 py-4 transition-all"
               style={{
-                fontFamily: font, fontWeight: 500, fontSize: 13, color: "#fff",
-                backgroundColor: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer",
+                fontFamily: font, fontWeight: 600, fontSize: 13, color: "#0B1029",
+                backgroundColor: "#FFFFFF",
+                border: "2px solid #D1CCC5", borderRadius: 12, cursor: "pointer",
                 minHeight: 48,
+                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#D1CCC5"; e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)"; }}
               aria-label={`Add to ${cal}`}
             >
               {cal}
@@ -119,22 +122,24 @@ const V2StepFour = (props: V2StepFourProps) => {
           ))}
         </div>
 
-        {/* Health form upsell */}
+        {/* Health form upsell — white card with orange left accent */}
         <div
           className="mb-8 rounded-2xl p-6"
           style={{
-            backgroundColor: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.1)",
+            backgroundColor: "#FFFFFF",
+            border: "1px solid #D1CCC5",
+            borderLeft: "4px solid #E8670A",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
           }}
         >
-          <h2 className="mb-2 uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#fff", letterSpacing: "0.05em" }}>
+          <h2 className="mb-2 uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#0B1029", letterSpacing: "0.05em" }}>
             Want to Skip the Waiting Room?
           </h2>
-          <p className="mb-4" style={{ fontFamily: font, fontSize: 14, color: "#B8B6B2", lineHeight: 1.6 }}>
+          <p className="mb-4" style={{ fontFamily: font, fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
             Complete a short health questionnaire now so your physician is fully prepared when you arrive. Takes about 3 minutes.
           </p>
           <button
-            className="mb-3 flex w-full items-center justify-center rounded-xl uppercase transition-all"
+            className="mb-3 flex w-full items-center justify-center uppercase transition-all"
             style={{
               height: 56, backgroundColor: "#E8670A", color: "#fff",
               fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
@@ -146,7 +151,7 @@ const V2StepFour = (props: V2StepFourProps) => {
           >
             Finish My Health Form →
           </button>
-          <p style={{ fontFamily: font, fontSize: 13, color: "#AEB5BF", textAlign: "center" }}>
+          <p style={{ fontFamily: font, fontSize: 13, color: "#9CA3AF", textAlign: "center" }}>
             Or complete it later — we'll send you a link.
           </p>
         </div>

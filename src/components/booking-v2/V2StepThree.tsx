@@ -155,24 +155,29 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
             </p>
           ) : (
             <div className="flex flex-wrap gap-2">
-              {timeSlots.map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setSelectedTime(t)}
-                  className="rounded-lg px-4 transition-all"
-                  style={{
-                    minHeight: 44, fontFamily: font, fontWeight: 500, fontSize: 14,
-                    color: selectedTime === t ? "#fff" : "#0B1029",
-                    cursor: "pointer",
-                    backgroundColor: selectedTime === t ? "#E8670A" : "#F5F3F0",
-                    border: selectedTime === t ? "2px solid #E8670A" : "1px solid #D1CCC5",
-                  }}
-                  aria-label={`Select time ${t}`}
-                >
-                  {t}
-                </button>
-              ))}
+              {timeSlots.map((t) => {
+                const isSelected = selectedTime === t;
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => setSelectedTime(t)}
+                    className="transition-all"
+                    style={{
+                      minHeight: 44, paddingLeft: 16, paddingRight: 16,
+                      borderRadius: 24,
+                      fontFamily: font, fontWeight: 500, fontSize: 14,
+                      color: isSelected ? "#fff" : "#0B1029",
+                      cursor: "pointer",
+                      backgroundColor: isSelected ? "#E8670A" : "#FFFFFF",
+                      border: isSelected ? "2px solid #E8670A" : "2px solid #D1CCC5",
+                    }}
+                    aria-label={`Select time ${t}`}
+                  >
+                    {t}
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>

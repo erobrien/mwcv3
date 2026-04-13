@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Shield, MapPin, Calendar, CheckCircle, ArrowRight, Star } from "lucide-react";
+import { Shield, MapPin, Calendar, CheckCircle, ArrowRight, Star, Check } from "lucide-react";
 
 interface V2StepOneProps {
   onNext: (data: { firstName: string; phone: string; location: string; smsConsent: boolean }) => void;
@@ -43,11 +43,11 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
   const [location, setLocation] = useState(initialData?.location || "");
   const [consent, setConsent] = useState(initialData?.smsConsent ?? false);
 
-  const isValid = firstName.trim() && phone.trim() && location && consent;
+  const isValid = firstName.trim() && phone.trim() && location;
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement>) => {
     e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)";
-    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.1)";
+    e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06), 0 0 0 3px rgba(232,103,10,0.1)";
   };
   const blurStyle = (e: React.FocusEvent<HTMLInputElement>) => {
     e.currentTarget.style.borderColor = "#D1CCC5";
@@ -108,11 +108,11 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
             <input style={inputStyle} type="tel" placeholder="(555) 555-5555" value={phone} onChange={(e) => setPhone(e.target.value)} onFocus={focusStyle} onBlur={blurStyle} aria-label="Phone number" />
           </div>
 
-          <div>
+          <div style={{ marginTop: 16 }}>
             <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Select Location
             </label>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {locations.map((loc) => {
                 const selected = location === loc.value;
                 return (
@@ -120,19 +120,24 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
                     key={loc.value}
                     type="button"
                     onClick={() => setLocation(loc.value)}
-                    className="flex w-full items-center gap-3 rounded-xl px-4 transition-all"
+                    className="flex w-full items-center gap-3 px-4 transition-all"
                     style={{
                       minHeight: 48,
-                      fontFamily: font, fontWeight: 500, fontSize: 15,
+                      fontFamily: font, fontWeight: selected ? 700 : 600, fontSize: 15,
                       color: "#0B1029",
-                      backgroundColor: selected ? "rgba(232,103,10,0.05)" : "#F5F3F0",
-                      border: selected ? "2px solid #E8670A" : "1px solid #D1CCC5",
+                      backgroundColor: selected ? "rgba(232,103,10,0.06)" : "#FFFFFF",
+                      border: selected ? "2px solid #E8670A" : "2px solid #D1CCC5",
+                      borderRadius: 12,
                       cursor: "pointer",
+                      boxShadow: selected ? "0 0 0 3px rgba(232,103,10,0.1)" : "0 1px 3px rgba(0,0,0,0.06)",
                     }}
+                    onMouseEnter={(e) => { if (!selected) { e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)"; } }}
+                    onMouseLeave={(e) => { if (!selected) { e.currentTarget.style.borderColor = "#D1CCC5"; e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)"; } }}
                     aria-label={loc.label}
                   >
-                    <MapPin className="h-4 w-4 shrink-0" style={{ color: selected ? "#E8670A" : "#9CA3AF" }} />
-                    {loc.label}
+                    <MapPin className="h-4 w-4 shrink-0" style={{ color: "#E8670A" }} />
+                    <span className="flex-1 text-left">{loc.label}</span>
+                    {selected && <Check className="h-[18px] w-[18px] shrink-0" style={{ color: "#E8670A" }} />}
                   </button>
                 );
               })}
