@@ -208,23 +208,62 @@
   }
 }
 
-/* Global form input styling */
-input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
-textarea,
-select {
+/* Global form input styling — exclude .bookv2-funnel */
+:not(.bookv2-funnel) > input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
+:not(.bookv2-funnel) > textarea,
+:not(.bookv2-funnel) > select,
+:not(.bookv2-funnel) > div > input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
+:not(.bookv2-funnel) > div > textarea,
+:not(.bookv2-funnel) > div > select {
   background-color: #FFFFFF !important;
   color: #000033 !important;
 }
 
-input::placeholder,
-textarea::placeholder {
+:not(.bookv2-funnel) input::placeholder,
+:not(.bookv2-funnel) textarea::placeholder {
   color: #888888 !important;
 }
 
-/* Form focus states */
-input:focus,
-textarea:focus,
-select:focus {
+/* BookV2 funnel dark input styling */
+.bookv2-funnel input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
+.bookv2-funnel textarea,
+.bookv2-funnel select {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 14px 16px;
+}
+
+.bookv2-funnel input::placeholder,
+.bookv2-funnel textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+.bookv2-funnel input:focus,
+.bookv2-funnel textarea:focus,
+.bookv2-funnel select:focus {
+  border-color: rgba(232, 103, 10, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(232, 103, 10, 0.1) !important;
+  outline: none;
+}
+
+/* Autofill override for dark funnel */
+.bookv2-funnel input:-webkit-autofill,
+.bookv2-funnel input:-webkit-autofill:hover,
+.bookv2-funnel input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px rgba(11, 16, 41, 0.98) inset !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Form focus states — non-bookv2 */
+:not(.bookv2-funnel) input:focus,
+:not(.bookv2-funnel) textarea:focus,
+:not(.bookv2-funnel) select:focus {
   border-color: rgba(249, 115, 22, 0.5) !important;
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
   outline: none;
