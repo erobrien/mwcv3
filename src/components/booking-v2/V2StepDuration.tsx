@@ -39,7 +39,7 @@ const V2StepDuration = ({ initialValue, onNext }: V2StepDurationProps) => {
       </h1>
       <p
         className="mb-8 text-center"
-        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B0ADA8" }}
+        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B8B6B2" }}
       >
         This helps us prepare for your visit.
       </p>

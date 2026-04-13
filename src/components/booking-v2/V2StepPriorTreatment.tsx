@@ -46,7 +46,7 @@ const V2StepPriorTreatment = ({ initialValue, onNext }: V2StepPriorTreatmentProp
       </h1>
       <p
         className="mb-8 text-center"
-        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B0ADA8" }}
+        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B8B6B2" }}
       >
         Either way, we'll build a plan that works for you.
       </p>

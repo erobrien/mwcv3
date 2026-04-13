@@ -44,7 +44,7 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
       </h1>
       <p
         className="mb-8 text-center"
-        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B0ADA8" }}
+        style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#B8B6B2" }}
       >
         We'll send a confirmation and appointment details.
       </p>
@@ -60,7 +60,7 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
         >
           <label
             className="mb-2 block uppercase"
-            style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}
+            style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#AEB5BF", letterSpacing: "0.08em" }}
           >
             Email Address
           </label>
