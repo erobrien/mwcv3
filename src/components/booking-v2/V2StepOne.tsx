@@ -37,7 +37,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
   const [location, setLocation] = useState(initialData?.location || "");
   const [consent, setConsent] = useState(false);
 
-  const isValid = firstName.trim() && phone.trim() && email.trim() && location;
+  const isValid = true;
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
     e.currentTarget.style.borderColor = "#E8670A";
