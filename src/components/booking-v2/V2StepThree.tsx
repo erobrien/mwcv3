@@ -17,9 +17,9 @@ const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 const noPressureCards = [
-  { num: "1", title: "Quick health review", desc: "Your physician reviews your lab work and health history." },
-  { num: "2", title: "An honest conversation", desc: "No sales pitch. Just clinical recommendations based on your results." },
-  { num: "3", title: "Your decision", desc: "Start same day if you choose, or take time to decide. Zero pressure." },
+  { num: "1", title: "Quick health review", desc: "My physician reviews my lab work and health history." },
+  { num: "2", title: "An honest conversation", desc: "No sales pitch. Just clinical recommendations based on my results." },
+  { num: "3", title: "My decision", desc: "Start same day if I choose, or take time to decide. Zero pressure." },
 ];
 
 const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepThreeProps) => {
@@ -72,7 +72,7 @@ const V2StepThree = ({ firstName, phone, email, locationLabel, onNext }: V2StepT
       </div>
 
       <h1 className="text-center uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(26px, 5.5vw, 38px)", color: "#fff", letterSpacing: "0.05em", marginBottom: 8 }}>
-        Your Consultation Is Ready
+        My Consultation Is Ready
       </h1>
       <p className="mb-4 text-center" style={{ fontFamily: font, fontSize: 15, color: "#B0ADA8" }}>
         Select a time at our {locationLabel} center.
