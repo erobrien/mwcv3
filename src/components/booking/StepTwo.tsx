@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 
 interface StepTwoProps {
   onNext: (data: {
+    email: string;
     referralSource: string;
     location: string;
     primaryConcern: string;
@@ -73,6 +74,8 @@ const CustomSelect = ({ value, onChange, options, placeholder }: { value: string
 };
 
 const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [referral, setReferral] = useState("");
   const [location, setLocation] = useState("");
   const [contactMethod, setContactMethod] = useState<"voice" | "sms" | "">("");
@@ -83,11 +86,12 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
   const [showGroupC, setShowGroupC] = useState(false);
 
   useEffect(() => {
-    if (referral && location && contactMethod) {
+    if (email && referral && location && contactMethod) {
+      setEmailError("");
       const t = setTimeout(() => setShowGroupB(true), 200);
       return () => clearTimeout(t);
     }
-  }, [referral, location, contactMethod]);
+  }, [email, referral, location, contactMethod]);
 
   useEffect(() => {
     if (concern) {
@@ -99,13 +103,15 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
 
   const screenerQuestions = concern ? (screenersByPath[concern] || []) : [];
   const allScreenerAnswered = screenerQuestions.length > 0 && screenerQuestions.every((q) => q in screenerAnswers);
-  const canSubmit = referral && location && contactMethod && concern && duration && allScreenerAnswered;
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const canSubmit = email && validEmail && referral && location && contactMethod && concern && duration && allScreenerAnswered;
 
   const handleSubmit = () => {
+    if (!validEmail) { setEmailError("Enter a valid email address"); return; }
     if (!canSubmit) return;
     const hasDQ = Object.values(screenerAnswers).some((v) => v === true);
     if (hasDQ) { onDQ(); return; }
-    onNext({ referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
+    onNext({ email: email.trim(), referralSource: referral, location, primaryConcern: concern, duration, screenerAnswers, contactMethod: contactMethod as "voice" | "sms" });
   };
 
   const YNPills = ({ question }: { question: string }) => {
@@ -149,6 +155,19 @@ const StepTwo = ({ onNext, onDQ }: StepTwoProps) => {
 
         {/* Group A */}
         <div className="mb-6 space-y-4">
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Email Address</label>
+            <input
+              style={{ height: 52, borderRadius: 10, backgroundColor: "#fff", border: "1px solid #D1D5DB", color: "#1A1A2E", padding: "0 16px", fontSize: 16, width: "100%", outline: "none" }}
+              type="email"
+              placeholder="john@example.com"
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
+              onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
+              onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
+            />
+            {emailError && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{emailError}</p>}
+          </div>
           <div>
             <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>How did you hear about us?</label>
             <CustomSelect value={referral} onChange={setReferral} options={referralOptions} placeholder="Select one…" />

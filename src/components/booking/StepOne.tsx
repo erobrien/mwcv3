@@ -3,7 +3,7 @@ import { Shield, MapPin, Calendar, CheckCircle, ArrowRight } from "lucide-react"
 import { TCPAConsent } from "@/components/ui/TCPAConsent";
 
 interface StepOneProps {
-  onNext: (data: { firstName: string; phone: string; email: string; location: string }) => void;
+  onNext: (data: { firstName: string; phone: string; location: string }) => void;
 }
 
 const trustBadges = [
@@ -16,7 +16,6 @@ const trustBadges = [
 const StepOne = ({ onNext }: StepOneProps) => {
   const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [consent, setConsent] = useState(false);
@@ -25,14 +24,13 @@ const StepOne = ({ onNext }: StepOneProps) => {
     const e: Record<string, string> = {};
     if (!firstName.trim()) e.firstName = "First name is required";
     if (!/^\d{10,}$/.test(phone.replace(/\D/g, ""))) e.phone = "Enter a valid 10-digit phone number";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Enter a valid email address";
     if (!location) e.location = "Please select a location";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const handleSubmit = () => {
-    if (validate()) onNext({ firstName: firstName.trim(), phone, email: email.trim(), location });
+    if (validate()) onNext({ firstName: firstName.trim(), phone, location });
   };
 
   const inputStyle: React.CSSProperties = {
@@ -100,19 +98,7 @@ const StepOne = ({ onNext }: StepOneProps) => {
             />
             {errors.phone && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{errors.phone}</p>}
           </div>
-          <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Email Address</label>
-            <input
-              style={inputStyle}
-              type="email"
-              placeholder="john@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
-              onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
-            />
-            {errors.email && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{errors.email}</p>}
-          </div>
+          
           <div>
             <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Location</label>
             <select
