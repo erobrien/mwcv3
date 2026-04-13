@@ -70,41 +70,41 @@ const StepOne = ({ onNext }: StepOneProps) => {
       >
         <div className="space-y-3">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>First Name</label>
             <input
               style={inputStyle}
-              placeholder="John"
+              placeholder="Full Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
               onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
+              aria-label="Full Name"
             />
             {errors.firstName && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{errors.firstName}</p>}
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Phone Number</label>
             <input
               style={inputStyle}
               type="tel"
-              placeholder="(555) 123-4567"
+              placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
               onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
+              aria-label="Phone Number"
             />
             {errors.phone && <p className="mt-1 text-xs" style={{ color: "#DC2626" }}>{errors.phone}</p>}
           </div>
           
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase" style={{ color: "#555555", letterSpacing: "0.08em" }}>Location</label>
             <select
               style={{ ...inputStyle, appearance: "none", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 16px center" }}
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               onFocus={(e) => { e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)"; e.currentTarget.style.borderColor = "#E8670A"; }}
               onBlur={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "#D1D5DB"; }}
+              aria-label="Location"
             >
-              <option value="">Select a location…</option>
+              <option value="">Location</option>
               <option value="Newport News">Newport News</option>
               <option value="Richmond">Richmond</option>
               <option value="Virginia Beach">Virginia Beach</option>
