@@ -61,7 +61,7 @@ const StepOne = ({ onNext }: StepOneProps) => {
           marginBottom: 8,
         }}
       >
-        Free Consultation Is Waiting
+        Your Consultation Is Waiting
       </h1>
 
       <p className="mx-auto mb-3 max-w-md text-center" style={{ color: "#555555", fontSize: 15, lineHeight: 1.5 }}>
