@@ -18,12 +18,11 @@ const trustItems = [
 const timeSlots = ["9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"];
 
 const generateCalendar = () => {
-  const firstDay = 0;
+  const firstDay = 0; // March 2026 starts on Sunday
   const daysInMonth = 31;
-  const available = [2, 3, 4, 5, 9, 10, 11, 12, 15, 16, 17, 18, 19, 23, 24, 25, 26, 30, 31];
   const days: Array<{ day: number; available: boolean } | null> = [];
   for (let i = 0; i < firstDay; i++) days.push(null);
-  for (let d = 1; d <= daysInMonth; d++) days.push({ day: d, available: available.includes(d) });
+  for (let d = 1; d <= daysInMonth; d++) days.push({ day: d, available: true });
   return days;
 };
 
