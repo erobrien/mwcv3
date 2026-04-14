@@ -17,13 +17,11 @@ export const Hero = () => {
       className="relative overflow-hidden"
       style={{ background: "#000814", paddingTop: 80 }}
     >
-      <video
-        src="/videos/hero-bg-1.mp4"
-        muted
-        playsInline
-        autoPlay
-        loop
+      <img
+        src="/images/hero-still.jpg"
+        alt=""
         aria-hidden="true"
+        loading="eager"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ opacity: 0.6 }}
       />
