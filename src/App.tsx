@@ -47,6 +47,7 @@ import GHLGeneralLandingPage from "./pages/GHLGeneralLandingPage";
 import IntakePage from "./pages/IntakePage";
 import BrandComparison from "./pages/BrandComparison";
 import BookingFunnelV2 from "./pages/BookingFunnelV2";
+import { MobileFooterBar } from "./components/shared/MobileFooterBar";
 import LocationsHub from "./pages/locations/LocationsHub";
 import RichmondLocation from "./pages/locations/RichmondLocation";
 import NewportNewsLocation from "./pages/locations/NewportNewsLocation";
@@ -117,6 +118,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <MobileFooterBar />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
