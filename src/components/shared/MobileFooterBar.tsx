@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Phone, CalendarCheck, MessageCircle } from "lucide-react";
+import { Phone, CalendarCheck, MessageSquare } from "lucide-react";
 
 /** Routes where this bar should NOT appear (they have their own mobile CTAs) */
 const EXCLUDED_ROUTES = ["/book", "/bookv2", "/intake"];
@@ -91,7 +91,7 @@ export const MobileFooterBar = () => {
           borderRight: "1px solid rgba(255,255,255,0.1)",
         }}
       >
-        <MessageCircle size={18} strokeWidth={1.8} />
+        <MessageSquare size={18} strokeWidth={1.8} />
         <span
           style={{
             fontSize: 10,
