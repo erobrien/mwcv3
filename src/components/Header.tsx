@@ -167,7 +167,7 @@ export const Header = () => {
               className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white uppercase hover:bg-white hover:text-[#000033] transition-all duration-300 whitespace-nowrap cursor-pointer bg-transparent"
               style={{ border: "1.5px solid rgba(255,255,255,0.7)", fontWeight: 700, fontSize: 13, letterSpacing: "0.06em" }}
             >
-              CHAT
+              CHAT TO BOOK
               <MessageSquare size={16} strokeWidth={2.5} />
             </button>
             <a
@@ -321,7 +321,7 @@ export const Header = () => {
               className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-white uppercase hover:bg-white hover:text-[#000033] transition-all duration-300 cursor-pointer bg-transparent"
               style={{ border: "1.5px solid rgba(255,255,255,0.7)", fontWeight: 700, fontSize: 13, letterSpacing: "0.06em" }}
             >
-              CHAT
+              CHAT TO BOOK
               <MessageSquare size={16} strokeWidth={2.5} />
             </button>
             <a
