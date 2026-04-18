@@ -1,20 +1,21 @@
 const phaseLabels = ["YOU", "YOUR VISIT", "YOUR TIME", "CONFIRMED"];
 
 interface V2ProgressBarProps {
-  currentStep: number; // 1-7
+  currentStep: number; // 1-8
 }
 
 /**
- * Maps internal step (1-7) to phase index (0-3) and fill fraction within that phase.
+ * Maps internal step (1-8) to phase index (0-3) and fill fraction within that phase.
  * Phase 0: Step 1 (YOU)
  * Phase 1: Steps 2-4 (YOUR VISIT)
  * Phase 2: Steps 5-6 (YOUR TIME)
- * Phase 3: Step 7 (CONFIRMED)
+ * Phase 3: Steps 7-8 (CONFIRMED) — Verify is sub-step, then Confirmed
  */
 const getPhaseInfo = (step: number) => {
   if (step <= 1) return { phase: 0, fill: 1 };
   if (step <= 4) return { phase: 1, fill: (step - 1) / 3 };
   if (step <= 6) return { phase: 2, fill: (step - 4) / 2 };
+  if (step === 7) return { phase: 3, fill: 0.5 };
   return { phase: 3, fill: 1 };
 };
 

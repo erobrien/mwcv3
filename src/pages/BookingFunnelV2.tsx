@@ -7,10 +7,11 @@ import V2StepDuration from "@/components/booking-v2/V2StepDuration";
 import V2StepPriorTreatment from "@/components/booking-v2/V2StepPriorTreatment";
 import V2StepEmail from "@/components/booking-v2/V2StepEmail";
 import V2StepCalendar from "@/components/booking-v2/V2StepThree";
+import V2StepVerify from "@/components/booking-v2/V2StepVerify";
 import V2StepFour from "@/components/booking-v2/V2StepFour";
 import { ArrowLeft } from "lucide-react";
 
-type Step = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+type Step = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 const locationLabels: Record<string, string> = {
   richmond: "Richmond, VA",
@@ -84,7 +85,7 @@ const BookingFunnelV2 = () => {
         </div>
 
         {/* Back button */}
-        {step > 1 && step < 7 && (
+        {step > 1 && step < 8 && (
           <div className="mx-auto w-full max-w-lg px-5">
             <button
               type="button"
@@ -161,6 +162,13 @@ const BookingFunnelV2 = () => {
             />
           )}
           {step === 7 && (
+            <V2StepVerify
+              email={formData.email}
+              phone={formData.phone}
+              onNext={() => goTo(8)}
+            />
+          )}
+          {step === 8 && (
             <V2StepFour
               firstName={formData.firstName}
               phone={formData.phone}
