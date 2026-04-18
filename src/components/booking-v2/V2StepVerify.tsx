@@ -1,15 +1,14 @@
-import { Mail, MessageSquare, ArrowRight } from "lucide-react";
+import { Mail, MessageSquare } from "lucide-react";
 
 interface V2StepVerifyProps {
   email: string;
   phone: string;
-  onNext: () => void;
 }
 
 const font = "'Montserrat', sans-serif";
 const display = "'Bebas Neue', sans-serif";
 
-const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
+const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
   const handleResend = () => {
     console.log("[V2] Resend confirmation requested for:", { email, phone });
   };
@@ -37,11 +36,11 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
         className="text-center uppercase"
         style={{
           fontFamily: display,
-          fontSize: 44,
+          fontSize: 48,
           lineHeight: 1.05,
           letterSpacing: "0.02em",
           color: "#FFFFFF",
-          marginBottom: 16,
+          marginBottom: 18,
         }}
       >
         You're Almost There!
@@ -52,13 +51,13 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
         className="text-center"
         style={{
           fontFamily: font,
-          fontSize: 16,
+          fontSize: 18,
           lineHeight: 1.55,
           color: "#E8E6E3",
-          marginBottom: 12,
+          marginBottom: 16,
         }}
       >
-        Check your email and phone right now. We sent a confirmation link to both — your appointment
+        Check your email and phone right now. We sent a confirmation link to both. Your appointment
         isn't booked until you click it.
       </p>
 
@@ -67,7 +66,7 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
         className="text-center"
         style={{
           fontFamily: font,
-          fontSize: 13,
+          fontSize: 15,
           lineHeight: 1.5,
           color: "#AEB5BF",
           marginBottom: 28,
@@ -102,7 +101,7 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
             <p
               style={{
                 fontFamily: font,
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 600,
                 color: "#6B7280",
                 textTransform: "uppercase",
@@ -116,7 +115,7 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
               className="truncate"
               style={{
                 fontFamily: font,
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: 600,
                 color: "#0B1029",
               }}
@@ -143,7 +142,7 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
             <p
               style={{
                 fontFamily: font,
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 600,
                 color: "#6B7280",
                 textTransform: "uppercase",
@@ -156,7 +155,7 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
             <p
               style={{
                 fontFamily: font,
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: 600,
                 color: "#0B1029",
               }}
@@ -167,37 +166,14 @@ const V2StepVerify = ({ email, phone, onNext }: V2StepVerifyProps) => {
         </div>
       </div>
 
-      {/* CTA */}
-      <button
-        type="button"
-        onClick={onNext}
-        className="flex w-full items-center justify-center gap-2 transition-all"
-        style={{
-          height: 56,
-          backgroundColor: "#E8670A",
-          color: "#FFFFFF",
-          fontFamily: font,
-          fontWeight: 700,
-          fontSize: 15,
-          textTransform: "uppercase",
-          letterSpacing: "0.05em",
-          borderRadius: 12,
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
-        I've Confirmed — Show My Booking
-        <ArrowRight className="h-5 w-5" />
-      </button>
-
       {/* Resend */}
-      <div className="mt-4 text-center">
+      <div className="text-center">
         <button
           type="button"
           onClick={handleResend}
           style={{
             fontFamily: font,
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: 500,
             color: "#AEB5BF",
             background: "none",
