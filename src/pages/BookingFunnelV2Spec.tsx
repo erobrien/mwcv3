@@ -13,9 +13,8 @@ const MUTED = "#AEB5BF";
 
 // Entry points → Booking funnel
 const entryPoints = [
-  { group: "Main Site", color: "#3B82F6", items: ["Homepage /", "How It Works", "Providers", "Locations Hub", "Service Pages"] },
-  { group: "Landing Pages /lp/*", color: "#22C55E", items: ["General LP", "TRT LP", "ED LP", "Weight Loss LP", "GHL TRT / ED / WL / General", "OG-TRT / OG-ED / OG-WL"] },
-  { group: "Locations", color: "#A855F7", items: ["Richmond, VA", "Newport News, VA", "Virginia Beach, VA"] },
+  { group: "Wordpress Site", color: "#3B82F6", items: ["Homepage /", "How It Works", "Providers", "Locations Hub", "Service Pages"] },
+  { group: "GHL Landing Pages", color: "#22C55E", items: ["General LP", "TRT LP", "ED LP", "Weight Loss LP", "Location - Richmond", "Location - Newport News", "Location - Virginia Beach"] },
 ];
 
 // Funnel phases
