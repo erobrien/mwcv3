@@ -9,6 +9,8 @@ import V2StepEmail from "@/components/booking-v2/V2StepEmail";
 import V2StepCalendar from "@/components/booking-v2/V2StepThree";
 import V2StepVerify from "@/components/booking-v2/V2StepVerify";
 import V2StepFour from "@/components/booking-v2/V2StepFour";
+import SpecOverlay from "@/components/booking-v2/spec/SpecOverlay";
+import SpecModeToggle from "@/components/booking-v2/spec/SpecModeToggle";
 import { ArrowLeft } from "lucide-react";
 
 type Step = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
@@ -80,7 +82,7 @@ const BookingFunnelV2 = () => {
 
       <main className="flex flex-1 flex-col">
         {/* Progress bar */}
-        <div className="mx-auto w-full max-w-lg">
+        <div className="mx-auto w-full max-w-lg" data-spec-id="chrome-progressbar">
           <V2ProgressBar currentStep={step} />
         </div>
 
@@ -90,6 +92,7 @@ const BookingFunnelV2 = () => {
             <button
               type="button"
               onClick={goBack}
+              data-spec-id="chrome-back"
               className="mb-2 flex items-center gap-1 transition-all"
               style={{
                 fontFamily: font, fontWeight: 500, fontSize: 14, color: "#B8B6B2",
@@ -195,6 +198,10 @@ const BookingFunnelV2 = () => {
           </span>
         </div>
       </main>
+
+      {/* Spec mode (mockup annotations for dev team) */}
+      <SpecOverlay currentStep={step} />
+      <SpecModeToggle />
     </div>
   );
 };
