@@ -185,7 +185,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         {/* Booking summary */}
         <div className="mb-4 rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
           <span style={{ fontFamily: font, fontSize: 13, color: "#6B7280" }}>
-            Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "—"}</strong> · {phone || "—"} · {email || "—"}
+            Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "&mdash;"}</strong> · {phone || "&mdash;"} · {email || "&mdash;"}
           </span>
         </div>
 
