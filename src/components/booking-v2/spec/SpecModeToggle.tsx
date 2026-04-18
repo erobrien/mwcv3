@@ -7,14 +7,16 @@ const BODY_CLASS = "spec-mode-on";
 const font = "'Montserrat', sans-serif";
 
 const readInitial = (): boolean => {
-  if (typeof window === "undefined") return false;
+  if (typeof window === "undefined") return true;
   const params = new URLSearchParams(window.location.search);
   if (params.get("spec") === "1") return true;
   if (params.get("spec") === "0") return false;
   try {
-    return localStorage.getItem(STORAGE_KEY) === "1";
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "0") return false;
+    return true; // default ON
   } catch {
-    return false;
+    return true;
   }
 };
 
