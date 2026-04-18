@@ -14,9 +14,9 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[480px] px-5 pt-6 pb-10">
+    <div className="mx-auto w-full max-w-[480px] px-5 pt-6 pb-10" data-spec-id="step7-screen">
       {/* Icon pair */}
-      <div className="mb-6 flex items-center justify-center gap-4">
+      <div className="mb-6 flex items-center justify-center gap-4" data-spec-id="step7-icons">
         <div
           className="flex h-14 w-14 items-center justify-center rounded-full"
           style={{ backgroundColor: "rgba(232,103,10,0.12)" }}
@@ -33,6 +33,7 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
 
       {/* Heading */}
       <h1
+        data-spec-id="step7-heading"
         className="text-center uppercase"
         style={{
           fontFamily: display,
@@ -48,6 +49,7 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
 
       {/* Body copy */}
       <p
+        data-spec-id="step7-body"
         className="text-center"
         style={{
           fontFamily: font,
@@ -63,6 +65,7 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
 
       {/* Helper */}
       <p
+        data-spec-id="step7-helper"
         className="text-center"
         style={{
           fontFamily: font,
@@ -85,6 +88,7 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
       {/* Info cards */}
       <div className="mb-7 space-y-3">
         <div
+          data-spec-id="step7-emailcard"
           className="flex items-center gap-4 rounded-2xl p-4"
           style={{
             backgroundColor: "#FFFFFF",
@@ -126,6 +130,7 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
         </div>
 
         <div
+          data-spec-id="step7-phonecard"
           className="flex items-center gap-4 rounded-2xl p-4"
           style={{
             backgroundColor: "#FFFFFF",
@@ -171,6 +176,7 @@ const V2StepVerify = ({ email, phone }: V2StepVerifyProps) => {
         <button
           type="button"
           onClick={handleResend}
+          data-spec-id="step7-resend"
           style={{
             fontFamily: font,
             fontSize: 15,

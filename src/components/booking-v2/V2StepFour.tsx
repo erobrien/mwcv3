@@ -66,13 +66,14 @@ const V2StepFour = (props: V2StepFourProps) => {
   ];
 
   return (
-    <div className="flex flex-col items-center px-5 py-8 md:py-12">
+    <div className="flex flex-col items-center px-5 py-8 md:py-12" data-spec-id="step8-screen">
       <div className="w-full max-w-[480px]">
-        <div className="mb-6">
+        <div className="mb-6" data-spec-id="step8-checkmark">
           <AnimatedCheckmark />
         </div>
 
         <h1
+          data-spec-id="step8-heading"
           className="mb-8 text-center uppercase"
           style={{ fontFamily: headingFont, fontSize: "clamp(26px, 5.5vw, 38px)", color: "#fff", letterSpacing: "0.05em" }}
         >
@@ -81,6 +82,7 @@ const V2StepFour = (props: V2StepFourProps) => {
 
         {/* Summary card — white */}
         <div
+          data-spec-id="step8-summary"
           className="mb-6 rounded-2xl p-5"
           style={{ backgroundColor: "#FFFFFF", border: "1px solid #D1CCC5", boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
         >
@@ -101,7 +103,7 @@ const V2StepFour = (props: V2StepFourProps) => {
         </div>
 
         {/* Calendar add buttons — white cards */}
-        <div className="mb-8 flex flex-col gap-2 md:flex-row">
+        <div className="mb-8 flex flex-col gap-2 md:flex-row" data-spec-id="step8-calendar">
           {["Google Calendar", "Outlook", "Apple Calendar"].map((cal) => (
             <button
               key={cal}
@@ -124,6 +126,7 @@ const V2StepFour = (props: V2StepFourProps) => {
 
         {/* Health form upsell — white card with orange left accent */}
         <div
+          data-spec-id="step8-healthform"
           className="mb-8 rounded-2xl p-6"
           style={{
             backgroundColor: "#FFFFFF",
@@ -157,7 +160,7 @@ const V2StepFour = (props: V2StepFourProps) => {
         </div>
 
         {/* What to expect */}
-        <div className="mb-8">
+        <div className="mb-8" data-spec-id="step8-expect">
           <h2 className="mb-4 text-center uppercase" style={{ fontFamily: headingFont, fontSize: 18, color: "#fff", letterSpacing: "0.05em" }}>
             What to Expect at Your Visit
           </h2>
@@ -172,7 +175,7 @@ const V2StepFour = (props: V2StepFourProps) => {
         </div>
 
         {/* Referral */}
-        <div className="mb-8 text-center">
+        <div className="mb-8 text-center" data-spec-id="step8-referral">
           <p className="mb-2 uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#AEB5BF", letterSpacing: "0.08em" }}>
             Know someone who could benefit?
           </p>
@@ -187,7 +190,7 @@ const V2StepFour = (props: V2StepFourProps) => {
         </div>
 
         {/* Trust footer */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 pt-4">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 pt-4" data-spec-id="step8-trustfooter">
           {[
             { icon: MapPin, label: "10,000+ Men Treated" },
             { icon: Star, label: "4.9 Google Reviews" },

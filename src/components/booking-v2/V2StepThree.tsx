@@ -70,9 +70,9 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
   const isValid = selectedDay && selectedTime;
 
   return (
-    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step6-screen">
       {/* Urgency banner — outside white card */}
-      <div className="mb-4 flex items-center justify-center gap-2">
+      <div className="mb-4 flex items-center justify-center gap-2" data-spec-id="step6-urgency">
         <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#34D399" }} />
         <span style={{ fontFamily: font, fontWeight: 500, fontSize: 14, color: "#B8B6B2", letterSpacing: "0.02em" }}>
           Same-day appointments available today
@@ -80,7 +80,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
       </div>
 
       {/* Trust signal — outside white card */}
-      <div className="mb-4 flex flex-wrap items-center justify-center gap-3" style={{ fontFamily: font, fontSize: 14, fontWeight: 500, color: "#B8B6B2" }}>
+      <div className="mb-4 flex flex-wrap items-center justify-center gap-3" data-spec-id="step6-trustrow" style={{ fontFamily: font, fontSize: 14, fontWeight: 500, color: "#B8B6B2" }}>
         <span className="flex items-center gap-1"><Lock className="h-3.5 w-3.5" /> Private &amp; Discreet</span>
         <span className="flex items-center gap-1"><Stethoscope className="h-3.5 w-3.5" /> Physician-Led</span>
         <span className="flex items-center gap-1"><Zap className="h-3.5 w-3.5" /> Results Same Day</span>
@@ -100,7 +100,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
 
         {/* Calendar */}
         <div className="mb-6 rounded-xl p-4" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex items-center justify-between" data-spec-id="step6-monthnav">
             <button type="button" onClick={prevMonth} disabled={isPrevDisabled} className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ color: isPrevDisabled ? "#D1D5DB" : "#0B1029", cursor: isPrevDisabled ? "default" : "pointer", background: "none", border: "none" }} aria-label="Previous month">
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -118,7 +118,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
             ))}
           </div>
 
-          <div className="grid grid-cols-7 gap-1">
+          <div className="grid grid-cols-7 gap-1" data-spec-id="step6-grid">
             {calendarDays.map((cell, i) => (
               <button
                 key={i}
@@ -145,7 +145,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </div>
 
         {/* Time slots */}
-        <div className="mb-6">
+        <div className="mb-6" data-spec-id="step6-times">
           <label className="mb-3 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
             Available Times
           </label>
@@ -183,14 +183,14 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         </div>
 
         {/* Booking summary */}
-        <div className="mb-4 rounded-xl px-4 py-3" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
+        <div className="mb-4 rounded-xl px-4 py-3" data-spec-id="step6-summary" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
           <span style={{ fontFamily: font, fontSize: 15, color: "#6B7280" }}>
             Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "-"}</strong> · {phone || "-"} · {email || "-"}
           </span>
         </div>
 
         {/* SMS reminder */}
-        <div className="mb-6 flex items-start gap-2">
+        <div className="mb-6 flex items-start gap-2" data-spec-id="step6-reminder">
           <input type="checkbox" checked={smsReminder} onChange={(e) => setSmsReminder(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0" style={{ accentColor: "#E8670A" }} id="sms-reminder-v2" aria-label="SMS reminder opt-in" />
           <div>
             <label htmlFor="sms-reminder-v2" style={{ fontFamily: font, fontSize: 15, color: "#4B5563" }}>Send me appointment reminders via text</label>
@@ -202,6 +202,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
         <button
           onClick={() => isValid && onNext({ selectedDate: selectedDateStr, selectedTime, smsReminder })}
           disabled={!isValid}
+          data-spec-id="step6-cta"
           className="flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
             height: 56, borderRadius: 12, backgroundColor: "#E8670A", color: "#fff",
@@ -217,7 +218,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
       </div>
 
       {/* No Pressure section — outside white card, on dark bg */}
-      <div className="w-full max-w-[480px] pt-8 pb-4">
+      <div className="w-full max-w-[480px] pt-8 pb-4" data-spec-id="step6-nopressure">
         <h2 className="mb-4 text-center uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#fff", letterSpacing: "0.05em" }}>
           No Pressure. Just Answers.
         </h2>
