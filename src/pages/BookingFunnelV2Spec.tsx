@@ -247,10 +247,13 @@ const BookingFunnelV2Spec = () => {
         </div>
       </section>
 
-      {/* Flow diagram */}
+      {/* Visual flow chart */}
+      <FlowChart />
+
+      {/* Flow diagram (cards detail) */}
       <section style={{ padding: "60px 24px", backgroundColor: PAPER_ALT }}>
         <div className="mx-auto max-w-[1280px]">
-          <SectionHeading eyebrow="Architecture" title="Traffic Flow → Funnel → Confirmation" />
+          <SectionHeading eyebrow="Architecture · Detail" title="Traffic Flow → Funnel → Confirmation" />
 
           {/* Entry points row */}
           <div className="mb-8">
