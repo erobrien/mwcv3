@@ -5,11 +5,19 @@ import { SPEC_ANNOTATIONS, STEP_NAMES } from "@/components/booking-v2/spec/specA
 const font = "'Montserrat', sans-serif";
 const headingFont = "'Bebas Neue', sans-serif";
 
-const NAVY = "#0B1029";
-const NAVY_DEEP = "#070B1F";
+// Editorial light palette — paper + ink with restrained accents
+const PAPER = "#F7F4EF";        // warm off-white page bg
+const PAPER_ALT = "#FFFFFF";    // section contrast
+const INK = "#0B1029";          // primary text
+const INK_SOFT = "#4B5563";     // secondary text
+const HAIRLINE = "rgba(11,16,41,0.12)";
 const ORANGE = "#E8670A";
-const CREAM = "#F5F0EB";
-const MUTED = "#AEB5BF";
+
+// Aliases mapped to new editorial tokens
+const NAVY = PAPER_ALT;         // was dark surface; now white card
+const NAVY_DEEP = PAPER;        // was darkest bg; now warm paper
+const MUTED = INK_SOFT;         // body muted now reads on light
+const CREAM = PAPER;
 
 // Entry points → Booking funnel
 const entryPoints = [
@@ -139,7 +147,7 @@ const SectionHeading = ({ eyebrow, title }: { eyebrow?: string; title: string })
         {eyebrow}
       </div>
     )}
-    <h2 className="uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(32px, 5vw, 56px)", color: "#FFFFFF", letterSpacing: "0.04em", lineHeight: 1.05 }}>
+    <h2 className="uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(32px, 5vw, 56px)", color: INK, letterSpacing: "0.04em", lineHeight: 1.05 }}>
       {title}
     </h2>
   </div>
@@ -147,13 +155,13 @@ const SectionHeading = ({ eyebrow, title }: { eyebrow?: string; title: string })
 
 const BookingFunnelV2Spec = () => {
   return (
-    <div style={{ backgroundColor: NAVY_DEEP, minHeight: "100vh" }}>
+    <div style={{ backgroundColor: PAPER, minHeight: "100vh", color: INK }}>
       {/* Top bar */}
       <header
         style={{
           padding: "20px 24px",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          backgroundColor: NAVY,
+          borderBottom: `1px solid ${HAIRLINE}`,
+          backgroundColor: PAPER_ALT,
           position: "sticky",
           top: 0,
           zIndex: 50,
@@ -198,7 +206,7 @@ const BookingFunnelV2Spec = () => {
             style={{
               fontFamily: headingFont,
               fontSize: "clamp(44px, 7vw, 88px)",
-              color: "#FFFFFF",
+              color: INK,
               letterSpacing: "0.02em",
               lineHeight: 1,
             }}
@@ -224,14 +232,14 @@ const BookingFunnelV2Spec = () => {
               <div
                 key={title}
                 style={{
-                  backgroundColor: NAVY,
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  backgroundColor: PAPER_ALT,
+                  border: `1px solid ${HAIRLINE}`,
                   borderRadius: 16,
                   padding: 24,
                 }}
               >
                 <Icon className="h-6 w-6" style={{ color: ORANGE }} />
-                <div className="mt-3" style={{ fontFamily: font, fontWeight: 700, fontSize: 15, color: "#FFFFFF" }}>{title}</div>
+                <div className="mt-3" style={{ fontFamily: font, fontWeight: 700, fontSize: 15, color: INK }}>{title}</div>
                 <div className="mt-1" style={{ fontFamily: font, fontSize: 13, color: MUTED, lineHeight: 1.5 }}>{desc}</div>
               </div>
             ))}
@@ -240,7 +248,7 @@ const BookingFunnelV2Spec = () => {
       </section>
 
       {/* Flow diagram */}
-      <section style={{ padding: "60px 24px", backgroundColor: NAVY }}>
+      <section style={{ padding: "60px 24px", backgroundColor: PAPER_ALT }}>
         <div className="mx-auto max-w-[1280px]">
           <SectionHeading eyebrow="Architecture" title="Traffic Flow → Funnel → Confirmation" />
 
@@ -254,8 +262,8 @@ const BookingFunnelV2Spec = () => {
                 <div
                   key={ep.group}
                   style={{
-                    backgroundColor: NAVY_DEEP,
-                    border: `1px solid ${ep.color}55`,
+                    backgroundColor: PAPER_ALT,
+                    border: `1px solid ${HAIRLINE}`,
                     borderTop: `3px solid ${ep.color}`,
                     borderRadius: 12,
                     padding: 20,
@@ -271,9 +279,9 @@ const BookingFunnelV2Spec = () => {
                         style={{
                           fontFamily: font,
                           fontSize: 13,
-                          color: "#E5E7EB",
+                          color: INK,
                           padding: "6px 0",
-                          borderBottom: "1px solid rgba(255,255,255,0.05)",
+                          borderBottom: `1px solid ${HAIRLINE}`,
                         }}
                       >
                         {it}
@@ -320,16 +328,16 @@ const BookingFunnelV2Spec = () => {
               <div
                 key={ph.name}
                 style={{
-                  backgroundColor: NAVY_DEEP,
+                  backgroundColor: PAPER_ALT,
                   borderRadius: 14,
                   padding: 20,
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: `1px solid ${HAIRLINE}`,
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, backgroundColor: ph.color }} />
-                <div style={{ fontFamily: headingFont, fontSize: 26, color: "#FFFFFF", letterSpacing: "0.04em", lineHeight: 1 }}>{ph.name}</div>
+                <div style={{ fontFamily: headingFont, fontSize: 26, color: INK, letterSpacing: "0.04em", lineHeight: 1 }}>{ph.name}</div>
                 <div className="mt-2" style={{ fontFamily: font, fontSize: 12, color: ORANGE, fontWeight: 700, letterSpacing: "0.1em" }}>
                   STEP{ph.steps.length > 1 ? "S" : ""} {ph.steps.join(", ")}
                 </div>
@@ -348,16 +356,16 @@ const BookingFunnelV2Spec = () => {
           <div
             className="mx-auto max-w-[640px] text-center"
             style={{
-              backgroundColor: "#0E2818",
+              backgroundColor: PAPER_ALT,
               border: "1px solid #16A34A",
               borderRadius: 16,
               padding: "20px 24px",
             }}
           >
-            <div style={{ fontFamily: headingFont, fontSize: 22, color: "#22C55E", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            <div style={{ fontFamily: headingFont, fontSize: 22, color: "#15803D", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               ✓ Lead booked + double opt-in verified
             </div>
-            <div className="mt-2" style={{ fontFamily: font, fontSize: 13, color: "#A7F3D0" }}>
+            <div className="mt-2" style={{ fontFamily: font, fontSize: 13, color: INK_SOFT }}>
               Pushed to GHL with appointment + intake-form upsell shown.
             </div>
           </div>
@@ -378,8 +386,8 @@ const BookingFunnelV2Spec = () => {
                   gridTemplateColumns: "80px 1fr",
                   gap: 32,
                   padding: "40px 0",
-                  borderTop: idx === 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  borderTop: idx === 0 ? `1px solid ${HAIRLINE}` : "none",
+                  borderBottom: `1px solid ${HAIRLINE}`,
                   alignItems: "start",
                 }}
               >
@@ -400,7 +408,7 @@ const BookingFunnelV2Spec = () => {
                     style={{
                       fontFamily: headingFont,
                       fontSize: 28,
-                      color: "#FFFFFF",
+                      color: INK,
                       letterSpacing: "0.04em",
                       lineHeight: 1.05,
                     }}
@@ -420,7 +428,7 @@ const BookingFunnelV2Spec = () => {
                         style={{
                           fontFamily: font,
                           fontSize: 14,
-                          color: "#E5E7EB",
+                          color: INK,
                           paddingLeft: 18,
                           position: "relative",
                           lineHeight: 1.6,
@@ -452,19 +460,19 @@ const BookingFunnelV2Spec = () => {
       </section>
 
       {/* Spec mode usage */}
-      <section style={{ padding: "60px 24px", backgroundColor: NAVY }}>
+      <section style={{ padding: "60px 24px", backgroundColor: PAPER_ALT }}>
         <div className="mx-auto max-w-[1100px]">
           <SectionHeading eyebrow="How to use this spec" title="Spec Mode on /bookv2" />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <div
               style={{
-                backgroundColor: NAVY_DEEP,
-                border: "1px solid rgba(255,255,255,0.08)",
+                backgroundColor: PAPER_ALT,
+                border: `1px solid ${HAIRLINE}`,
                 borderRadius: 14,
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ① Open the live funnel
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -473,13 +481,13 @@ const BookingFunnelV2Spec = () => {
             </div>
             <div
               style={{
-                backgroundColor: NAVY_DEEP,
-                border: "1px solid rgba(255,255,255,0.08)",
+                backgroundColor: PAPER_ALT,
+                border: `1px solid ${HAIRLINE}`,
                 borderRadius: 14,
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ② Click any badge
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -488,13 +496,13 @@ const BookingFunnelV2Spec = () => {
             </div>
             <div
               style={{
-                backgroundColor: NAVY_DEEP,
-                border: "1px solid rgba(255,255,255,0.08)",
+                backgroundColor: PAPER_ALT,
+                border: `1px solid ${HAIRLINE}`,
                 borderRadius: 14,
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ③ Force ON / OFF via URL
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -503,13 +511,13 @@ const BookingFunnelV2Spec = () => {
             </div>
             <div
               style={{
-                backgroundColor: NAVY_DEEP,
-                border: "1px solid rgba(255,255,255,0.08)",
+                backgroundColor: PAPER_ALT,
+                border: `1px solid ${HAIRLINE}`,
                 borderRadius: 14,
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ④ Read the registry
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -560,7 +568,7 @@ const BookingFunnelV2Spec = () => {
                   style={{
                     fontFamily: headingFont,
                     fontSize: 22,
-                    color: "#FFFFFF",
+                    color: INK,
                     letterSpacing: "0.04em",
                     textTransform: "uppercase",
                     paddingBottom: 10,
@@ -578,8 +586,8 @@ const BookingFunnelV2Spec = () => {
                     <div
                       key={a.id}
                       style={{
-                        backgroundColor: NAVY,
-                        border: "1px solid rgba(255,255,255,0.06)",
+                        backgroundColor: PAPER_ALT,
+                        border: `1px solid ${HAIRLINE}`,
                         borderRadius: 10,
                         padding: "12px 16px",
                         display: "grid",
@@ -606,7 +614,7 @@ const BookingFunnelV2Spec = () => {
                         {a.number}
                       </div>
                       <div>
-                        <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF" }}>{a.label}</div>
+                        <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK }}>{a.label}</div>
                         <div style={{ fontFamily: font, fontSize: 12, color: MUTED, marginTop: 2 }}>
                           <code style={{ color: ORANGE }}>{a.id}</code>
                           {a.required && <span style={{ marginLeft: 10, color: "#F87171" }}>· required</span>}
@@ -626,8 +634,8 @@ const BookingFunnelV2Spec = () => {
       <footer
         style={{
           padding: "32px 24px",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          backgroundColor: NAVY,
+          borderTop: `1px solid ${HAIRLINE}`,
+          backgroundColor: PAPER_ALT,
           textAlign: "center",
         }}
       >
