@@ -41,11 +41,11 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
         >
           Where Should We Email Your Consultation Details?
         </h1>
-        <p className="mb-6 text-center" style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#6B7280" }}>
+        <p className="mb-6 text-center" style={{ fontFamily: font, fontWeight: 400, fontSize: 15, color: "#6B7280" }}>
           We'll send a confirmation and appointment details.
         </p>
 
-        <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
+        <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
           Email Address
         </label>
         <input
@@ -65,7 +65,7 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
           className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
             height: 56, borderRadius: 12, backgroundColor: "#E8670A", color: "#fff",
-            fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
+            fontFamily: font, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em",
             cursor: isValid ? "pointer" : "default", opacity: isValid ? 1 : 0.4, border: "none", padding: "16px 24px",
           }}
           onMouseEnter={(e) => { if (isValid) e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}

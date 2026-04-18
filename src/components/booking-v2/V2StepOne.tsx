@@ -75,7 +75,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
       </p>
 
       {/* Trust line */}
-      <div className="mb-6 flex items-center justify-center gap-2" style={{ fontFamily: font, fontSize: 13, fontWeight: 500 }}>
+      <div className="mb-6 flex items-center justify-center gap-2" style={{ fontFamily: font, fontSize: 15, fontWeight: 500 }}>
         <Star className="h-4 w-4" style={{ color: "#E8670A" }} fill="#E8670A" />
         <span style={{ color: "#fff" }}>4.9 Google Reviews · 10,000+ Men Treated</span>
       </div>
@@ -95,21 +95,21 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
 
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
+            <label className="mb-1.5 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Full Name
             </label>
             <input style={inputStyle} placeholder="John" value={firstName} onChange={(e) => setFirstName(e.target.value)} onFocus={focusStyle} onBlur={blurStyle} aria-label="Full name" />
           </div>
 
           <div>
-            <label className="mb-1.5 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
+            <label className="mb-1.5 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Phone Number
             </label>
             <input style={inputStyle} type="tel" placeholder="(555) 555-5555" value={phone} onChange={(e) => setPhone(e.target.value)} onFocus={focusStyle} onBlur={blurStyle} aria-label="Phone number" />
           </div>
 
           <div style={{ marginTop: 16 }}>
-            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 12, color: "#9CA3AF", letterSpacing: "0.08em" }}>
+            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Select Location
             </label>
             <div className="space-y-3">
@@ -148,12 +148,12 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         {/* TCPA Consent */}
         <div className="mt-5 flex items-start gap-3">
           <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 rounded" style={{ accentColor: "#E8670A" }} aria-label="SMS consent" id="v2-sms-consent" />
-          <label htmlFor="v2-sms-consent" style={{ fontFamily: font, fontSize: 13, color: "#6B7280", lineHeight: 1.6 }}>
+          <label htmlFor="v2-sms-consent" style={{ fontFamily: font, fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
             I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to receive services.
           </label>
         </div>
 
-        <div className="mt-3 flex items-center justify-center gap-2" style={{ fontFamily: font, fontSize: 13 }}>
+        <div className="mt-3 flex items-center justify-center gap-2" style={{ fontFamily: font, fontSize: 14 }}>
           <a href="/privacy-policy" style={{ color: "#6B7280", textDecoration: "underline" }}>Privacy Policy</a>
           <span style={{ color: "#D1D5DB" }}>|</span>
           <a href="/terms-of-service" style={{ color: "#6B7280", textDecoration: "underline" }}>Terms of Services</a>
@@ -166,7 +166,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
           className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
             height: 56, borderRadius: 12, backgroundColor: "#E8670A", color: "#fff",
-            fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
+            fontFamily: font, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em",
             cursor: isValid ? "pointer" : "default", opacity: isValid ? 1 : 0.4, border: "none", padding: "16px 24px",
           }}
           onMouseEnter={(e) => { if (isValid) e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
@@ -179,7 +179,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         {/* Trust badges */}
         <div className="mt-5 grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center md:gap-4">
           {trustBadges.map((b) => (
-            <div key={b.label} className="flex items-center gap-1.5" style={{ fontFamily: font, fontSize: 11, color: "#9CA3AF" }}>
+            <div key={b.label} className="flex items-center gap-1.5" style={{ fontFamily: font, fontSize: 12, color: "#9CA3AF" }}>
               <b.icon className="h-3.5 w-3.5" />
               <span>{b.label}</span>
             </div>
