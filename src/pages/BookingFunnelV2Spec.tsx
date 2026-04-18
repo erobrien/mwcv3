@@ -37,13 +37,13 @@ const phases = [
 const stepDetails: Array<{ n: number; title: string; sub: string; bullets: string[]; outcome: string }> = [
   {
     n: 1,
-    title: "Name · Phone · Location",
-    sub: "Single screen, three fields. Mockup mode: all fields pre-validated.",
+    title: "Welcome (Prefilled Identity)",
+    sub: "Name, Phone and Location are captured upstream on the Wordpress site or GHL landing pages and passed in via URL params. /bookv2 step 1 confirms identity and advances — no re-entry required.",
     bullets: [
-      "First Name (text, required)",
-      "Phone (formatted (XXX) XXX-XXXX, required)",
-      "Location: Richmond / Newport News / Virginia Beach (card select, required)",
-      "SMS consent checkbox (optional, unchecked by default — TCPA compliant)",
+      "Reads firstName / phone / location from query string (or restored session)",
+      "Renders a personalized greeting: \"Hi {firstName}, let's book your visit.\"",
+      "Edit link surfaces the 3 fields inline if any are missing or the user wants to change them",
+      "SMS consent (optional, unchecked by default — TCPA compliant) appears here if not previously captured",
     ],
     outcome: "→ advances to Step 2 on CTA click",
   },
@@ -187,8 +187,8 @@ const LegendDot = ({ color, label }: { color: string; label: string }) => (
 
 const FlowChart = () => {
   const sources = [
-    { label: "Wordpress Site", color: "#3B82F6", sub: "Homepage · Services · Locations" },
-    { label: "GHL Landing Pages", color: "#22C55E", sub: "TRT · ED · WL · GHL · Local LPs" },
+    { label: "Wordpress Site", color: "#3B82F6", sub: "Captures Name · Phone · Location, then hands off to /bookv2" },
+    { label: "GHL Landing Pages", color: "#22C55E", sub: "Captures Name · Phone · Location, then hands off to /bookv2" },
   ];
 
   return (
@@ -281,7 +281,7 @@ const FlowChart = () => {
             ))}
 
             <div className="flex justify-center pt-4">
-              <StepNode n={1} label="Name · Phone · Location" />
+              <StepNode n={1} label="Welcome (prefilled)" />
             </div>
             <div className="flex justify-center gap-2 pt-4">
               <StepNode n={2} label="Concern" />
