@@ -30,7 +30,7 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
   const isValid = email.trim().length > 0 && email.includes("@") && email.includes(".");
 
   return (
-    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step5-screen">
       <div
         className="w-full max-w-[480px] p-6 md:p-8"
         style={{ backgroundColor: "#FFFFFF", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
@@ -53,6 +53,7 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
           placeholder="your@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          data-spec-id="step5-email"
           style={inputStyle}
           onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06), 0 0 0 3px rgba(232,103,10,0.1)"; }}
           onBlur={(e) => { e.currentTarget.style.borderColor = "#D1CCC5"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06)"; }}
@@ -62,6 +63,7 @@ const V2StepEmail = ({ initialValue, onNext }: V2StepEmailProps) => {
         <button
           onClick={() => isValid && onNext(email.trim())}
           disabled={!isValid}
+          data-spec-id="step5-cta"
           className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
             height: 56, borderRadius: 12, backgroundColor: "#E8670A", color: "#fff",

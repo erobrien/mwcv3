@@ -25,12 +25,13 @@ const V2StepConcern = ({ initialValue, onNext }: V2StepConcernProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step2-screen">
       <div
         className="w-full max-w-[480px] p-6 md:p-8"
         style={{ backgroundColor: "#FFFFFF", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
       >
         <h1
+          data-spec-id="step2-heading"
           className="mb-2 text-center uppercase"
           style={{ fontFamily: headingFont, fontSize: "clamp(24px, 5.5vw, 36px)", color: "#0B1029", letterSpacing: "0.05em", lineHeight: 1.1 }}
         >
@@ -40,7 +41,7 @@ const V2StepConcern = ({ initialValue, onNext }: V2StepConcernProps) => {
           Select your primary concern.
         </p>
 
-        <div className="space-y-3">
+        <div className="space-y-3" data-spec-id="step2-cards">
           {concerns.map((c) => {
             const isSelected = selected === c.value;
             const Icon = c.icon;

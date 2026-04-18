@@ -25,7 +25,7 @@ const V2StepDuration = ({ initialValue, onNext }: V2StepDurationProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step3-screen">
       <div
         className="w-full max-w-[480px] p-6 md:p-8"
         style={{ backgroundColor: "#FFFFFF", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
@@ -40,7 +40,7 @@ const V2StepDuration = ({ initialValue, onNext }: V2StepDurationProps) => {
           This helps us prepare for your visit.
         </p>
 
-        <div className="space-y-3">
+        <div className="space-y-3" data-spec-id="step3-cards">
           {durations.map((d) => {
             const isSelected = selected === d.value;
             return (
