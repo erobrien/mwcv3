@@ -39,7 +39,7 @@ const V2StepFour = (props: V2StepFourProps) => {
 
   const handleShare = async () => {
     const shareData = {
-      title: "Men's Wellness Centers — Free Consultation",
+      title: "Men's Wellness Centers, Free Consultation",
       text: "I just booked a free consultation at Men's Wellness Centers. You should check it out.",
       url: "https://menswellnesscenters.com/book",
     };
@@ -90,10 +90,10 @@ const V2StepFour = (props: V2StepFourProps) => {
               className="flex items-center justify-between border-b py-3 last:border-0"
               style={{ borderColor: "#E5E2DD" }}
             >
-              <span className="uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#6B7280", letterSpacing: "0.08em" }}>
+              <span className="uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#6B7280", letterSpacing: "0.08em" }}>
                 {row.label}
               </span>
-              <span style={{ fontFamily: font, fontWeight: 500, fontSize: 15, color: "#0B1029" }}>
+              <span style={{ fontFamily: font, fontWeight: 500, fontSize: 16, color: "#0B1029" }}>
                 {row.value}
               </span>
             </div>
@@ -107,7 +107,7 @@ const V2StepFour = (props: V2StepFourProps) => {
               key={cal}
               className="flex flex-1 items-center justify-center gap-2 px-4 py-4 transition-all"
               style={{
-                fontFamily: font, fontWeight: 600, fontSize: 13, color: "#0B1029",
+                fontFamily: font, fontWeight: 600, fontSize: 14, color: "#0B1029",
                 backgroundColor: "#FFFFFF",
                 border: "2px solid #D1CCC5", borderRadius: 12, cursor: "pointer",
                 minHeight: 48,
@@ -135,14 +135,14 @@ const V2StepFour = (props: V2StepFourProps) => {
           <h2 className="mb-2 uppercase" style={{ fontFamily: headingFont, fontSize: 20, color: "#0B1029", letterSpacing: "0.05em" }}>
             Want to Skip the Waiting Room?
           </h2>
-          <p className="mb-4" style={{ fontFamily: font, fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
+          <p className="mb-4" style={{ fontFamily: font, fontSize: 15, color: "#6B7280", lineHeight: 1.6 }}>
             Complete a short health questionnaire now so your physician is fully prepared when you arrive. Takes about 3 minutes.
           </p>
           <button
             className="mb-3 flex w-full items-center justify-center uppercase transition-all"
             style={{
               height: 56, backgroundColor: "#E8670A", color: "#fff",
-              fontFamily: font, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em",
+              fontFamily: font, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em",
               cursor: "pointer", border: "none", borderRadius: 12, padding: "16px 24px",
             }}
             onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,103,10,0.3)"; }}
@@ -151,8 +151,8 @@ const V2StepFour = (props: V2StepFourProps) => {
           >
             Finish My Health Form →
           </button>
-          <p style={{ fontFamily: font, fontSize: 13, color: "#9CA3AF", textAlign: "center" }}>
-            Or complete it later — we'll send you a link.
+          <p style={{ fontFamily: font, fontSize: 14, color: "#9CA3AF", textAlign: "center" }}>
+            Or complete it later. We'll send you a link.
           </p>
         </div>
 
@@ -165,7 +165,7 @@ const V2StepFour = (props: V2StepFourProps) => {
             {expectItems.map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <item.icon className="h-5 w-5 shrink-0" style={{ color: "#E8670A" }} />
-                <span style={{ fontFamily: font, fontSize: 14, color: "#B8B6B2" }}>{item.text}</span>
+                <span style={{ fontFamily: font, fontSize: 15, color: "#B8B6B2" }}>{item.text}</span>
               </div>
             ))}
           </div>
@@ -173,13 +173,13 @@ const V2StepFour = (props: V2StepFourProps) => {
 
         {/* Referral */}
         <div className="mb-8 text-center">
-          <p className="mb-2 uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: "#AEB5BF", letterSpacing: "0.08em" }}>
+          <p className="mb-2 uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#AEB5BF", letterSpacing: "0.08em" }}>
             Know someone who could benefit?
           </p>
           <button
             onClick={handleShare}
             className="inline-flex items-center gap-2 transition-all"
-            style={{ fontFamily: font, fontWeight: 500, fontSize: 14, color: "#fff", cursor: "pointer", background: "none", border: "none" }}
+            style={{ fontFamily: font, fontWeight: 500, fontSize: 15, color: "#fff", cursor: "pointer", background: "none", border: "none" }}
             aria-label="Share with a friend"
           >
             <Share2 className="h-4 w-4" /> Share this with a friend →
@@ -195,7 +195,7 @@ const V2StepFour = (props: V2StepFourProps) => {
             { icon: Lock, label: "HIPAA Compliant" },
             { icon: Award, label: "CLIA Certified" },
           ].map((b) => (
-            <span key={b.label} className="flex items-center gap-1" style={{ fontFamily: font, fontSize: 11, color: "#AEB5BF" }}>
+            <span key={b.label} className="flex items-center gap-1" style={{ fontFamily: font, fontSize: 12, color: "#AEB5BF" }}>
               <b.icon className="h-3 w-3" /> {b.label}
             </span>
           ))}
