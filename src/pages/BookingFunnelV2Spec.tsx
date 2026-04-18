@@ -37,18 +37,6 @@ const phases = [
 const stepDetails: Array<{ n: number; title: string; sub: string; bullets: string[]; outcome: string }> = [
   {
     n: 1,
-    title: "Welcome (Prefilled Identity)",
-    sub: "Name, Phone and Location are captured upstream on the Wordpress site or GHL landing pages and passed in via URL params. /bookv2 step 1 confirms identity and advances — no re-entry required.",
-    bullets: [
-      "Reads firstName / phone / location from query string (or restored session)",
-      "Renders a personalized greeting: \"Hi {firstName}, let's book your visit.\"",
-      "Edit link surfaces the 3 fields inline if any are missing or the user wants to change them",
-      "SMS consent (optional, unchecked by default — TCPA compliant) appears here if not previously captured",
-    ],
-    outcome: "→ advances to Step 2 on CTA click",
-  },
-  {
-    n: 2,
     title: "Primary Concern",
     sub: "Card-based qualification of clinical intent.",
     bullets: [
@@ -61,28 +49,28 @@ const stepDetails: Array<{ n: number; title: string; sub: string; bullets: strin
     outcome: "→ auto-advances 300ms after card tap",
   },
   {
-    n: 3,
+    n: 2,
     title: "Duration",
     sub: "How long has this been going on?",
     bullets: ["< 6 months", "6–12 months", "1–2 years", "More than 2 years"],
     outcome: "→ auto-advances 300ms after card tap",
   },
   {
-    n: 4,
+    n: 3,
     title: "Prior Treatment",
     sub: "Have you been treated for this before?",
     bullets: ["Yes (treated previously)", "No (first-time)"],
     outcome: "→ auto-advances 300ms after selection",
   },
   {
-    n: 5,
+    n: 4,
     title: "Email",
     sub: "Captured late to lower drop-off.",
     bullets: ["Email (required, regex-validated)", "Stored to send confirmation + double opt-in link"],
     outcome: "→ advances to calendar on CTA click",
   },
   {
-    n: 6,
+    n: 5,
     title: "Calendar & Time",
     sub: "Date picker + time slot grid.",
     bullets: [
@@ -95,7 +83,7 @@ const stepDetails: Array<{ n: number; title: string; sub: string; bullets: strin
     outcome: "→ advances to Verify on Confirm",
   },
   {
-    n: 7,
+    n: 6,
     title: "Verify (Double Opt-In)",
     sub: "Email + SMS verification screen.",
     bullets: [
@@ -107,7 +95,7 @@ const stepDetails: Array<{ n: number; title: string; sub: string; bullets: strin
     outcome: "→ advances to Confirmed once a verification webhook fires",
   },
   {
-    n: 8,
+    n: 7,
     title: "Confirmed",
     sub: "Animated success + appointment summary.",
     bullets: [
@@ -261,8 +249,8 @@ const FlowChart = () => {
           </div>
 
           {/* Phase swimlanes */}
-          <div className="grid gap-3" style={{ gridTemplateColumns: "1fr 3fr 2fr 2fr", minWidth: 720 }}>
-            {["YOU", "YOUR VISIT", "YOUR TIME", "CONFIRMED"].map((phase) => (
+          <div className="grid gap-3" style={{ gridTemplateColumns: "3fr 2fr 2fr", minWidth: 680 }}>
+            {["YOUR VISIT", "YOUR TIME", "CONFIRMED"].map((phase) => (
               <div
                 key={phase}
                 style={{
@@ -280,25 +268,22 @@ const FlowChart = () => {
               </div>
             ))}
 
-            <div className="flex justify-center pt-4">
-              <StepNode n={1} label="Welcome (prefilled)" />
+            <div className="flex justify-center gap-2 pt-4">
+              <StepNode n={1} label="Concern" />
+              <Arrow />
+              <StepNode n={2} label="Duration" />
+              <Arrow />
+              <StepNode n={3} label="Prior Tx" />
             </div>
             <div className="flex justify-center gap-2 pt-4">
-              <StepNode n={2} label="Concern" />
+              <StepNode n={4} label="Email" />
               <Arrow />
-              <StepNode n={3} label="Duration" />
-              <Arrow />
-              <StepNode n={4} label="Prior Tx" />
+              <StepNode n={5} label="Calendar" />
             </div>
             <div className="flex justify-center gap-2 pt-4">
-              <StepNode n={5} label="Email" />
+              <StepNode n={6} label="Verify" />
               <Arrow />
-              <StepNode n={6} label="Calendar" />
-            </div>
-            <div className="flex justify-center gap-2 pt-4">
-              <StepNode n={7} label="Verify" />
-              <Arrow />
-              <StepNode n={8} label="Confirmed" success />
+              <StepNode n={7} label="Confirmed" success />
             </div>
           </div>
 
