@@ -165,7 +165,6 @@ const BookingFunnelV2 = () => {
             <V2StepVerify
               email={formData.email}
               phone={formData.phone}
-              onNext={() => goTo(8)}
             />
           )}
           {step === 8 && (
