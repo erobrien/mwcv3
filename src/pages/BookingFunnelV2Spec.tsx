@@ -147,7 +147,7 @@ const SectionHeading = ({ eyebrow, title }: { eyebrow?: string; title: string })
         {eyebrow}
       </div>
     )}
-    <h2 className="uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(32px, 5vw, 56px)", color: "#FFFFFF", letterSpacing: "0.04em", lineHeight: 1.05 }}>
+    <h2 className="uppercase" style={{ fontFamily: headingFont, fontSize: "clamp(32px, 5vw, 56px)", color: INK, letterSpacing: "0.04em", lineHeight: 1.05 }}>
       {title}
     </h2>
   </div>
@@ -206,7 +206,7 @@ const BookingFunnelV2Spec = () => {
             style={{
               fontFamily: headingFont,
               fontSize: "clamp(44px, 7vw, 88px)",
-              color: "#FFFFFF",
+              color: INK,
               letterSpacing: "0.02em",
               lineHeight: 1,
             }}
@@ -239,7 +239,7 @@ const BookingFunnelV2Spec = () => {
                 }}
               >
                 <Icon className="h-6 w-6" style={{ color: ORANGE }} />
-                <div className="mt-3" style={{ fontFamily: font, fontWeight: 700, fontSize: 15, color: "#FFFFFF" }}>{title}</div>
+                <div className="mt-3" style={{ fontFamily: font, fontWeight: 700, fontSize: 15, color: INK }}>{title}</div>
                 <div className="mt-1" style={{ fontFamily: font, fontSize: 13, color: MUTED, lineHeight: 1.5 }}>{desc}</div>
               </div>
             ))}
@@ -279,7 +279,7 @@ const BookingFunnelV2Spec = () => {
                         style={{
                           fontFamily: font,
                           fontSize: 13,
-                          color: "#E5E7EB",
+                          color: INK,
                           padding: "6px 0",
                           borderBottom: "1px solid rgba(255,255,255,0.05)",
                         }}
@@ -337,7 +337,7 @@ const BookingFunnelV2Spec = () => {
                 }}
               >
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, backgroundColor: ph.color }} />
-                <div style={{ fontFamily: headingFont, fontSize: 26, color: "#FFFFFF", letterSpacing: "0.04em", lineHeight: 1 }}>{ph.name}</div>
+                <div style={{ fontFamily: headingFont, fontSize: 26, color: INK, letterSpacing: "0.04em", lineHeight: 1 }}>{ph.name}</div>
                 <div className="mt-2" style={{ fontFamily: font, fontSize: 12, color: ORANGE, fontWeight: 700, letterSpacing: "0.1em" }}>
                   STEP{ph.steps.length > 1 ? "S" : ""} {ph.steps.join(", ")}
                 </div>
@@ -408,7 +408,7 @@ const BookingFunnelV2Spec = () => {
                     style={{
                       fontFamily: headingFont,
                       fontSize: 28,
-                      color: "#FFFFFF",
+                      color: INK,
                       letterSpacing: "0.04em",
                       lineHeight: 1.05,
                     }}
@@ -428,7 +428,7 @@ const BookingFunnelV2Spec = () => {
                         style={{
                           fontFamily: font,
                           fontSize: 14,
-                          color: "#E5E7EB",
+                          color: INK,
                           paddingLeft: 18,
                           position: "relative",
                           lineHeight: 1.6,
@@ -472,7 +472,7 @@ const BookingFunnelV2Spec = () => {
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ① Open the live funnel
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -487,7 +487,7 @@ const BookingFunnelV2Spec = () => {
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ② Click any badge
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -502,7 +502,7 @@ const BookingFunnelV2Spec = () => {
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ③ Force ON / OFF via URL
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -517,7 +517,7 @@ const BookingFunnelV2Spec = () => {
                 padding: 24,
               }}
             >
-              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF", marginBottom: 10 }}>
+              <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK, marginBottom: 10 }}>
                 ④ Read the registry
               </div>
               <p style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
@@ -568,7 +568,7 @@ const BookingFunnelV2Spec = () => {
                   style={{
                     fontFamily: headingFont,
                     fontSize: 22,
-                    color: "#FFFFFF",
+                    color: INK,
                     letterSpacing: "0.04em",
                     textTransform: "uppercase",
                     paddingBottom: 10,
@@ -614,7 +614,7 @@ const BookingFunnelV2Spec = () => {
                         {a.number}
                       </div>
                       <div>
-                        <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: "#FFFFFF" }}>{a.label}</div>
+                        <div style={{ fontFamily: font, fontWeight: 700, fontSize: 14, color: INK }}>{a.label}</div>
                         <div style={{ fontFamily: font, fontSize: 12, color: MUTED, marginTop: 2 }}>
                           <code style={{ color: ORANGE }}>{a.id}</code>
                           {a.required && <span style={{ marginLeft: 10, color: "#F87171" }}>· required</span>}
