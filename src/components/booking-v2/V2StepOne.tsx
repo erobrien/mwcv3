@@ -55,7 +55,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step1-screen">
       <h1
         className="text-center uppercase"
         style={{
@@ -75,7 +75,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
       </p>
 
       {/* Trust line */}
-      <div className="mb-6 flex items-center justify-center gap-2" style={{ fontFamily: font, fontSize: 15, fontWeight: 500 }}>
+      <div className="mb-6 flex items-center justify-center gap-2" data-spec-id="step1-trustline" style={{ fontFamily: font, fontSize: 15, fontWeight: 500 }}>
         <Star className="h-4 w-4" style={{ color: "#E8670A" }} fill="#E8670A" />
         <span style={{ color: "#fff" }}>4.9 Google Reviews · 10,000+ Men Treated</span>
       </div>
@@ -94,21 +94,21 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         </h2>
 
         <div className="space-y-4">
-          <div>
+          <div data-spec-id="step1-firstname">
             <label className="mb-1.5 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Full Name
             </label>
             <input style={inputStyle} placeholder="John" value={firstName} onChange={(e) => setFirstName(e.target.value)} onFocus={focusStyle} onBlur={blurStyle} aria-label="Full name" />
           </div>
 
-          <div>
+          <div data-spec-id="step1-phone">
             <label className="mb-1.5 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Phone Number
             </label>
             <input style={inputStyle} type="tel" placeholder="(555) 555-5555" value={phone} onChange={(e) => setPhone(e.target.value)} onFocus={focusStyle} onBlur={blurStyle} aria-label="Phone number" />
           </div>
 
-          <div style={{ marginTop: 16 }}>
+          <div data-spec-id="step1-location" style={{ marginTop: 16 }}>
             <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
               Select Location
             </label>
@@ -146,7 +146,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         </div>
 
         {/* TCPA Consent */}
-        <div className="mt-5 flex items-start gap-3">
+        <div className="mt-5 flex items-start gap-3" data-spec-id="step1-consent">
           <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-5 w-5 shrink-0 rounded" style={{ accentColor: "#E8670A" }} aria-label="SMS consent" id="v2-sms-consent" />
           <label htmlFor="v2-sms-consent" style={{ fontFamily: font, fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
             I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. Consent is not required to receive services.
@@ -163,6 +163,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         <button
           onClick={() => isValid && onNext({ firstName: firstName.trim(), phone, location, smsConsent: consent })}
           disabled={!isValid}
+          data-spec-id="step1-cta"
           className="mt-6 flex w-full items-center justify-center gap-2 uppercase transition-all"
           style={{
             height: 56, borderRadius: 12, backgroundColor: "#E8670A", color: "#fff",
@@ -177,7 +178,7 @@ const V2StepOne = ({ onNext, initialData }: V2StepOneProps) => {
         </button>
 
         {/* Trust badges */}
-        <div className="mt-5 grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center md:gap-4">
+        <div className="mt-5 grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center md:gap-4" data-spec-id="step1-trustbadges">
           {trustBadges.map((b) => (
             <div key={b.label} className="flex items-center gap-1.5" style={{ fontFamily: font, fontSize: 12, color: "#9CA3AF" }}>
               <b.icon className="h-3.5 w-3.5" />

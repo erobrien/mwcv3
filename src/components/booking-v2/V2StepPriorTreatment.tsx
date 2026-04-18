@@ -17,7 +17,7 @@ const V2StepPriorTreatment = ({ initialValue, onNext }: V2StepPriorTreatmentProp
   };
 
   return (
-    <div className="flex flex-col items-center px-5 pt-6 md:pt-10">
+    <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step4-screen">
       <div
         className="w-full max-w-[480px] p-6 md:p-8"
         style={{ backgroundColor: "#FFFFFF", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
@@ -40,6 +40,7 @@ const V2StepPriorTreatment = ({ initialValue, onNext }: V2StepPriorTreatmentProp
                 key={String(val)}
                 type="button"
                 onClick={() => handleSelect(val)}
+                data-spec-id={val ? "step4-yes" : "step4-no"}
                 className="flex-1 transition-all"
                 style={{
                   minWidth: 140,
