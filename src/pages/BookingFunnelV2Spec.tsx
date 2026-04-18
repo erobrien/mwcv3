@@ -5,11 +5,19 @@ import { SPEC_ANNOTATIONS, STEP_NAMES } from "@/components/booking-v2/spec/specA
 const font = "'Montserrat', sans-serif";
 const headingFont = "'Bebas Neue', sans-serif";
 
-const NAVY = "#0B1029";
-const NAVY_DEEP = "#070B1F";
+// Editorial light palette — paper + ink with restrained accents
+const PAPER = "#F7F4EF";        // warm off-white page bg
+const PAPER_ALT = "#FFFFFF";    // section contrast
+const INK = "#0B1029";          // primary text
+const INK_SOFT = "#4B5563";     // secondary text
+const HAIRLINE = "rgba(11,16,41,0.12)";
 const ORANGE = "#E8670A";
-const CREAM = "#F5F0EB";
-const MUTED = "#AEB5BF";
+
+// Aliases mapped to new editorial tokens
+const NAVY = PAPER_ALT;         // was dark surface; now white card
+const NAVY_DEEP = PAPER;        // was darkest bg; now warm paper
+const MUTED = INK_SOFT;         // body muted now reads on light
+const CREAM = PAPER;
 
 // Entry points → Booking funnel
 const entryPoints = [
