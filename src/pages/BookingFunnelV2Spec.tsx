@@ -249,8 +249,7 @@ const BookingFunnelV2Spec = () => {
             <div style={{ fontFamily: font, fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", color: MUTED, textTransform: "uppercase", marginBottom: 16 }}>
               ① Entry points (all routes that send traffic to /bookv2)
             </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              {entryPoints.map((ep) => (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div
                   key={ep.group}
                   style={{
