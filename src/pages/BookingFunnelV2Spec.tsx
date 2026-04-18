@@ -153,6 +153,199 @@ const SectionHeading = ({ eyebrow, title }: { eyebrow?: string; title: string })
   </div>
 );
 
+// ────────────────────────────────────────────────────────
+// Visual flow chart (SVG + nodes)
+// ────────────────────────────────────────────────────────
+const StepNode = ({ n, label, success }: { n: number; label: string; success?: boolean }) => (
+  <div
+    style={{
+      backgroundColor: success ? "#F0FDF4" : PAPER_ALT,
+      border: `1.5px solid ${success ? "#16A34A" : ORANGE}`,
+      borderRadius: 10,
+      padding: "10px 12px",
+      minWidth: 110,
+      textAlign: "center",
+    }}
+  >
+    <div style={{ fontFamily: headingFont, fontSize: 22, color: success ? "#16A34A" : ORANGE, lineHeight: 1 }}>
+      {String(n).padStart(2, "0")}
+    </div>
+    <div style={{ fontFamily: font, fontWeight: 600, fontSize: 11, color: INK, marginTop: 4, lineHeight: 1.3 }}>
+      {label}
+    </div>
+  </div>
+);
+
+const Arrow = () => <div className="flex items-center" style={{ color: INK_SOFT, fontSize: 14 }}>→</div>;
+
+const LegendDot = ({ color, label }: { color: string; label: string }) => (
+  <span className="inline-flex items-center gap-2">
+    <span style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: color, display: "inline-block" }} />
+    {label}
+  </span>
+);
+
+const FlowChart = () => {
+  const sources = [
+    { label: "Wordpress Site", color: "#3B82F6", sub: "Homepage · Services · Locations" },
+    { label: "GHL Landing Pages", color: "#22C55E", sub: "TRT · ED · WL · GHL · Local LPs" },
+  ];
+
+  return (
+    <section style={{ padding: "80px 24px 40px", backgroundColor: PAPER }}>
+      <div className="mx-auto max-w-[1280px]">
+        <SectionHeading eyebrow="Architecture · Flow Chart" title="The Funnel at a Glance" />
+
+        <div
+          style={{
+            backgroundColor: PAPER_ALT,
+            border: `1px solid ${HAIRLINE}`,
+            borderRadius: 16,
+            padding: "32px 24px",
+            overflowX: "auto",
+          }}
+        >
+          {/* Sources */}
+          <div className="grid gap-4 mx-auto" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))", maxWidth: 720 }}>
+            {sources.map((s) => (
+              <div
+                key={s.label}
+                style={{
+                  borderLeft: `4px solid ${s.color}`,
+                  backgroundColor: PAPER,
+                  padding: "14px 18px",
+                  borderRadius: 8,
+                }}
+              >
+                <div style={{ fontFamily: font, fontWeight: 700, fontSize: 13, color: s.color, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  {s.label}
+                </div>
+                <div style={{ fontFamily: font, fontSize: 12, color: INK_SOFT, marginTop: 2 }}>{s.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* V-converge connectors */}
+          <div className="my-6 flex justify-center">
+            <svg width="320" height="56" viewBox="0 0 320 56" style={{ overflow: "visible" }}>
+              <line x1="80" y1="0" x2="160" y2="48" stroke={INK_SOFT} strokeWidth="1" />
+              <line x1="240" y1="0" x2="160" y2="48" stroke={INK_SOFT} strokeWidth="1" />
+              <polygon points="160,56 154,46 166,46" fill={ORANGE} />
+            </svg>
+          </div>
+
+          {/* Convergence node */}
+          <div className="flex justify-center" style={{ marginBottom: 8 }}>
+            <div
+              style={{
+                backgroundColor: ORANGE,
+                color: "#FFFFFF",
+                fontFamily: headingFont,
+                fontSize: 20,
+                letterSpacing: "0.06em",
+                padding: "12px 28px",
+                borderRadius: 999,
+                textTransform: "uppercase",
+              }}
+            >
+              /bookv2
+            </div>
+          </div>
+
+          {/* Down arrow */}
+          <div className="my-4 flex justify-center">
+            <svg width="2" height="40" style={{ overflow: "visible" }}>
+              <line x1="1" y1="0" x2="1" y2="36" stroke={INK_SOFT} strokeWidth="1" strokeDasharray="3 3" />
+              <polygon points="1,40 -4,32 6,32" fill={ORANGE} />
+            </svg>
+          </div>
+
+          {/* Phase swimlanes */}
+          <div className="grid gap-3" style={{ gridTemplateColumns: "1fr 3fr 2fr 2fr", minWidth: 720 }}>
+            {["YOU", "YOUR VISIT", "YOUR TIME", "CONFIRMED"].map((phase) => (
+              <div
+                key={phase}
+                style={{
+                  fontFamily: headingFont,
+                  fontSize: 14,
+                  letterSpacing: "0.12em",
+                  color: ORANGE,
+                  textAlign: "center",
+                  padding: "8px 0",
+                  borderBottom: `2px solid ${ORANGE}`,
+                  textTransform: "uppercase",
+                }}
+              >
+                {phase}
+              </div>
+            ))}
+
+            <div className="flex justify-center pt-4">
+              <StepNode n={1} label="Name · Phone · Location" />
+            </div>
+            <div className="flex justify-center gap-2 pt-4">
+              <StepNode n={2} label="Concern" />
+              <Arrow />
+              <StepNode n={3} label="Duration" />
+              <Arrow />
+              <StepNode n={4} label="Prior Tx" />
+            </div>
+            <div className="flex justify-center gap-2 pt-4">
+              <StepNode n={5} label="Email" />
+              <Arrow />
+              <StepNode n={6} label="Calendar" />
+            </div>
+            <div className="flex justify-center gap-2 pt-4">
+              <StepNode n={7} label="Verify" />
+              <Arrow />
+              <StepNode n={8} label="Confirmed" success />
+            </div>
+          </div>
+
+          {/* Down to outcome */}
+          <div className="my-6 flex justify-center">
+            <svg width="2" height="40" style={{ overflow: "visible" }}>
+              <line x1="1" y1="0" x2="1" y2="36" stroke={INK_SOFT} strokeWidth="1" />
+              <polygon points="1,40 -4,32 6,32" fill="#16A34A" />
+            </svg>
+          </div>
+
+          <div className="flex justify-center">
+            <div
+              style={{
+                border: `1px solid #16A34A`,
+                backgroundColor: "#F0FDF4",
+                color: "#15803D",
+                fontFamily: headingFont,
+                fontSize: 18,
+                letterSpacing: "0.08em",
+                padding: "12px 24px",
+                borderRadius: 8,
+                textTransform: "uppercase",
+              }}
+            >
+              ✓ Lead → GHL · Appointment booked · Intake upsell
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+            style={{ fontFamily: font, fontSize: 12, color: INK_SOFT, paddingTop: 16, borderTop: `1px solid ${HAIRLINE}` }}
+          >
+            <LegendDot color={ORANGE} label="Funnel step" />
+            <LegendDot color="#3B82F6" label="Wordpress entry" />
+            <LegendDot color="#22C55E" label="GHL entry" />
+            <LegendDot color="#16A34A" label="Success" />
+            <span>·</span>
+            <span>Solid = sequential · Dashed = system handoff</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const BookingFunnelV2Spec = () => {
   return (
     <div style={{ backgroundColor: PAPER, minHeight: "100vh", color: INK }}>
@@ -247,10 +440,13 @@ const BookingFunnelV2Spec = () => {
         </div>
       </section>
 
-      {/* Flow diagram */}
+      {/* Visual flow chart */}
+      <FlowChart />
+
+      {/* Flow diagram (cards detail) */}
       <section style={{ padding: "60px 24px", backgroundColor: PAPER_ALT }}>
         <div className="mx-auto max-w-[1280px]">
-          <SectionHeading eyebrow="Architecture" title="Traffic Flow → Funnel → Confirmation" />
+          <SectionHeading eyebrow="Architecture · Detail" title="Traffic Flow → Funnel → Confirmation" />
 
           {/* Entry points row */}
           <div className="mb-8">
