@@ -369,58 +369,51 @@ const BookingFunnelV2Spec = () => {
         <div className="mx-auto max-w-[1100px]">
           <SectionHeading eyebrow="Screen-by-screen" title="The 8 Steps in Detail" />
 
-          <div className="grid grid-cols-1 gap-5">
-            {stepDetails.map((s) => (
+          <div>
+            {stepDetails.map((s, idx) => (
               <div
                 key={s.n}
                 style={{
-                  backgroundColor: NAVY,
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderLeft: `4px solid ${ORANGE}`,
-                  borderRadius: 14,
-                  padding: 28,
                   display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: 24,
+                  gridTemplateColumns: "80px 1fr",
+                  gap: 32,
+                  padding: "40px 0",
+                  borderTop: idx === 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                  borderBottom: "1px solid rgba(255,255,255,0.08)",
                   alignItems: "start",
                 }}
               >
                 <div
                   style={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: "50%",
-                    backgroundColor: ORANGE,
-                    color: "#FFFFFF",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
                     fontFamily: headingFont,
-                    fontSize: 28,
-                    flexShrink: 0,
+                    fontSize: 56,
+                    color: ORANGE,
+                    lineHeight: 0.9,
+                    letterSpacing: "-0.02em",
                   }}
                 >
-                  {s.n}
+                  {String(s.n).padStart(2, "0")}
                 </div>
                 <div>
-                  <div className="flex flex-wrap items-baseline gap-3">
-                    <h3
-                      className="uppercase"
-                      style={{
-                        fontFamily: headingFont,
-                        fontSize: 28,
-                        color: "#FFFFFF",
-                        letterSpacing: "0.04em",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {s.title}
-                    </h3>
-                  </div>
-                  <p className="mt-2" style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.5 }}>
+                  <h3
+                    className="uppercase"
+                    style={{
+                      fontFamily: headingFont,
+                      fontSize: 28,
+                      color: "#FFFFFF",
+                      letterSpacing: "0.04em",
+                      lineHeight: 1.05,
+                    }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    className="mt-2"
+                    style={{ fontFamily: font, fontSize: 14, color: MUTED, lineHeight: 1.6 }}
+                  >
                     {s.sub}
                   </p>
-                  <ul className="mt-4 space-y-2">
+                  <ul className="mt-5 space-y-1.5">
                     {s.bullets.map((b) => (
                       <li
                         key={b}
@@ -430,7 +423,7 @@ const BookingFunnelV2Spec = () => {
                           color: "#E5E7EB",
                           paddingLeft: 18,
                           position: "relative",
-                          lineHeight: 1.5,
+                          lineHeight: 1.6,
                         }}
                       >
                         <span style={{ position: "absolute", left: 0, color: ORANGE }}>›</span>
@@ -439,18 +432,14 @@ const BookingFunnelV2Spec = () => {
                     ))}
                   </ul>
                   <div
-                    className="mt-4 inline-block"
+                    className="mt-5"
                     style={{
                       fontFamily: font,
-                      fontWeight: 700,
+                      fontWeight: 600,
                       fontSize: 12,
-                      color: ORANGE,
-                      letterSpacing: "0.1em",
+                      color: MUTED,
+                      letterSpacing: "0.14em",
                       textTransform: "uppercase",
-                      padding: "6px 12px",
-                      borderRadius: 999,
-                      backgroundColor: "rgba(232,103,10,0.1)",
-                      border: "1px solid rgba(232,103,10,0.3)",
                     }}
                   >
                     {s.outcome}
