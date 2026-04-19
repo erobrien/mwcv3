@@ -27,5 +27,8 @@ export const maskPhone = (phone: string): string => {
 
 export const firstNameFromFull = (full: string): string => {
   if (!full) return "";
-  return full.trim().split(/\s+/)[0] ?? "";
+  const raw = full.trim().split(/\s+/)[0] ?? "";
+  if (!raw) return "";
+  // Title Case so "JOHN" or "john" both render as "John"
+  return raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
 };

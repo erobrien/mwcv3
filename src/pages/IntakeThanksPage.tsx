@@ -27,13 +27,13 @@ const IntakeThanksPage = () => {
   }, []);
 
   const firstName = useMemo(
-    () => firstNameFromFull(state.fullName ?? "").toUpperCase(),
+    () => firstNameFromFull(state.fullName ?? ""),
     [state.fullName]
   );
   const maskedEmail = useMemo(() => maskEmail(state.email ?? ""), [state.email]);
   const maskedPhone = useMemo(() => maskPhone(state.phone ?? ""), [state.phone]);
 
-  const heading = firstName ? `YOU'RE ALL SET, ${firstName}` : "YOU'RE ALL SET";
+  const heading = firstName ? `You're all set, ${firstName}` : "You're all set";
 
   return (
     <AppShell currentStep={20} totalSteps={20} phaseIndex={4}>

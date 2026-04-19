@@ -18,7 +18,8 @@ const PrimaryCTA = ({
   const stickyStyle: React.CSSProperties = sticky
     ? {
         position: "sticky",
-        bottom: 16,
+        // Lift above iOS soft keyboard via the --intake-kb-offset var set by IntakeFlow
+        bottom: "calc(16px + var(--intake-kb-offset, 0px))",
         zIndex: 5,
       }
     : {};
