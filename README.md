@@ -156,6 +156,40 @@ console) when `VITE_WEBHOOK_URL` is unset.
 
 ---
 
+## Deploying
+
+The app is a static Vite SPA. Any host with rewrite-to-`index.html` works.
+
+### Vercel
+
+1. Import the repo in Vercel.
+2. Framework preset: **Vite**. Build: `npm run build`. Output: `dist`.
+3. **Project → Settings → Environment Variables** — add for Production + Preview:
+   - `VITE_WEBHOOK_URL` — your GHL inbound webhook URL
+   - `VITE_GOOGLE_PLACES_KEY` *(optional)*
+   - `VITE_SMS_FROM` *(optional)*
+4. Add a `vercel.json` rewrite so client-side routing works:
+   ```json
+   { "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+   ```
+
+### Netlify
+
+1. Build command: `npm run build`. Publish directory: `dist`.
+2. **Site settings → Build & deploy → Environment** — add the same env vars.
+3. Add `public/_redirects` with:
+   ```
+   /*    /index.html   200
+   ```
+
+### Lovable Cloud
+
+Use the **Publish** button. Set env vars in the Lovable project settings
+before publishing. The custom domain set in Lovable becomes the base for
+your GHL SMS link template.
+
+---
+
 ## Original Lovable scaffold
 
 Project URL: https://lovable.dev/projects/a131a39a-032a-4c81-ad7b-242d363ccd55
