@@ -55,6 +55,7 @@ const Step19 = ({ onNext }: StepProps) => {
   const [savedTrigger, setSavedTrigger] = useState(0);
   const [drawer, setDrawer] = useState<ConsentItem | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   // Pick up a submission error left by Step20 when it bounces us back here
   useEffect(() => {
@@ -62,12 +63,14 @@ const Step19 = ({ onNext }: StepProps) => {
     if (w.__intakeSubmitError) {
       setSubmitError(w.__intakeSubmitError);
       w.__intakeSubmitError = undefined;
+      setSubmitting(false);
     }
     const handler = () => {
       const ww = window as unknown as { __intakeSubmitError?: string };
       if (ww.__intakeSubmitError) {
         setSubmitError(ww.__intakeSubmitError);
         ww.__intakeSubmitError = undefined;
+        setSubmitting(false);
       }
     };
     window.addEventListener("intake:submit-error", handler);
@@ -75,9 +78,13 @@ const Step19 = ({ onNext }: StepProps) => {
   }, []);
 
   const handleContinue = () => {
+    if (submitting) return;
     revealAll();
     setSubmitError(null);
-    if (Object.keys(errors).length === 0) onNext();
+    if (Object.keys(errors).length === 0) {
+      setSubmitting(true); // prevent double-submit until route changes
+      onNext();
+    }
   };
 
   return (
