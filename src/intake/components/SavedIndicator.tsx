@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface SavedIndicatorProps {
@@ -6,18 +6,33 @@ interface SavedIndicatorProps {
   trigger: unknown;
 }
 
+/**
+ * Debounced "Saved" pill. Waits 400ms of quiet time after the last change
+ * before flashing — keeps it from flickering during rapid typing.
+ */
 const SavedIndicator = ({ trigger }: SavedIndicatorProps) => {
   const [visible, setVisible] = useState(false);
-  const [firstRender, setFirstRender] = useState(true);
+  const firstRender = useRef(true);
+  const debounceRef = useRef<number | null>(null);
+  const hideRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (firstRender) {
-      setFirstRender(false);
+    if (firstRender.current) {
+      firstRender.current = false;
       return;
     }
-    setVisible(true);
-    const t = setTimeout(() => setVisible(false), 1200);
-    return () => clearTimeout(t);
+    if (debounceRef.current) window.clearTimeout(debounceRef.current);
+    if (hideRef.current) window.clearTimeout(hideRef.current);
+
+    debounceRef.current = window.setTimeout(() => {
+      setVisible(true);
+      hideRef.current = window.setTimeout(() => setVisible(false), 1200);
+    }, 400);
+
+    return () => {
+      if (debounceRef.current) window.clearTimeout(debounceRef.current);
+      if (hideRef.current) window.clearTimeout(hideRef.current);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
 
@@ -31,6 +46,7 @@ const SavedIndicator = ({ trigger }: SavedIndicatorProps) => {
           transition={{ duration: 0.25 }}
           className="absolute flex items-center gap-1.5"
           style={{ right: 16, bottom: 12 }}
+          aria-live="polite"
         >
           <span
             style={{

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useDragControls, type PanInfo } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect } from "react";
 
@@ -10,6 +10,8 @@ interface ConsentDrawerProps {
 }
 
 const ConsentDrawer = ({ open, title, body, onClose }: ConsentDrawerProps) => {
+  const dragControls = useDragControls();
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -22,6 +24,11 @@ const ConsentDrawer = ({ open, title, body, onClose }: ConsentDrawerProps) => {
       document.body.style.overflow = "";
     };
   }, [open, onClose]);
+
+  const handleDragEnd = (_e: unknown, info: PanInfo) => {
+    // Dismiss if user dragged > 100px down or flicked with downward velocity > 500
+    if (info.offset.y > 100 || info.velocity.y > 500) onClose();
+  };
 
   return (
     <AnimatePresence>
@@ -50,6 +57,12 @@ const ConsentDrawer = ({ open, title, body, onClose }: ConsentDrawerProps) => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 280 }}
+            drag="y"
+            dragControls={dragControls}
+            dragListener={false}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.4 }}
+            onDragEnd={handleDragEnd}
             style={{
               position: "fixed",
               left: 0,
@@ -65,18 +78,27 @@ const ConsentDrawer = ({ open, title, body, onClose }: ConsentDrawerProps) => {
               boxShadow: "0 -8px 32px rgba(0,0,0,0.25)",
             }}
           >
+            {/* Drag handle area — only this region initiates the swipe */}
             <div
-              className="mx-auto"
+              onPointerDown={(e) => dragControls.start(e)}
               style={{
-                width: 40,
-                height: 4,
-                background: "var(--input-border)",
-                borderRadius: 9999,
-                marginTop: 10,
-                marginBottom: 6,
+                padding: "10px 0 6px",
+                cursor: "grab",
+                touchAction: "none",
               }}
-            />
-            <div className="flex items-start justify-between" style={{ padding: "12px 20px 0" }}>
+              aria-hidden
+            >
+              <div
+                className="mx-auto"
+                style={{
+                  width: 40,
+                  height: 4,
+                  background: "var(--input-border)",
+                  borderRadius: 9999,
+                }}
+              />
+            </div>
+            <div className="flex items-start justify-between" style={{ padding: "6px 20px 0" }}>
               <h3 id="consent-drawer-title" className="intake-h2" style={{ fontSize: 22 }}>
                 {title}
               </h3>

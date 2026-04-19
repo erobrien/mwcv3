@@ -40,6 +40,15 @@
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Snappy taps: kill 300ms double-tap-zoom delay on iOS/Android */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.intake-root *,
+.intake-root *::before,
+.intake-root *::after {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Force the document background while inside the intake flow */
