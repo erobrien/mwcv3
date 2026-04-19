@@ -5,7 +5,7 @@ const badges = ["LegitScript Certified", "Google Healthcare Certified"];
 
 const benefits = [
   "Physician-supervised TRT at 3 Virginia centers",
-  "On-site labs with same-day results",
+  "On-site labs with results reviewed in-visit",
   "Free testosterone testing and consultation",
 ];
 
@@ -104,7 +104,7 @@ export const TRTHero = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Book My Free Consultation
+            Book My Consultation
             <ArrowRight className="h-4 w-4" />
           </button>
 

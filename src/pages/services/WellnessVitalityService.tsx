@@ -81,7 +81,7 @@ const VitaminOverview = () => (
           Whether you're recovering from illness, fighting daily fatigue, or optimizing for peak performance, our physician-supervised vitamin therapy gives your system exactly what it needs, without waiting for oral supplements to absorb.
         </p>
         <Link to="/book" className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </Link>
       </div>
       <img
@@ -118,7 +118,7 @@ const VitaminShotsGrid = () => (
       </div>
       <div className="text-center mt-10">
         <Link to="/book" className="inline-block rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </Link>
       </div>
     </div>
@@ -135,7 +135,7 @@ const WellnessVitalityService = () => (
     comparisonRows={getComparisonDataForCategory("wellness-vitality")}
     faqs={wellnessVitalityFaqs}
     bottomCtaHeading="Start Your Personalized Wellness Protocol"
-    bottomCtaSubtext="From peptide therapy to NAD+ to vitamin injections \u2014 discover the protocol that fits your goals. Book your free consultation today."
+    bottomCtaSubtext="From peptide therapy to NAD+ to vitamin injections \u2014 discover the protocol that fits your goals. Book your no-cost consultation today."
     testimonials={wvTestimonials}
     afterHeroContent={
       <HowItWorksSection steps={wvSteps} />

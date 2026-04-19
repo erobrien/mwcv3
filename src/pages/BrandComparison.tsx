@@ -268,7 +268,7 @@ const BrandComparison = () => {
 
               <div className="space-y-2 mb-4">
                 <TypeSample family="Bebas Neue" weight="Display" preview="STOP MANAGING DECLINE." previewStyle={{ fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 22, letterSpacing: "0.02em" }} />
-                <TypeSample family="Montserrat" weight="700 Upper" preview="GET STARTED — IT'S FREE" previewStyle={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, textTransform: "uppercase" as const, fontSize: 14, letterSpacing: "0.06em" }} />
+                <TypeSample family="Montserrat" weight="700 Upper" preview="GET STARTED — IT'S " previewStyle={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, textTransform: "uppercase" as const, fontSize: 14, letterSpacing: "0.06em" }} />
                 <TypeSample family="Open Sans" weight="400/600" preview="Virginia's premier men's health centers since 2015." previewStyle={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 400, fontSize: 13 }} />
               </div>
 
@@ -290,7 +290,7 @@ const BrandComparison = () => {
                     <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.8)", fontFamily: "'Open Sans', sans-serif" }}>Free testosterone testing & consultation</span>
                   </div>
                   <div className="rounded-full px-4 py-2 text-[11px] font-bold text-center text-white uppercase tracking-wider mt-3 inline-block" style={{ background: "#E8670A" }}>
-                    CLAIM MY FREE CONSULT
+                    CLAIM MY CONSULTATION
                   </div>
                 </div>
               </div>
@@ -428,7 +428,7 @@ const BrandComparison = () => {
             <NewCard>
               <div className="rounded-lg p-5 mb-5" style={{ background: "#0B1029" }}>
                 <div className="space-y-3">
-                  <div className="rounded-full px-4 py-2.5 text-sm font-semibold text-center" style={{ background: "#E8670A", color: "#fff" }}>BOOK YOUR FREE CONSULT →</div>
+                  <div className="rounded-full px-4 py-2.5 text-sm font-semibold text-center" style={{ background: "#E8670A", color: "#fff" }}>BOOK YOUR CONSULTATION →</div>
                   <div className="rounded-full px-4 py-2.5 text-sm font-semibold text-center" style={{ background: "#FFFFFF", color: "#0B1029" }}>Learn More</div>
                   <div className="flex items-center justify-center gap-1.5 text-sm" style={{ color: "#E8670A" }}>Check My Levels Free <ArrowRight size={14} /></div>
                 </div>
@@ -437,13 +437,13 @@ const BrandComparison = () => {
 
               {/* Form card demo */}
               <div className="rounded-lg p-4 mb-5" style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.06)" }}>
-                <p className="text-sm font-bold text-center mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#0B1029" }}>GET STARTED — IT'S FREE</p>
-                <p className="text-[9px] text-center mb-2" style={{ color: "#9CA3AF" }}>Limited same-day appointments</p>
+                <p className="text-sm font-bold text-center mb-1" style={{ fontFamily: "'Bebas Neue', sans-serif", color: "#0B1029" }}>GET STARTED — IT'S </p>
+                <p className="text-[9px] text-center mb-2" style={{ color: "#9CA3AF" }}>Limited appointments</p>
                 <div className="space-y-1.5">
                   <div className="rounded border px-3 py-1.5 text-[10px]" style={{ borderColor: "#E5E7EB", color: "#9CA3AF" }}>First Name*</div>
                   <div className="rounded border px-3 py-1.5 text-[10px]" style={{ borderColor: "#E5E7EB", color: "#9CA3AF" }}>Phone Number*</div>
                   <div className="rounded-full px-4 py-1.5 text-[10px] font-bold text-center text-white uppercase tracking-wider" style={{ background: "#E8670A" }}>
-                    CLAIM MY FREE CONSULTATION
+                    CLAIM MY CONSULTATION
                   </div>
                 </div>
               </div>

@@ -65,7 +65,7 @@ export const TRT2ProblemAgitation = () => {
             className="mt-3 inline-flex items-center gap-1 text-sm font-semibold cursor-pointer bg-transparent border-none"
             style={{ color: "#E8670A", fontFamily: "Inter, sans-serif" }}
           >
-            Find Out for Free →
+            Find Out Today →
           </button>
         </div>
       </div>

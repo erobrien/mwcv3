@@ -183,7 +183,7 @@ export const Header = () => {
               className="flex items-center px-6 py-2.5 rounded-full bg-white text-[#000033] uppercase hover:bg-white/90 transition-all duration-300 whitespace-nowrap"
               style={{ textDecoration: "none", fontWeight: 700, fontSize: 13, letterSpacing: "0.06em" }}
             >
-              FREE CONSULTATION
+              CONSULTATION
             </a>
           </div>
           <button
@@ -338,7 +338,7 @@ export const Header = () => {
               className="flex items-center justify-center w-full py-3 rounded-full bg-white text-[#000033] uppercase hover:bg-white/90 transition-all duration-300"
               style={{ textDecoration: "none", fontWeight: 700, fontSize: 13, letterSpacing: "0.06em" }}
             >
-              FREE CONSULTATION
+              CONSULTATION
             </a>
           </div>
       </div>
@@ -352,7 +352,7 @@ export const Header = () => {
           className="uppercase cursor-pointer bg-transparent border-none"
           style={{ color: "#FFFFFF", fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", minHeight: 44, display: "flex", alignItems: "center", textDecoration: "none" }}
         >
-          Free Consultation
+          Consultation
         </a>
       </div>
 

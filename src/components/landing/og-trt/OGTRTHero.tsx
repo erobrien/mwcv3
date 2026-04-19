@@ -14,20 +14,20 @@ export const OGTRTHero = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-8 md:gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 rounded-lg px-4 py-1.5 mb-6" style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", fontSize: 13, fontWeight: 600, letterSpacing: "0.04em" }}>
-              <FlaskConical size={14} /> Free Testosterone Testing — Walk In Today
+              <FlaskConical size={14} /> Testosterone Testing — Walk In Today
             </div>
             <h1 className="font-bold leading-[1.08]" style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 700, letterSpacing: "-0.5px", marginBottom: 20 }}>
               Get Your Testosterone Back.<br />
-              <span style={{ color: "#E8670A" }}>Same-Day Labs. Real Doctors.</span>
+              <span style={{ color: "#E8670A" }}>On-Site Labs. Real Doctors.</span>
             </h1>
             <p className="text-base md:text-lg leading-relaxed max-w-[520px]" style={{ color: "rgba(255,255,255,0.75)", marginBottom: 32 }}>
-              Physician-supervised TRT at 3 Virginia clinics. Free testosterone testing, same-day results. No referral needed.
+              Physician-supervised TRT at 3 Virginia clinics. Free testosterone testing, results reviewed in-visit. No referral needed.
             </p>
             <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-lg px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
               style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", border: "none", marginBottom: 40 }}
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}>
-              Book My Free Consultation <ArrowRight className="h-4 w-4" />
+              Book My Consultation <ArrowRight className="h-4 w-4" />
             </button>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[

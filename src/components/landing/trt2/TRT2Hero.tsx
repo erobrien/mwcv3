@@ -37,7 +37,7 @@ export const TRT2Hero = () => {
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              Free Testosterone Testing, Limited Availability
+              Testosterone Testing, Limited Availability
             </span>
 
             <h1
@@ -57,7 +57,7 @@ export const TRT2Hero = () => {
               className="mt-5 text-base md:text-lg leading-relaxed max-w-[540px]"
               style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif" }}
             >
-              Physician-supervised TRT at 3 Virginia centers. Same-day labs. Real results. No referral needed.
+              Physician-supervised TRT at 3 Virginia centers. On-site labs. Real results. No referral needed.
             </p>
 
             <button
@@ -74,7 +74,7 @@ export const TRT2Hero = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              Book My Free Consult <ArrowRight className="h-4 w-4" />
+              Book My Consultation <ArrowRight className="h-4 w-4" />
             </button>
 
             {/* Trust strip */}

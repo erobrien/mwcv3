@@ -56,10 +56,10 @@ export const BookingCTA = () => {
 
         <div>
           <h2 className="font-bold text-xl md:text-2xl uppercase leading-tight" style={{ color: "#FFFFFF" }}>
-            Schedule My Free Consultation
+            Schedule My Consultation
           </h2>
           <p className="text-[13px] md:text-sm font-normal mt-2 md:mt-3" style={{ color: "rgba(255,255,255,0.75)" }}>
-            Same-day labs. Three Virginia locations. No referral needed.
+            On-site labs. Three Virginia locations. No referral needed.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 md:mt-8 space-y-3" noValidate>
@@ -147,7 +147,7 @@ export const BookingCTA = () => {
                 e.currentTarget.style.background = "#F97316";
               }}
             >
-              Book My Free Consultation
+              Book My Consultation
             </button>
           </form>
 

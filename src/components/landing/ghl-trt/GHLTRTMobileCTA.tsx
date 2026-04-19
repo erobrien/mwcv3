@@ -33,7 +33,7 @@ export const GHLTRTMobileCTA = () => {
       }}
     >
       {/* CRO-11: urgency micro-copy */}
-      <span className="text-xs text-white/70 mb-1.5">Same-day appointments available</span>
+      <span className="text-xs text-white/70 mb-1.5">Appointments available</span>
       <div className="flex items-center gap-2 w-full">
         <button
           onClick={scrollToForm}
@@ -47,7 +47,7 @@ export const GHLTRTMobileCTA = () => {
             border: "none",
           }}
         >
-          Book Free Consult
+          Book Consult
         </button>
         <a
           href="tel:8663444955"

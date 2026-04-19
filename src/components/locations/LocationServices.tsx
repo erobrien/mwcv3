@@ -57,7 +57,7 @@ const getServices = (city: string) => [
   },
   {
     title: "Labs & Diagnostics",
-    subtitle: `Same-day results on-site in ${city}`,
+    subtitle: `Results reviewed in-visit on-site in ${city}`,
     description: "We run the most comprehensive men's health panel available, and you get results the same day, not in a week. Our in-house CLIA-certified lab tests over 40 biomarkers including complete hormone panels, metabolic markers, cardiovascular indicators, and more.",
     includes: ["Same-day in-house results (CLIA certified)", "40+ biomarkers tested", "Complete hormone panel (free T, total T, SHBG, estradiol, DHEA, cortisol)", "PSA screening, vitamin and nutrient levels"],
     results: "Clear understanding of your health baseline, identification of previously undiagnosed issues, data-driven treatment decisions with your physician.",

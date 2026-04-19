@@ -37,7 +37,7 @@ export const treatments: Treatment[] = [
     icon: "Shield",
     link: "/services/testosterone-therapy",
     description:
-      "Physician-supervised testosterone injections with on-site monitoring at our Virginia centers. Same-day labs, same-day treatment. Your protocol is built around your bloodwork — not a one-size-fits-all script.",
+      "Physician-supervised testosterone injections with on-site monitoring at our Virginia centers. On-site labs, same-day treatment. Your protocol is built around your bloodwork — not a one-size-fits-all script.",
   },
   {
     name: "Enclomiphene Therapy",
@@ -382,8 +382,8 @@ export const sexualHealthFaqs: FAQ[] = [
   { question: "Is ED treatment safe?", answer: "All of our ED treatments are FDA-approved and physician-supervised. We evaluate your cardiovascular health and medication interactions before prescribing. Regular monitoring ensures ongoing safety." },
   { question: "Can low testosterone cause ED?", answer: "Absolutely. Low testosterone is one of the most common and treatable causes of ED. We test your hormones during your first visit because treating the underlying hormonal issue often improves erectile function significantly." },
   { question: "How discreet is the process?", answer: "Completely. Our centers are designed for privacy — from separate consultation rooms to discreet check-in. Medications are dispensed on-site so there's no pharmacy pickup. Everything stays between you and your physician." },
-  { question: "How much does ED treatment cost?", answer: "Prescription ED medications start at $99/month. ICP therapy is $199/month. PT-141 is $199/month. Your initial consultation is free, and all follow-up visits are included in your plan." },
-  { question: "Do I need lab work for ED treatment?", answer: "We recommend baseline bloodwork to check testosterone and other markers that may be contributing to ED. This is done on-site during your first visit with same-day results." },
+  { question: "How much does ED treatment cost?", answer: "Prescription ED medications start at $99/month. ICP therapy is $199/month. PT-141 is $199/month. Your initial consultation is at no cost, and all follow-up visits are included in your plan." },
+  { question: "Do I need lab work for ED treatment?", answer: "We recommend baseline bloodwork to check testosterone and other markers that may be contributing to ED. This is done on-site during your first visit with results reviewed in-visit." },
 ];
 
 export const weightLossFaqs: FAQ[] = [

@@ -2,7 +2,7 @@ const steps = [
   {
     num: "01",
     title: "Book a Private Visit",
-    body: "Call or book online. Same-day appointments are often available at our Richmond, Newport News, or Virginia Beach center.",
+    body: "Call or book online. Appointments are often available at our Richmond, Newport News, or Virginia Beach center.",
   },
   {
     num: "02",

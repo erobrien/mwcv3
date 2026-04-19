@@ -10,7 +10,7 @@ export const WLUnifiedFinalCTA = () => {
               See If Medical Weight Loss Is Right for You
             </h2>
             <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.8)" }}>
-              Schedule a confidential consultation at our Richmond, Newport News, or Virginia Beach center. Your first visit includes on-site lab work, same-day results, and a physician-built weight loss plan.
+              Schedule a confidential consultation at our Richmond, Newport News, or Virginia Beach center. Your first visit includes on-site lab work, results reviewed in-visit, and a physician-built weight loss plan.
             </p>
             <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
               Or call:{" "}
@@ -19,7 +19,7 @@ export const WLUnifiedFinalCTA = () => {
           </div>
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Claim My Free Consultation"
+              heading="Claim My Consultation"
               formId="wl-final-form"
               service="weight-loss"
               source="lp-weight-loss-v2-final"

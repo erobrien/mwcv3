@@ -13,7 +13,7 @@ const availableService = [
   { "@type": "MedicalTherapy", name: "Erectile Dysfunction Treatment", description: "PT-141, TriMix, oral medications, and combination ED therapy protocols." },
   { "@type": "MedicalTherapy", name: "Peptide Therapy", description: "Custom peptide protocols for anti-aging, recovery, and performance optimization." },
   { "@type": "MedicalTherapy", name: "Vitamin Injections", description: "Physician-grade B12, D3, glutathione, MIC, Tri-Immune, and NAD+ injections." },
-  { "@type": "MedicalTherapy", name: "Labs & Diagnostics", description: "Comprehensive hormone panels and metabolic blood work with same-day results." },
+  { "@type": "MedicalTherapy", name: "Labs & Diagnostics", description: "Comprehensive hormone panels and metabolic blood work with results reviewed in-visit." },
 ];
 
 const LOCATION_CONFIG: Record<string, {

@@ -36,10 +36,10 @@ const GHLTRTLeadForm = ({ id }: GHLTRTLeadFormProps) => {
         style={{ fontFamily: "'Bebas Neue', cursive" }}
         className="text-[28px] text-[#000033] text-center mb-1 leading-tight"
       >
-        Get Started. It's Free
+        Get Started. At No Cost
       </h3>
       <p className="text-[#666] text-[15px] text-center mb-1">
-        Limited same-day appointments available
+        Limited appointments available
       </p>
       {/* CRO-13: friction reducer */}
       <p className="text-[#999] text-[13px] italic text-center mb-6">
@@ -112,7 +112,7 @@ const GHLTRTLeadForm = ({ id }: GHLTRTLeadFormProps) => {
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#CF5B09")}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E8670A")}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
       </form>
 

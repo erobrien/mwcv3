@@ -11,7 +11,7 @@ const featuredServices = [
   {
     title: "Testosterone Therapy",
     subtitle: "Lab-Driven TRT Protocols",
-    description: "Physician-monitored testosterone replacement therapy with same-day labs, personalized protocols, and ongoing optimization for men experiencing low T.",
+    description: "Physician-monitored testosterone replacement therapy with on-site labs, personalized protocols, and ongoing optimization for men experiencing low T.",
     image: "/images/services/testosterone.jpg",
     alt: "Confident man in athletic wear outside wellness center",
     link: "/services/testosterone-therapy",
@@ -311,7 +311,7 @@ const ServicesIndex = () => {
             Walk in, get your labs drawn, and talk to a physician who specializes in men's health. No referrals. No waiting weeks for results. Most men leave with a plan — and their medication — the same day.
           </p>
           <Link to="/book" className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#FFFFFF", color: "#000033", textDecoration: "none" }}>
-            BOOK MY FREE CONSULTATION
+            BOOK MY CONSULTATION
           </Link>
         </div>
       </section>
@@ -355,7 +355,7 @@ const ServicesIndex = () => {
       {/* ═══ BOTTOM CTA ═══ */}
       <section style={{ background: "#000033" }} className="py-12 px-6 text-center">
         <h2 className="font-bold text-2xl md:text-3xl uppercase" style={{ color: "#FFFFFF" }}>See What Your Levels Say</h2>
-        <Link to="/book" className="block sm:inline-block mt-6 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#E8670A", color: "#FFFFFF", textDecoration: "none", minHeight: 44 }}>Book My Free Consultation</Link>
+        <Link to="/book" className="block sm:inline-block mt-6 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#E8670A", color: "#FFFFFF", textDecoration: "none", minHeight: 44 }}>Book My Consultation</Link>
         <p className="mt-4 text-sm" style={{ color: "rgba(255,255,255,0.60)" }}>Or call: <a href="tel:8663444955" style={{ color: "rgba(255,255,255,0.60)", textDecoration: "underline" }}>866-344-4955</a></p>
       </section>
       </main>

@@ -50,7 +50,7 @@ export const LPHeader = ({ ctaTarget = "#book" }: LPHeaderProps) => {
           className="uppercase cursor-pointer bg-transparent border-none"
           style={{ color: "#FFFFFF", fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", minHeight: 44, display: "flex", alignItems: "center" }}
         >
-          Free Consultation
+          Consultation
         </button>
       </div>
     </>

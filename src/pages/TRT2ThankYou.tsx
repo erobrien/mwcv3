@@ -47,7 +47,7 @@ const TRT2ThankYou = () => {
           </h1>
 
           <p className="text-base mt-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
-            A member of our team will text you within 1 hour to schedule your free testosterone test. Keep your phone close.
+            A member of our team will text you within 1 hour to schedule your testosterone test. Keep your phone close.
           </p>
 
           {/* Next steps */}

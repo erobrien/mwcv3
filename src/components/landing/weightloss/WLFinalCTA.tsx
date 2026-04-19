@@ -34,7 +34,7 @@ export const WLFinalCTA = () => (
           fontSize: 16, 
           fontFamily: "'Open Sans', sans-serif" 
         }}>
-          Schedule your free consultation today. No obligation. No pressure. Just answers.
+          Schedule your no-cost consultation today. No obligation. No pressure. Just answers.
         </p>
       </div>
 

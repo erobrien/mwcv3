@@ -92,7 +92,7 @@ const LocationsHub = () => {
             Find Your Men's Wellness Center
           </h1>
           <p className="text-base md:text-lg max-w-2xl mx-auto mb-8" style={{ color: "rgba(255,255,255,0.7)" }}>
-            Same-day testosterone testing, ED treatment, and physician-led weight loss at three Virginia locations. Every visit is face-to-face. Every consultation is free.
+            Same-day testosterone testing, ED treatment, and physician-led weight loss at three Virginia locations. Every visit is face-to-face. Every consultation is at no cost.
           </p>
           <a
             href="tel:8663444955"
@@ -217,7 +217,7 @@ const LocationsHub = () => {
           </div>
 
           <p className="text-[14px] leading-relaxed max-w-2xl mx-auto mb-4" style={{ color: "#666" }}>
-            With three centers spanning from Richmond to Virginia Beach, there's a Men's Wellness Centers location within driving distance for most Virginia men. Each center offers the same physician-led care, same-day labs, and free consultations.
+            With three centers spanning from Richmond to Virginia Beach, there's a Men's Wellness Centers location within driving distance for most Virginia men. Each center offers the same physician-led care, on-site labs, and free consultations.
           </p>
           <p className="text-[13px]" style={{ color: "#999" }}>
             Don't see your city? We welcome members from anywhere in Virginia. Call{" "}
@@ -306,7 +306,7 @@ const LocationsHub = () => {
               style={{ background: "#E8670A", color: "#FFFFFF", textDecoration: "none" }}
               data-cta-type="book"
             >
-              Book My Free Visit
+              Book My Visit
             </Link>
           </div>
         </div>
@@ -334,7 +334,7 @@ const LocationsHub = () => {
             Find Your Center
           </h2>
           <p className="text-[14px] mb-10" style={{ color: "rgba(255,255,255,0.55)" }}>
-            Choose a location to book your free consultation
+            Choose a location to book your no-cost consultation
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-8">

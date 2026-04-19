@@ -63,7 +63,7 @@ interface PageSEO {
 const PAGE_META: Record<string, PageSEO> = {
   "/": {
     title: "Men's Wellness Centers | Virginia's Premier Men's Health Clinics",
-    description: "Physician-led testosterone therapy, medical weight loss, ED treatment & sexual wellness at 3 Virginia locations. Same-day labs. Free consultation. Call (866) 344-4955.",
+    description: "Physician-led testosterone therapy, medical weight loss, ED treatment & sexual wellness at 3 Virginia locations. On-site labs. Free consultation. Call (866) 344-4955.",
   },
   "/services": {
     title: "Men's Health Services | TRT, Weight Loss, ED Treatment | Men's Wellness Centers",
@@ -87,7 +87,7 @@ const PAGE_META: Record<string, PageSEO> = {
   },
   "/locations": {
     title: "Men's Health Clinic Locations in Virginia | Men's Wellness Centers",
-    description: "Visit Men's Wellness Centers in Richmond (Glen Allen), Newport News, or Virginia Beach. Board-certified providers, same-day labs, free consultations. Walk-ins welcome.",
+    description: "Visit Men's Wellness Centers in Richmond (Glen Allen), Newport News, or Virginia Beach. Board-certified providers, on-site labs, free consultations. Walk-ins welcome.",
   },
   "/locations/richmond-va": {
     title: "Men's Health Clinic in Richmond, VA (Glen Allen) | Men's Wellness Centers",
@@ -103,14 +103,14 @@ const PAGE_META: Record<string, PageSEO> = {
   },
   "/how-it-works": {
     title: "How It Works | Your First Visit to Men's Wellness Centers",
-    description: "From free consultation to personalized treatment in 3 simple steps. Same-day lab results, physician evaluation, ongoing optimization. See how easy it is.",
+    description: "From no-cost consultation to personalized treatment in 3 simple steps. Same-day lab results, physician evaluation, ongoing optimization. See how easy it is.",
   },
   "/providers": {
     title: "Our Physicians & Providers | Board-Certified Men's Health Team | MWC",
     description: "Meet the board-certified physicians and nurse practitioners at Men's Wellness Centers. 10+ years serving Virginia men.",
   },
   "/book": {
-    title: "Book Your Free Consultation | Men's Wellness Centers",
+    title: "Book Your Consultation | Men's Wellness Centers",
     description: "Schedule your free men's health consultation at any of our 3 Virginia locations. Same-day lab results available. Call (866) 344-4955 or book online.",
     noindex: true,
   },
@@ -177,7 +177,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   "virginia-beach-va": "Virginia Beach, VA",
   "how-it-works": "How It Works",
   providers: "Our Providers",
-  book: "Book My Free Consultation",
+  book: "Book My Consultation",
   "privacy-policy": "Privacy Policy",
   "terms-of-service": "Terms of Service",
   "telehealth-consent": "Telehealth Consent",
@@ -200,7 +200,7 @@ const SERVICE_SCHEMAS: Record<string, object> = {
     mainEntity: {
       "@type": "ItemList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, item: { "@type": "MedicalTherapy", name: "Testosterone Replacement Therapy", url: "https://menswellnesscenters.com/services/testosterone-therapy/", description: "Physician-monitored TRT with same-day labs, personalized protocols, and ongoing optimization.", medicalSpecialty: { "@type": "MedicalSpecialty", name: "Endocrinology" } } },
+        { "@type": "ListItem", position: 1, item: { "@type": "MedicalTherapy", name: "Testosterone Replacement Therapy", url: "https://menswellnesscenters.com/services/testosterone-therapy/", description: "Physician-monitored TRT with on-site labs, personalized protocols, and ongoing optimization.", medicalSpecialty: { "@type": "MedicalSpecialty", name: "Endocrinology" } } },
         { "@type": "ListItem", position: 2, item: { "@type": "MedicalTherapy", name: "Medical Weight Loss", url: "https://menswellnesscenters.com/services/weight-loss/", description: "Physician-supervised weight loss with GLP-1 medications, metabolic testing, and personalized plans.", medicalSpecialty: { "@type": "MedicalSpecialty", name: "Bariatric Medicine" } } },
         { "@type": "ListItem", position: 3, item: { "@type": "MedicalTherapy", name: "Sexual Health", url: "https://menswellnesscenters.com/services/sexual-health/", description: "Confidential erectile dysfunction treatment and sexual health solutions with proven medical therapies.", medicalSpecialty: { "@type": "MedicalSpecialty", name: "Urology" } } },
         { "@type": "ListItem", position: 4, item: { "@type": "MedicalTherapy", name: "Wellness & Vitality", url: "https://menswellnesscenters.com/services/wellness-vitality/", description: "Custom wellness protocols including peptide therapy, NAD+, and vitamin injections.", medicalSpecialty: { "@type": "MedicalSpecialty", name: "Preventive Medicine" } } },

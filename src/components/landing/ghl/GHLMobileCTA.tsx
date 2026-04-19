@@ -25,7 +25,7 @@ export const GHLMobileCTA = ({ config }: Props) => {
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center px-4 pt-2 pb-3" style={{ background: "#000033", boxShadow: "0 -2px 12px rgba(0,0,0,0.3)" }}>
-      <span className="text-xs text-white/70 mb-1.5">Same-day appointments available</span>
+      <span className="text-xs text-white/70 mb-1.5">Appointments available</span>
       <div className="flex items-center gap-2 w-full">
         <button
           onClick={scrollToForm}

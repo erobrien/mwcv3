@@ -84,7 +84,7 @@ export const ConsultationForm = () => {
         className="font-bold text-xl text-center mb-6"
         style={{ color: "#000033" }}
       >
-        Claim Your Free Consultation
+        Claim Your Consultation
       </h3>
 
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -208,7 +208,7 @@ export const ConsultationForm = () => {
           onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
       </form>
 

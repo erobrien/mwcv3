@@ -148,7 +148,7 @@ const Providers = () => {
             className="inline-block mt-6 rounded-full px-8 py-3.5 text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02]"
             style={{ background: "#F97316", color: "#FFFFFF", textDecoration: "none" }}
           >
-            Book My Free Consultation
+            Book My Consultation
           </Link>
         </div>
       </section>
@@ -256,7 +256,7 @@ const Providers = () => {
           className="inline-block mt-6 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02]"
           style={{ background: "#F97316", color: "#FFFFFF", textDecoration: "none" }}
         >
-          Book My Free Consultation
+          Book My Consultation
         </Link>
       </section>
 

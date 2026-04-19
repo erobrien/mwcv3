@@ -62,7 +62,7 @@ export const TRTResults = () => {
               className="text-base italic leading-relaxed"
               style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
             >
-              "I was tired all the time, gaining weight, zero motivation. Two months in and my wife says I'm a different man. Same-day labs, face-to-face with my doctor every visit. The real deal."
+              "I was tired all the time, gaining weight, zero motivation. Two months in and my wife says I'm a different man. On-site labs, face-to-face with my doctor every visit. The real deal."
             </p>
             <p className="mt-4 font-bold text-sm" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>
               Marty H.

@@ -4,7 +4,7 @@ import type { LocationData } from "@/data/locations";
 
 const pricingCards = [
   {
-    title: "Free Consultation",
+    title: "Consultation",
     description: "Your first visit, blood work, and physician consultation are on us. No obligation.",
     icon: CalendarCheck,
   },
@@ -76,7 +76,7 @@ export const LocationPricing = ({ location }: Props) => {
             data-location={location.slug.replace("-va", "")}
             data-cta-type="book"
           >
-            Book Your Free Consultation
+            Book Your Consultation
           </button>
           <p className="mt-3 text-[13px]" style={{ color: "#888" }}>
             Or call{" "}

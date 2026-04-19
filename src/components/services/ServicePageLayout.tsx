@@ -109,7 +109,7 @@ const ServicePageLayout = ({
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
     name: title,
-    description: `Physician-supervised ${title.toLowerCase()} at Men's Wellness Centers in Virginia. Same-day labs, in-person care, real results.`,
+    description: `Physician-supervised ${title.toLowerCase()} at Men's Wellness Centers in Virginia. On-site labs, in-person care, real results.`,
     url: `https://mwcv2.lovable.app/services/${activeSlug}`,
     lastReviewed: "2026-03-26",
     reviewedBy: {
@@ -134,7 +134,7 @@ const ServicePageLayout = ({
 
     const metaDesc = document.querySelector('meta[name="description"]');
     const descText = activeSlug
-      ? `Physician-supervised ${title.toLowerCase()} at Men's Wellness Centers in Virginia. Same-day labs, in-person care, real results.`
+      ? `Physician-supervised ${title.toLowerCase()} at Men's Wellness Centers in Virginia. On-site labs, in-person care, real results.`
       : "Explore all physician-supervised treatments at Men's Wellness Centers. TRT, ED medications, weight loss, and wellness injections across Virginia.";
     if (metaDesc) {
       metaDesc.setAttribute("content", descText);
@@ -320,7 +320,7 @@ const ServicePageLayout = ({
           <div className="flex gap-6 mt-10 text-left overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-3 md:overflow-visible md:snap-none md:pb-0">
             {(customTestimonials || [
               { name: "Marty H.", location: "Richmond, VA", date: "", pill: "", quote: "Men's Wellness is great. I have been a member for 5 years now. I feel and recover better after workouts. The staff is all great and very professional." },
-              { name: "James T.", location: "Newport News, VA", date: "", pill: "", quote: "After struggling with fatigue for years, I finally have my energy back. The physicians here actually listen and the same-day results made all the difference." },
+              { name: "James T.", location: "Newport News, VA", date: "", pill: "", quote: "After struggling with fatigue for years, I finally have my energy back. The physicians here actually listen and the results reviewed in-visit made all the difference." },
               { name: "Robert M.", location: "Virginia Beach, VA", date: "", pill: "", quote: "Professional, discreet, and effective. I was hesitant at first but the team made me feel comfortable. Best decision I've made for my health." },
             ]).map((t) => (
               <div
@@ -441,7 +441,7 @@ const ServicePageLayout = ({
           onMouseEnter={(e) => (e.currentTarget.style.background = "#CF5B09")}
           onMouseLeave={(e) => (e.currentTarget.style.background = "#E8670A")}
         >
-          Book My Free Consultation
+          Book My Consultation
         </Link>
         <p className="mt-4 text-sm" style={{ color: "rgba(255,255,255,0.60)" }}>
           Or call:{" "}

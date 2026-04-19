@@ -39,8 +39,8 @@ const V2StepFour = (props: V2StepFourProps) => {
 
   const handleShare = async () => {
     const shareData = {
-      title: "Men's Wellness Centers, Free Consultation",
-      text: "I just booked a free consultation at Men's Wellness Centers. You should check it out.",
+      title: "Men's Wellness Centers, Consultation",
+      text: "I just booked a no-cost consultation at Men's Wellness Centers. You should check it out.",
       url: "https://menswellnesscenters.com/book",
     };
     if (navigator.share) {

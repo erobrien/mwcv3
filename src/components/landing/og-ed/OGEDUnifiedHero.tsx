@@ -27,7 +27,7 @@ export const OGEDUnifiedHero = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              BOOK MY FREE CONSULTATION
+              BOOK MY CONSULTATION
             </button>
             <p className="text-xs mt-6" style={{ color: "rgba(255,255,255,0.45)" }}>
               LegitScript Certified · Trusted Since 2015 · HIPAA Compliant · 3 VA Locations
@@ -35,7 +35,7 @@ export const OGEDUnifiedHero = () => {
           </div>
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Claim Your Free Consultation"
+              heading="Claim Your Consultation"
               formId="og-ed-lead-form"
               service="ed"
               source="og-lp-ed"

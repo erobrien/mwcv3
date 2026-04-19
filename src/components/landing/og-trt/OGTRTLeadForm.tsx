@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 interface OGTRTLeadFormProps { heading?: string; formId?: string; }
 
-export const OGTRTLeadForm = ({ heading = "Get Started — It's Free", formId = "hero" }: OGTRTLeadFormProps) => {
+export const OGTRTLeadForm = ({ heading = "Get Started — At No Cost", formId = "hero" }: OGTRTLeadFormProps) => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -90,7 +90,7 @@ export const OGTRTLeadForm = ({ heading = "Get Started — It's Free", formId = 
           style={{ background: "#003366", color: "#ffffff", letterSpacing: "0.03em", minHeight: 48 }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "#004883"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#003366"; }}>
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
         <div className="text-center mt-3 text-[12px] flex flex-col gap-1 items-center" style={{ color: "#6c757d" }}>
           <span className="inline-flex items-center gap-1"><MessageCircle size={14} /> We'll text you to confirm within 1 hour.</span>

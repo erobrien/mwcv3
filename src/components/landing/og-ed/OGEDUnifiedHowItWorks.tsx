@@ -8,7 +8,7 @@ export const OGEDUnifiedHowItWorks = () => {
     {
       num: "01",
       title: "Book a Private Visit",
-      body: "Schedule online or call. Same-day appointments often available. Choose Richmond, Newport News, or Virginia Beach.",
+      body: "Schedule online or call. Appointments often available. Choose Richmond, Newport News, or Virginia Beach.",
     },
     {
       num: "02",
@@ -45,7 +45,7 @@ export const OGEDUnifiedHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#0F1D35"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#1B2A4A"; }}
           >
-            BOOK MY FREE CONSULTATION
+            BOOK MY CONSULTATION
           </button>
         </div>
       </div>

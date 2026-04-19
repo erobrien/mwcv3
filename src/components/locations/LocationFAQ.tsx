@@ -13,7 +13,7 @@ const FAQ_GROUPS: Record<string, { label: string; questions: string[] }[]> = {
       label: "About Our Richmond Center",
       questions: [
         "What services does Men's Wellness Centers in Richmond offer?",
-        "How do I book a free consultation at the Richmond center?",
+        "How do I book a no-cost consultation at the Richmond center?",
         "What should I expect at my first visit in Richmond?",
         "What are the hours for Men's Wellness Centers Richmond?",
         "Where is Men's Wellness Centers in Richmond located?",
@@ -46,7 +46,7 @@ const FAQ_GROUPS: Record<string, { label: string; questions: string[] }[]> = {
       label: "About Our Newport News Center",
       questions: [
         "What services does Men's Wellness Centers in Newport News offer?",
-        "How do I book a free consultation at the Newport News center?",
+        "How do I book a no-cost consultation at the Newport News center?",
         "What should I expect at my first visit in Newport News?",
         "What are the hours for Men's Wellness Centers Newport News?",
         "Where is Men's Wellness Centers in Newport News?",
@@ -79,7 +79,7 @@ const FAQ_GROUPS: Record<string, { label: string; questions: string[] }[]> = {
       label: "About Our Virginia Beach Center",
       questions: [
         "What services does Men's Wellness Centers in Virginia Beach offer?",
-        "How do I book a free consultation at the Virginia Beach center?",
+        "How do I book a no-cost consultation at the Virginia Beach center?",
         "What should I expect at my first visit in Virginia Beach?",
         "What are the hours for Men's Wellness Centers Virginia Beach?",
         "Where is Men's Wellness Centers in Virginia Beach?",

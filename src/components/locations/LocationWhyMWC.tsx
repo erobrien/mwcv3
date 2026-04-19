@@ -4,7 +4,7 @@ import type { LocationData } from "@/data/locations";
 
 const bullets = [
   "Board-certified physician oversight at every visit, your care team is led by an MD, supported by experienced nurse practitioners for seamless continuity",
-  "Same-day labs with 15-minute results, no separate Quest or LabCorp trip",
+  "On-site labs with 15-minute results, no separate Quest or LabCorp trip",
   "All-inclusive pricing with no hidden fees or surprise bills",
   "Unlimited follow-up visits included in your plan",
   "Private, purpose-built centers, not a shared urgent care",
@@ -61,7 +61,7 @@ export const LocationWhyMWC = ({ location }: Props) => {
             onMouseEnter={(e) => (e.currentTarget.style.background = "#EA580C")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#F97316")}
           >
-            Book My Free Consultation
+            Book My Consultation
           </button>
         </div>
       </div>

@@ -40,7 +40,7 @@ export const OGTRT2HowItWorks = () => {
             style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
-          >Book Your Free Consult</button>
+          >Book Your Consultation</button>
         </div>
       </div>
     </section>

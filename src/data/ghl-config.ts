@@ -95,10 +95,10 @@ export const trtConfig: GHLVerticalConfig = {
     headlineOrange: "Start Performing Again.",
     bullets: [
       "Physician-supervised TRT at 3 Virginia centers",
-      "On-site labs with same-day results",
+      "On-site labs with results reviewed in-visit",
       "Free testosterone testing and consultation",
     ],
-    ctaText: "Book My Free Consult",
+    ctaText: "Book My Consultation",
   },
   symptoms: {
     preTitle: "Recognize the Signs",
@@ -122,7 +122,7 @@ export const trtConfig: GHLVerticalConfig = {
       { num: "03", title: "Treatment", desc: "Start your personalized TRT plan designed specifically for your body and your lifestyle. We keep you dialed in." },
     ],
     bridgeCopy: "That's it. No hoops. No waiting. Just results.",
-    ctaText: "Start My Free Consult",
+    ctaText: "Start My Consultation",
   },
   results: {
     subtitleLine: "from TRT",
@@ -149,8 +149,8 @@ export const trtConfig: GHLVerticalConfig = {
     { quote: "I was hesitant about hormone therapy but the doctor laid everything out honestly. No pressure, just facts. Three months in and I wish I'd started sooner.", name: "David K.", location: "Norfolk, VA" },
   ],
   faqs: [
-    { q: "How much does TRT cost?", a: "We'll give you a clear breakdown during your free consultation. No hidden fees. Treatment plans start at $199/month after approval.", cta: "See pricing details" },
-    { q: "Is TRT safe? What about long-term commitment?", a: "When administered under proper medical supervision, TRT has a well-established safety profile. We're LegitScript certified as of 2025, independently verified by the same organization that vets providers for Google and Microsoft. We provide comprehensive monitoring throughout, tracking your levels and health markers to help ensure optimal outcomes with minimal risk.", cta: "Book my free consult" },
+    { q: "How much does TRT cost?", a: "We'll give you a clear breakdown during your no-cost consultation. No hidden fees. Treatment plans start at $199/month after approval.", cta: "See pricing details" },
+    { q: "Is TRT safe? What about long-term commitment?", a: "When administered under proper medical supervision, TRT has a well-established safety profile. We're LegitScript certified as of 2025, independently verified by the same organization that vets providers for Google and Microsoft. We provide comprehensive monitoring throughout, tracking your levels and health markers to help ensure optimal outcomes with minimal risk.", cta: "Book my no-cost consultation" },
     { q: "How long until I see results?", a: "Many members report improvements in energy and mood within 2-4 weeks. Full benefits, including improved body composition, libido, and mental clarity, typically develop over 3-6 months. Individual results vary based on health history and treatment adherence.", cta: "Start my evaluation" },
     { q: "How is this different from online TRT services like Hone or Fountain TRT?", a: "Online services ship medication after a questionnaire. We provide comprehensive, in-person medical care. You get a real doctor-patient relationship, thorough testing, personalized protocols, and ongoing monitoring. We're also LegitScript certified, which means our business practices, licensing, and medical protocols have been independently verified. Most online TRT mills can't say that.", cta: "See why men switch to MWC" },
     { q: "Is this covered by insurance?", a: "No. We operate outside of insurance so we can provide the level of care, testing, and physician access that insurance-based centers don't. All consultations and treatments are conducted in person at our Virginia centers in Richmond, Newport News, or Virginia Beach.", cta: "Learn about our pricing" },
@@ -161,7 +161,7 @@ export const trtConfig: GHLVerticalConfig = {
     body: "This isn't about vanity. It's about getting back to being the man you've always been: sharp, confident, and performing at your level.",
   },
   footerServiceLine: "Physician-supervised testosterone therapy at our",
-  mobileCTAText: "Book Free Consult",
+  mobileCTAText: "Book Consult",
 };
 
 /* ═══════════════════════════════════════════════
@@ -230,7 +230,7 @@ export const edConfig: GHLVerticalConfig = {
     { quote: "The privacy is what sold me. No pharmacy run, no explaining to anyone. Everything happened in the office. Professional start to finish.", name: "William C.", location: "Norfolk, VA" },
   ],
   faqs: [
-    { q: "How much does ED treatment cost?", a: "We'll give you a clear breakdown during your free consultation. No hidden fees. Treatment plans vary based on the protocol your physician recommends, and all options are discussed before you commit.", cta: "See pricing details" },
+    { q: "How much does ED treatment cost?", a: "We'll give you a clear breakdown during your no-cost consultation. No hidden fees. Treatment plans vary based on the protocol your physician recommends, and all options are discussed before you commit.", cta: "See pricing details" },
     { q: "Is this different from just getting a Viagra prescription?", a: "Yes. We don't just hand you a pill. Your physician runs labs, reviews your health history, and identifies what is actually causing the problem. You may end up on an oral medication, an injectable, or a combination protocol. The difference is the diagnosis behind it.", cta: "Book my private visit" },
     { q: "How long until I see results?", a: "Many members see improvement after their first visit. The treatment your doctor prescribes is based on your specific diagnosis, so it's targeted to work. Individual results vary based on the underlying cause.", cta: "Start my evaluation" },
     { q: "Is everything confidential?", a: "Completely. Our centers are built for privacy. No shared waiting areas, no pharmacy pickups, no records sent to your primary care unless you request it. Medication is dispensed on-site.", cta: "Learn about our process" },
@@ -260,7 +260,7 @@ export const wlConfig: GHLVerticalConfig = {
       "Semaglutide and Tirzepatide prescribed from real lab work",
       "Free consultation and metabolic evaluation",
     ],
-    ctaText: "Book My Free Consult",
+    ctaText: "Book My Consultation",
   },
   symptoms: {
     preTitle: "Sound Familiar?",
@@ -275,7 +275,7 @@ export const wlConfig: GHLVerticalConfig = {
       { icon: HeartOctagon, title: "Joint Pain", desc: "Knees, back, hips. The weight is making everything harder and the pain is keeping you from moving." },
       { icon: Lightning02, title: "Brain Fog", desc: "Sluggish thinking, poor focus, low motivation. Your body is fighting you and your brain is paying the price." },
     ],
-    ctaText: "Start My Free Evaluation",
+    ctaText: "Start My Evaluation",
   },
   howItWorks: {
     steps: [
@@ -284,7 +284,7 @@ export const wlConfig: GHLVerticalConfig = {
       { num: "03", title: "Track It Together", desc: "Regular follow-ups, lab monitoring, and dosage adjustments are all included. Your physician tracks your progress and adapts the plan as your body responds." },
     ],
     bridgeCopy: "That's it. Real medicine. Real monitoring. Real results.",
-    ctaText: "Start My Free Consult",
+    ctaText: "Start My Consultation",
   },
   results: {
     subtitleLine: "from GLP-1 Therapy",
@@ -311,8 +311,8 @@ export const wlConfig: GHLVerticalConfig = {
     { quote: "The follow-up care is what makes this place different. They don't just give you a shot and send you home. They track everything.", name: "Paul M.", location: "Norfolk, VA" },
   ],
   faqs: [
-    { q: "How much does GLP-1 therapy cost?", a: "We'll give you a clear breakdown during your free consultation. No hidden fees. Treatment plans vary based on the medication and dosing your physician recommends, and all options are discussed before you commit.", cta: "See pricing details" },
-    { q: "What's the difference between Semaglutide and Tirzepatide?", a: "Both are GLP-1 receptor agonists that help reduce appetite and support weight loss. Tirzepatide also targets a second receptor (GIP), which may offer additional metabolic benefits. Your physician will recommend the best option based on your lab work and health profile.", cta: "Book my free consult" },
+    { q: "How much does GLP-1 therapy cost?", a: "We'll give you a clear breakdown during your no-cost consultation. No hidden fees. Treatment plans vary based on the medication and dosing your physician recommends, and all options are discussed before you commit.", cta: "See pricing details" },
+    { q: "What's the difference between Semaglutide and Tirzepatide?", a: "Both are GLP-1 receptor agonists that help reduce appetite and support weight loss. Tirzepatide also targets a second receptor (GIP), which may offer additional metabolic benefits. Your physician will recommend the best option based on your lab work and health profile.", cta: "Book my no-cost consultation" },
     { q: "How long until I see results?", a: "Most members begin to notice appetite changes and initial weight loss within the first 2-4 weeks. Significant results typically develop over 3-6 months with consistent treatment and physician monitoring. Individual results vary.", cta: "Start my evaluation" },
     { q: "Is this different from online weight loss services?", a: "Yes. Online services ship medication after a questionnaire. We provide comprehensive, in-person medical care. You get a real doctor-patient relationship, thorough lab work, personalized dosing, and ongoing monitoring. We're LegitScript certified, which means our practices have been independently verified.", cta: "See why men switch to MWC" },
     { q: "Is this covered by insurance?", a: "No. We operate outside of insurance so we can provide the level of care, testing, and physician access that insurance-based centers don't. All consultations and treatments are conducted in person at our Virginia centers in Richmond, Newport News, or Virginia Beach.", cta: "Learn about our pricing" },
@@ -320,10 +320,10 @@ export const wlConfig: GHLVerticalConfig = {
   finalCTA: {
     preTitle: "What to Expect",
     headline: "Ready to Lose It for Good? Let's Start.",
-    body: "Schedule a free consultation at our Richmond, Newport News, or Virginia Beach center. Your first visit includes on-site lab work, same-day results, and a physician-built weight loss plan.",
+    body: "Schedule a no-cost consultation at our Richmond, Newport News, or Virginia Beach center. Your first visit includes on-site lab work, results reviewed in-visit, and a physician-built weight loss plan.",
   },
   footerServiceLine: "Physician-supervised weight loss therapy at our",
-  mobileCTAText: "Book Free Consult",
+  mobileCTAText: "Book Consult",
 };
 
 /* ═══════════════════════════════════════════════
@@ -338,10 +338,10 @@ export const generalConfig: GHLVerticalConfig = {
     headlineOrange: "Get Answers.",
     bullets: [
       "Comprehensive men's health evaluations at 3 Virginia centers",
-      "On-site labs with same-day results",
+      "On-site labs with results reviewed in-visit",
       "Free consultation with a licensed physician",
     ],
-    ctaText: "Book My Free Consult",
+    ctaText: "Book My Consultation",
   },
   symptoms: {
     preTitle: "Something Feel Off?",
@@ -356,7 +356,7 @@ export const generalConfig: GHLVerticalConfig = {
       { icon: Moon01, title: "Poor Sleep Quality", desc: "Trouble falling asleep, staying asleep, or waking up rested. Your body may be telling you something your doctor hasn't checked." },
       { icon: Lightning02, title: "Brain Fog", desc: "Difficulty concentrating, poor memory, or mental sluggishness. Your mind isn't keeping up the way it used to." },
     ],
-    ctaText: "Get My Free Evaluation",
+    ctaText: "Get My Evaluation",
   },
   howItWorks: {
     steps: [
@@ -365,7 +365,7 @@ export const generalConfig: GHLVerticalConfig = {
       { num: "03", title: "Your Plan", desc: "Based on your labs and evaluation, your doctor builds a treatment plan specific to your body. Whether that's TRT, GLP-1 therapy, ED treatment, or a combination." },
     ],
     bridgeCopy: "That's it. One visit. Real answers. A real plan.",
-    ctaText: "Start My Free Consult",
+    ctaText: "Start My Consultation",
   },
   results: {
     subtitleLine: "from Our Members",
@@ -392,17 +392,17 @@ export const generalConfig: GHLVerticalConfig = {
     { quote: "I came in not even sure what was wrong. Just felt off. The labs showed my testosterone was low and my metabolic panel was a mess. Three months later, I'm down 20 pounds and sleeping through the night.", name: "David K.", location: "Norfolk, VA" },
   ],
   faqs: [
-    { q: "What services do you offer?", a: "We provide comprehensive men's health evaluations including testosterone therapy (TRT), GLP-1 weight loss medication (Semaglutide and Tirzepatide), erectile dysfunction treatment, and peptide therapy. All services are physician-supervised and conducted in person at our Virginia centers.", cta: "Book my free consult" },
-    { q: "How much does it cost?", a: "We'll give you a clear breakdown during your free consultation. No hidden fees. Treatment plans vary based on what your physician recommends after your evaluation. All options are discussed before you commit to anything.", cta: "See pricing details" },
+    { q: "What services do you offer?", a: "We provide comprehensive men's health evaluations including testosterone therapy (TRT), GLP-1 weight loss medication (Semaglutide and Tirzepatide), erectile dysfunction treatment, and peptide therapy. All services are physician-supervised and conducted in person at our Virginia centers.", cta: "Book my no-cost consultation" },
+    { q: "How much does it cost?", a: "We'll give you a clear breakdown during your no-cost consultation. No hidden fees. Treatment plans vary based on what your physician recommends after your evaluation. All options are discussed before you commit to anything.", cta: "See pricing details" },
     { q: "Do I need to know what's wrong before I come in?", a: "No. That's what the evaluation is for. Many members come in with vague symptoms like fatigue, weight gain, or low motivation. Our physician runs comprehensive labs and identifies what's actually going on.", cta: "Start my evaluation" },
-    { q: "How is this different from my regular doctor?", a: "We specialize in men's health. Your primary care doctor manages everything from ear infections to diabetes. We focus exclusively on hormonal optimization, metabolic health, and sexual wellness for men. On-site labs, same-day results, and a physician who does this all day, every day.", cta: "See why men choose us" },
+    { q: "How is this different from my regular doctor?", a: "We specialize in men's health. Your primary care doctor manages everything from ear infections to diabetes. We focus exclusively on hormonal optimization, metabolic health, and sexual wellness for men. On-site labs, results reviewed in-visit, and a physician who does this all day, every day.", cta: "See why men choose us" },
     { q: "Is this covered by insurance?", a: "No. We operate outside of insurance so we can provide the level of care, testing, and physician access that insurance-based centers don't. All consultations and treatments are conducted in person at our Virginia centers in Richmond, Newport News, or Virginia Beach.", cta: "Learn about our pricing" },
   ],
   finalCTA: {
     preTitle: "What to Expect",
     headline: "Get the Full Picture. One Visit.",
-    body: "Schedule a free evaluation at our Richmond, Newport News, or Virginia Beach center. Your visit includes comprehensive lab work, a physician consultation, and a plan built around your results.",
+    body: "Schedule a no-cost evaluation at our Richmond, Newport News, or Virginia Beach center. Your visit includes comprehensive lab work, a physician consultation, and a plan built around your results.",
   },
   footerServiceLine: "Comprehensive men's health services at our",
-  mobileCTAText: "Book Free Consult",
+  mobileCTAText: "Book Consult",
 };

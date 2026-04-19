@@ -94,7 +94,7 @@ export const richmondLocation: LocationData = {
   heroSubheadline:
     "Virginia's original men's wellness destination. Same-day testosterone testing, ED treatment, and physician-led weight loss in Glen Allen, just minutes from Short Pump and downtown Richmond.",
   heroAuthorityStatement:
-    "Board-certified physicians. Same-day labs. Personalized treatment plans for testosterone therapy, ED, and weight loss \u2014 walk in with questions and leave the same day with answers.",
+    "Board-certified physicians. On-site labs. Personalized treatment plans for testosterone therapy, ED, and weight loss \u2014 walk in with questions and leave the same day with answers.",
   statBar: [
     { label: "Est. 2015", icon: "Calendar" },
     { label: "10,000+ Men Treated", icon: "Users" },
@@ -137,7 +137,7 @@ export const richmondLocation: LocationData = {
     { area: "Downtown Richmond", time: "15 min" },
   ],
   areasServedIntro:
-    "Men's Wellness Centers has been a trusted healthcare resource for men across the greater Richmond metro area since 2015. Our Glen Allen location at Innslake Drive is centrally located to serve Richmond, Short Pump, Henrico, Midlothian, Mechanicsville, and the entire metro region. Whether you're commuting from downtown Richmond, driving from Chesterfield, or coming from as far as Ashland or Hanover, our center is designed for convenience with free parking, flexible scheduling, and same-day appointments.",
+    "Men's Wellness Centers has been a trusted healthcare resource for men across the greater Richmond metro area since 2015. Our Glen Allen location at Innslake Drive is centrally located to serve Richmond, Short Pump, Henrico, Midlothian, Mechanicsville, and the entire metro region. Whether you're commuting from downtown Richmond, driving from Chesterfield, or coming from as far as Ashland or Hanover, our center is designed for convenience with free parking, flexible scheduling, and appointments.",
   directions: [
     { from: "Downtown Richmond", instructions: "Take I-64 West to Exit 178B (Innslake Dr). Turn right on Innslake Dr. Our office is on the left in the Innslake Corporate Center, Suite 360. Approximately 15 minutes." },
     { from: "Short Pump", instructions: "Head east on W Broad St toward Innslake Dr. Turn left on Innslake Dr. Approximately 5 minutes." },
@@ -182,12 +182,12 @@ export const richmondLocation: LocationData = {
       answer: "Our Richmond center provides testosterone replacement therapy (TRT), erectile dysfunction treatment, medical weight loss with GLP-1 medications, peptide therapy, anti-aging protocols, and comprehensive lab diagnostics. All services are physician-led and delivered in person at our Glen Allen location.",
     },
     {
-      question: "How do I book a free consultation at the Richmond center?",
-      answer: "You can book online through this page or call us directly at (804) 346-4636. Your free consultation includes same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes.",
+      question: "How do I book a no-cost consultation at the Richmond center?",
+      answer: "You can book online through this page or call us directly at (804) 346-4636. Your no-cost consultation includes same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes.",
     },
     {
       question: "Do I need a referral to visit the Richmond Men's Wellness Centers?",
-      answer: "No referral is needed. Men's Wellness Centers is a direct-access men's health center. You can book your free consultation directly by calling (804) 346-4636 or using our online booking form. Many of our Richmond members are self-referred men who want a more specialized approach to their health.",
+      answer: "No referral is needed. Men's Wellness Centers is a direct-access men's health center. You can book your no-cost consultation directly by calling (804) 346-4636 or using our online booking form. Many of our Richmond members are self-referred men who want a more specialized approach to their health.",
     },
     {
       question: "What should I expect at my first visit in Richmond?",
@@ -207,7 +207,7 @@ export const richmondLocation: LocationData = {
     },
     {
       question: "How is Men's Wellness Centers different from online TRT services?",
-      answer: "Unlike online TRT services that operate through telemedicine-only models, Men's Wellness Centers provides face-to-face physician visits at our Glen Allen center. We perform physical examinations, draw blood in-house for same-day results (not mail-in kits), and your physician personally adjusts your protocol based on how you look, feel, and what your labs show. We also treat the full spectrum of men's health, not just testosterone. Many of our Richmond members switched to us after experiencing the limitations of online-only care.",
+      answer: "Unlike online TRT services that operate through telemedicine-only models, Men's Wellness Centers provides face-to-face physician visits at our Glen Allen center. We perform physical examinations, draw blood in-house for results reviewed in-visit (not mail-in kits), and your physician personally adjusts your protocol based on how you look, feel, and what your labs show. We also treat the full spectrum of men's health, not just testosterone. Many of our Richmond members switched to us after experiencing the limitations of online-only care.",
     },
     {
       question: "Where is Men's Wellness Centers in Richmond located?",
@@ -219,7 +219,7 @@ export const richmondLocation: LocationData = {
     },
     {
       question: "How much does testosterone therapy cost at Men's Wellness Centers?",
-      answer: "Our testosterone therapy programs are all-inclusive with no hidden fees. Your initial consultation is completely free and includes a comprehensive blood panel. Treatment plans are customized to your needs and typically include medication, lab monitoring, and unlimited follow-up visits. We accept FSA/HSA accounts and offer transparent pricing. Your physician will review all costs during your first visit before any commitment. Call (804) 346-4636 for current pricing details.",
+      answer: "Our testosterone therapy programs are all-inclusive with no hidden fees. Your initial consultation is at no cost and includes a comprehensive blood panel. Treatment plans are customized to your needs and typically include medication, lab monitoring, and unlimited follow-up visits. We accept FSA/HSA accounts and offer transparent pricing. Your physician will review all costs during your first visit before any commitment. Call (804) 346-4636 for current pricing details.",
     },
     {
       question: "Is testosterone therapy safe? What are the risks?",
@@ -246,7 +246,7 @@ export const richmondLocation: LocationData = {
   lat: 37.6532,
   lng: -77.5894,
   metaTitle: "Men's Health Center in Richmond, VA | TRT, ED Treatment & Weight Loss | Men's Wellness Centers",
-  metaDescription: "Physician-led testosterone therapy, ED treatment & medical weight loss in Glen Allen/Richmond VA. Same-day labs, free consultation. CLIA certified. Call (804) 346-4636.",
+  metaDescription: "Physician-led testosterone therapy, ED treatment & medical weight loss in Glen Allen/Richmond VA. On-site labs, no-cost consultation. CLIA certified. Call (804) 346-4636.",
   ogTitle: "Men's Health Center in Richmond, VA | Men's Wellness Centers",
   ogDescription: "Virginia's trusted men's health center in Richmond. Board-certified physicians, same-day lab results, testosterone therapy, ED treatment, and medical weight loss. Free consultation.",
   canonicalUrl: "https://menswellnesscenters.com/locations/richmond-va",
@@ -271,7 +271,7 @@ export const newportNewsLocation: LocationData = {
   googleRating: "4.9",
   googleReviewCount: "150+",
   heroSubheadline:
-    "Hampton Roads' trusted destination for testosterone therapy, ED treatment, and medical weight loss. Same-day labs and face-to-face physician visits at our Newport News center, serving the entire Peninsula.",
+    "Hampton Roads' trusted destination for testosterone therapy, ED treatment, and medical weight loss. On-site labs and face-to-face physician visits at our Newport News center, serving the entire Peninsula.",
   heroAuthorityStatement:
     "Hampton Roads' trusted men's health center, serving the entire Virginia Peninsula. Our board-certified physicians provide face-to-face care with same-day lab results and personalized treatment plans. From Hampton to Williamsburg, men across the Peninsula choose Men's Wellness Centers for results they can feel.",
   statBar: [
@@ -362,8 +362,8 @@ export const newportNewsLocation: LocationData = {
       answer: "Our Newport News center provides testosterone replacement therapy (TRT), erectile dysfunction treatment, medical weight loss with GLP-1 medications, peptide therapy, anti-aging protocols, and comprehensive lab diagnostics. All services are physician-led and delivered in person at our Diligence Drive location.",
     },
     {
-      question: "How do I book a free consultation at the Newport News center?",
-      answer: "You can book online through this page or call us directly at (757) 806-6263. Your free consultation includes same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes.",
+      question: "How do I book a no-cost consultation at the Newport News center?",
+      answer: "You can book online through this page or call us directly at (757) 806-6263. Your no-cost consultation includes same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes.",
     },
     {
       question: "Do I need a referral to visit the Newport News Men's Wellness Centers?",
@@ -403,7 +403,7 @@ export const newportNewsLocation: LocationData = {
     },
     {
       question: "How much does testosterone therapy cost at Men's Wellness Centers?",
-      answer: "Our testosterone therapy programs are all-inclusive with no hidden fees. Your initial consultation is completely free and includes a comprehensive blood panel. Treatment plans include medication, lab monitoring, and unlimited follow-up visits. We accept FSA/HSA accounts. Call (757) 806-6263 for current pricing details.",
+      answer: "Our testosterone therapy programs are all-inclusive with no hidden fees. Your initial consultation is at no cost and includes a comprehensive blood panel. Treatment plans include medication, lab monitoring, and unlimited follow-up visits. We accept FSA/HSA accounts. Call (757) 806-6263 for current pricing details.",
     },
     {
       question: "Is testosterone therapy safe? What are the risks?",
@@ -426,7 +426,7 @@ export const newportNewsLocation: LocationData = {
   lat: 37.0871,
   lng: -76.4730,
   metaTitle: "Men's Health Center in Newport News, VA | TRT, ED & Weight Loss | Hampton Roads | Men's Wellness Centers",
-  metaDescription: "Physician-led testosterone therapy, ED treatment & weight loss in Newport News, VA. Serving Hampton Roads Peninsula. Same-day labs, free consultation. CLIA certified. Call (757) 806-6263.",
+  metaDescription: "Physician-led testosterone therapy, ED treatment & weight loss in Newport News, VA. Serving Hampton Roads Peninsula. On-site labs, no-cost consultation. CLIA certified. Call (757) 806-6263.",
   ogTitle: "Men's Health Center in Newport News, VA | Men's Wellness Centers",
   ogDescription: "Hampton Roads Peninsula's trusted men's health center. Board-certified physicians, same-day lab results, testosterone therapy, ED treatment, and medical weight loss. Free consultation.",
   canonicalUrl: "https://menswellnesscenters.com/locations/newport-news-va",
@@ -452,9 +452,9 @@ export const virginiaBeachLocation: LocationData = {
   googleRating: "4.9",
   googleReviewCount: "175+",
   heroSubheadline:
-    "South Hampton Roads' premier center for testosterone therapy, ED treatment, and medical weight loss. Same-day labs, face-to-face physician care, and a team that treats men's health every single day, right here on First Colonial Road.",
+    "South Hampton Roads' premier center for testosterone therapy, ED treatment, and medical weight loss. On-site labs, face-to-face physician care, and a team that treats men's health every single day, right here on First Colonial Road.",
   heroAuthorityStatement:
-    "South Hampton Roads' premier men's health destination on First Colonial Road. Our board-certified physicians provide in-person, face-to-face medical care. From the Oceanfront to Norfolk to Chesapeake, men across the Southside trust Men's Wellness Centers for evidence-based testosterone therapy, ED treatment, and medical weight loss with same-day results.",
+    "South Hampton Roads' premier men's health destination on First Colonial Road. Our board-certified physicians provide in-person, face-to-face medical care. From the Oceanfront to Norfolk to Chesapeake, men across the Southside trust Men's Wellness Centers for evidence-based testosterone therapy, ED treatment, and medical weight loss with results reviewed in-visit.",
   statBar: [
     { label: "Serving South Hampton Roads", icon: "Users" },
     { label: "10,000+ Men Treated", icon: "Users" },
@@ -540,12 +540,12 @@ export const virginiaBeachLocation: LocationData = {
       answer: "Our Virginia Beach center provides testosterone replacement therapy (TRT), erectile dysfunction treatment, medical weight loss with GLP-1 medications, peptide therapy, anti-aging protocols, and comprehensive lab diagnostics. All services are physician-led and delivered in person at our First Colonial Road location.",
     },
     {
-      question: "How do I book a free consultation at the Virginia Beach center?",
-      answer: "You can book online through this page or call us directly at (757) 806-6263. Your free consultation includes same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes.",
+      question: "How do I book a no-cost consultation at the Virginia Beach center?",
+      answer: "You can book online through this page or call us directly at (757) 806-6263. Your no-cost consultation includes same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes.",
     },
     {
       question: "Do I need a referral to visit the Virginia Beach Men's Wellness Centers?",
-      answer: "No referral is needed. Men's Wellness Centers is a direct-access men's health center. Simply book your free consultation by calling (757) 806-6263 or using our online booking form.",
+      answer: "No referral is needed. Men's Wellness Centers is a direct-access men's health center. Simply book your no-cost consultation by calling (757) 806-6263 or using our online booking form.",
     },
     {
       question: "What should I expect at my first visit in Virginia Beach?",
@@ -581,7 +581,7 @@ export const virginiaBeachLocation: LocationData = {
     },
     {
       question: "How much does testosterone therapy cost at Men's Wellness Centers?",
-      answer: "Our testosterone therapy programs are all-inclusive with no hidden fees. Your initial consultation is completely free and includes a comprehensive blood panel. Treatment plans include medication, lab monitoring, and unlimited follow-up visits. We accept FSA/HSA accounts. Call (757) 806-6263 for current pricing details.",
+      answer: "Our testosterone therapy programs are all-inclusive with no hidden fees. Your initial consultation is at no cost and includes a comprehensive blood panel. Treatment plans include medication, lab monitoring, and unlimited follow-up visits. We accept FSA/HSA accounts. Call (757) 806-6263 for current pricing details.",
     },
     {
       question: "Is testosterone therapy safe? What are the risks?",
@@ -604,7 +604,7 @@ export const virginiaBeachLocation: LocationData = {
   lat: 36.8529,
   lng: -76.0174,
   metaTitle: "Men's Health Center in Virginia Beach, VA | TRT, ED & Weight Loss | Men's Wellness Centers",
-  metaDescription: "Physician-led testosterone therapy, ED treatment & weight loss in Virginia Beach, VA. Serving South Hampton Roads, Norfolk & Chesapeake. Same-day labs, free consultation. Call (757) 806-6263.",
+  metaDescription: "Physician-led testosterone therapy, ED treatment & weight loss in Virginia Beach, VA. Serving South Hampton Roads, Norfolk & Chesapeake. On-site labs, no-cost consultation. Call (757) 806-6263.",
   ogTitle: "Men's Health Center in Virginia Beach, VA | Men's Wellness Centers",
   ogDescription: "South Hampton Roads' trusted men's health center. Board-certified physicians, same-day lab results, testosterone therapy, ED treatment, and medical weight loss. Free consultation.",
   canonicalUrl: "https://menswellnesscenters.com/locations/virginia-beach-va",

@@ -18,10 +18,10 @@ export const TRT2UrgencyBanner = () => {
             fontWeight: 700,
           }}
         >
-          This Month Only: Free Testosterone Testing
+          Testosterone Testing
         </h2>
         <p className="text-base mt-3" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>
-          Same-day appointments available at all 3 Virginia locations. Slots fill fast.
+          Appointments available at all 3 Virginia locations. Limited appointment availability.
         </p>
         <button
           onClick={fireCTA}
@@ -35,7 +35,7 @@ export const TRT2UrgencyBanner = () => {
             border: "none",
           }}
         >
-          Book My Free Test Today <ArrowRight className="h-4 w-4" />
+          Book My Testosterone Test Today <ArrowRight className="h-4 w-4" />
         </button>
       </div>
     </section>

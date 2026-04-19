@@ -48,7 +48,7 @@ export const OGWLComparison = () => {
           <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-lg px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02] border-none"
             style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}>
-            Start My Free Consultation
+            Start My Consultation
           </button>
         </div>
       </div>

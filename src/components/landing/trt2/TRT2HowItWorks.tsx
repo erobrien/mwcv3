@@ -85,7 +85,7 @@ export const TRT2HowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Book Your Free Consult <ArrowRight className="h-4 w-4" />
+            Book Your Consultation <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       </div>

@@ -54,7 +54,7 @@ export const CityServiceComparison = ({ service }: Props) => {
             onMouseEnter={(e) => (e.currentTarget.style.background = "#EA580C")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#F97316")}
           >
-            Book My Free Consultation
+            Book My Consultation
           </button>
         </div>
       </div>

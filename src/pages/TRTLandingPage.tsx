@@ -16,9 +16,9 @@ import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
 
 const TRTLandingPage = () => {
   useEffect(() => {
-    document.title = "TRT in Virginia | Free Testing | Men's Wellness Centers";
+    document.title = "TRT in Virginia | Testing | Men's Wellness Centers";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Physician-supervised testosterone replacement therapy at 3 Virginia locations. Free testing, same-day results. Walk in today.");
+    if (meta) meta.setAttribute("content", "Physician-supervised testosterone replacement therapy at 3 Virginia locations. Free testing, results reviewed in-visit. Walk in today.");
   }, []);
 
   return (

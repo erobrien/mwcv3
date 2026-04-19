@@ -42,7 +42,7 @@ export const LocationMobileCTA = ({ location }: Props) => {
         className="flex-1 flex items-center justify-center text-[12px] font-bold uppercase tracking-[0.06em] cursor-pointer border-none"
         style={{ background: "#E8670A", color: "#FFFFFF" }}
       >
-        Book Free Consult
+        Book Consult
       </button>
     </div>
   );

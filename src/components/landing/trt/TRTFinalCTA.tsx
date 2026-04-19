@@ -101,7 +101,7 @@ export const TRTFinalCTA = () => {
               fontWeight: 700,
             }}
           >
-            Book My Free Consultation
+            Book My Consultation
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -198,7 +198,7 @@ export const TRTFinalCTA = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              Claim My Free Consultation
+              Claim My Consultation
             </button>
           </form>
 

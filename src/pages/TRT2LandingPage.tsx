@@ -12,9 +12,9 @@ import { TRT2MobileCTA } from "@/components/landing/trt2/TRT2MobileCTA";
 
 const TRT2LandingPage = () => {
   useEffect(() => {
-    document.title = "Free Testosterone Testing | Men's Wellness Centers Virginia";
+    document.title = "Testosterone Testing | Men's Wellness Centers Virginia";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Physician-supervised testosterone replacement therapy at 3 Virginia locations. Free testing, same-day results. No referral needed. Book your free consultation today.");
+    if (meta) meta.setAttribute("content", "Physician-supervised testosterone replacement therapy at 3 Virginia locations. Free testing, results reviewed in-visit. No referral needed. Book your no-cost consultation today.");
 
     // JSON-LD
     const script = document.createElement("script");

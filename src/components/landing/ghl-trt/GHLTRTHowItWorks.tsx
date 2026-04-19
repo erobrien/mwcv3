@@ -69,7 +69,7 @@ const GHLTRTHowItWorks = () => {
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#CF5B09")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E8670A")}
           >
-            Start My Free Consult
+            Start My Consultation
           </button>
         </div>
       </div>

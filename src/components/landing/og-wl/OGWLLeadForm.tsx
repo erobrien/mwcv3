@@ -8,7 +8,7 @@ interface OGWLLeadFormProps {
 }
 
 export const OGWLLeadForm = ({
-  heading = "Claim My Free Consultation",
+  heading = "Claim My Consultation",
   formId = "hero",
 }: OGWLLeadFormProps) => {
   const navigate = useNavigate();
@@ -104,7 +104,7 @@ export const OGWLLeadForm = ({
           style={{ background: "#003366", color: "#ffffff", letterSpacing: "0.03em", minHeight: 48 }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "#004883"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#003366"; }}>
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
         <div className="text-center mt-3 text-[12px] flex flex-col gap-1 items-center" style={{ color: "#6c757d" }}>
           <span className="inline-flex items-center gap-1"><Lock size={14} /> Your information is 100% secure & HIPAA compliant</span>

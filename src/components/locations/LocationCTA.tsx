@@ -37,7 +37,7 @@ export const LocationCTA = ({ location }: Props) => {
           className="font-bold uppercase leading-tight mb-4"
           style={{ color: "#FFFFFF", fontSize: "clamp(1.25rem, 3vw, 1.75rem)" }}
         >
-          BOOK YOUR FREE CONSULTATION IN {location.city.toUpperCase()}
+          BOOK YOUR CONSULTATION IN {location.city.toUpperCase()}
         </h2>
         <p className="text-[14px] md:text-[15px] leading-relaxed mb-10 max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.6)" }}>
           Same-day lab work, a face-to-face physician visit, and a personalized treatment plan, all in about 60 minutes at our {location.city} center.
@@ -134,7 +134,7 @@ export const LocationCTA = ({ location }: Props) => {
                   Submitting...
                 </>
               ) : (
-                "Book My Free Consultation"
+                "Book My Consultation"
               )}
             </button>
           </form>

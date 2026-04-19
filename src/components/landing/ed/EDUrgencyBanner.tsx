@@ -24,7 +24,7 @@ export const EDUrgencyBanner = () => {
             marginBottom: 12,
           }}
         >
-          Confidential Consultation, Free of Charge
+          Confidential Consultation, At No Cost
         </h2>
         <p
           style={{
@@ -36,7 +36,7 @@ export const EDUrgencyBanner = () => {
             fontFamily: "'Open Sans', sans-serif",
           }}
         >
-          Same-day appointments at all 3 Virginia locations. Your privacy is guaranteed.
+          Appointments at all 3 Virginia locations. Your privacy is evidence-based.
         </p>
         <button
           onClick={scrollToForm}

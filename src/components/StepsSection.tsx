@@ -43,7 +43,7 @@ export const StepsSection = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#C2410C"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#EA580C"; }}
           >
-            Book My Free Consultation
+            Book My Consultation
           </a>
         </div>
 
@@ -118,7 +118,7 @@ export const StepsSection = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#C2410C"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#EA580C"; }}
           >
-            Book My Free Consultation
+            Book My Consultation
           </a>
         </div>
       </div>

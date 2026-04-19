@@ -41,7 +41,7 @@ const StepThree = ({ firstName, phone, email, location, onNext }: StepThreeProps
       <div className="mx-auto max-w-[560px] px-5 py-8">
         {/* Urgency banner */}
         <div className="mb-6 rounded-lg py-2.5 text-center text-sm font-medium" style={{ backgroundColor: "#E8670A", color: "#fff" }}>
-          Same-day appointments are available today.
+          Appointments are available today.
         </div>
 
         <h2

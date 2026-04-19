@@ -11,7 +11,7 @@ export const OGTRTFinalCTA = () => (
           <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>200+ Reviews</span>
         </div>
       </div>
-      <OGTRTLeadForm heading="Book My Free Consultation" formId="bottom" />
+      <OGTRTLeadForm heading="Book My Consultation" formId="bottom" />
     </div>
   </section>
 );

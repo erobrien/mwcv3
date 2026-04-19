@@ -26,7 +26,7 @@ export const LandingFinalCTA = ({ headline, subheadline }: LandingFinalCTAProps)
           className="rounded-full px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] cursor-pointer transition-colors duration-200 hover:bg-white/90"
           style={{ background: "#FFFFFF", color: "#000033" }}
         >
-          Book My Free Consultation
+          Book My Consultation
         </button>
 
         <p className="mt-4">
