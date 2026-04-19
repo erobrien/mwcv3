@@ -5,7 +5,7 @@ export const OGTRT2UnifiedFinalCTA = () => (
     <div className="max-w-[1200px] mx-auto px-6">
       <div className="text-center max-w-[640px] mx-auto mb-12 md:mb-16">
         <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white mb-4">
-          Your First Testosterone Test Is At No Cost. Schedule It Today.
+          Schedule Your First Testosterone Test Today.
         </h2>
         <p className="text-base" style={{ color: "rgba(255,255,255,0.7)" }}>
           Appointments at all 3 Virginia centers.
