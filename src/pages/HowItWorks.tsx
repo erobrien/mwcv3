@@ -123,7 +123,7 @@ const HowItWorks = () => {
               "10,000+ MEN TREATED",
               "4.9★ GOOGLE RATING",
               "3 VIRGINIA LOCATIONS",
-              "CONSULTATION",
+              "NO COST CONSULTATION",
             ]}
           />
         </div>

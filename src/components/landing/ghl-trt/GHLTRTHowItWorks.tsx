@@ -1,7 +1,7 @@
 const steps = [
   {
     num: "01",
-    title: "Consultation",
+    title: "No Cost Consultation",
     desc: "Meet with our physician for a comprehensive evaluation. We'll discuss your symptoms, health history, and goals.",
   },
   {

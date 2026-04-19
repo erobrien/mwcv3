@@ -7,7 +7,7 @@ const TICKER_ITEMS = [
   "10,000+ MEN TREATED",
   "4.9★ GOOGLE RATING",
   "3 VIRGINIA LOCATIONS",
-  "CONSULTATION",
+  "NO COST CONSULTATION",
 ];
 
 export const Hero = () => {
