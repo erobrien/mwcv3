@@ -60,6 +60,7 @@ interface IntakeStore extends IntakeState {
   currentStep: number;
   hasHydrated: boolean;
   setField: (path: string, value: unknown) => void;
+  setMany: (updates: Array<{ path: string; value: unknown }>) => void;
   setStep: (n: number) => void;
   nextStep: () => void;
   prevStep: () => void;
@@ -89,8 +90,13 @@ export const useIntakeStore = create<IntakeStore>()(
       hasHydrated: false,
 
       setField: (path, value) => {
+        set((state) => setByPath(state, path, value));
+      },
+
+      setMany: (updates) => {
         set((state) => {
-          const next = setByPath(state, path, value);
+          let next: any = state;
+          for (const u of updates) next = setByPath(next, u.path, u.value);
           return next;
         });
       },
