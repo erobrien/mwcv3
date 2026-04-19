@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StepCard, PrimaryCTA, CardCheckbox, TextField, SavedIndicator } from "@/intake/components";
 import ConsentDrawer from "@/intake/components/ConsentDrawer";
 import { useIntakeStore } from "@/store/intakeStore";
@@ -54,14 +54,63 @@ const Step19 = ({ onNext }: StepProps) => {
   const { shouldShow, markBlur, revealAll } = useShowErrors();
   const [savedTrigger, setSavedTrigger] = useState(0);
   const [drawer, setDrawer] = useState<ConsentItem | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Pick up a submission error left by Step20 when it bounces us back here
+  useEffect(() => {
+    const w = window as unknown as { __intakeSubmitError?: string };
+    if (w.__intakeSubmitError) {
+      setSubmitError(w.__intakeSubmitError);
+      w.__intakeSubmitError = undefined;
+    }
+    const handler = () => {
+      const ww = window as unknown as { __intakeSubmitError?: string };
+      if (ww.__intakeSubmitError) {
+        setSubmitError(ww.__intakeSubmitError);
+        ww.__intakeSubmitError = undefined;
+      }
+    };
+    window.addEventListener("intake:submit-error", handler);
+    return () => window.removeEventListener("intake:submit-error", handler);
+  }, []);
 
   const handleContinue = () => {
     revealAll();
+    setSubmitError(null);
     if (Object.keys(errors).length === 0) onNext();
   };
 
   return (
     <StepCard h1="ALMOST DONE">
+      {submitError && (
+        <div
+          role="alert"
+          className="mb-4"
+          style={{
+            background: "rgba(220,38,38,0.10)",
+            border: "1px solid rgba(220,38,38,0.35)",
+            borderRadius: 10,
+            padding: "12px 14px",
+            color: "var(--text-primary)",
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 13,
+            lineHeight: 1.45,
+          }}
+        >
+          <strong style={{ color: "var(--error-red)", fontWeight: 700 }}>
+            Something went wrong sending your intake.
+          </strong>{" "}
+          Please try again in a moment, or call us at{" "}
+          <a
+            href="tel:+17579379990"
+            style={{ color: "var(--accent-orange)", textDecoration: "underline" }}
+          >
+            (757) 937-9990
+          </a>
+          .
+        </div>
+      )}
+
       <h2 className="intake-h2 mb-5">A few quick confirmations</h2>
 
       <div className="space-y-3">
