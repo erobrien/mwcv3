@@ -45,6 +45,7 @@ import GHLEDLandingPage from "./pages/GHLEDLandingPage";
 import GHLWLLandingPage from "./pages/GHLWLLandingPage";
 import GHLGeneralLandingPage from "./pages/GHLGeneralLandingPage";
 import IntakePage from "./pages/IntakePage";
+import IntakeThanksPage from "./pages/IntakeThanksPage";
 import BrandComparison from "./pages/BrandComparison";
 import BookingFunnelV2 from "./pages/BookingFunnelV2";
 import BookingFunnelV2Spec from "./pages/BookingFunnelV2Spec";
@@ -108,6 +109,7 @@ const App = () => (
           <Route path="/lp/ghl-wl" element={<GHLWLLandingPage />} />
           <Route path="/lp/ghl-general" element={<GHLGeneralLandingPage />} />
           <Route path="/intake" element={<IntakePage />} />
+          <Route path="/intake/thanks" element={<IntakeThanksPage />} />
           <Route path="/brand" element={<BrandComparison />} />
           <Route path="/locations" element={<LocationsHub />} />
           <Route path="/locations/richmond-va" element={<RichmondLocation />} />
