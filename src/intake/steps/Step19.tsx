@@ -197,8 +197,8 @@ const Step19 = ({ onNext }: StepProps) => {
       </p>
 
       <div className="mt-6">
-        <PrimaryCTA sticky onClick={handleContinue}>
-          Submit My Intake
+        <PrimaryCTA sticky onClick={handleContinue} disabled={submitting}>
+          {submitting ? "Submitting…" : "Submit My Intake"}
         </PrimaryCTA>
       </div>
 
