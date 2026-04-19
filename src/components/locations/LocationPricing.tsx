@@ -4,7 +4,7 @@ import type { LocationData } from "@/data/locations";
 
 const pricingCards = [
   {
-    title: "Consultation",
+    title: "No Cost Consultation",
     description: "Your first visit, blood work, and physician consultation are on us. No obligation.",
     icon: CalendarCheck,
   },

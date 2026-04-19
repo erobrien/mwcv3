@@ -183,7 +183,7 @@ export const Header = () => {
               className="flex items-center px-6 py-2.5 rounded-full bg-white text-[#000033] uppercase hover:bg-white/90 transition-all duration-300 whitespace-nowrap"
               style={{ textDecoration: "none", fontWeight: 700, fontSize: 13, letterSpacing: "0.06em" }}
             >
-              BOOK CONSULTATION
+              NO COST CONSULTATION
             </a>
           </div>
           <button
