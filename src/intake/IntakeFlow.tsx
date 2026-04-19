@@ -85,11 +85,13 @@ const IntakeFlow = () => {
     setResumeChecked(true);
   }, [hasHydrated, loadFromUrlParams]);
 
-  // Track direction for transitions + scroll to top
+  // Track direction for transitions + scroll to top + analytics
   useEffect(() => {
     directionRef.current = currentStep >= lastStepRef.current ? 1 : -1;
     lastStepRef.current = currentStep;
     if (typeof window !== "undefined") window.scrollTo(0, 0);
+    // Fire dataLayer step-view event (no-op when GTM not loaded)
+    void import("@/lib/intakeAnalytics").then((m) => m.trackStepView(currentStep));
   }, [currentStep]);
 
   const phaseIndex = phaseForStep(currentStep);
