@@ -309,7 +309,7 @@ export const WLLeadForm = ({
             e.currentTarget.style.boxShadow = "0 4px 14px rgba(232,103,10,0.3)";
           }}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
 
         {/* Microcopy */}

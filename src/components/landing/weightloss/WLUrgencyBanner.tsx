@@ -25,7 +25,7 @@ export const WLUrgencyBanner = () => {
             marginBottom: 12,
           }}
         >
-          Limited Availability: Free Weight Loss Consultation
+          Weight Loss Consultation
         </h2>
 
         <p
@@ -36,7 +36,7 @@ export const WLUrgencyBanner = () => {
             color: "rgba(255,255,255,0.9)",
           }}
         >
-          Same-day appointments at all 3 Virginia locations. Begin your transformation today.
+          Appointments at all 3 Virginia locations. Begin your transformation today.
         </p>
 
         <button
@@ -69,7 +69,7 @@ export const WLUrgencyBanner = () => {
             e.currentTarget.style.boxShadow = "none";
           }}
         >
-          Book My Free Consultation
+          Book My Consultation
         </button>
       </div>
     </section>

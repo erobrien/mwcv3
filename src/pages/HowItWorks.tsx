@@ -13,7 +13,7 @@ const steps = [
   {
     icon: CalendarCheck,
     num: "01",
-    title: "Schedule Your Free Consultation",
+    title: "Schedule Your Consultation",
     description: "Book online in under 60 seconds or call any of our three Virginia locations. No referral needed. Same-day and next-day appointments are often available. Choose Richmond, Newport News, or Virginia Beach.",
   },
   {
@@ -44,7 +44,7 @@ const steps = [
 
 const differences = [
   { icon: Users, title: "Physician-Led Care", text: "Every protocol is designed and supervised by a board-certified physician. Not just NPs. Not just telemedicine." },
-  { icon: FlaskConical, title: "Same-Day Labs", text: "Walk in, get labs drawn, get results, often the same day. No 2-week wait for a follow-up appointment." },
+  { icon: FlaskConical, title: "On-Site Labs", text: "Walk in, get labs drawn, get results, often the same day. No 2-week wait for a follow-up appointment." },
   { icon: ClipboardList, title: "No Cookie-Cutter Protocols", text: "Your treatment is based on YOUR labs, YOUR symptoms, YOUR goals. Not a one-size-fits-all subscription." },
   { icon: Repeat, title: "Ongoing Monitoring", text: "Regular lab work and provider check-ins. Adjustments based on data, not guesswork." },
   { icon: MapPin, title: "Three Virginia Locations", text: "Richmond (Glen Allen), Newport News, Virginia Beach. Plus a national scheduling line: 866-344-4955." },
@@ -53,7 +53,7 @@ const differences = [
 const faqs = [
   { q: "How long does the first visit take?", a: "Plan for about 45-60 minutes. This includes lab work, a physical evaluation, and a consultation with your provider. We don't rush." },
   { q: "Do I need to prepare anything before my visit?", a: "No special preparation is needed. If you have recent lab work from another provider, bring it along, but it's not required. We'll draw our own comprehensive panel." },
-  { q: "Is there a cost for the consultation?", a: "The initial consultation is free. Lab work is included. You'll receive transparent pricing for any recommended treatment before making a decision." },
+  { q: "Is there a cost for the consultation?", a: "The initial consultation is at no cost. Lab work is included. You'll receive transparent pricing for any recommended treatment before making a decision." },
   { q: "What if I decide not to start treatment?", a: "That's completely fine. There's zero obligation. You'll leave with a clear understanding of your health status and options, whether or not you proceed with treatment." },
   { q: "Can I bring someone with me?", a: "Of course. Many men bring their spouse or partner. We're happy to include them in the conversation." },
 ];
@@ -65,7 +65,7 @@ const HowItWorks = () => {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: "How Men's Wellness Centers Works",
-    description: "Your path to optimized health in 5 straightforward steps, from free consultation to ongoing care.",
+    description: "Your path to optimized health in 5 straightforward steps, from no-cost consultation to ongoing care.",
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
@@ -111,7 +111,7 @@ const HowItWorks = () => {
               className="inline-block mt-6 rounded-full px-8 py-3.5 text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02]"
               style={{ background: "#F97316", color: "#FFFFFF", textDecoration: "none" }}
             >
-              Book My Free Consultation
+              Book My Consultation
             </Link>
           </div>
         </div>
@@ -123,7 +123,7 @@ const HowItWorks = () => {
               "10,000+ MEN TREATED",
               "4.9★ GOOGLE RATING",
               "3 VIRGINIA LOCATIONS",
-              "FREE CONSULTATION",
+              "CONSULTATION",
             ]}
           />
         </div>
@@ -264,14 +264,14 @@ const HowItWorks = () => {
           Ready to Get Started?
         </h2>
         <p className="mt-3 text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
-          Free consultation. Same-day labs. Three Virginia locations.
+          Consultation. On-site labs. Three Virginia locations.
         </p>
         <Link
           to="/book"
           className="inline-block mt-6 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02]"
           style={{ background: "#F97316", color: "#FFFFFF", textDecoration: "none" }}
         >
-          Book My Free Consultation
+          Book My Consultation
         </Link>
         <p className="mt-4">
           <a href="tel:8663444955" className="text-sm underline underline-offset-4" style={{ color: "rgba(255,255,255,0.7)" }}>

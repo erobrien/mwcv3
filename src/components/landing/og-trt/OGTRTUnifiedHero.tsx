@@ -36,7 +36,7 @@ export const OGTRTUnifiedHero = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              BOOK MY FREE CONSULTATION
+              BOOK MY CONSULTATION
             </button>
             <p
               className="mt-8 text-sm"
@@ -47,7 +47,7 @@ export const OGTRTUnifiedHero = () => {
           </div>
           <div className="w-full">
             <UnifiedLeadForm
-              heading="Book Your Free Consultation"
+              heading="Book Your Consultation"
               formId="unified-lead-form"
               service="trt"
               source="og-lp-trt"

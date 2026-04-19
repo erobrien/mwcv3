@@ -12,7 +12,7 @@ const defaultSteps: Step[] = [
     number: "01",
     title: "BOOK MY VISIT",
     subtitle: "TAKES 2 MINUTES",
-    body: "Schedule online or call now. Same-day appointments often available. Choose Richmond, Newport News, or Virginia Beach.",
+    body: "Schedule online or call now. Appointments often available. Choose Richmond, Newport News, or Virginia Beach.",
   },
   {
     number: "02",
@@ -47,7 +47,7 @@ const HowItWorksSection = ({
   heading = "FROM FIRST CALL TO FEELING BETTER",
   subheading = "Most members complete their evaluation and know their results in a single 60-minute visit.",
   steps = defaultSteps,
-  ctaText = "BOOK MY FREE CONSULTATION",
+  ctaText = "BOOK MY CONSULTATION",
 }: Props) => (
   <section style={{ background: "#EBEAE8" }} className="py-20 px-6 md:px-8">
     <div className="max-w-[1200px] mx-auto text-center">

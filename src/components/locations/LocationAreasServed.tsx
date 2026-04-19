@@ -58,7 +58,7 @@ export const LocationAreasServed = ({ location }: Props) => {
 
         {location.drivingContext.length > 0 && (
           <p className="text-center text-[12px] mb-6" style={{ color: "#999" }}>
-            {location.drivingContext.join("  ·  ")}
+            {location.drivingContext.join(" · ")}
           </p>
         )}
 

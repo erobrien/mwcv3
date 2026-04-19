@@ -6,7 +6,7 @@ export const OGTRT2FinalCTA = () => (
       <div className="text-center max-w-[640px] mx-auto mb-12 md:mb-16">
         <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: "#003366" }}>Find Out What Your Testosterone Levels Say</h2>
       </div>
-      <OGTRT2LeadForm heading="Get Started, It's Free" formId="bottom" />
+      <OGTRT2LeadForm heading="Get Started, At No Cost" formId="bottom" />
     </div>
   </section>
 );

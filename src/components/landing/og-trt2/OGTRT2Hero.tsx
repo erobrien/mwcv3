@@ -15,7 +15,7 @@ export const OGTRT2Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-8 md:gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 rounded-lg px-4 py-1.5 mb-6" style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", fontSize: 13, fontWeight: 600, letterSpacing: "0.04em" }}>
-              <FlaskConical size={14} /> Free Testosterone Testing — Limited Time
+              <FlaskConical size={14} /> Testosterone Testing — Limited Time
             </div>
 
             <h1 className="font-bold leading-[1.08]" style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 700, letterSpacing: "-0.5px", marginBottom: 20 }}>
@@ -24,7 +24,7 @@ export const OGTRT2Hero = () => {
             </h1>
 
             <p className="text-base md:text-lg leading-relaxed max-w-[520px]" style={{ color: "rgba(255,255,255,0.75)", marginBottom: 32 }}>
-              Physician-supervised TRT at 3 Virginia clinics. Same-day labs. Real results. No referral needed.
+              Physician-supervised TRT at 3 Virginia clinics. On-site labs. Real results. No referral needed.
             </p>
 
             <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-lg px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
@@ -32,7 +32,7 @@ export const OGTRT2Hero = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              Book Your Free Consult <ArrowRight className="h-4 w-4" />
+              Book Your Consultation <ArrowRight className="h-4 w-4" />
             </button>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

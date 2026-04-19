@@ -75,7 +75,7 @@ const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2St
       <div className="mb-4 flex items-center justify-center gap-2" data-spec-id="step6-urgency">
         <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#34D399" }} />
         <span style={{ fontFamily: font, fontWeight: 500, fontSize: 14, color: "#B8B6B2", letterSpacing: "0.02em" }}>
-          Same-day appointments available today
+          Appointments available today
         </span>
       </div>
 

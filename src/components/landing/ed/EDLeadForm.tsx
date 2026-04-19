@@ -8,7 +8,7 @@ interface EDLeadFormProps {
 }
 
 export const EDLeadForm = ({
-  heading = "Schedule Your Private Visit — Free",
+  heading = "Schedule Your Private Visit ",
   formId = "hero",
 }: EDLeadFormProps) => {
   const navigate = useNavigate();

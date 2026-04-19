@@ -43,7 +43,7 @@ export const TRT2MobileCTA = () => {
           border: "none",
         }}
       >
-        Book Free Consult
+        Book Consult
       </button>
       <a
         href="tel:8663444955"

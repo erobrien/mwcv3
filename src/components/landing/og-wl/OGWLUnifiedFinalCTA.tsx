@@ -10,15 +10,15 @@ export const OGWLUnifiedFinalCTA = () => (
         className="text-2xl md:text-3xl font-bold leading-tight mb-3"
         style={{ color: "#FFFFFF" }}
       >
-        Book a Free Consultation at Any of Our 3 Virginia Centers.
+        Book a Consultation at Any of Our 3 Virginia Centers.
       </h2>
       <p className="text-base mb-10" style={{ color: "rgba(255,255,255,0.6)" }}>
-        Same-day appointments available.
+        Appointments available.
       </p>
 
       <div className="flex justify-center">
         <UnifiedLeadForm
-          heading="Book My Free Consultation"
+          heading="Book My Consultation"
           formId="og-wl-final-form"
           service="weight-loss"
           source="og-lp-weightloss-v2"

@@ -135,7 +135,7 @@ export const WLHero = () => {
                 e.currentTarget.style.boxShadow = "0 4px 14px rgba(232,103,10,0.4)";
               }}
             >
-              Book Your Free Consult
+              Book Your Consultation
             </button>
 
             {/* Trust Strip */}

@@ -7,7 +7,7 @@ interface Props {
 
 const DontWaitBanner = ({
   heading = "DON'T WAIT TO FEEL BETTER",
-  subheading = "Same-day appointments available. Most members see a physician within days of scheduling.",
+  subheading = "Appointments available. Most members see a physician within days of scheduling.",
 }: Props) => (
   <section style={{ background: "#1A1A2E" }} className="py-16 px-6 md:px-8 text-center">
     <div className="max-w-[800px] mx-auto">
@@ -22,7 +22,7 @@ const DontWaitBanner = ({
         className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider transition-opacity duration-200"
         style={{ background: "#FFFFFF", color: "#000033", textDecoration: "none" }}
       >
-        BOOK MY FREE CONSULTATION
+        BOOK MY CONSULTATION
       </Link>
     </div>
   </section>

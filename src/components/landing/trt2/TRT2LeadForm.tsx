@@ -6,7 +6,7 @@ interface TRT2LeadFormProps {
   heading?: string;
 }
 
-export const TRT2LeadForm = ({ heading = "Get Started, It's Free" }: TRT2LeadFormProps) => {
+export const TRT2LeadForm = ({ heading = "Get Started, At No Cost" }: TRT2LeadFormProps) => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -170,7 +170,7 @@ export const TRT2LeadForm = ({ heading = "Get Started, It's Free" }: TRT2LeadFor
           onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
       </form>
 

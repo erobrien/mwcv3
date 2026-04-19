@@ -39,7 +39,7 @@ export const UnifiedMobileCTA = ({ targetId = "unified-lead-form" }: UnifiedMobi
         className="w-full py-4 text-white font-bold text-sm uppercase tracking-wider cursor-pointer"
         style={{ background: "transparent", border: "none" }}
       >
-        BOOK MY FREE CONSULTATION
+        BOOK MY CONSULTATION
       </button>
     </div>
   );

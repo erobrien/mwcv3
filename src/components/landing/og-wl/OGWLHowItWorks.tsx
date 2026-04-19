@@ -2,7 +2,7 @@ import { Calendar, Pill, TrendingDown, ChevronRight } from "lucide-react";
 
 export const OGWLHowItWorks = () => {
   const steps = [
-    { number: "01", icon: Calendar, title: "Book Your Free Visit", description: "Schedule at any of our 3 Virginia locations. Your physician reviews your history, goals, and runs comprehensive bloodwork." },
+    { number: "01", icon: Calendar, title: "Book Your Visit", description: "Schedule at any of our 3 Virginia locations. Your physician reviews your history, goals, and runs comprehensive bloodwork." },
     { number: "02", icon: Pill, title: "Get Your GLP-1 Prescription", description: "If you qualify, your physician prescribes Semaglutide or another GLP-1 medication tailored to your body and goals." },
     { number: "03", icon: TrendingDown, title: "Lose Weight with Ongoing Support", description: "Monthly check-ins, lab monitoring, and dosage adjustments. We don't just prescribe and disappear." },
   ];
@@ -32,7 +32,7 @@ export const OGWLHowItWorks = () => {
           <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-lg px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02] border-none"
             style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}>
-            Book Your Free Consult
+            Book Your Consultation
           </button>
         </div>
       </div>

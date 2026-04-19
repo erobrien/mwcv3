@@ -51,7 +51,7 @@ export const OGWLUnifiedHero = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              Book My Free Consultation
+              Book My Consultation
             </button>
 
             <p
@@ -64,7 +64,7 @@ export const OGWLUnifiedHero = () => {
 
           <div className="w-full">
             <UnifiedLeadForm
-              heading="Book Your Free Consultation"
+              heading="Book Your Consultation"
               formId="wl-hero-form"
               service="weight-loss"
               source="og-lp-weightloss-v2"

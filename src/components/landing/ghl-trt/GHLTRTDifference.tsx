@@ -4,13 +4,13 @@ import teamPhoto from "@/assets/lp/mwc-team-scrubs.webp";
 const bullets = [
   "10,000+ members treated across 10 years of practice",
   "Your treatment is managed by a licensed physician from start to finish",
-  "Comprehensive in-center testing with same-day results",
+  "Comprehensive in-center testing with results reviewed in-visit",
   "Long-term optimization focus, not quick fixes",
 ];
 
 const features = [
   { icon: UserCheck01, title: "Real Doctor-Patient Relationship", desc: "Face-to-face with the same licensed physician every visit. Not a PA on a screen." },
-  { icon: Microscope, title: "Comprehensive Testing", desc: "On-site labs with same-day results. No waiting days for a phone call." },
+  { icon: Microscope, title: "Comprehensive Testing", desc: "On-site labs with results reviewed in-visit. No waiting days for a phone call." },
   { icon: Sliders04, title: "Personalized Protocols", desc: "Your treatment plan is designed for your body, your symptoms, your goals." },
   { icon: ActivityHeart, title: "Ongoing Monitoring", desc: "We track your levels and health markers to help support the best possible outcomes." },
 ];

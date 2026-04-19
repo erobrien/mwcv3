@@ -39,7 +39,7 @@ export const MedicalDisclaimer = ({ variant = "full" }: MedicalDisclaimerProps) 
         </p>
         
         <p>
-          <strong className="text-foreground">Results May Vary:</strong> Individual results are not guaranteed and may vary 
+          <strong className="text-foreground">Results May Vary:</strong> Individual results are not evidence-based and may vary 
           based on individual circumstances including health conditions, adherence to treatment, and other factors.
         </p>
         

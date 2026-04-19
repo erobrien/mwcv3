@@ -52,7 +52,7 @@ export const TRTv2ProblemAgitation = () => {
             onMouseEnter={(e) => { e.currentTarget.style.color = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = "#E8670A"; }}
           >
-            Find Out for Free →
+            Find Out Today →
           </button>
         </div>
       </div>

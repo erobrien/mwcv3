@@ -6,7 +6,7 @@ import DontWaitBanner from "@/components/services/sections/DontWaitBanner";
 import ConsultationFormSection from "@/components/services/sections/ConsultationFormSection";
 
 const wlSteps = [
-  { number: "01", title: "BOOK YOUR VISIT", subtitle: "NO REFERRAL REQUIRED", body: "Schedule your free weight loss consultation. We'll start building your plan from the first visit. No referral required." },
+  { number: "01", title: "BOOK YOUR VISIT", subtitle: "NO REFERRAL REQUIRED", body: "Schedule your weight loss consultation. We'll start building your plan from the first visit. No referral required." },
   { number: "02", title: "METABOLIC TESTING", subtitle: "COMPREHENSIVE LABS", body: "Comprehensive lab work including metabolic panel, thyroid function, A1C, lipids, and hormone levels. We identify the metabolic and hormonal factors driving your weight." },
   { number: "03", title: "YOUR WEIGHT LOSS PLAN", subtitle: "BUILT FOR YOUR BODY", body: "Your physician designs a personalized weight loss protocol \u2014 GLP-1 medications, appetite management, hormone optimization, and nutritional guidance tailored to your body and goals." },
   { number: "04", title: "ONGOING MONITORING", subtitle: "SUSTAINABLE RESULTS", body: "Regular check-ins, lab monitoring, and dosage adjustments keep your progress on track. Your provider adapts your plan as your body responds. Sustainable results, not crash dieting." },
@@ -76,7 +76,7 @@ const FatBurningSolutions = () => (
           Each individual's treatment and/or results may vary based upon the circumstances and the member's specific situation.
         </p>
         <Link to="/book" className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </Link>
       </div>
       <img
@@ -98,7 +98,7 @@ const WeightLossService = () => (
     comparisonRows={getComparisonDataForCategory("weight-loss")}
     faqs={weightLossFaqs}
     bottomCtaHeading="Find Out If Medical Weight Loss Is Right for You"
-    bottomCtaSubtext="Your free consultation includes metabolic testing and a personalized plan. Stop guessing \u2014 start losing weight with physician-guided care."
+    bottomCtaSubtext="Your no-cost consultation includes metabolic testing and a personalized plan. Stop guessing \u2014 start losing weight with physician-guided care."
     testimonials={wlTestimonials}
     afterHeroContent={
       <HowItWorksSection
@@ -106,7 +106,7 @@ const WeightLossService = () => (
         heading="HOW IT WORKS"
         subheading="Most members complete their evaluation in a single 60-minute visit and leave with lab results in hand."
         steps={wlSteps}
-        ctaText="BOOK MY FREE CONSULTATION"
+        ctaText="BOOK MY CONSULTATION"
       />
     }
     afterCardsContent={<FatBurningSolutions />}

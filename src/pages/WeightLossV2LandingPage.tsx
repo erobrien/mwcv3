@@ -32,7 +32,7 @@ const WeightLossV2LandingPage = () => {
   useEffect(() => {
     document.title = "Physician-Supervised Weight Loss | GLP-1 Therapy | Men's Wellness Centers";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "FDA-approved GLP-1 medications like Semaglutide prescribed by Virginia physicians. Real medical oversight. No mail-order shortcuts. Free consultation.");
+    if (meta) meta.setAttribute("content", "FDA-approved GLP-1 medications like Semaglutide prescribed by Virginia physicians. Real medical oversight. No mail-order shortcuts. Consultation.");
 
     if (!document.getElementById("wl-v2-lp-jsonld")) {
       const script = document.createElement("script");

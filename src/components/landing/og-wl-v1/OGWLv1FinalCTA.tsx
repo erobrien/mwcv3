@@ -8,10 +8,10 @@ export const OGWLv1FinalCTA = () => (
           Ready to See Your Labs?
         </h2>
         <p className="mt-3 text-base" style={{ color: "rgba(255,255,255,0.65)" }}>
-          Book a free consultation at any of our 3 Virginia centers. Your doctor starts with bloodwork, not guesswork.
+          Book a no-cost consultation at any of our 3 Virginia centers. Your doctor starts with bloodwork, not guesswork.
         </p>
       </div>
-      <OGWLv1LeadForm heading="Book My Free Consultation" formId="bottom" />
+      <OGWLv1LeadForm heading="Book My Consultation" formId="bottom" />
     </div>
   </section>
 );

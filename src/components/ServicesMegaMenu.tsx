@@ -155,7 +155,7 @@ export const ServicesMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }
               onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(0,0,51,0.8)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#000033"; }}
             >
-              Book a Free Consultation
+              Book a Consultation
             </button>
           </div>
         </div>

@@ -24,7 +24,7 @@ export const OGWLHero = () => {
               style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", border: "none", marginBottom: 40 }}
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}>
-              Book Your Free Consult <ArrowRight className="h-4 w-4" />
+              Book Your Consultation <ArrowRight className="h-4 w-4" />
             </button>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[{ icon: ShieldCheck, text: "LegitScript Certified" }, { icon: Users, text: "10,000+ Members" }, { icon: Activity, text: "Monthly Monitoring" }, { icon: MapPin, text: "3 VA Locations" }].map(({ icon: Icon, text }, i) => (

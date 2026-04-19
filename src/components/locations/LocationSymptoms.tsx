@@ -102,7 +102,7 @@ export const LocationSymptoms = ({ location }: Props) => {
             data-location={location.slug.replace("-va", "")}
             data-cta-type="book"
           >
-            BOOK MY FREE CONSULTATION
+            BOOK MY CONSULTATION
           </button>
         </div>
       </div>

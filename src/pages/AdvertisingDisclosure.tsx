@@ -30,7 +30,7 @@ const AdvertisingDisclosure = () => (
         <p className="!mb-2">The information provided on this website and in our marketing materials is for informational and educational purposes only. It is not intended to be a substitute for professional medical advice, diagnosis, or treatment.</p>
         <ul className="list-disc pl-5 space-y-1 text-[14px]">
           <li>Individual results may vary based on medical history, health conditions, and response to treatment</li>
-          <li>Treatment outcomes are not guaranteed</li>
+          <li>Treatment outcomes are not evidence-based</li>
           <li>All treatment decisions are made by licensed healthcare providers based on individual evaluation</li>
           <li>Prescription medications may have side effects and contraindications</li>
         </ul>
@@ -42,7 +42,7 @@ const AdvertisingDisclosure = () => (
       <p>When we feature patient testimonials or reviews in our marketing:</p>
       <ul className="list-disc">
         <li>Testimonials reflect the real experiences of actual patients</li>
-        <li>Results described in testimonials are not guaranteed and may not be typical</li>
+        <li>Results described in testimonials are not evidence-based and may not be typical</li>
         <li>We do not compensate patients for testimonials unless clearly disclosed</li>
         <li>We do not fabricate or materially alter patient testimonials</li>
         <li>Patient privacy is protected; any identifying information is shared only with consent</li>
@@ -63,7 +63,7 @@ const AdvertisingDisclosure = () => (
     <section>
       <h2>"Results May Vary" Disclaimer</h2>
       <WarningCallout title="Individual Results May Vary">
-        <p className="!mb-0">The effectiveness of any treatment depends on many factors including individual health conditions, adherence to treatment plans, genetic factors, lifestyle factors, and overall health status. Results featured in our marketing represent individual experiences and should not be construed as guaranteed outcomes.</p>
+        <p className="!mb-0">The effectiveness of any treatment depends on many factors including individual health conditions, adherence to treatment plans, genetic factors, lifestyle factors, and overall health status. Results featured in our marketing represent individual experiences and should not be construed as evidence-based outcomes.</p>
       </WarningCallout>
     </section>
 

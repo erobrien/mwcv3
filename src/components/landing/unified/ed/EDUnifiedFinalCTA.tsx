@@ -19,7 +19,7 @@ export const EDUnifiedFinalCTA = () => {
           </div>
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Claim Your Free Consultation"
+              heading="Claim Your Consultation"
               formId="ed-final-form"
               service="ed"
               source="lp-ed-final"

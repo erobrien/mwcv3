@@ -8,7 +8,7 @@ interface OGTRT2LeadFormProps {
 }
 
 export const OGTRT2LeadForm = ({
-  heading = "Get Started, It's Free",
+  heading = "Get Started, At No Cost",
   formId = "hero",
 }: OGTRT2LeadFormProps) => {
   const navigate = useNavigate();
@@ -124,7 +124,7 @@ export const OGTRT2LeadForm = ({
           onMouseEnter={(e) => { e.currentTarget.style.background = "#004883"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#003366"; }}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
 
         <div className="text-center mt-3 text-[12px] flex flex-col gap-1 items-center" style={{ color: "#6c757d" }}>

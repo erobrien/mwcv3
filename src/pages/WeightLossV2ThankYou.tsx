@@ -156,7 +156,7 @@ const WeightLossV2ThankYou = () => {
               </li>
               <li style={{ marginBottom: 8, paddingLeft: 20, position: "relative" }}>
                 <span style={{ position: "absolute", left: 0, color: "#28a745" }}>✓</span>
-                Schedule your free consultation appointment
+                Schedule your no-cost consultation appointment
               </li>
               <li style={{ marginBottom: 8, paddingLeft: 20, position: "relative" }}>
                 <span style={{ position: "absolute", left: 0, color: "#28a745" }}>✓</span>

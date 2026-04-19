@@ -13,7 +13,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   name: "Men's Wellness Centers",
-  description: "Physician-supervised testosterone replacement therapy at 3 Virginia clinic locations. Free testing, same-day results.",
+  description: "Physician-supervised testosterone replacement therapy at 3 Virginia clinic locations. Testing, results reviewed in-visit.",
   url: "https://menswellnesscenters.com",
   telephone: "866-344-4955",
   medicalSpecialty: "Men's Health",
@@ -29,9 +29,9 @@ const jsonLd = {
 
 const OGTRT2LandingPage = () => {
   useEffect(() => {
-    document.title = "Free Testosterone Testing | Men's Wellness Centers Virginia";
+    document.title = "Testosterone Testing | Men's Wellness Centers Virginia";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Physician-supervised TRT at 3 Virginia centers. Free testosterone testing, same-day results. No referral needed.");
+    if (meta) meta.setAttribute("content", "Physician-supervised TRT at 3 Virginia centers. Testosterone testing, results reviewed in-visit. No referral needed.");
 
     if (!document.getElementById("og-trt2-lp-jsonld")) {
       const script = document.createElement("script");

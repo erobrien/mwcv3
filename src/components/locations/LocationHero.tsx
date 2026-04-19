@@ -106,7 +106,7 @@ export const LocationHero = ({ location }: Props) => {
             data-location={location.slug.replace("-va", "")}
             data-cta-type="book"
           >
-            Book My Free Consultation
+            Book My Consultation
           </button>
           <a
             href={`tel:${location.phone.replace(/[^0-9]/g, "")}`}

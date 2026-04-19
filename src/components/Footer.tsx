@@ -118,7 +118,7 @@ export const Footer = () => (
         {/* Col 5 — Resources */}
         <div className="hidden lg:block">
           <FooterHeading>Resources</FooterHeading>
-          <FooterLink to="/book">Book My Free Consultation</FooterLink>
+          <FooterLink to="/book">Book My Consultation</FooterLink>
           <FooterLink to="/#faq">FAQ</FooterLink>
           <FooterLink to="/book">Contact</FooterLink>
         </div>

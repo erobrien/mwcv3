@@ -65,7 +65,7 @@ export const OGTRT2UnifiedTestimonials = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            BOOK MY FREE CONSULTATION
+            BOOK MY CONSULTATION
           </button>
         </div>
       </div>

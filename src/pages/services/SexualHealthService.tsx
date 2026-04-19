@@ -77,7 +77,7 @@ const EDIntro = () => (
           Around 30 million men in the U.S. deal with ED — and it's treatable. About 52% of men who are prescribed common oral tablets don't end up using them for long. That's because a real solution needs to be as individual as you are.
         </p>
         <p className="mt-4 text-base leading-relaxed" style={{ color: "#4A4A4A" }}>
-          Finding out what works means looking at the whole picture. Our physicians are dedicated to understanding the physical and mental factors at play, so we can build a personalized therapy that helps you feel like yourself again.
+          Finding out what works means looking at the whole picture. Our physicians are dedicated to understanding the physical and mental factors at play, so we can build a personalized therapy that helps you talk to a physician.
         </p>
       </div>
       <img
@@ -111,7 +111,7 @@ const EDSolutions = () => (
           Each individual's treatment and/or results may vary based upon the circumstances and the member's specific situation.
         </p>
          <Link to="/book" className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </Link>
       </div>
     </div>
@@ -140,7 +140,7 @@ const EDCauses = () => (
       </div>
       <div className="text-center mt-10">
         <Link to="/book" className="inline-block rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </Link>
       </div>
     </div>
@@ -168,7 +168,7 @@ const EDSpecialist = () => (
         ))}
       </div>
       <Link to="/book" className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-        BOOK MY FREE CONSULTATION
+        BOOK MY CONSULTATION
       </Link>
     </div>
   </section>
@@ -184,7 +184,7 @@ const SexualHealthService = () => (
     comparisonRows={getComparisonDataForCategory("sexual-health")}
     faqs={sexualHealthFaqs}
     bottomCtaHeading="Take the First Step Toward Better Sexual Health"
-    bottomCtaSubtext="Confidential consultations. Proven treatments. Real results. Book your free visit and take control of your sexual health today."
+    bottomCtaSubtext="Confidential consultations. Proven treatments. Real results. Book your no-cost visit and take control of your sexual health today."
     testimonials={shTestimonials}
     afterHeroContent={
       <>

@@ -51,12 +51,12 @@ export const LocationProcess = ({ location }: Props) => {
             onMouseEnter={(e) => (e.currentTarget.style.background = "#EA580C")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#F97316")}
           >
-            Book My Free Consultation
+            Book My Consultation
           </button>
         </div>
 
         <p className="first-visit-answer-block text-[13px] md:text-sm leading-relaxed max-w-3xl mb-8 md:mb-12" style={{ color: "#666", fontStyle: "italic" }}>
-          Your first visit to Men's Wellness Centers takes 60-90 minutes. You meet with a board-certified physician, receive comprehensive blood work with same-day results from our CLIA-certified lab, and can start treatment the same day. No referral needed. Free consultation. Located at {location.address}, {location.cityStateZip}.
+          Your first visit to Men's Wellness Centers takes 60-90 minutes. You meet with a board-certified physician, receive comprehensive blood work with results reviewed in-visit from our CLIA-certified lab, and can start treatment the same day. No referral needed. Consultation. Located at {location.address}, {location.cityStateZip}.
         </p>
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 items-stretch">

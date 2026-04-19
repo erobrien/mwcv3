@@ -194,7 +194,7 @@ export const WLTestimonials = () => {
               e.currentTarget.style.boxShadow = "0 4px 14px rgba(232,103,10,0.3)";
             }}
           >
-            Book Your Free Consultation
+            Book Your Consultation
           </button>
         </div>
       </div>

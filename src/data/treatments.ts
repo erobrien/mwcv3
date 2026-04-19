@@ -37,7 +37,7 @@ export const treatments: Treatment[] = [
     icon: "Shield",
     link: "/services/testosterone-therapy",
     description:
-      "Physician-supervised testosterone injections with on-site monitoring at our Virginia centers. Same-day labs, same-day treatment. Your protocol is built around your bloodwork — not a one-size-fits-all script.",
+      "Physician-supervised testosterone injections with on-site monitoring at our Virginia centers. On-site labs, same-day treatment. Your protocol is built around your bloodwork — not a one-size-fits-all script.",
   },
   {
     name: "Enclomiphene Therapy",
@@ -346,7 +346,7 @@ export interface FAQ {
 }
 
 export const faqData: FAQ[] = [
-  { question: "How much does treatment cost?", answer: "Treatment plans are transparent and straightforward. Testosterone therapy starts at $199/month, ED medications at $99/month, and weight loss programs at $399/month. Your initial consultation and testosterone test are free. There are no hidden fees — follow-up visits, lab monitoring, and protocol adjustments are included in your plan." },
+  { question: "How much does treatment cost?", answer: "Treatment plans are transparent and straightforward. Testosterone therapy starts at $199/month, ED medications at $99/month, and weight loss programs at $399/month. Your initial consultation and testosterone test are included at no extra cost. There are no hidden fees — follow-up visits, lab monitoring, and protocol adjustments are included in your plan." },
   { question: "What should I expect during my first visit?", answer: "Your first visit takes about 60 minutes. You'll meet face-to-face with a licensed Virginia physician, have your blood drawn on-site, and review your results before you leave. If treatment is appropriate, many men begin the same day. No referrals needed." },
   { question: "Who will be treating me?", answer: "You'll see a licensed Virginia physician at every visit — not a PA, not a nurse practitioner, not someone on a screen. The same doctor manages your care from your first visit through ongoing optimization." },
   { question: "Do I need a referral from my primary care doctor?", answer: "No. You can book directly with us. No referrals, no pre-approvals, no waiting for your PCP to return a call." },
@@ -368,7 +368,7 @@ export const trtFaqs: FAQ[] = [
   { question: "Will TRT affect my fertility?", answer: "Standard testosterone injections can suppress sperm production. If fertility is a concern, we offer enclomiphene therapy, which boosts testosterone naturally while preserving sperm production. Your physician will discuss the best option for your situation." },
   { question: "What's the difference between injections and pellets?", answer: "Injections are administered weekly at our center for precise dosing control. Pellets are implanted every 3-6 months for steady, low-maintenance testosterone delivery. Both are effective — the best choice depends on your lifestyle and preferences." },
   { question: "Do I need blood work before starting?", answer: "Yes. We draw blood on-site during your first visit and review your testosterone, PSA, and key health markers before you leave. Treatment decisions are always based on your actual lab results, not symptoms alone." },
-  { question: "How much does TRT cost?", answer: "Testosterone therapy starts at $199/month. This includes physician visits, lab monitoring, treatment administration, and ongoing protocol adjustments. Your initial consultation and testosterone test are free." },
+  { question: "How much does TRT cost?", answer: "Testosterone therapy starts at $199/month. This includes physician visits, lab monitoring, treatment administration, and ongoing protocol adjustments. Your initial consultation and testosterone test are included at no extra cost." },
   { question: "Can I stop TRT once I start?", answer: "Yes. TRT is not a lifetime commitment by default. If you choose to stop, your physician will guide you through a safe tapering protocol. Some men use TRT seasonally or for specific periods." },
   { question: "What makes your centers different from online TRT providers?", answer: "You see a real physician face-to-face at every visit. Your labs are drawn and reviewed on-site the same day. Your medication is dispensed before you leave. No video calls, no mail-order, no guessing. That's in-person care." },
 ];
@@ -382,8 +382,8 @@ export const sexualHealthFaqs: FAQ[] = [
   { question: "Is ED treatment safe?", answer: "All of our ED treatments are FDA-approved and physician-supervised. We evaluate your cardiovascular health and medication interactions before prescribing. Regular monitoring ensures ongoing safety." },
   { question: "Can low testosterone cause ED?", answer: "Absolutely. Low testosterone is one of the most common and treatable causes of ED. We test your hormones during your first visit because treating the underlying hormonal issue often improves erectile function significantly." },
   { question: "How discreet is the process?", answer: "Completely. Our centers are designed for privacy — from separate consultation rooms to discreet check-in. Medications are dispensed on-site so there's no pharmacy pickup. Everything stays between you and your physician." },
-  { question: "How much does ED treatment cost?", answer: "Prescription ED medications start at $99/month. ICP therapy is $199/month. PT-141 is $199/month. Your initial consultation is free, and all follow-up visits are included in your plan." },
-  { question: "Do I need lab work for ED treatment?", answer: "We recommend baseline bloodwork to check testosterone and other markers that may be contributing to ED. This is done on-site during your first visit with same-day results." },
+  { question: "How much does ED treatment cost?", answer: "Prescription ED medications start at $99/month. ICP therapy is $199/month. PT-141 is $199/month. Your initial consultation is at no cost, and all follow-up visits are included in your plan." },
+  { question: "Do I need lab work for ED treatment?", answer: "We recommend baseline bloodwork to check testosterone and other markers that may be contributing to ED. This is done on-site during your first visit with results reviewed in-visit." },
 ];
 
 export const weightLossFaqs: FAQ[] = [
@@ -395,7 +395,7 @@ export const weightLossFaqs: FAQ[] = [
   { question: "What are the side effects?", answer: "Common early side effects of GLP-1 medications include mild nausea, which typically resolves within 2-3 weeks. We start at low doses and titrate slowly to minimize side effects. Your physician monitors you closely throughout." },
   { question: "How long will I need treatment?", answer: "Most weight loss programs run 6-12 months depending on your goals. Some men transition to maintenance protocols after reaching their target. Your physician will create a timeline based on your specific situation." },
   { question: "Can I combine weight loss with TRT?", answer: "Yes, and many men do. Low testosterone often contributes to weight gain and makes losing weight harder. Optimizing your hormones while on a weight loss program can accelerate results and improve energy for exercise." },
-  { question: "How much does it cost?", answer: "Semaglutide starts at $399/month. Tirzepatide starts at $499/month. Phentermine starts at $99/month. Initial consultation and bloodwork are free." },
+  { question: "How much does it cost?", answer: "Semaglutide starts at $399/month. Tirzepatide starts at $499/month. Phentermine starts at $99/month. Initial consultation and bloodwork are included at no extra cost." },
   { question: "Do you accept HSA/FSA?", answer: "Yes, our weight loss programs are eligible for HSA and FSA payment. We provide all necessary documentation for your flexible spending account." },
 ];
 

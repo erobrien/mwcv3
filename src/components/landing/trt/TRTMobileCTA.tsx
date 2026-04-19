@@ -33,7 +33,7 @@ export const TRTMobileCTA = () => {
         border: "none",
       }}
     >
-      Book My Free Consultation
+      Book My Consultation
     </button>
   );
 };

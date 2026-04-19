@@ -55,7 +55,7 @@ const WeightLossLandingPage = () => {
         />
         <LandingFinalCTA
           headline="Ready to See Your Labs?"
-          subheadline="Book a free consultation at any of our 3 Virginia centers. Your physician starts with bloodwork, not guesswork."
+          subheadline="Book a no-cost consultation at any of our 3 Virginia centers. Your physician starts with bloodwork, not guesswork."
         />
       </main>
       <LandingFooter />

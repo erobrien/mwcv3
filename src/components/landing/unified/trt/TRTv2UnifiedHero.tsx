@@ -28,14 +28,14 @@ export const TRTv2UnifiedHero = () => {
               className="md:hidden w-full h-[52px] rounded-full font-bold text-sm uppercase tracking-wider cursor-pointer mb-6"
               style={{ background: "#E8670A", color: "#FFFFFF", border: "none" }}
             >
-              BOOK MY FREE CONSULTATION
+              BOOK MY CONSULTATION
             </button>
           </div>
 
           {/* Right: Form */}
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Claim Your Free Consultation"
+              heading="Claim Your Consultation"
               formId="trt-hero-form"
               service="trt"
               source="lp-trt-v2"

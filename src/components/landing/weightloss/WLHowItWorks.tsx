@@ -5,7 +5,7 @@ export const WLHowItWorks = () => {
     {
       number: "01",
       icon: Calendar,
-      title: "Book Your Free Visit",
+      title: "Book Your Visit",
       description: "Schedule at any of our 3 Virginia locations. Your physician reviews your history, goals, and runs comprehensive bloodwork.",
     },
     {
@@ -181,7 +181,7 @@ export const WLHowItWorks = () => {
               e.currentTarget.style.boxShadow = "0 4px 14px rgba(232,103,10,0.4)";
             }}
           >
-            Book Your Free Consult
+            Book Your Consultation
           </button>
         </div>
       </div>

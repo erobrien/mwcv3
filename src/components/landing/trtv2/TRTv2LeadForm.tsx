@@ -8,7 +8,7 @@ interface TRTv2LeadFormProps {
 }
 
 export const TRTv2LeadForm = ({
-  heading = "Get Started — It's Free",
+  heading = "Get Started — At No Cost",
   formId = "hero",
 }: TRTv2LeadFormProps) => {
   const navigate = useNavigate();
@@ -159,7 +159,7 @@ export const TRTv2LeadForm = ({
           onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
 
         <div className="text-center mt-3 text-[12px] flex flex-col gap-1 items-center" style={{ color: "#6c757d" }}>

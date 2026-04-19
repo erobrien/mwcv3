@@ -102,7 +102,7 @@ export const WLMobileCTA = () => {
           e.currentTarget.style.transform = "scale(1)";
         }}
       >
-        Book Free Consult
+        Book Consult
       </button>
 
       {/* Phone Button */}

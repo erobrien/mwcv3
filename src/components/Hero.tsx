@@ -7,7 +7,7 @@ const TICKER_ITEMS = [
   "10,000+ MEN TREATED",
   "4.9★ GOOGLE RATING",
   "3 VIRGINIA LOCATIONS",
-  "FREE CONSULTATION",
+  "CONSULTATION",
 ];
 
 export const Hero = () => {
@@ -84,7 +84,7 @@ export const Hero = () => {
             letterSpacing: "0.04em",
           }}
         >
-          10,000+ men treated · Free consultation · No referral
+          10,000+ men treated · Walk-ins welcome · No referral
         </p>
         <div className="mt-5 md:mt-6 flex flex-col sm:flex-row gap-3 justify-center w-full sm:w-auto">
           <a
@@ -94,7 +94,7 @@ export const Hero = () => {
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#EA580C"; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#F97316"; }}
           >
-            Book My Free Consultation
+            Book My Consultation
           </a>
           <a
             href="#locations"

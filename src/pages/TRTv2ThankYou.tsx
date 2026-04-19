@@ -50,7 +50,7 @@ const TRTv2ThankYou = () => {
           <div style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)", borderRadius: 12, padding: 24, border: "1px solid rgba(255,255,255,0.2)", marginBottom: 32 }}>
             <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 18, fontWeight: 600, marginBottom: 16, color: "#E8670A" }}>What Happens Next?</h3>
             <ul style={{ textAlign: "left", listStyle: "none", padding: 0, margin: 0, fontSize: 15, lineHeight: 1.6 }}>
-              {["Our team will call you within 60 minutes", "Schedule your free testosterone testing", "Meet privately with a physician", "Get same-day lab results and a custom plan"].map((t, i) => (
+              {["Our team will call you within 60 minutes", "Schedule your testosterone testing", "Meet privately with a physician", "Get same-day lab results and a custom plan"].map((t, i) => (
                 <li key={i} style={{ marginBottom: 8, paddingLeft: 20, position: "relative" }}>
                   <span style={{ position: "absolute", left: 0, color: "#28a745" }}>✓</span>{t}
                 </li>

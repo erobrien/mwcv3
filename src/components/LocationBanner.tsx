@@ -44,7 +44,7 @@ export const LocationBanner = () => {
             Visit Us Today
           </h2>
           <p className="mt-2 md:mt-3 max-w-xl mx-auto text-[13px] md:text-base" style={{ color: "#555" }}>
-            Three locations serving Richmond, Hampton Roads, and Virginia Beach. Same-day appointments available.
+            Three locations serving Richmond, Hampton Roads, and Virginia Beach. Appointments available.
           </p>
         </div>
 

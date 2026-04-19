@@ -48,7 +48,7 @@ export const OGTRTUnifiedHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#0F1D35"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#1B2A4A"; }}
           >
-            BOOK MY FREE CONSULTATION
+            BOOK MY CONSULTATION
           </button>
         </div>
       </div>

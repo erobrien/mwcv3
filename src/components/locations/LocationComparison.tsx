@@ -18,7 +18,7 @@ export const LocationComparison = () => {
           onMouseLeave={(e) => (e.currentTarget.style.background = "#F97316")}
           data-cta-type="book"
         >
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </button>
       }
     />

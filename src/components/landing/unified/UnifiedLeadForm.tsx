@@ -12,7 +12,7 @@ interface UnifiedLeadFormProps {
 }
 
 export const UnifiedLeadForm = ({
-  heading = "Claim Your Free Consultation",
+  heading = "Claim Your Consultation",
   formId = "unified-lead-form",
   service = "general",
   source = "landing-page",
@@ -186,7 +186,7 @@ export const UnifiedLeadForm = ({
           onMouseEnter={(e) => { e.currentTarget.style.background = "#0F1D35"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#1B2A4A"; }}
         >
-          Claim My Free Consultation
+          Claim My Consultation
         </button>
       </form>
 

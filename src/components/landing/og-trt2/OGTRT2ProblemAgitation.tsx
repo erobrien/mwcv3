@@ -40,7 +40,7 @@ export const OGTRT2ProblemAgitation = () => {
             style={{ color: "#004883" }}
             onMouseEnter={(e) => { e.currentTarget.style.color = "#003366"; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = "#004883"; }}
-          >Find Out for Free &rarr;</button>
+          >Find Out Today &rarr;</button>
         </div>
       </div>
     </section>

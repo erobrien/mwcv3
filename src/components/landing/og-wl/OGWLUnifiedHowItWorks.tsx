@@ -61,7 +61,7 @@ export const OGWLUnifiedHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#0F1D35"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#1B2A4A"; }}
           >
-            Book My Free Consultation
+            Book My Consultation
           </button>
         </div>
       </div>

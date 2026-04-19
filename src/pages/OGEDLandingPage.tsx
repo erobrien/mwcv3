@@ -50,7 +50,7 @@ const OGEDLandingPage = () => {
   useEffect(() => {
     document.title = "Confidential ED Treatment | Men's Wellness Centers Virginia";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Discreet, physician-supervised erectile dysfunction treatment at 3 Virginia centers. Personalized care from licensed providers. Free confidential consultation.");
+    if (meta) meta.setAttribute("content", "Discreet, physician-supervised erectile dysfunction treatment at 3 Virginia centers. Personalized care from licensed providers. Confidential consultation.");
 
     if (!document.getElementById("og-ed-lp-jsonld")) {
       const script = document.createElement("script");

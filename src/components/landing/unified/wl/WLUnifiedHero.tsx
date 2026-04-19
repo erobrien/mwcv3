@@ -23,12 +23,12 @@ export const WLUnifiedHero = () => {
               className="md:hidden w-full h-[52px] rounded-full font-bold text-sm uppercase tracking-wider cursor-pointer mb-6"
               style={{ background: "#E8670A", color: "#FFFFFF", border: "none" }}
             >
-              BOOK MY FREE CONSULTATION
+              BOOK MY CONSULTATION
             </button>
           </div>
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Claim Your Free Consultation"
+              heading="Claim Your Consultation"
               formId="wl-hero-form"
               service="weight-loss"
               source="lp-weight-loss-v2"

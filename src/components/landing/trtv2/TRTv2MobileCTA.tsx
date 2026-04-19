@@ -41,7 +41,7 @@ export const TRTv2MobileCTA = () => {
           background: "#E8670A", color: "#ffffff", boxShadow: "0 2px 8px rgba(232,103,10,0.3)", transition: "all 180ms ease",
         }}
       >
-        Book Free Consult
+        Book Consult
       </button>
       <a
         href="tel:8663444955"

@@ -12,10 +12,10 @@ export const OGTRT2UnifiedHero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div className="text-white">
             <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Free Testosterone Testing. Virginia Centers.
+              Testosterone Testing. Virginia Centers.
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
-              Free Testosterone Testing. Walk Out With Answers.
+              Testosterone Testing. Walk Out With Answers.
             </h1>
             <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.8)" }}>
               A licensed physician draws your blood, reviews results the same day, and tells you exactly where you stand. Three Virginia centers. No referral needed.
@@ -27,7 +27,7 @@ export const OGTRT2UnifiedHero = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              BOOK MY FREE CONSULTATION
+              BOOK MY CONSULTATION
             </button>
             <p className="text-xs mt-6" style={{ color: "rgba(255,255,255,0.45)" }}>
               LegitScript Certified · Trusted Since 2015 · HIPAA Compliant · 3 VA Locations
@@ -35,7 +35,7 @@ export const OGTRT2UnifiedHero = () => {
           </div>
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Book Your Free Lab Work"
+              heading="Book Your Lab Work"
               formId="og-trt2-lead-form"
               service="trt"
               source="og-lp-trt2"

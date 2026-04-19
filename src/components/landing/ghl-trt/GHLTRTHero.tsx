@@ -61,8 +61,8 @@ const GHLTRTHero = () => {
           <ul className="space-y-3 mb-8">
             {[
               "Physician-supervised TRT at 3 Virginia centers",
-              "On-site labs with same-day results",
-              "Free testosterone testing and consultation",
+              "On-site labs with results reviewed in-visit",
+              "Testosterone testing and consultation",
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-white/90 text-[15px]">
                 <Check size={18} className="text-[#2ECC71] mt-0.5 flex-shrink-0" />
@@ -80,7 +80,7 @@ const GHLTRTHero = () => {
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#CF5B09")}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E8670A")}
             >
-              Book My Free Consult
+              Book My Consultation
               <ArrowNarrowRight size={16} />
             </button>
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2.5 border border-white/20">

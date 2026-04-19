@@ -11,7 +11,7 @@ export const TRTv2UnifiedFinalCTA = () => {
               Find Out If TRT Is Right for You
             </h2>
             <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.8)" }}>
-              Schedule a confidential consultation at our Richmond, Newport News, or Virginia Beach center. Your first visit includes on-site blood work, same-day results, and a face-to-face review with a licensed physician.
+              Schedule a confidential consultation at our Richmond, Newport News, or Virginia Beach center. Your first visit includes on-site blood work, results reviewed in-visit, and a face-to-face review with a licensed physician.
             </p>
             <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.8)" }}>
               No referral needed. No long waits. Just answers.
@@ -27,7 +27,7 @@ export const TRTv2UnifiedFinalCTA = () => {
           {/* Right: Form */}
           <div className="flex justify-center md:justify-end">
             <UnifiedLeadForm
-              heading="Claim Your Free Consultation"
+              heading="Claim Your Consultation"
               formId="trt-final-form"
               service="trt"
               source="lp-trt-v2-final"

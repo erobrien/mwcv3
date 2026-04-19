@@ -24,7 +24,7 @@ const GHLTRTFinalCTA = () => (
         </p>
 
         <ul className="space-y-3 mb-10">
-          {["No obligation", "Same-day appointments", "100% confidential"].map((item, i) => (
+          {["No obligation", "Appointments", "100% confidential"].map((item, i) => (
             <li key={i} className="flex items-center gap-3 text-white/90 text-sm">
               <Check size={16} className="text-[#2ECC71]" />
               {item}

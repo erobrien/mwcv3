@@ -7,7 +7,7 @@ import DontWaitBanner from "@/components/services/sections/DontWaitBanner";
 import ConsultationFormSection from "@/components/services/sections/ConsultationFormSection";
 
 const trtSteps = [
-  { number: "01", title: "BOOK YOUR VISIT", subtitle: "NO REFERRAL NEEDED", body: "Schedule your free consultation online or call any of our three Virginia locations. No referral needed. Same-day and next-day appointments often available." },
+  { number: "01", title: "BOOK YOUR VISIT", subtitle: "NO REFERRAL NEEDED", body: "Schedule your no-cost consultation online or call any of our three Virginia locations. No referral needed. Same-day and next-day appointments often available." },
   { number: "02", title: "SAME-DAY LABS", subtitle: "RESULTS BEFORE YOU LEAVE", body: "At your first visit, we draw a comprehensive male hormone panel \u2014 Total T, Free T, Estradiol, PSA, CBC, CMP, Lipids, and Thyroid. Results are typically available the same day." },
   { number: "03", title: "REVIEW WITH YOUR PHYSICIAN", subtitle: "FACE-TO-FACE CONSULTATION", body: "Your physician reviews your lab results, symptoms, and health history to determine if TRT is right for you. You'll discuss protocol options, expected timeline, and monitoring plan." },
   { number: "04", title: "START YOUR TRT PROTOCOL", subtitle: "ONGOING OPTIMIZATION", body: "Begin your personalized testosterone therapy protocol. Regular follow-up labs and provider check-ins ensure your levels are optimized and your protocol is working." },
@@ -22,7 +22,7 @@ const trtTestimonials = [
 /* ─── MWC vs Competitors Comparison ─── */
 const TRTCompetitorComparison = () => {
   const rows = [
-    { feature: "Initial Evaluation", mwc: "In-person exam + same-day labs", online: "Online questionnaire only", pcp: "Standard blood panel (may not include full hormone panel)" },
+    { feature: "Initial Evaluation", mwc: "In-person exam + on-site labs", online: "Online questionnaire only", pcp: "Standard blood panel (may not include full hormone panel)" },
     { feature: "Lab Work", mwc: "Comprehensive male hormone panel (Total T, Free T, Estradiol, PSA, CBC, CMP, Lipids, Thyroid)", online: "Basic testosterone level only", pcp: "Limited panel \u2014 may require specialist referral for full workup" },
     { feature: "Provider", mwc: "Board-certified physician + dedicated NP", online: "Telemedicine provider (often PA or NP, limited oversight)", pcp: "PCP \u2014 generalist, not hormone specialist" },
     { feature: "Treatment Options", mwc: "Injectable T (Cypionate/Enanthate), with ancillary management (AI, HCG as indicated)", online: "One-size-fits-all injectable or topical", pcp: "Topical gel (most common) or referral to endocrinologist" },
@@ -126,7 +126,7 @@ const SignsSymptoms = () => (
     </div>
     <div className="max-w-[1200px] mx-auto text-center mt-10">
       <Link to="/book" className="inline-block rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-        BOOK MY FREE CONSULTATION
+        BOOK MY CONSULTATION
       </Link>
     </div>
   </section>
@@ -152,7 +152,7 @@ const WhatCauses = () => (
           If lifestyle changes like weight loss, exercise, and stress management aren't improving your symptoms, medical treatment may be the next step.
         </p>
         <Link to="/book" className="inline-block mt-8 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ background: "#000033", color: "#FFFFFF", textDecoration: "none" }}>
-          BOOK MY FREE CONSULTATION
+          BOOK MY CONSULTATION
         </Link>
       </div>
       <img
@@ -203,7 +203,7 @@ const TestosteroneService = () => (
     comparisonRows={getComparisonDataForCategory("testosterone-therapy")}
     faqs={trtFaqs}
     bottomCtaHeading="See What Your Testosterone Levels Say"
-    bottomCtaSubtext="Your free consultation includes comprehensive lab work. Find out where you stand \u2014 and what optimized feels like."
+    bottomCtaSubtext="Your no-cost consultation includes comprehensive lab work. Find out where you stand \u2014 and what optimized feels like."
     testimonials={trtTestimonials}
     afterHeroContent={
       <>

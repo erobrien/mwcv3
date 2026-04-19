@@ -13,14 +13,14 @@ export const TRT2FinalForm = () => {
             fontWeight: 700,
           }}
         >
-          Ready to Feel Like Yourself Again?
+          Ready to Talk to a Physician?
         </h2>
         <p className="text-base mt-2 mb-8" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-          Free consultation. Same-day labs. Walk in today.
+          Consultation. On-site labs. Walk in today.
         </p>
 
         <div className="max-w-[480px] mx-auto">
-          <TRT2LeadForm heading="Book My Free Consultation" />
+          <TRT2LeadForm heading="Book My Consultation" />
         </div>
 
         <p className="text-sm mt-6">

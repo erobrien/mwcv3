@@ -55,7 +55,7 @@ const GHLTRTSymptoms = () => {
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#CF5B09")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E8670A")}
           >
-            Check My Levels Free
+            Check My Levels
           </button>
         </div>
       </div>

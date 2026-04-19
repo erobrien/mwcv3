@@ -5,9 +5,9 @@
 export type AnnotationType = "screen" | "field" | "button" | "behavior" | "copy";
 
 export interface SpecAnnotation {
-  id: string;            // matches data-spec-id on the element
-  step: number;          // 1-8 (also includes 0 for chrome like progress bar)
-  number: number;        // visible numeric badge per step
+  id: string; // matches data-spec-id on the element
+  step: number; // 1-8 (also includes 0 for chrome like progress bar)
+  number: number; // visible numeric badge per step
   label: string;
   type: AnnotationType;
   required?: boolean;
