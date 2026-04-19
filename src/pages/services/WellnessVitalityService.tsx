@@ -7,7 +7,7 @@ import DontWaitBanner from "@/components/services/sections/DontWaitBanner";
 import ConsultationFormSection from "@/components/services/sections/ConsultationFormSection";
 
 const wvSteps = [
-  { number: "01", title: "BOOK YOUR VISIT", subtitle: "TELL US YOUR GOALS", body: "Schedule your free wellness consultation. Tell us your goals \u2014 whether it's better recovery, deeper sleep, sharper focus, or all of the above." },
+  { number: "01", title: "BOOK YOUR VISIT", subtitle: "TELL US YOUR GOALS", body: "Schedule your wellness consultation. Tell us your goals \u2014 whether it's better recovery, deeper sleep, sharper focus, or all of the above." },
   { number: "02", title: "HEALTH ASSESSMENT", subtitle: "BASELINE LABS", body: "Comprehensive lab work evaluating your biomarkers, inflammatory markers, nutrient levels, and hormone profile. We establish your baseline so we can measure improvement." },
   { number: "03", title: "YOUR WELLNESS PROTOCOL", subtitle: "TAILORED TO YOUR LABS", body: "Your physician designs a custom protocol \u2014 peptide therapy, NAD+, vitamin injections, and other evidence-based therapies \u2014 tailored to your labs, goals, and lifestyle." },
   { number: "04", title: "OPTIMIZE & MONITOR", subtitle: "MEASURABLE RESULTS", body: "Regular biomarker tracking shows measurable improvement. Your protocol is refined over time as your body responds. This is optimization, not guesswork." },
