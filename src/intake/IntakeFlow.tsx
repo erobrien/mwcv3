@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AppShell, BackButton } from "./components";
 import ResumeToast from "./components/ResumeToast";
 import {
@@ -51,6 +51,7 @@ const IntakeFlow = () => {
   const resetForm = useIntakeStore((s) => s.resetForm);
   const setStep = useIntakeStore((s) => s.setStep);
   const prevStep = useIntakeStore((s) => s.prevStep);
+  const reduceMotion = useReducedMotion();
 
   const directionRef = useRef<1 | -1>(1);
   const lastStepRef = useRef(currentStep);
@@ -67,8 +68,6 @@ const IntakeFlow = () => {
     const beforeName = useIntakeStore.getState().about_you.full_legal_name;
     loadFromUrlParams();
 
-    // Decide resume prompt: only show on step 1, only if there is meaningful data
-    // and the URL params didn't already advance us past About You.
     const after = useIntakeStore.getState();
     const hasUrl = typeof window !== "undefined" && window.location.search.length > 0;
 
@@ -76,8 +75,6 @@ const IntakeFlow = () => {
       after.currentStep === 1 &&
       hasResumableData(after) &&
       !hasUrl &&
-      // Avoid showing it the very first time someone just typed something — there's
-      // only meaningful resume value if the persisted store had data BEFORE this load
       beforeName
     ) {
       setShowResume(true);
@@ -85,12 +82,47 @@ const IntakeFlow = () => {
     setResumeChecked(true);
   }, [hasHydrated, loadFromUrlParams]);
 
+  // Safari bfcache: re-hydrate from localStorage if the page was restored
+  useEffect(() => {
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        // Re-read persisted state and force a re-render via Zustand
+        try {
+          useIntakeStore.persist.rehydrate();
+        } catch {
+          /* ignore */
+        }
+      }
+    };
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, []);
+
+  // iOS visualViewport: keep sticky CTA above the soft keyboard.
+  // Exposes --intake-kb-offset on .intake-root so the sticky CTA `bottom`
+  // can lift with the keyboard.
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.visualViewport) return;
+    const vv = window.visualViewport;
+    const apply = () => {
+      const offset = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      document.documentElement.style.setProperty("--intake-kb-offset", `${offset}px`);
+    };
+    apply();
+    vv.addEventListener("resize", apply);
+    vv.addEventListener("scroll", apply);
+    return () => {
+      vv.removeEventListener("resize", apply);
+      vv.removeEventListener("scroll", apply);
+      document.documentElement.style.setProperty("--intake-kb-offset", "0px");
+    };
+  }, []);
+
   // Track direction for transitions + scroll to top + analytics
   useEffect(() => {
     directionRef.current = currentStep >= lastStepRef.current ? 1 : -1;
     lastStepRef.current = currentStep;
     if (typeof window !== "undefined") window.scrollTo(0, 0);
-    // Fire dataLayer step-view event (no-op when GTM not loaded)
     void import("@/lib/intakeAnalytics").then((m) => m.trackStepView(currentStep));
   }, [currentStep]);
 
@@ -98,11 +130,17 @@ const IntakeFlow = () => {
   const showBack = currentStep > 1 && currentStep !== 20;
 
   const dir = directionRef.current;
-  const variants = {
-    initial: { opacity: 0, x: dir === 1 ? 24 : -24 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: dir === 1 ? -24 : 24 },
-  };
+  const variants = reduceMotion
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+      }
+    : {
+        initial: { opacity: 0, x: dir === 1 ? 24 : -24 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: dir === 1 ? -24 : 24 },
+      };
 
   const handleResume = () => {
     const s = useIntakeStore.getState();
@@ -142,7 +180,7 @@ const IntakeFlow = () => {
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          transition={{ duration: reduceMotion ? 0.1 : 0.25, ease: "easeOut" }}
         >
           <StepLoader step={currentStep} />
         </motion.div>
