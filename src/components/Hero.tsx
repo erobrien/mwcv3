@@ -84,7 +84,7 @@ export const Hero = () => {
             letterSpacing: "0.04em",
           }}
         >
-          10,000+ men treated · Free consultation · No referral
+          10,000+ men treated · Consultation · No referral
         </p>
         <div className="mt-5 md:mt-6 flex flex-col sm:flex-row gap-3 justify-center w-full sm:w-auto">
           <a

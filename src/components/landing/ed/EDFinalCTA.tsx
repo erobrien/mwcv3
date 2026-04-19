@@ -20,7 +20,7 @@ export const EDFinalCTA = () => (
           Schedule a Confidential Consultation
         </h2>
         <p style={{ margin: "12px auto 0", color: "#495057", fontSize: 16, fontFamily: "'Open Sans', sans-serif" }}>
-          Schedule your free, confidential consultation at one of our 3 Virginia centers.
+          Schedule your confidential consultation at one of our 3 Virginia centers.
         </p>
       </div>
 

@@ -16,7 +16,7 @@ export const TRT2FinalForm = () => {
           Ready to Talk to a Physician?
         </h2>
         <p className="text-base mt-2 mb-8" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-          Free consultation. On-site labs. Walk in today.
+          Consultation. On-site labs. Walk in today.
         </p>
 
         <div className="max-w-[480px] mx-auto">

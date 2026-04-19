@@ -63,7 +63,7 @@ interface PageSEO {
 const PAGE_META: Record<string, PageSEO> = {
   "/": {
     title: "Men's Wellness Centers | Virginia's Premier Men's Health Clinics",
-    description: "Physician-led testosterone therapy, medical weight loss, ED treatment & sexual wellness at 3 Virginia locations. On-site labs. Free consultation. Call (866) 344-4955.",
+    description: "Physician-led testosterone therapy, medical weight loss, ED treatment & sexual wellness at 3 Virginia locations. On-site labs. Consultation. Call (866) 344-4955.",
   },
   "/services": {
     title: "Men's Health Services | TRT, Weight Loss, ED Treatment | Men's Wellness Centers",
@@ -71,7 +71,7 @@ const PAGE_META: Record<string, PageSEO> = {
   },
   "/services/testosterone-therapy": {
     title: "Testosterone Replacement Therapy (TRT) in Virginia | Men's Wellness Centers",
-    description: "Board-certified TRT for men with low testosterone. Same-day lab results, personalized protocols, ongoing optimization. 3 Virginia locations. Free consultation.",
+    description: "Board-certified TRT for men with low testosterone. Same-day lab results, personalized protocols, ongoing optimization. 3 Virginia locations. Consultation.",
   },
   "/services/weight-loss": {
     title: "Medical Weight Loss for Men | GLP-1, Semaglutide & Fat-Burning Injections | MWC",
@@ -87,19 +87,19 @@ const PAGE_META: Record<string, PageSEO> = {
   },
   "/locations": {
     title: "Men's Health Clinic Locations in Virginia | Men's Wellness Centers",
-    description: "Visit Men's Wellness Centers in Richmond (Glen Allen), Newport News, or Virginia Beach. Board-certified providers, on-site labs, free consultations. Walk-ins welcome.",
+    description: "Visit Men's Wellness Centers in Richmond (Glen Allen), Newport News, or Virginia Beach. Board-certified providers, on-site labs, consultations. Walk-ins welcome.",
   },
   "/locations/richmond-va": {
     title: "Men's Health Clinic in Richmond, VA (Glen Allen) | Men's Wellness Centers",
-    description: "Richmond's premier men's health clinic at 4050 Innslake Dr, Glen Allen. TRT, weight loss, ED treatment. Dr. Robert Caravella, MD. Call (804) 346-4636. Free consultation.",
+    description: "Richmond's premier men's health clinic at 4050 Innslake Dr, Glen Allen. TRT, weight loss, ED treatment. Dr. Robert Caravella, MD. Call (804) 346-4636. Consultation.",
   },
   "/locations/newport-news-va": {
     title: "Men's Health Clinic in Newport News, VA | Men's Wellness Centers",
-    description: "Newport News men's health clinic at 827 Diligence Dr. Testosterone therapy, weight loss, ED treatment. Dr. James Patterson, MD. Call (757) 806-6263. Free consultation.",
+    description: "Newport News men's health clinic at 827 Diligence Dr. Testosterone therapy, weight loss, ED treatment. Dr. James Patterson, MD. Call (757) 806-6263. Consultation.",
   },
   "/locations/virginia-beach-va": {
     title: "Men's Health Clinic in Virginia Beach, VA | Men's Wellness Centers",
-    description: "Virginia Beach men's health clinic at 996 First Colonial Rd. TRT, weight loss, ED treatment. Dr. William Chen, MD. Call (757) 806-6263. Free consultation.",
+    description: "Virginia Beach men's health clinic at 996 First Colonial Rd. TRT, weight loss, ED treatment. Dr. William Chen, MD. Call (757) 806-6263. Consultation.",
   },
   "/how-it-works": {
     title: "How It Works | Your First Visit to Men's Wellness Centers",
@@ -111,7 +111,7 @@ const PAGE_META: Record<string, PageSEO> = {
   },
   "/book": {
     title: "Book Your Consultation | Men's Wellness Centers",
-    description: "Schedule your free men's health consultation at any of our 3 Virginia locations. Same-day lab results available. Call (866) 344-4955 or book online.",
+    description: "Schedule your men's health consultation at any of our 3 Virginia locations. Same-day lab results available. Call (866) 344-4955 or book online.",
     noindex: true,
   },
   "/states-served": {

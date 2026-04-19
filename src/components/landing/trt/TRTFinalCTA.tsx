@@ -72,7 +72,7 @@ export const TRTFinalCTA = () => {
           READY TO GET TESTED?
         </h2>
         <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-          Walk into any of our 3 Virginia centers. Free consultation.
+          Walk into any of our 3 Virginia centers. Consultation.
         </p>
 
         {/* Stars */}

@@ -21,7 +21,7 @@ export const OGTRTHero = () => {
               <span style={{ color: "#E8670A" }}>On-Site Labs. Real Doctors.</span>
             </h1>
             <p className="text-base md:text-lg leading-relaxed max-w-[520px]" style={{ color: "rgba(255,255,255,0.75)", marginBottom: 32 }}>
-              Physician-supervised TRT at 3 Virginia clinics. Free testosterone testing, results reviewed in-visit. No referral needed.
+              Physician-supervised TRT at 3 Virginia clinics. Testosterone testing, results reviewed in-visit. No referral needed.
             </p>
             <button onClick={scrollToForm} className="inline-flex items-center gap-2 rounded-lg px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
               style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", border: "none", marginBottom: 40 }}

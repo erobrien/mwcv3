@@ -25,7 +25,7 @@ export const WLUrgencyBanner = () => {
             marginBottom: 12,
           }}
         >
-          Limited Availability: Free Weight Loss Consultation
+          Weight Loss Consultation
         </h2>
 
         <p

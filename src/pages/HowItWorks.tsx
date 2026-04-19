@@ -264,7 +264,7 @@ const HowItWorks = () => {
           Ready to Get Started?
         </h2>
         <p className="mt-3 text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
-          Free consultation. On-site labs. Three Virginia locations.
+          Consultation. On-site labs. Three Virginia locations.
         </p>
         <Link
           to="/book"

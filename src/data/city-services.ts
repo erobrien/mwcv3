@@ -61,7 +61,7 @@ export const trtServiceConfig: CityServiceConfig = {
 
   metaTitle: (city) => `Testosterone Therapy in ${city}, VA | TRT Clinic | Men's Wellness Centers`,
   metaDescription: (city) =>
-    `Board-certified TRT clinic in ${city}, VA. On-site labs, physician-led testosterone therapy, all-inclusive pricing. Free consultation. Men's Wellness Centers.`,
+    `Board-certified TRT clinic in ${city}, VA. On-site labs, physician-led testosterone therapy, all-inclusive pricing. Consultation. Men's Wellness Centers.`,
   canonicalPath: (slug) => `/locations/${slug}/testosterone-therapy`,
 
   differentiators: [

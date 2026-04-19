@@ -32,7 +32,7 @@ export const TRTPricingCTA = () => {
             className="text-base mt-3 leading-[1.6]"
             style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
           >
-            Walk into any of our 3 Virginia centers. Free testosterone test, free physician consultation, results reviewed in-visit. No commitment, no credit card.
+            Walk into any of our 3 Virginia centers. Testosterone test, physician consultation, results reviewed in-visit. No commitment, no credit card.
           </p>
           <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}>
             Treatment plans start at $199/month after approval.

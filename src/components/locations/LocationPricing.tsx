@@ -38,7 +38,7 @@ export const LocationPricing = ({ location }: Props) => {
             TRANSPARENT, ALL-INCLUSIVE PRICING
           </h2>
           <p className="pricing-answer-block text-[14px] md:text-base leading-relaxed max-w-2xl mx-auto" style={{ color: "#666" }}>
-            Men's Wellness Centers uses all-inclusive, transparent pricing with no hidden fees. Your initial consultation and blood work are free. Treatment plans include medication, ongoing lab monitoring, and unlimited physician follow-ups. FSA and HSA accepted. No insurance billing. No contracts.
+            Men's Wellness Centers uses all-inclusive, transparent pricing with no hidden fees. Your initial consultation and blood work are included at no extra cost. Treatment plans include medication, ongoing lab monitoring, and unlimited physician follow-ups. FSA and HSA accepted. No insurance billing. No contracts.
           </p>
         </div>
 

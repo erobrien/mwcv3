@@ -62,7 +62,7 @@ const GHLTRTHero = () => {
             {[
               "Physician-supervised TRT at 3 Virginia centers",
               "On-site labs with results reviewed in-visit",
-              "Free testosterone testing and consultation",
+              "Testosterone testing and consultation",
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-white/90 text-[15px]">
                 <Check size={18} className="text-[#2ECC71] mt-0.5 flex-shrink-0" />

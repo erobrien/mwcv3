@@ -16,7 +16,7 @@ const DEFAULT_ROWS: ComparisonRow[] = [
   { feature: "Pricing", us: "All-inclusive, no hidden fees", them: "Monthly subscription + add-ons" },
   { feature: "Facility", us: "Private, men-only clinical centers", them: "No physical facility" },
   { feature: "Emergency Questions", us: "Call your center directly", them: "Submit a ticket" },
-  { feature: "Free Initial Consultation + Labs", us: "Included at no cost", them: "Paid or not offered" },
+  { feature: "Initial Consultation + Labs", us: "Included at no cost", them: "Paid or not offered" },
 ];
 
 interface ComparisonTableProps {

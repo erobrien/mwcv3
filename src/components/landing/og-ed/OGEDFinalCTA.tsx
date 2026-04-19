@@ -8,7 +8,7 @@ export const OGEDFinalCTA = () => (
           Schedule a Confidential Consultation
         </h2>
         <p className="mt-3 text-base" style={{ color: "#555555" }}>
-          Schedule your free, confidential consultation at one of our 3 Virginia clinics.
+          Schedule your confidential consultation at one of our 3 Virginia clinics.
         </p>
       </div>
       <OGEDLeadForm heading="Schedule My Private Visit" formId="bottom" />

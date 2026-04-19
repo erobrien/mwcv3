@@ -16,7 +16,7 @@ export const OGTRTPricingCTA = () => {
         <div>
           <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: "#FFFFFF" }}>First Visit Is At No Cost.</h2>
           <p className="text-base mt-3 leading-[1.6]" style={{ color: "rgba(255,255,255,0.90)" }}>
-            Walk into any of our 3 Virginia centers. Free testosterone test, free physician consultation, results reviewed in-visit. No commitment, no credit card.
+            Walk into any of our 3 Virginia centers. Testosterone test, physician consultation, results reviewed in-visit. No commitment, no credit card.
           </p>
           <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.70)" }}>Treatment plans start at $199/month after approval.</p>
           <button onClick={scrollToForm} className="mt-6 rounded-lg px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"

@@ -6,7 +6,7 @@ import DontWaitBanner from "@/components/services/sections/DontWaitBanner";
 import ConsultationFormSection from "@/components/services/sections/ConsultationFormSection";
 
 const wlSteps = [
-  { number: "01", title: "BOOK YOUR VISIT", subtitle: "NO REFERRAL REQUIRED", body: "Schedule your free weight loss consultation. We'll start building your plan from the first visit. No referral required." },
+  { number: "01", title: "BOOK YOUR VISIT", subtitle: "NO REFERRAL REQUIRED", body: "Schedule your weight loss consultation. We'll start building your plan from the first visit. No referral required." },
   { number: "02", title: "METABOLIC TESTING", subtitle: "COMPREHENSIVE LABS", body: "Comprehensive lab work including metabolic panel, thyroid function, A1C, lipids, and hormone levels. We identify the metabolic and hormonal factors driving your weight." },
   { number: "03", title: "YOUR WEIGHT LOSS PLAN", subtitle: "BUILT FOR YOUR BODY", body: "Your physician designs a personalized weight loss protocol \u2014 GLP-1 medications, appetite management, hormone optimization, and nutritional guidance tailored to your body and goals." },
   { number: "04", title: "ONGOING MONITORING", subtitle: "SUSTAINABLE RESULTS", body: "Regular check-ins, lab monitoring, and dosage adjustments keep your progress on track. Your provider adapts your plan as your body responds. Sustainable results, not crash dieting." },

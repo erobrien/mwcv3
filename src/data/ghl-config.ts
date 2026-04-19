@@ -96,7 +96,7 @@ export const trtConfig: GHLVerticalConfig = {
     bullets: [
       "Physician-supervised TRT at 3 Virginia centers",
       "On-site labs with results reviewed in-visit",
-      "Free testosterone testing and consultation",
+      "Testosterone testing and consultation",
     ],
     ctaText: "Book My Consultation",
   },
@@ -113,7 +113,7 @@ export const trtConfig: GHLVerticalConfig = {
       { icon: Moon01, title: "Poor Sleep", desc: "Trouble falling or staying asleep. You never feel rested no matter how many hours you get." },
       { icon: Lightning02, title: "Brain Fog", desc: "Difficulty concentrating or remembering. You can't focus the way you used to." },
     ],
-    ctaText: "Check My Levels Free",
+    ctaText: "Check My Levels",
   },
   howItWorks: {
     steps: [
@@ -258,7 +258,7 @@ export const wlConfig: GHLVerticalConfig = {
     bullets: [
       "Physician-supervised GLP-1 therapy at 3 Virginia centers",
       "Semaglutide and Tirzepatide prescribed from real lab work",
-      "Free consultation and metabolic evaluation",
+      "Consultation and metabolic evaluation",
     ],
     ctaText: "Book My Consultation",
   },
@@ -339,7 +339,7 @@ export const generalConfig: GHLVerticalConfig = {
     bullets: [
       "Comprehensive men's health evaluations at 3 Virginia centers",
       "On-site labs with results reviewed in-visit",
-      "Free consultation with a licensed physician",
+      "Consultation with a licensed physician",
     ],
     ctaText: "Book My Consultation",
   },

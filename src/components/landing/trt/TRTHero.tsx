@@ -6,7 +6,7 @@ const badges = ["LegitScript Certified", "Google Healthcare Certified"];
 const benefits = [
   "Physician-supervised TRT at 3 Virginia centers",
   "On-site labs with results reviewed in-visit",
-  "Free testosterone testing and consultation",
+  "Testosterone testing and consultation",
 ];
 
 export const TRTHero = () => {

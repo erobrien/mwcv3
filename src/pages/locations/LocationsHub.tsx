@@ -217,7 +217,7 @@ const LocationsHub = () => {
           </div>
 
           <p className="text-[14px] leading-relaxed max-w-2xl mx-auto mb-4" style={{ color: "#666" }}>
-            With three centers spanning from Richmond to Virginia Beach, there's a Men's Wellness Centers location within driving distance for most Virginia men. Each center offers the same physician-led care, on-site labs, and free consultations.
+            With three centers spanning from Richmond to Virginia Beach, there's a Men's Wellness Centers location within driving distance for most Virginia men. Each center offers the same physician-led care, on-site labs, and consultations.
           </p>
           <p className="text-[13px]" style={{ color: "#999" }}>
             Don't see your city? We welcome members from anywhere in Virginia. Call{" "}

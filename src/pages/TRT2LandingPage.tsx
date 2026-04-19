@@ -14,7 +14,7 @@ const TRT2LandingPage = () => {
   useEffect(() => {
     document.title = "Testosterone Testing | Men's Wellness Centers Virginia";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Physician-supervised testosterone replacement therapy at 3 Virginia locations. Free testing, results reviewed in-visit. No referral needed. Book your no-cost consultation today.");
+    if (meta) meta.setAttribute("content", "Physician-supervised testosterone replacement therapy at 3 Virginia locations. Testing, results reviewed in-visit. No referral needed. Book your no-cost consultation today.");
 
     // JSON-LD
     const script = document.createElement("script");
