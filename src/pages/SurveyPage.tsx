@@ -208,6 +208,7 @@ const SurveyPage = () => {
               greeting={firstName ? `Hi, ${firstName}` : undefined}
               title="How was your overall experience?"
               subtitle="Your honest answer helps us improve."
+              scale="experience"
               initialValue={state.overall}
               onSelect={(v) => {
                 setState((p) => ({ ...p, overall: v }));
@@ -217,8 +218,9 @@ const SurveyPage = () => {
           )}
           {step === 1 && (
             <SurveyRatingStep
-              title="How was your interaction with our staff?"
+              title="How did our team treat you?"
               subtitle="Front desk, providers, and care team."
+              scale="staff"
               initialValue={state.staff}
               onSelect={(v) => {
                 setState((p) => ({ ...p, staff: v }));

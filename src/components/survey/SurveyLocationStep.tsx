@@ -49,6 +49,22 @@ const SurveyLocationStep = ({ initialValue = "", onSelect }: SurveyLocationStepP
                 boxShadow: isSelected
                   ? "0 0 0 3px rgba(232,103,10,0.1)"
                   : "0 1px 3px rgba(0,0,0,0.06)",
+                transform: isSelected ? "translateY(-1px)" : "translateY(0)",
+                touchAction: "manipulation",
+              }}
+              onMouseEnter={(e) => {
+                if (!isSelected) {
+                  e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)";
+                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isSelected) {
+                  e.currentTarget.style.borderColor = "#D1CCC5";
+                  e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }
               }}
             >
               <MapPin className="h-5 w-5 shrink-0" style={{ color: "#E8670A" }} />
