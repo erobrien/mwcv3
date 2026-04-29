@@ -7,7 +7,7 @@ interface StepCardProps {
 }
 
 const StepCard = ({ h1, subtitle, children }: StepCardProps) => (
-  <div className="mx-auto w-full" style={{ maxWidth: 560 }}>
+  <div className="mx-auto w-full" style={{ maxWidth: 520 }}>
     {h1 && (
       <h1 className="intake-h1 mb-2 mt-2 text-center sm:text-left">{h1}</h1>
     )}

@@ -29,22 +29,25 @@ const AppShell = ({
       )}
       <main
         className="mx-auto w-full flex-1"
-        style={{ maxWidth: 560, padding: "8px 20px 24px" }}
+        style={{ maxWidth: 520, padding: "8px 20px 24px" }}
       >
         {children}
       </main>
       <footer
-        className="intake-safe-bottom mx-auto w-full text-center"
+        className="intake-safe-bottom py-6 text-center"
         style={{
-          maxWidth: 560,
-          padding: "16px 20px 20px",
-          color: "var(--text-muted)",
           fontFamily: "'Montserrat', sans-serif",
-          fontSize: 11,
-          letterSpacing: "0.06em",
+          fontSize: 13,
+          color: "#AEB5BF",
         }}
       >
-        © {new Date().getFullYear()} Men's Wellness Centers · HIPAA-Secure
+        Questions? Text or call{" "}
+        <a
+          href="tel:8663444955"
+          style={{ color: "#AEB5BF", textDecoration: "underline" }}
+        >
+          (866) 344-4955
+        </a>
       </footer>
     </div>
   );

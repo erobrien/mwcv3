@@ -1,4 +1,4 @@
-import { ChevronLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface BackButtonProps {
   onClick: () => void;
@@ -20,7 +20,7 @@ const BackButton = ({ onClick }: BackButtonProps) => (
       cursor: "pointer",
     }}
   >
-    <ChevronLeft size={18} strokeWidth={2} />
+    <ArrowLeft size={16} strokeWidth={2} />
     Back
   </button>
 );
