@@ -106,8 +106,10 @@ const SurveyPage = () => {
       };
       // eslint-disable-next-line no-console
       console.info("survey_submit", payload);
-      // @ts-expect-error dataLayer is GTM-injected
-      window.dataLayer?.push({ event: "survey_submitted", ...payload });
+      (window as unknown as { dataLayer?: unknown[] }).dataLayer?.push({
+        event: "survey_submitted",
+        ...payload,
+      });
 
       if (finalState.recommend && isLocationSlug(finalState.location)) {
         // Show interstitial then redirect
@@ -125,8 +127,11 @@ const SurveyPage = () => {
 
   // Track step views
   useEffect(() => {
-    // @ts-expect-error dataLayer is GTM-injected
-    window.dataLayer?.push({ event: "survey_step_view", step, warm: isWarm });
+    (window as unknown as { dataLayer?: unknown[] }).dataLayer?.push({
+      event: "survey_step_view",
+      step,
+      warm: isWarm,
+    });
   }, [step, isWarm]);
 
   const handleRecommend = (recommend: boolean) => {
