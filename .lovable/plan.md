@@ -1,81 +1,93 @@
-
 ## Goal
-Add a non-destructive **annotation overlay** on `/bookv2` that turns the live funnel into a clickable mockup spec for the dev team. Zero changes to forms, fields, or business logic.
 
-## How it works
-- Activated via either `?spec=1` query param OR a small floating "🛠 Spec Mode" toggle button (bottom-right corner) so the team can flip it on/off from any step.
-- When active: numbered orange callout markers appear pinned next to each meaningful element (screen header, field, button, transition trigger). Markers float over the UI without affecting layout.
-- Clicking a marker opens a side panel (right side, slides in) with that callout's full definition: label, type, required/optional, validation, behavior, copy rationale.
-- An "All callouts for this step" link at the panel top opens a scrollable list of every annotation on the current step.
+Build a mockup patient satisfaction survey at **`/survey`** that reuses the `/bookv2` visual chrome (dark navy `#0B1029`, V2Header, segmented progress bar, white step cards, orange CTA). The survey decides which Google review URL to send the patient to based on their location.
 
-## Architecture
+## Two entry scenarios
 
-### 1. New file: `src/components/booking-v2/spec/specAnnotations.ts`
-Single source of truth — a typed registry keyed by `step` (1–8) and `id`. Each entry contains:
-```ts
-{
-  id: string;          // stable slug e.g. "step1-firstname"
-  step: number;        // 1-8
-  number: number;      // visible numeric badge per step
-  target: string;      // CSS selector or data-spec-id
-  label: string;       // "First Name field"
-  type: 'screen' | 'field' | 'button' | 'behavior' | 'copy';
-  required?: boolean;
-  validation?: string;
-  behavior?: string;   // auto-advance, transition, etc.
-  copyRationale?: string;
-  notes?: string;
-}
+**Scenario A — GHL-prefilled (warm)**
+URL: `/survey?contact_id=abc123&location=virginia-beach&first_name=John`
+- `location` query param (one of `virginia-beach | newport-news | richmond`) is trusted.
+- Skip the location/identity step. Survey is 3 questions only.
+
+**Scenario B — Cold link**
+URL: `/survey` (no params)
+- Run the 3 survey questions first, then ask for **location** + **one identity field** (email or phone) at the end so we can attribute the response.
+- Identity is captured *after* the rating questions (per your direction) so we don't lose drop-offs before the rating signal.
+
+In both flows: if Q3 ("Would you recommend us?") = **Yes**, redirect to that location's Google review URL. If **No**, route to a friendly internal "thanks for the feedback" page that captures an optional comment (no Google redirect).
+
+## Flow (mockup)
+
+```text
+Scenario A (warm, ?location=...)        Scenario B (cold)
+─────────────────────────────────       ──────────────────────────────────
+1. Overall experience? (5 options)      1. Overall experience? (5 options)
+2. Interaction with staff? (5)          2. Interaction with staff? (5)
+3. Recommend us? (Yes / No)             3. Recommend us? (Yes / No)
+   ├─ Yes → Google review (by loc)      4. Which center did you visit? (3 cards)
+   └─ No  → /survey/thanks              5. Email OR phone (one required)
+                                           ├─ Yes from Q3 → Google review
+                                           └─ No  from Q3 → /survey/thanks
 ```
-All copy lives here so the dev team can read it as a flat reference too.
 
-### 2. New file: `src/components/booking-v2/spec/SpecOverlay.tsx`
-- Renders nothing unless spec mode is on.
-- Uses `useEffect` + `MutationObserver` to find each annotation's target element (by `[data-spec-id="..."]`) and position an absolutely-positioned numbered badge next to it via `getBoundingClientRect`.
-- Updates positions on scroll / resize / step change.
-- Opens a right-side panel (`<aside>`, fixed, 360px wide, dark navy with white text matching the funnel theme) when a badge is clicked.
-- Panel shows: number, label, type chip, required chip, validation, behavior, copy rationale, notes.
-- Esc key + close button dismiss the panel.
+Progress bar phases (mirroring V2ProgressBar style):
+- Scenario A: 3 segments — `EXPERIENCE` · `STAFF` · `RECOMMEND`
+- Scenario B: 4 segments — `EXPERIENCE` · `STAFF` · `RECOMMEND` · `ABOUT YOU`
 
-### 3. New file: `src/components/booking-v2/spec/SpecModeToggle.tsx`
-- Small fixed pill in bottom-right: "🛠 Spec Mode: ON/OFF"
-- Stores state in `localStorage` and reflects `?spec=1` query param.
-- Clicking toggles a CSS class on `<body>` (`spec-mode-on`) which the overlay hooks into.
+## Design system (matches /bookv2)
 
-### 4. Edit `src/pages/BookingFunnelV2.tsx`
-- Mount `<SpecModeToggle />` and `<SpecOverlay currentStep={step} />` at the bottom of the layout.
-- **No changes to step rendering, state, or props.**
+- Page bg `#0B1029`, sticky `V2Header` reused as-is.
+- White step card, max-width ~`520px`, centered, rounded `16px`, soft shadow.
+- Question prompt: Bebas Neue 22–26px uppercase navy.
+- 5-option rating: stacked white cards with thin border, hover/selected = orange border + 6% orange tint (matches `intake-select-card`). Auto-advance 300ms after tap.
+- Yes/No on Q3: two large chip buttons side-by-side (`intake-chip` style), no auto-advance — user must confirm with bottom CTA so the redirect feels intentional.
+- Bottom: orange pill `PrimaryCTA` ("Next" / "Submit Feedback"), sticky above mobile keyboard. Back link top-left under header (same as bookv2).
+- Reuse Montserrat body / Bebas headings already defined in `intake/styles.css`.
 
-### 5. Add `data-spec-id="..."` attributes to existing elements
-This is the only mutation to the step files — purely additive HTML attributes, no logic, no styling change. I'll add them to:
-- `V2StepOne.tsx`: name field, phone field, location card group, SMS consent, CTA, trust line, trust badges
-- `V2StepConcern.tsx`: heading, each concern card, auto-advance trigger
-- `V2StepDuration.tsx`: heading, each duration card
-- `V2StepPriorTreatment.tsx`: heading, Yes button, No button
-- `V2StepEmail.tsx`: heading, email field, CTA
-- `V2StepThree.tsx` (calendar): month nav, calendar grid, time slots, summary line, SMS reminder, confirm CTA
-- `V2StepVerify.tsx`: icon pair, heading, body, helper, email card, phone card, resend link
-- `V2StepFour.tsx` (confirmed): checkmark, summary card, calendar buttons, health form upsell, what-to-expect, referral, trust footer
-- `V2ProgressBar.tsx`: bar, phase label
+## Google review redirects (location → URL)
 
-### 6. Annotation content
-For each marker I'll author Field + Behavior + Copy Rationale, e.g.:
-- **Step 1 → First Name field**
-  - Type: text input, required
-  - Validation: trimmed, non-empty
-  - Behavior: enables CTA when combined with phone + location; SMS consent NOT required
-  - Copy rationale: placeholder "John" + label "Full Name" personalizes immediately and lowers form anxiety vs "Enter your full name"
-- **Step 2 → Concern cards**
-  - Behavior: auto-advances to Step 3 after 300ms on selection (per /bookv2 funnel spec)
-  - Copy rationale: card-based selection feels lower-friction than a dropdown and qualifies intent for the provider
-- (…and so on for every meaningful element)
+```ts
+const REVIEW_URLS = {
+  "virginia-beach": "https://search.google.com/local/writereview?placeid=ChIJYzXsRADruokR9wX5sXQ6AEw",
+  "newport-news":   "https://search.google.com/local/writereview?placeid=ChIJs00FguJ5sIkRwYLOLdjOZgg",
+  "richmond":       "https://search.google.com/local/writereview?placeid=ChIJP5F8BJ5rsYkR6mdPGbGUmh8",
+};
+```
+(Normalized to https for both VB and Richmond; the http URLs you provided will redirect anyway.)
 
-## Visual style of overlay (matches existing theme)
-- Badge: 24px circle, `#E8670A` background, white Montserrat 700 number, subtle drop shadow, `cursor: pointer`, hover scales 1.1.
-- Panel: `#0B1029` background, `#FFFFFF` text, `#E8670A` accent borders, Bebas Neue header + Montserrat body — consistent with the funnel.
-- Toggle pill: same orange, 44px touch target, bottom-right with 16px offset.
+## Files to create
 
-## Notes
-- **No form, validation, copy, or state changes.** Only additive: new files + `data-spec-id` attributes.
-- Spec mode is opt-in — production users never see it unless they hit `?spec=1`.
-- All annotation copy is centralized in `specAnnotations.ts` so the dev team can also export/print it as a flat reference if desired.
+- `src/pages/SurveyPage.tsx` — route container, owns step state, slide transitions (copy pattern from `BookingFunnelV2.tsx`).
+- `src/pages/SurveyThanksPage.tsx` — shown when Q3 = No; "Thanks for the honest feedback" + optional comment textarea + phone CTA.
+- `src/components/survey/SurveyProgressBar.tsx` — 3- or 4-segment variant of `V2ProgressBar`.
+- `src/components/survey/SurveyRatingStep.tsx` — reusable for Q1 + Q2 (5-option card list, auto-advance).
+- `src/components/survey/SurveyRecommendStep.tsx` — Yes/No chips for Q3.
+- `src/components/survey/SurveyLocationStep.tsx` — 3 location cards (cold flow only).
+- `src/components/survey/SurveyIdentityStep.tsx` — segmented toggle Email/Phone + single field (cold flow only).
+- `src/data/reviewUrls.ts` — the `REVIEW_URLS` map + `LOCATION_LABELS`.
+
+## Files to edit
+
+- `src/App.tsx` — add `<Route path="/survey" element={<SurveyPage />} />` and `<Route path="/survey/thanks" element={<SurveyThanksPage />} />` above the catch-all.
+
+## Behavior details
+
+- **Pre-fill parsing**: read `location`, `contact_id`, `first_name` from `URLSearchParams` on mount. If `location` matches one of the 3 slugs → Scenario A; otherwise Scenario B.
+- **Header greeting** (subtle): if `first_name` present, show small "Hi, John —" line above Q1 card.
+- **Outbound redirect** uses `window.location.assign(url)` so the back button returns to `/survey`. Show a 1-second interstitial card ("Opening Google…") before redirecting, so the transition isn't jarring.
+- **Mockup only** — no webhook submission this round; log payload to `console.info('survey_submit', payload)` and `window.dataLayer?.push({ event: 'survey_submitted', ...payload })`. We can wire a real endpoint in a follow-up.
+- **Validation**: identity step requires a valid email *or* a 10-digit phone (reuse `formatPhone` from `intake/components/fields/PhoneField`).
+- Accessibility: `role="radiogroup"` on rating lists, arrow-key support (already in `CardRadio`), reduced-motion respected.
+
+## Out of scope (this round)
+
+- Real backend submission / GHL webhook (mockup only).
+- Token validation / signed URLs (we trust the `location` param for the mockup; flag for prod hardening).
+- Multi-language, A/B variants, NPS 0–10 scale.
+
+## Acceptance
+
+- `/survey?location=richmond&first_name=John` → 3 questions, Yes routes to Richmond Google review URL.
+- `/survey` (cold) → 3 questions + location + identity, then routes correctly.
+- Any "No" on Q3 → `/survey/thanks` (no Google redirect).
+- Visual chrome is indistinguishable from `/bookv2` (header, progress bar style, card, CTA).

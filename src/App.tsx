@@ -49,6 +49,8 @@ import IntakeThanksPage from "./pages/IntakeThanksPage";
 import BrandComparison from "./pages/BrandComparison";
 import BookingFunnelV2 from "./pages/BookingFunnelV2";
 import BookingFunnelV2Spec from "./pages/BookingFunnelV2Spec";
+import SurveyPage from "./pages/SurveyPage";
+import SurveyThanksPage from "./pages/SurveyThanksPage";
 import { MobileFooterBar } from "./components/shared/MobileFooterBar";
 import LocationsHub from "./pages/locations/LocationsHub";
 import RichmondLocation from "./pages/locations/RichmondLocation";
@@ -110,6 +112,8 @@ const App = () => (
           <Route path="/lp/ghl-general" element={<GHLGeneralLandingPage />} />
           <Route path="/intake" element={<IntakePage />} />
           <Route path="/intake/thanks" element={<IntakeThanksPage />} />
+          <Route path="/survey" element={<SurveyPage />} />
+          <Route path="/survey/thanks" element={<SurveyThanksPage />} />
           <Route path="/brand" element={<BrandComparison />} />
           <Route path="/locations" element={<LocationsHub />} />
           <Route path="/locations/richmond-va" element={<RichmondLocation />} />
