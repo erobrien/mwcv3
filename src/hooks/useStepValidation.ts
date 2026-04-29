@@ -16,7 +16,6 @@ const validateDob = (value: string): string => {
   if (day < 1 || day > 31) return "Invalid day";
   if (year < 1920) return "Year must be 1920 or later";
   if (year > now - 18) return "You must be 18 or older";
-  // Basic real-date check
   const test = new Date(year, month - 1, day);
   if (test.getFullYear() !== year || test.getMonth() !== month - 1 || test.getDate() !== day)
     return "Please enter a real date";
@@ -29,7 +28,7 @@ export interface StepValidationResult {
 }
 
 /**
- * Per-step validation rules. Returns a frozen errors map and isValid.
+ * Per-step validation rules for the 18-step intake flow.
  * Components decide WHEN to display errors via useShowErrors().
  */
 export const useStepValidation = (stepNumber: number): StepValidationResult => {
@@ -39,26 +38,34 @@ export const useStepValidation = (stepNumber: number): StepValidationResult => {
     const errors: Record<string, string> = {};
     const a = state.about_you;
     const addr = state.address;
-    const ec = state.emergency_contact;
-    const pcp = state.primary_care_provider;
     const sig = state.signature;
     const consents = state.consents;
 
     switch (stepNumber) {
-      case 1:
+      case 1: {
+        if (!a.first_name.trim()) errors["about_you.first_name"] = "Required";
+        if (!a.last_name.trim()) errors["about_you.last_name"] = "Required";
         break;
+      }
 
       case 2: {
-        if (!a.full_legal_name.trim()) errors["about_you.full_legal_name"] = "Required";
         if (digits(a.phone).length !== 10)
           errors["about_you.phone"] = "Enter a 10-digit phone number";
+        break;
+      }
+
+      case 3: {
         if (!isEmail(a.email)) errors["about_you.email"] = "Enter a valid email";
+        break;
+      }
+
+      case 4: {
         const dobErr = validateDob(a.dob);
         if (dobErr) errors["about_you.dob"] = dobErr;
         break;
       }
 
-      case 3: {
+      case 5: {
         if (!addr.street.trim()) errors["address.street"] = "Required";
         if (!addr.city.trim()) errors["address.city"] = "Required";
         if (!addr.state.trim()) errors["address.state"] = "Required";
@@ -68,84 +75,67 @@ export const useStepValidation = (stepNumber: number): StepValidationResult => {
         break;
       }
 
-      case 4:
-        if (!state.occupation.trim()) errors["occupation"] = "Required";
-        break;
-
-      case 5:
-        if (!ec.name.trim()) errors["emergency_contact.name"] = "Required";
-        if (!ec.relationship.trim()) errors["emergency_contact.relationship"] = "Required";
-        if (digits(ec.phone).length !== 10)
-          errors["emergency_contact.phone"] = "Enter a 10-digit phone number";
-        break;
-
       case 6: {
-        if (pcp.none) break;
-        if (!pcp.provider_name.trim()) errors["primary_care_provider.provider_name"] = "Required";
-        if (!pcp.clinic_name.trim()) errors["primary_care_provider.clinic_name"] = "Required";
-        if (!pcp.may_contact) errors["primary_care_provider.may_contact"] = "Choose one";
+        if (!state.visit.primary_reason)
+          errors["visit.primary_reason"] = "Choose one";
         break;
       }
 
       case 7:
+        // Informational gate — no validation
+        break;
+
       case 8:
+        // PCP all optional
+        break;
+
       case 9:
-      case 10:
-        // Always valid (zero selections allowed; quick-fill provides "None")
+        // Diagnoses optional
         break;
 
-      case 11:
-        if (!state.lifestyle.tobacco) errors["lifestyle.tobacco"] = "Choose one";
-        if (!state.lifestyle.alcohol) errors["lifestyle.alcohol"] = "Choose one";
-        break;
-
-      case 12:
+      case 10: {
         if (state.hormone_therapy.used_before === null)
           errors["hormone_therapy.used_before"] = "Choose Yes or No";
         break;
+      }
 
+      case 11:
+      case 12:
       case 13:
-      case 14:
-      case 15:
-        // Optional symptom checklists
+        // Medications, allergies, occupation — optional
         break;
 
-      case 16: {
-        if (!state.visit.primary_reason)
-          errors["visit.primary_reason"] = "Choose one";
-        else if (
-          state.visit.primary_reason === "Something else" &&
-          !state.visit.primary_reason_other.trim()
-        )
-          errors["visit.primary_reason_other"] = "Please describe briefly";
+      case 14: {
+        if (!state.lifestyle.tobacco) errors["lifestyle.tobacco"] = "Choose one";
+        if (!state.lifestyle.alcohol) errors["lifestyle.alcohol"] = "Choose one";
         break;
       }
 
+      case 15:
+      case 16:
       case 17:
-        if (!state.visit.symptom_duration) errors["visit.symptom_duration"] = "Choose one";
+        // Symptom checklists optional
         break;
 
-      case 18:
-        // Optional / skippable
-        break;
-
-      case 19: {
+      case 18: {
         if (!consents.info_accurate) errors["consents.info_accurate"] = "Required";
-        if (!consents.authorize_treatment) errors["consents.authorize_treatment"] = "Required";
+        if (!consents.authorize_treatment)
+          errors["consents.authorize_treatment"] = "Required";
         if (!consents.telemedicine) errors["consents.telemedicine"] = "Required";
-        if (!consents.privacy_practices) errors["consents.privacy_practices"] = "Required";
+        if (!consents.privacy_practices)
+          errors["consents.privacy_practices"] = "Required";
 
         const typed = sig.typed_name.trim().replace(/\s+/g, " ").toLowerCase();
-        const expected = a.full_legal_name.trim().replace(/\s+/g, " ").toLowerCase();
+        const expected = `${a.first_name} ${a.last_name}`
+          .trim()
+          .replace(/\s+/g, " ")
+          .toLowerCase();
         if (!typed) errors["signature.typed_name"] = "Required";
         else if (typed !== expected)
           errors["signature.typed_name"] =
             "Please type your name exactly as entered at the start.";
         break;
       }
-
-      case 20:
-        break;
     }
 
     return { isValid: Object.keys(errors).length === 0, errors };
