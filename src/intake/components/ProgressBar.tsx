@@ -20,7 +20,7 @@ const ProgressBar = ({ currentStep, totalSteps, phaseIndex }: ProgressBarProps) 
   });
 
   return (
-    <div className="mx-auto w-full" style={{ maxWidth: 560, padding: "12px 20px 8px" }}>
+    <div className="mx-auto w-full" style={{ maxWidth: 520, padding: "12px 20px 8px" }}>
       <div className="flex" style={{ gap: 4 }}>
         {fills.map((fill, i) => (
           <div
