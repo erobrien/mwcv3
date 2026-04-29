@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Zap, Heart, Scale, MoreHorizontal, Check } from "lucide-react";
+import { Activity, Heart, Scale, MoreHorizontal, Check } from "lucide-react";
 
 interface V2StepConcernProps {
   initialValue?: string;
@@ -10,9 +10,9 @@ const font = "'Montserrat', sans-serif";
 const headingFont = "'Bebas Neue', sans-serif";
 
 const concerns = [
-  { value: "energy", label: "Low energy / fatigue", icon: Zap },
-  { value: "sex-drive", label: "Low sex drive / ED", icon: Heart },
-  { value: "weight", label: "Weight gain / difficulty losing weight", icon: Scale },
+  { value: "trt", label: "Testosterone Replacement Therapy", icon: Activity },
+  { value: "ed", label: "Erectile Dysfunction", icon: Heart },
+  { value: "weight-loss", label: "Weight Loss", icon: Scale },
   { value: "other", label: "Other", icon: MoreHorizontal },
 ];
 
@@ -35,10 +35,10 @@ const V2StepConcern = ({ initialValue, onNext }: V2StepConcernProps) => {
           className="mb-2 text-center uppercase"
           style={{ fontFamily: headingFont, fontSize: "clamp(24px, 5.5vw, 36px)", color: "#0B1029", letterSpacing: "0.05em", lineHeight: 1.1 }}
         >
-          What Brings You In?
+          Which Service?
         </h1>
         <p className="mb-6 text-center" style={{ fontFamily: font, fontWeight: 400, fontSize: 14, color: "#6B7280" }}>
-          Select your primary concern.
+          Select the service you're interested in.
         </p>
 
         <div className="space-y-3" data-spec-id="step2-cards">
