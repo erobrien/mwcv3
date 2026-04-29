@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ThumbsUp, ThumbsDown } from "lucide-react";
 import SurveyCard from "./SurveyCard";
 
 const font = "'Montserrat', sans-serif";
@@ -16,7 +17,7 @@ const SurveyRecommendStep = ({
 }: SurveyRecommendStepProps) => {
   const [value, setValue] = useState<boolean | null>(initialValue);
 
-  const chip = (val: boolean, label: string) => {
+  const chip = (val: boolean, label: string, Icon: typeof ThumbsUp) => {
     const isSelected = value === val;
     return (
       <button
@@ -24,9 +25,9 @@ const SurveyRecommendStep = ({
         role="radio"
         aria-checked={isSelected}
         onClick={() => setValue(val)}
-        className="flex-1 transition-all"
+        className="flex flex-1 items-center justify-center gap-2 transition-all"
         style={{
-          height: 64,
+          height: 72,
           borderRadius: 12,
           fontFamily: font,
           fontWeight: 700,
@@ -39,8 +40,28 @@ const SurveyRecommendStep = ({
           boxShadow: isSelected
             ? "0 0 0 3px rgba(232,103,10,0.15)"
             : "0 1px 3px rgba(0,0,0,0.06)",
+          transform: isSelected ? "translateY(-1px)" : "translateY(0)",
+          touchAction: "manipulation",
+        }}
+        onMouseEnter={(e) => {
+          if (!isSelected) {
+            e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)";
+            e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
+            e.currentTarget.style.transform = "translateY(-1px)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isSelected) {
+            e.currentTarget.style.borderColor = "#D1CCC5";
+            e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
+            e.currentTarget.style.transform = "translateY(0)";
+          }
         }}
       >
+        <Icon
+          className="h-5 w-5 shrink-0"
+          style={{ color: isSelected ? "#FFFFFF" : "#E8670A" }}
+        />
         {label}
       </button>
     );
@@ -52,8 +73,8 @@ const SurveyRecommendStep = ({
       subtitle="To a friend or family member."
     >
       <div role="radiogroup" aria-label="Recommend us" className="flex gap-3 mb-6">
-        {chip(true, "Yes")}
-        {chip(false, "No")}
+        {chip(true, "Yes", ThumbsUp)}
+        {chip(false, "No", ThumbsDown)}
       </div>
 
       <button
