@@ -1,49 +1,113 @@
-import { useState } from "react";
-import { StepCard, PrimaryCTA, CardCheckbox, SavedIndicator } from "@/intake/components";
-import { useIntakeStore } from "@/store/intakeStore";
+import { CheckCircle2 } from "lucide-react";
+import { StepCard, PrimaryCTA, SecondaryLink } from "@/intake/components";
 import type { StepProps } from "@/types/intake";
 
-const DIAGNOSES = [
-  "High blood pressure", "High cholesterol", "Diabetes",
-  "Heart disease (heart attack, bypass, stents)", "Stroke or TIA", "Sleep apnea",
-  "Thyroid disorder", "Depression or anxiety",
-  "Prostate condition (enlargement, cancer)", "Any other cancer",
-  "Blood clots / DVT / PE", "Sickle cell anemia", "Priapism", "Peyronie's disease",
-];
-const NONE = "None of the above";
+const TREATS = ["Low Testosterone", "Erectile Dysfunction", "Medical Weight Loss"];
+const NOT = ["Primary care", "Urgent care", "STD clinic"];
 
 const Step07 = ({ onNext }: StepProps) => {
-  const selected = useIntakeStore((s) => s.medical_history.diagnoses);
-  const setField = useIntakeStore((s) => s.setField);
-  const [savedTrigger, setSavedTrigger] = useState(0);
-
-  const toggle = (val: string) => {
-    let next: string[];
-    if (val === NONE) next = selected.includes(NONE) ? [] : [NONE];
-    else {
-      const without = selected.filter((v) => v !== NONE);
-      next = without.includes(val) ? without.filter((v) => v !== val) : [...without, val];
-    }
-    setField("medical_history.diagnoses", next);
-    setSavedTrigger((n) => n + 1);
-  };
-
   return (
-    <StepCard h1="HEALTH HISTORY">
-      <h2 className="intake-h2 mb-2">Have you ever been diagnosed with any of these?</h2>
-      <p className="mb-5" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 14, color: "var(--text-body)" }}>
-        Check all that apply.
+    <StepCard h1="ARE WE THE RIGHT FIT?">
+      <h2 className="intake-h2 mb-3">Quick check before we continue</h2>
+      <p
+        className="mb-5"
+        style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: 15,
+          lineHeight: 1.55,
+          color: "var(--text-body)",
+        }}
+      >
+        We want to make sure you're in the right place. Men's Wellness Centers focuses on a
+        narrow set of conditions — by design.
       </p>
-      <div className="space-y-2.5">
-        {DIAGNOSES.map((d) => (
-          <CardCheckbox key={d} label={d} checked={selected.includes(d)} onToggle={() => toggle(d)} />
-        ))}
-        <CardCheckbox label={NONE} checked={selected.includes(NONE)} onToggle={() => toggle(NONE)} />
+
+      <div
+        style={{
+          background: "var(--accent-orange-tint-06)",
+          border: "1px solid rgba(232,103,10,0.18)",
+          borderRadius: 12,
+          padding: 16,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 11,
+            letterSpacing: "0.08em",
+            fontWeight: 600,
+            color: "var(--accent-orange)",
+            textTransform: "uppercase",
+            marginBottom: 8,
+          }}
+        >
+          We treat
+        </div>
+        <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+          {TREATS.map((t) => (
+            <li
+              key={t}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "6px 0",
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 15,
+                color: "var(--text-primary)",
+                fontWeight: 500,
+              }}
+            >
+              <CheckCircle2 size={18} color="var(--accent-orange)" strokeWidth={2.25} />
+              {t}
+            </li>
+          ))}
+        </ul>
       </div>
+
+      <div
+        className="mt-3"
+        style={{
+          background: "var(--input-bg)",
+          border: "1px solid var(--input-border)",
+          borderRadius: 12,
+          padding: 16,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 11,
+            letterSpacing: "0.08em",
+            fontWeight: 600,
+            color: "var(--text-label)",
+            textTransform: "uppercase",
+            marginBottom: 8,
+          }}
+        >
+          We are NOT
+        </div>
+        <p
+          style={{
+            margin: 0,
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 14,
+            color: "var(--text-body)",
+            lineHeight: 1.55,
+          }}
+        >
+          {NOT.join(" · ")}.
+        </p>
+      </div>
+
       <div className="mt-6">
-        <PrimaryCTA sticky onClick={onNext}>Continue</PrimaryCTA>
+        <PrimaryCTA sticky onClick={onNext}>
+          I'm in the right place
+        </PrimaryCTA>
       </div>
-      <SavedIndicator trigger={savedTrigger} />
+      <SecondaryLink onClick={() => (window.location.href = "/")}>
+        This isn't for me — exit
+      </SecondaryLink>
     </StepCard>
   );
 };

@@ -36,7 +36,7 @@ const IntakeThanksPage = () => {
   const heading = firstName ? `You're all set, ${firstName}` : "You're all set";
 
   return (
-    <AppShell currentStep={20} totalSteps={20} phaseIndex={4}>
+    <AppShell currentStep={18} totalSteps={18} phaseIndex={5}>
       <div
         className="mx-auto text-center"
         style={{ maxWidth: 560, paddingTop: 24, paddingBottom: 32 }}

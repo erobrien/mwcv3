@@ -1,41 +1,102 @@
 import { useState } from "react";
-import { StepCard, PrimaryCTA, CardCheckbox, SavedIndicator } from "@/intake/components";
+import { StepCard, PrimaryCTA, CardRadio, SavedIndicator } from "@/intake/components";
 import { useIntakeStore } from "@/store/intakeStore";
-import type { StepProps } from "@/types/intake";
-
-const ITEMS = [
-  "Decreased motivation", "Depression", "Anxiety",
-  "Brain fog / trouble focusing", "Irritability", "Decreased libido",
-];
-const NONE = "None of these";
+import { useStepValidation } from "@/hooks/useStepValidation";
+import { useShowErrors } from "@/intake/hooks/useShowErrors";
+import type { StepProps, TobaccoUse, AlcoholUse } from "@/types/intake";
 
 const Step14 = ({ onNext }: StepProps) => {
-  const selected = useIntakeStore((s) => s.symptoms.psychological);
+  const lifestyle = useIntakeStore((s) => s.lifestyle);
   const setField = useIntakeStore((s) => s.setField);
+  const { errors } = useStepValidation(14);
+  const { shouldShow, revealAll } = useShowErrors();
   const [savedTrigger, setSavedTrigger] = useState(0);
 
-  const toggle = (val: string) => {
-    let next: string[];
-    if (val === NONE) next = selected.includes(NONE) ? [] : [NONE];
-    else {
-      const without = selected.filter((v) => v !== NONE);
-      next = without.includes(val) ? without.filter((v) => v !== val) : [...without, val];
-    }
-    setField("symptoms.psychological", next);
-    setSavedTrigger((n) => n + 1);
+  const handleContinue = () => {
+    revealAll();
+    if (Object.keys(errors).length === 0) onNext();
   };
 
+  const tobaccoErr = shouldShow("lifestyle.tobacco") && errors["lifestyle.tobacco"];
+  const alcoholErr = shouldShow("lifestyle.alcohol") && errors["lifestyle.alcohol"];
+
+  const tObs: { v: TobaccoUse; l: string }[] = [
+    { v: "yes", l: "Yes" },
+    { v: "no", l: "No" },
+    { v: "former", l: "Former user" },
+  ];
+  const aObs: { v: AlcoholUse; l: string }[] = [
+    { v: "yes", l: "Yes" },
+    { v: "no", l: "No" },
+    { v: "occasionally", l: "Occasionally" },
+  ];
+
   return (
-    <StepCard h1="SYMPTOMS">
-      <h2 className="intake-h2 mb-5">Mind — check anything you've noticed</h2>
-      <div className="space-y-2.5">
-        {ITEMS.map((d) => (
-          <CardCheckbox key={d} label={d} checked={selected.includes(d)} onToggle={() => toggle(d)} />
-        ))}
-        <CardCheckbox label={NONE} checked={selected.includes(NONE)} onToggle={() => toggle(NONE)} />
+    <StepCard h1="LIFESTYLE">
+      <div className="mb-6">
+        <div className="intake-label mb-2">TOBACCO USE</div>
+        <div className="space-y-2.5" role="radiogroup">
+          {tObs.map((o) => (
+            <CardRadio
+              key={`t-${o.v}`}
+              label={o.l}
+              selected={lifestyle.tobacco === o.v}
+              onSelect={() => {
+                setField("lifestyle.tobacco", o.v);
+                setSavedTrigger((n) => n + 1);
+              }}
+            />
+          ))}
+        </div>
+        {tobaccoErr && (
+          <p
+            aria-live="polite"
+            style={{
+              marginTop: 6,
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 12,
+              color: "var(--error-red)",
+            }}
+          >
+            {errors["lifestyle.tobacco"]}
+          </p>
+        )}
       </div>
+
+      <div>
+        <div className="intake-label mb-2">ALCOHOL USE</div>
+        <div className="space-y-2.5" role="radiogroup">
+          {aObs.map((o) => (
+            <CardRadio
+              key={`a-${o.v}`}
+              label={o.l}
+              selected={lifestyle.alcohol === o.v}
+              onSelect={() => {
+                setField("lifestyle.alcohol", o.v);
+                setSavedTrigger((n) => n + 1);
+              }}
+            />
+          ))}
+        </div>
+        {alcoholErr && (
+          <p
+            aria-live="polite"
+            style={{
+              marginTop: 6,
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 12,
+              color: "var(--error-red)",
+            }}
+          >
+            {errors["lifestyle.alcohol"]}
+          </p>
+        )}
+      </div>
+
       <div className="mt-6">
-        <PrimaryCTA sticky onClick={onNext}>Continue</PrimaryCTA>
+        <PrimaryCTA sticky onClick={handleContinue}>
+          Continue
+        </PrimaryCTA>
       </div>
       <SavedIndicator trigger={savedTrigger} />
     </StepCard>

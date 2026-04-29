@@ -9,8 +9,10 @@ import {
 } from "@/store/intakeStore";
 import { TOTAL_STEPS, phaseForStep, type StepProps } from "@/types/intake";
 
-// Lazy-load each step so the entry chunk stays small
+// Lazy-load each step so the entry chunk stays small.
+// Step "0" is the welcome/intro screen — not counted in TOTAL_STEPS.
 const stepModules: Record<number, () => Promise<{ default: React.FC<StepProps> }>> = {
+  0: () => import("./steps/StepIntro"),
   1: () => import("./steps/Step01"),
   2: () => import("./steps/Step02"),
   3: () => import("./steps/Step03"),
@@ -29,17 +31,21 @@ const stepModules: Record<number, () => Promise<{ default: React.FC<StepProps> }
   16: () => import("./steps/Step16"),
   17: () => import("./steps/Step17"),
   18: () => import("./steps/Step18"),
-  19: () => import("./steps/Step19"),
-  20: () => import("./steps/Step20"),
 };
 
-const StepLoader = ({ step }: { step: number }) => {
+const StepLoader = ({
+  step,
+  onNext,
+  onBack,
+}: {
+  step: number;
+  onNext: () => void;
+  onBack: () => void;
+}) => {
   const Comp = useMemo(() => lazy(stepModules[step]), [step]);
-  const next = useIntakeStore((s) => s.nextStep);
-  const prev = useIntakeStore((s) => s.prevStep);
   return (
     <Suspense fallback={<div style={{ minHeight: 240 }} />}>
-      <Comp onNext={next} onBack={prev} />
+      <Comp onNext={onNext} onBack={onBack} />
     </Suspense>
   );
 };
@@ -50,8 +56,13 @@ const IntakeFlow = () => {
   const loadFromUrlParams = useIntakeStore((s) => s.loadFromUrlParams);
   const resetForm = useIntakeStore((s) => s.resetForm);
   const setStep = useIntakeStore((s) => s.setStep);
+  const nextStep = useIntakeStore((s) => s.nextStep);
   const prevStep = useIntakeStore((s) => s.prevStep);
   const reduceMotion = useReducedMotion();
+
+  // Local intro flag — independent of currentStep so the welcome screen can
+  // be shown before step 1 without breaking persistence/resume.
+  const [showIntro, setShowIntro] = useState(true);
 
   const directionRef = useRef<1 | -1>(1);
   const lastStepRef = useRef(currentStep);
@@ -65,28 +76,29 @@ const IntakeFlow = () => {
     if (!hasHydrated || urlLoadedRef.current) return;
     urlLoadedRef.current = true;
 
-    const beforeName = useIntakeStore.getState().about_you.full_legal_name;
+    const beforeFirst = useIntakeStore.getState().about_you.first_name;
     loadFromUrlParams();
 
     const after = useIntakeStore.getState();
     const hasUrl = typeof window !== "undefined" && window.location.search.length > 0;
 
-    if (
-      after.currentStep === 1 &&
-      hasResumableData(after) &&
-      !hasUrl &&
-      beforeName
-    ) {
-      setShowResume(true);
+    // If we have prior data, skip the intro screen and offer Resume.
+    if (hasResumableData(after) && !hasUrl) {
+      setShowIntro(false);
+      if (after.currentStep === 1 && beforeFirst) {
+        setShowResume(true);
+      }
+    } else if (hasUrl) {
+      // GHL deep-link with prefilled identity: skip intro
+      setShowIntro(false);
     }
     setResumeChecked(true);
   }, [hasHydrated, loadFromUrlParams]);
 
-  // Safari bfcache: re-hydrate from localStorage if the page was restored
+  // Safari bfcache rehydrate
   useEffect(() => {
     const onPageShow = (e: PageTransitionEvent) => {
       if (e.persisted) {
-        // Re-read persisted state and force a re-render via Zustand
         try {
           useIntakeStore.persist.rehydrate();
         } catch {
@@ -118,16 +130,36 @@ const IntakeFlow = () => {
     };
   }, []);
 
-  // Track direction for transitions + scroll to top + analytics
+  // Track direction + scroll + analytics
   useEffect(() => {
     directionRef.current = currentStep >= lastStepRef.current ? 1 : -1;
     lastStepRef.current = currentStep;
     if (typeof window !== "undefined") window.scrollTo(0, 0);
-    void import("@/lib/intakeAnalytics").then((m) => m.trackStepView(currentStep));
-  }, [currentStep]);
+    if (!showIntro) {
+      void import("@/lib/intakeAnalytics").then((m) => m.trackStepView(currentStep));
+    }
+  }, [currentStep, showIntro]);
 
-  const phaseIndex = phaseForStep(currentStep);
-  const showBack = currentStep > 1 && currentStep !== 20;
+  const effectiveStep = showIntro ? 0 : currentStep;
+  const phaseIndex = showIntro ? 0 : phaseForStep(currentStep);
+  const showBack = !showIntro && currentStep > 1;
+
+  const handleNext = () => {
+    if (showIntro) {
+      setShowIntro(false);
+      return;
+    }
+    nextStep();
+  };
+
+  const handleBack = () => {
+    if (showIntro) return;
+    if (currentStep === 1) {
+      setShowIntro(true);
+      return;
+    }
+    prevStep();
+  };
 
   const dir = directionRef.current;
   const variants = reduceMotion
@@ -150,6 +182,7 @@ const IntakeFlow = () => {
 
   const handleStartOver = () => {
     resetForm();
+    setShowIntro(true);
     setShowResume(false);
   };
 
@@ -162,27 +195,32 @@ const IntakeFlow = () => {
   }
 
   return (
-    <AppShell currentStep={currentStep} totalSteps={TOTAL_STEPS} phaseIndex={phaseIndex}>
+    <AppShell
+      currentStep={effectiveStep}
+      totalSteps={TOTAL_STEPS}
+      phaseIndex={phaseIndex}
+      showProgress={!showIntro}
+    >
       {showBack && (
         <div className="mb-1">
-          <BackButton onClick={prevStep} />
+          <BackButton onClick={handleBack} />
         </div>
       )}
 
-      {showResume && currentStep === 1 && (
+      {showResume && currentStep === 1 && !showIntro && (
         <ResumeToast onResume={handleResume} onStartOver={handleStartOver} />
       )}
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={currentStep}
+          key={showIntro ? "intro" : `step-${currentStep}`}
           variants={variants}
           initial="initial"
           animate="animate"
           exit="exit"
           transition={{ duration: reduceMotion ? 0.1 : 0.25, ease: "easeOut" }}
         >
-          <StepLoader step={currentStep} />
+          <StepLoader step={effectiveStep} onNext={handleNext} onBack={handleBack} />
         </motion.div>
       </AnimatePresence>
     </AppShell>

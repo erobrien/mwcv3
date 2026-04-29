@@ -1,93 +1,138 @@
-## Goal
+## Restructure /intake to the new 18-step spec
 
-Build a mockup patient satisfaction survey at **`/survey`** that reuses the `/bookv2` visual chrome (dark navy `#0B1029`, V2Header, segmented progress bar, white step cards, orange CTA). The survey decides which Google review URL to send the patient to based on their location.
+The current intake is a 20-step flow centered on About-You / Emergency Contact / PCP / Symptoms / Reason / Consent. The new spec is an 18-step funnel that splits the identity steps (one field per screen), promotes "Reason for visit" early with a fit-check gate, and ends with a 4-checkbox e-signature.
 
-## Two entry scenarios
+### New step map (replaces existing Step01–Step20)
 
-**Scenario A — GHL-prefilled (warm)**
-URL: `/survey?contact_id=abc123&location=virginia-beach&first_name=John`
-- `location` query param (one of `virginia-beach | newport-news | richmond`) is trusted.
-- Skip the location/identity step. Survey is 3 questions only.
-
-**Scenario B — Cold link**
-URL: `/survey` (no params)
-- Run the 3 survey questions first, then ask for **location** + **one identity field** (email or phone) at the end so we can attribute the response.
-- Identity is captured *after* the rating questions (per your direction) so we don't lose drop-offs before the rating signal.
-
-In both flows: if Q3 ("Would you recommend us?") = **Yes**, redirect to that location's Google review URL. If **No**, route to a friendly internal "thanks for the feedback" page that captures an optional comment (no Google redirect).
-
-## Flow (mockup)
-
-```text
-Scenario A (warm, ?location=...)        Scenario B (cold)
-─────────────────────────────────       ──────────────────────────────────
-1. Overall experience? (5 options)      1. Overall experience? (5 options)
-2. Interaction with staff? (5)          2. Interaction with staff? (5)
-3. Recommend us? (Yes / No)             3. Recommend us? (Yes / No)
-   ├─ Yes → Google review (by loc)      4. Which center did you visit? (3 cards)
-   └─ No  → /survey/thanks              5. Email OR phone (one required)
-                                           ├─ Yes from Q3 → Google review
-                                           └─ No  from Q3 → /survey/thanks
+```
+1.  First + Last name
+2.  Phone
+3.  Email
+4.  Date of Birth (MM/DD/YYYY)
+5.  Address (autocomplete) + Apt/Suite (optional)
+6.  Main Reason for Visit (radio)
+7.  "Are We the Right Fit?" gate (informational; Continue / Not for me)
+8.  Primary Care Provider (name, clinic, may-contact radio) — all optional
+9.  Diagnoses (multi-select checklist + "None of the above")
+10. Hormone history (Yes / No)
+11. Medications (textarea, optional)
+12. Allergies (textarea, optional)
+13. Occupation (optional)
+14. Lifestyle — tobacco + alcohol radios
+15. Physical Symptoms (multi-select)
+16. Mind Symptoms (multi-select)
+17. Sexual Symptoms (multi-select)
+18. Sign & Submit — 4 consent checkboxes + typed-name e-signature + reCAPTCHA placeholder + "Complete My Intake"
 ```
 
-Progress bar phases (mirroring V2ProgressBar style):
-- Scenario A: 3 segments — `EXPERIENCE` · `STAFF` · `RECOMMEND`
-- Scenario B: 4 segments — `EXPERIENCE` · `STAFF` · `RECOMMEND` · `ABOUT YOU`
+A dedicated welcome/intro screen (current Step01) and a final success/thanks screen (current Step20) are kept as wrappers but are not counted in the 18 — internally we'll still route them. Total internal screens: intro + 18 + success = 20 routes, but the progress bar shows "Step X of 18".
 
-## Design system (matches /bookv2)
+### Phase grouping for the progress bar
 
-- Page bg `#0B1029`, sticky `V2Header` reused as-is.
-- White step card, max-width ~`520px`, centered, rounded `16px`, soft shadow.
-- Question prompt: Bebas Neue 22–26px uppercase navy.
-- 5-option rating: stacked white cards with thin border, hover/selected = orange border + 6% orange tint (matches `intake-select-card`). Auto-advance 300ms after tap.
-- Yes/No on Q3: two large chip buttons side-by-side (`intake-chip` style), no auto-advance — user must confirm with bottom CTA so the redirect feels intentional.
-- Bottom: orange pill `PrimaryCTA` ("Next" / "Submit Feedback"), sticky above mobile keyboard. Back link top-left under header (same as bookv2).
-- Reuse Montserrat body / Bebas headings already defined in `intake/styles.css`.
-
-## Google review redirects (location → URL)
-
-```ts
-const REVIEW_URLS = {
-  "virginia-beach": "https://search.google.com/local/writereview?placeid=ChIJYzXsRADruokR9wX5sXQ6AEw",
-  "newport-news":   "https://search.google.com/local/writereview?placeid=ChIJs00FguJ5sIkRwYLOLdjOZgg",
-  "richmond":       "https://search.google.com/local/writereview?placeid=ChIJP5F8BJ5rsYkR6mdPGbGUmh8",
-};
 ```
-(Normalized to https for both VB and Richmond; the http URLs you provided will redirect anyway.)
+Phase 1 — About You      → steps 1–5
+Phase 2 — Your Visit     → steps 6–7
+Phase 3 — Health History → steps 8–14
+Phase 4 — Symptoms       → steps 15–17
+Phase 5 — Sign & Submit  → step 18
+```
 
-## Files to create
+### Files to create
 
-- `src/pages/SurveyPage.tsx` — route container, owns step state, slide transitions (copy pattern from `BookingFunnelV2.tsx`).
-- `src/pages/SurveyThanksPage.tsx` — shown when Q3 = No; "Thanks for the honest feedback" + optional comment textarea + phone CTA.
-- `src/components/survey/SurveyProgressBar.tsx` — 3- or 4-segment variant of `V2ProgressBar`.
-- `src/components/survey/SurveyRatingStep.tsx` — reusable for Q1 + Q2 (5-option card list, auto-advance).
-- `src/components/survey/SurveyRecommendStep.tsx` — Yes/No chips for Q3.
-- `src/components/survey/SurveyLocationStep.tsx` — 3 location cards (cold flow only).
-- `src/components/survey/SurveyIdentityStep.tsx` — segmented toggle Email/Phone + single field (cold flow only).
-- `src/data/reviewUrls.ts` — the `REVIEW_URLS` map + `LOCATION_LABELS`.
+- `src/intake/components/fields/AddressAutocompleteField.tsx` — Google Places-style autocomplete UI. Mockup-grade: free-text + simulated suggestions list (no API key required for the mockup). Writes street/city/state/postal_code to the store.
+- `src/intake/components/fields/AptSuiteField.tsx` — small optional input shown under address.
+- `src/intake/components/RecaptchaPlaceholder.tsx` — visual reCAPTCHA "I'm not a robot" mockup checkbox (non-functional).
+- New step files Step01–Step18 in a new directory `src/intake/steps-v2/` so the new flow is built side-by-side without breaking the current one during development. After QA we delete `src/intake/steps/` and rename `steps-v2/` to `steps/`.
 
-## Files to edit
+### Files to modify
 
-- `src/App.tsx` — add `<Route path="/survey" element={<SurveyPage />} />` and `<Route path="/survey/thanks" element={<SurveyThanksPage />} />` above the catch-all.
+- `src/types/intake.ts`
+  - Add `address.address2` (Apt/Suite).
+  - Add `signature.typed_name` (already present).
+  - Replace `phaseForStep` with the new 5-phase mapping above.
+  - Set `TOTAL_STEPS = 18`.
+  - Split `about_you.full_legal_name` into `first_name` + `last_name` (legal-name field is still recombined for the e-signature comparison on step 18).
+- `src/store/intakeStore.ts`
+  - Update `initialIntake` for the renamed name fields and `address.address2`.
+  - Update `loadFromUrlParams` (first_name/last_name handled directly; the "skip About You" auto-advance becomes "skip to step 5 if name + phone + email + dob all provided").
+  - Update `estimateResumeStep` to the new step indices.
+- `src/hooks/useStepValidation.ts` — rewrite the switch to the new 18 steps:
+  - Step 1: first_name + last_name required
+  - Step 2: 10-digit phone
+  - Step 3: valid email
+  - Step 4: DOB MM/DD/YYYY, ≥18
+  - Step 5: street + city + state + ZIP required (apt optional)
+  - Step 6: visit.primary_reason required
+  - Step 7: no validation (gate screen)
+  - Step 8: all optional
+  - Step 9: optional (zero selections allowed)
+  - Step 10: hormone_therapy.used_before required (Yes/No)
+  - Steps 11–13: optional
+  - Step 14: tobacco + alcohol required
+  - Steps 15–17: optional
+  - Step 18: 4 consents true + typed_name matches `${first_name} ${last_name}`
+- `src/intake/IntakeFlow.tsx`
+  - Update `stepModules` to point at the new 18 step files and adjust `lazy` map.
+  - Update `phaseForStep` import / progress wiring to 18 steps.
+  - Keep the welcome screen as Step "0" / intro shown before Step 1; final submit screen reused after Step 18.
+- `src/intake/components/AppShell.tsx` — adjust progress bar prop expectations (totalSteps = 18, 5 phases). Verify nothing hard-codes 20.
+- `src/intake/components/ProgressBar.tsx` — verify segment math handles 5 phases.
+- `src/lib/submitIntake.ts` — adjust payload shape: rename name fields, include address2, include the four new consent flags exactly. (Mockup keeps existing console.info pattern.)
 
-## Behavior details
+### Step 7 — "Are We the Right Fit?" details
 
-- **Pre-fill parsing**: read `location`, `contact_id`, `first_name` from `URLSearchParams` on mount. If `location` matches one of the 3 slugs → Scenario A; otherwise Scenario B.
-- **Header greeting** (subtle): if `first_name` present, show small "Hi, John —" line above Q1 card.
-- **Outbound redirect** uses `window.location.assign(url)` so the back button returns to `/survey`. Show a 1-second interstitial card ("Opening Google…") before redirecting, so the transition isn't jarring.
-- **Mockup only** — no webhook submission this round; log payload to `console.info('survey_submit', payload)` and `window.dataLayer?.push({ event: 'survey_submitted', ...payload })`. We can wire a real endpoint in a follow-up.
-- **Validation**: identity step requires a valid email *or* a 10-digit phone (reuse `formatPhone` from `intake/components/fields/PhoneField`).
-- Accessibility: `role="radiogroup"` on rating lists, arrow-key support (already in `CardRadio`), reduced-motion respected.
+Informational screen, no inputs. Body copy from the spec:
 
-## Out of scope (this round)
+> "We treat Low Testosterone, Erectile Dysfunction, and Medical Weight Loss. We are not a primary care, urgent care, or STD clinic."
 
-- Real backend submission / GHL webhook (mockup only).
-- Token validation / signed URLs (we trust the `location` param for the mockup; flag for prod hardening).
-- Multi-language, A/B variants, NPS 0–10 scale.
+Two CTAs:
+- Primary: "Continue" → step 8
+- Secondary link: "This isn't for me" → routes to a soft-landing screen (reuse `DQSoftLanding` pattern from `src/components/booking/DQSoftLanding.tsx`, adapted to the intake visual system).
 
-## Acceptance
+This screen is shown unconditionally after step 6, regardless of which reason is picked, so the user explicitly acknowledges fit before proceeding.
 
-- `/survey?location=richmond&first_name=John` → 3 questions, Yes routes to Richmond Google review URL.
-- `/survey` (cold) → 3 questions + location + identity, then routes correctly.
-- Any "No" on Q3 → `/survey/thanks` (no Google redirect).
-- Visual chrome is indistinguishable from `/bookv2` (header, progress bar style, card, CTA).
+### Step 9 — Diagnoses options (exact list from spec)
+
+Renders as `CardCheckbox` grid, with the existing "None of the above" toggle clearing all others (same pattern as today's Step13). Options:
+
+High blood pressure, High cholesterol, Diabetes, Heart disease, Stroke, Sleep apnea, Thyroid disorder, Depression or anxiety, Prostate condition, Cancer, Blood clots / DVT, Sickle cell anemia, Priapism, Peyronie's disease, None of the above.
+
+### Step 17 — Sexual Symptoms (new section)
+
+Adds `symptoms.sexual` checklist:
+
+Decreased or absent morning erections, Inability to obtain an erection, Inability to maintain an erection, Decreased turgor or rigidity, Ineffective response to ED medication, Use of medication (Viagra or Cialis), Premature ejaculation.
+
+This already exists in the type (`symptoms.sexual: string[]`) — just wire the UI.
+
+### Step 18 — Sign & Submit
+
+Consents (4 checkboxes, each maps to `consents.*`):
+- "I confirm my information is accurate." → `info_accurate`
+- "I consent to evaluation and treatment." → `authorize_treatment`
+- "I understand telemedicine may be used." → `telemedicine`
+- "I acknowledge the Privacy Notice." → `privacy_practices` (with a link opening the existing `ConsentDrawer`)
+
+Plus:
+- Typed full legal name (must match `first_name + " " + last_name`, case-insensitive).
+- reCAPTCHA placeholder (visual only — `RecaptchaPlaceholder` component).
+- CTA: `Complete My Intake →` (orange primary, full width).
+
+On click: validate, set `signature.signed_at`, call `submitIntake`, navigate to the existing success screen.
+
+### Visual / styling notes
+
+- Reuse all existing intake primitives (`StepCard`, `PrimaryCTA`, `TextField`, `PhoneField`, `EmailField`, `MaskedDOBField`, `CardRadio`, `CardCheckbox`, `ChipRow`, `SavedIndicator`, `ConsentDrawer`, `BackButton`, `AppShell`, `ProgressBar`).
+- No new visual system — keep Bebas Neue / Montserrat tokens already in `src/intake/styles.css`.
+- Keep `useShowErrors` "blur or CTA-tap" reveal pattern on every validated step.
+- Keep autosave + resume toast working against the new step indices.
+
+### Out of scope for this change
+
+- Real Google Places API integration (we'll mock suggestions for now; can be wired later).
+- Real reCAPTCHA (visual placeholder only).
+- Backend submission to GHL — `submitIntake` continues its current console-log/mock behavior; no Lovable Cloud changes.
+
+### Migration / cleanup
+
+After the new flow renders correctly, delete `src/intake/steps/Step01.tsx`–`Step20.tsx`, rename `steps-v2/` → `steps/`, and update imports in `IntakeFlow.tsx`. The `IntakePage` route (`/intake`) stays the same.

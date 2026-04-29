@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { StepCard, PrimaryCTA, TextField, SavedIndicator } from "@/intake/components";
+import { StepCard, PrimaryCTA, MaskedDOBField, SavedIndicator } from "@/intake/components";
 import { useIntakeStore } from "@/store/intakeStore";
 import { useStepValidation } from "@/hooks/useStepValidation";
 import { useShowErrors } from "@/intake/hooks/useShowErrors";
 import type { StepProps } from "@/types/intake";
 
 const Step04 = ({ onNext }: StepProps) => {
-  const occupation = useIntakeStore((s) => s.occupation);
+  const dob = useIntakeStore((s) => s.about_you.dob);
   const setField = useIntakeStore((s) => s.setField);
   const { errors } = useStepValidation(4);
-  const { shouldShow, markBlur, revealAll } = useShowErrors();
+  const { shouldShow, revealAll } = useShowErrors();
   const [savedTrigger, setSavedTrigger] = useState(0);
 
   const handleContinue = () => {
@@ -18,17 +18,28 @@ const Step04 = ({ onNext }: StepProps) => {
   };
 
   return (
-    <StepCard h1="YOUR WORK">
-      <h2 className="intake-h2 mb-2">What do you do for a living?</h2>
-      <p className="mb-5" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 14, color: "var(--text-body)" }}>
-        This helps your provider understand physical demands and schedule constraints.
+    <StepCard h1="YOUR DATE OF BIRTH">
+      <h2 className="intake-h2 mb-2">When were you born?</h2>
+      <p
+        className="mb-5"
+        style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 14, color: "var(--text-body)" }}
+      >
+        We use this to verify your identity at check-in.
       </p>
-      <TextField label="OCCUPATION" autoComplete="organization-title" value={occupation}
-        onChange={(e) => { setField("occupation", e.target.value); setSavedTrigger((n) => n + 1); }}
-        onBlur={() => markBlur("occupation")}
-        error={errors["occupation"]} showError={shouldShow("occupation")} required />
+      <MaskedDOBField
+        value={dob}
+        onChange={(v) => {
+          setField("about_you.dob", v);
+          setSavedTrigger((n) => n + 1);
+        }}
+        error={errors["about_you.dob"]}
+        showError={shouldShow("about_you.dob")}
+        required
+      />
       <div className="mt-6">
-        <PrimaryCTA sticky onClick={handleContinue}>Continue</PrimaryCTA>
+        <PrimaryCTA sticky onClick={handleContinue}>
+          Continue
+        </PrimaryCTA>
       </div>
       <SavedIndicator trigger={savedTrigger} />
     </StepCard>

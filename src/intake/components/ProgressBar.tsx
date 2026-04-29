@@ -1,17 +1,15 @@
 interface ProgressBarProps {
   currentStep: number;
   totalSteps: number;
-  /** 0 = none, 1 = About You, 2 = Health History, 3 = Symptoms, 4 = Consent */
+  /** 0 = none, 1 About You, 2 Your Visit, 3 Health History, 4 Symptoms, 5 Sign & Submit */
   phaseIndex: number;
 }
 
-const PHASES = ["ABOUT YOU", "HEALTH HISTORY", "SYMPTOMS", "CONSENT"];
+const PHASES = ["ABOUT YOU", "YOUR VISIT", "HISTORY", "SYMPTOMS", "SIGN"];
 
 const ProgressBar = ({ currentStep, totalSteps, phaseIndex }: ProgressBarProps) => {
-  // Each segment fills proportionally. Overall progress = currentStep / totalSteps.
-  // We distribute that across 4 segments.
   const overall = totalSteps > 0 ? Math.min(1, Math.max(0, currentStep / totalSteps)) : 0;
-  const segments = 4;
+  const segments = PHASES.length;
 
   const fills = Array.from({ length: segments }, (_, i) => {
     const segStart = i / segments;
@@ -22,10 +20,7 @@ const ProgressBar = ({ currentStep, totalSteps, phaseIndex }: ProgressBarProps) 
   });
 
   return (
-    <div
-      className="mx-auto w-full"
-      style={{ maxWidth: 560, padding: "12px 20px 8px" }}
-    >
+    <div className="mx-auto w-full" style={{ maxWidth: 560, padding: "12px 20px 8px" }}>
       <div className="flex" style={{ gap: 4 }}>
         {fills.map((fill, i) => (
           <div
@@ -51,7 +46,7 @@ const ProgressBar = ({ currentStep, totalSteps, phaseIndex }: ProgressBarProps) 
 
       <div
         className="mt-2 grid"
-        style={{ gridTemplateColumns: "repeat(4, 1fr)", gap: 4 }}
+        style={{ gridTemplateColumns: `repeat(${segments}, 1fr)`, gap: 4 }}
       >
         {PHASES.map((label, i) => {
           const active = i + 1 === phaseIndex;
@@ -61,7 +56,7 @@ const ProgressBar = ({ currentStep, totalSteps, phaseIndex }: ProgressBarProps) 
               className="text-center"
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: 11,
+                fontSize: 10,
                 fontWeight: 600,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
