@@ -185,10 +185,43 @@ const V2StepCalendar = ({ firstName, phone, email: initialEmail, locationLabel, 
           )}
         </div>
 
+        {/* Hidden fields — name & phone already captured */}
+        <input type="hidden" name="firstName" value={firstName} />
+        <input type="hidden" name="phone" value={phone} />
+
+        {/* Email — revealed after date + time selected */}
+        {dateTimePicked && (
+          <div className="mb-6" data-spec-id="step6-email">
+            <label className="mb-2 block uppercase" style={{ fontFamily: font, fontWeight: 600, fontSize: 13, color: "#9CA3AF", letterSpacing: "0.08em" }}>
+              Email Address
+            </label>
+            <input
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{
+                height: 56, borderRadius: 10, backgroundColor: "#F5F3F0",
+                border: "1px solid #D1CCC5", color: "#0B1029", padding: "14px 16px",
+                fontSize: 16, width: "100%", outline: "none", fontFamily: font, fontWeight: 400,
+                boxShadow: "inset 0 1px 2px rgba(0,0,0,0.06)",
+              }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(232,103,10,0.5)"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06), 0 0 0 3px rgba(232,103,10,0.1)"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = "#D1CCC5"; e.currentTarget.style.boxShadow = "inset 0 1px 2px rgba(0,0,0,0.06)"; }}
+              aria-label="Email address"
+            />
+            <p style={{ fontFamily: font, fontSize: 13, color: "#9CA3AF", marginTop: 6 }}>
+              We'll send your confirmation and appointment details here.
+            </p>
+          </div>
+        )}
+
         {/* Booking summary */}
         <div className="mb-4 rounded-xl px-4 py-3" data-spec-id="step6-summary" style={{ backgroundColor: "#F5F3F0", border: "1px solid #D1CCC5" }}>
           <span style={{ fontFamily: font, fontSize: 15, color: "#6B7280" }}>
-            Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "-"}</strong> · {phone || "-"} · {email || "-"}
+            Booking for: <strong style={{ color: "#0B1029" }}>{firstName || "-"}</strong>
+            {selectedDateStr && <> · {selectedDateStr}</>}
+            {selectedTime && <> · {selectedTime}</>}
           </span>
         </div>
 
@@ -203,7 +236,7 @@ const V2StepCalendar = ({ firstName, phone, email: initialEmail, locationLabel, 
 
         {/* CTA */}
         <button
-          onClick={() => isValid && onNext({ selectedDate: selectedDateStr, selectedTime, smsReminder })}
+          onClick={() => isValid && onNext({ selectedDate: selectedDateStr, selectedTime, smsReminder, email: email.trim() })}
           disabled={!isValid}
           data-spec-id="step6-cta"
           className="flex w-full items-center justify-center gap-2 uppercase transition-all"
@@ -216,7 +249,7 @@ const V2StepCalendar = ({ firstName, phone, email: initialEmail, locationLabel, 
           onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
           aria-label="Confirm my appointment"
         >
-          Confirm My Appointment <ArrowRight className="h-4 w-4" />
+          {dateTimePicked ? "Confirm My Appointment" : "Pick a Date & Time"} <ArrowRight className="h-4 w-4" />
         </button>
       </div>
 
