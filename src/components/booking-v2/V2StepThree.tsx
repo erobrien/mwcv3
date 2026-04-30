@@ -68,7 +68,9 @@ const V2StepCalendar = ({ firstName, phone, email: initialEmail, locationLabel, 
     ? new Date(viewYear, viewMonth, selectedDay).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
     : "";
 
-  const isValid = selectedDay && selectedTime;
+  const isEmailValid = email.trim().length > 0 && email.includes("@") && email.includes(".");
+  const dateTimePicked = !!selectedDay && !!selectedTime;
+  const isValid = dateTimePicked && isEmailValid;
 
   return (
     <div className="flex flex-col items-center px-5 pt-6 md:pt-10" data-spec-id="step6-screen">
