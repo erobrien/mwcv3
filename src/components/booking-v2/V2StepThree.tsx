@@ -28,13 +28,14 @@ const noPressureCards = [
   { num: "3", title: "My decision", desc: "Start same day if I choose, or take time to decide. Zero pressure." },
 ];
 
-const V2StepCalendar = ({ firstName, phone, email, locationLabel, onNext }: V2StepCalendarProps) => {
+const V2StepCalendar = ({ firstName, phone, email: initialEmail, locationLabel, onNext }: V2StepCalendarProps) => {
   const today = useMemo(() => new Date(), []);
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState("");
   const [smsReminder, setSmsReminder] = useState(true);
+  const [email, setEmail] = useState(initialEmail || "");
 
   const calendarDays = useMemo(() => {
     const firstDay = new Date(viewYear, viewMonth, 1).getDay();
