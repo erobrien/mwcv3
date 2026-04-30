@@ -87,7 +87,7 @@ const BookingFunnelV2 = () => {
         </div>
 
         {/* Back button */}
-        {step > 1 && step < 8 && (
+        {step > 1 && step < 6 && (
           <div className="mx-auto w-full max-w-lg px-5">
             <button
               type="button"
@@ -126,24 +126,15 @@ const BookingFunnelV2 = () => {
             />
           )}
           {step === 3 && (
-            <V2StepDuration
-              initialValue={formData.duration}
-              onNext={(duration) => {
-                setFormData((p) => ({ ...p, duration }));
+            <V2StepPriorTreatment
+              initialValue={formData.priorTreatment}
+              onNext={(prior) => {
+                setFormData((p) => ({ ...p, priorTreatment: prior }));
                 goTo(4);
               }}
             />
           )}
           {step === 4 && (
-            <V2StepPriorTreatment
-              initialValue={formData.priorTreatment}
-              onNext={(prior) => {
-                setFormData((p) => ({ ...p, priorTreatment: prior }));
-                goTo(5);
-              }}
-            />
-          )}
-          {step === 5 && (
             <V2StepCalendar
               firstName={formData.firstName}
               phone={formData.phone}
@@ -151,18 +142,17 @@ const BookingFunnelV2 = () => {
               locationLabel={locationLabels[formData.location] || formData.location}
               onNext={(d) => {
                 setFormData((p) => ({ ...p, ...d }));
-                goTo(7);
+                goTo(5);
               }}
             />
           )}
-          
-          {step === 7 && (
+          {step === 5 && (
             <V2StepVerify
               email={formData.email}
               phone={formData.phone}
             />
           )}
-          {step === 8 && (
+          {step === 6 && (
             <V2StepFour
               firstName={formData.firstName}
               phone={formData.phone}
