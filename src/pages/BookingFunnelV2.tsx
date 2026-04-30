@@ -144,15 +144,6 @@ const BookingFunnelV2 = () => {
             />
           )}
           {step === 5 && (
-            <V2StepEmail
-              initialValue={formData.email}
-              onNext={(email) => {
-                setFormData((p) => ({ ...p, email }));
-                goTo(6);
-              }}
-            />
-          )}
-          {step === 6 && (
             <V2StepCalendar
               firstName={formData.firstName}
               phone={formData.phone}
@@ -164,6 +155,7 @@ const BookingFunnelV2 = () => {
               }}
             />
           )}
+          {step === 6 && null}
           {step === 7 && (
             <V2StepVerify
               email={formData.email}
