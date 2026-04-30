@@ -155,7 +155,7 @@ const BookingFunnelV2 = () => {
               }}
             />
           )}
-          {step === 6 && null}
+          
           {step === 7 && (
             <V2StepVerify
               email={formData.email}
