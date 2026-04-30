@@ -5,7 +5,7 @@ import V2StepOne from "@/components/booking-v2/V2StepOne";
 import V2StepConcern from "@/components/booking-v2/V2StepConcern";
 import V2StepDuration from "@/components/booking-v2/V2StepDuration";
 import V2StepPriorTreatment from "@/components/booking-v2/V2StepPriorTreatment";
-import V2StepEmail from "@/components/booking-v2/V2StepEmail";
+
 import V2StepCalendar from "@/components/booking-v2/V2StepThree";
 import V2StepVerify from "@/components/booking-v2/V2StepVerify";
 import V2StepFour from "@/components/booking-v2/V2StepFour";
@@ -144,15 +144,6 @@ const BookingFunnelV2 = () => {
             />
           )}
           {step === 5 && (
-            <V2StepEmail
-              initialValue={formData.email}
-              onNext={(email) => {
-                setFormData((p) => ({ ...p, email }));
-                goTo(6);
-              }}
-            />
-          )}
-          {step === 6 && (
             <V2StepCalendar
               firstName={formData.firstName}
               phone={formData.phone}
@@ -164,6 +155,7 @@ const BookingFunnelV2 = () => {
               }}
             />
           )}
+          
           {step === 7 && (
             <V2StepVerify
               email={formData.email}
