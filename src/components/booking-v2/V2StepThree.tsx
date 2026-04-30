@@ -6,7 +6,7 @@ interface V2StepCalendarProps {
   phone: string;
   email: string;
   locationLabel: string;
-  onNext: (data: { selectedDate: string; selectedTime: string; smsReminder: boolean }) => void;
+  onNext: (data: { selectedDate: string; selectedTime: string; smsReminder: boolean; email: string }) => void;
 }
 
 const font = "'Montserrat', sans-serif";
