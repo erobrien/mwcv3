@@ -13,7 +13,7 @@ import SpecOverlay from "@/components/booking-v2/spec/SpecOverlay";
 import SpecModeToggle from "@/components/booking-v2/spec/SpecModeToggle";
 import { ArrowLeft } from "lucide-react";
 
-type Step = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
 const locationLabels: Record<string, string> = {
   richmond: "Richmond, VA",
