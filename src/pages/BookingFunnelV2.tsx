@@ -3,7 +3,7 @@ import V2Header from "@/components/booking-v2/V2Header";
 import V2ProgressBar from "@/components/booking-v2/V2ProgressBar";
 import V2StepOne from "@/components/booking-v2/V2StepOne";
 import V2StepConcern from "@/components/booking-v2/V2StepConcern";
-import V2StepDuration from "@/components/booking-v2/V2StepDuration";
+
 import V2StepPriorTreatment from "@/components/booking-v2/V2StepPriorTreatment";
 
 import V2StepCalendar from "@/components/booking-v2/V2StepThree";
