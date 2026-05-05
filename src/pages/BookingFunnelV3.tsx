@@ -1,22 +1,22 @@
 import { useState } from "react";
-import { Zap, Heart, Scale, MoreHorizontal, Activity, Check, ArrowRight, Phone, MessageSquare, ArrowLeft } from "lucide-react";
+import { BatteryLow, HeartCrack, TrendingDown, HelpCircle, Syringe, Pill, Apple, Stethoscope, Check, ArrowRight, Phone, MessageSquare, ArrowLeft } from "lucide-react";
 import V2Header from "@/components/booking-v2/V2Header";
 
 const font = "'Montserrat', sans-serif";
 const headingFont = "'Bebas Neue', sans-serif";
 
 const concerns = [
-  { value: "low-energy", label: "Low energy / fatigue", icon: Zap },
-  { value: "low-sex-drive", label: "Low sex drive / ED", icon: Heart },
-  { value: "weight-gain", label: "Weight gain / difficulty losing weight", icon: Scale },
-  { value: "other", label: "Other", icon: MoreHorizontal },
+  { value: "low-energy", label: "Low energy / fatigue", icon: BatteryLow },
+  { value: "low-sex-drive", label: "Low sex drive / ED", icon: HeartCrack },
+  { value: "weight-gain", label: "Weight gain / difficulty losing weight", icon: TrendingDown },
+  { value: "other", label: "Other", icon: HelpCircle },
 ];
 
 const services = [
-  { value: "trt", label: "Testosterone Replacement Therapy", icon: Activity },
-  { value: "ed", label: "Erectile Dysfunction", icon: Heart },
-  { value: "weight-loss", label: "Weight Loss", icon: Scale },
-  { value: "other", label: "Other", icon: MoreHorizontal },
+  { value: "trt", label: "Testosterone Replacement Therapy", icon: Syringe },
+  { value: "ed", label: "Erectile Dysfunction", icon: Pill },
+  { value: "weight-loss", label: "Weight Loss", icon: Apple },
+  { value: "other", label: "Other", icon: Stethoscope },
 ];
 
 type Screen = "concern" | "service" | "calendar" | "contact";
