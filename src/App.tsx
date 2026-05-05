@@ -109,6 +109,7 @@ const App = () => (
           <Route path="/bookv2" element={<BookingFunnelV2 />} />
           <Route path="/bookv2/spec" element={<BookingFunnelV2Spec />} />
           <Route path="/book3" element={<BookingFunnelV3 />} />
+          <Route path="/bookv3" element={<BookingFunnelV3 />} />
           <Route path="/lp/ghl-trt" element={<GHLTRTLandingPage />} />
           <Route path="/lp/ghl-ed" element={<GHLEDLandingPage />} />
           <Route path="/lp/ghl-wl" element={<GHLWLLandingPage />} />
