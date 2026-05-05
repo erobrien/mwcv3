@@ -49,6 +49,7 @@ import IntakeThanksPage from "./pages/IntakeThanksPage";
 import BrandComparison from "./pages/BrandComparison";
 import BookingFunnelV2 from "./pages/BookingFunnelV2";
 import BookingFunnelV2Spec from "./pages/BookingFunnelV2Spec";
+import BookingFunnelV3 from "./pages/BookingFunnelV3";
 import SurveyPage from "./pages/SurveyPage";
 import SurveyThanksPage from "./pages/SurveyThanksPage";
 import SurveyMockupIntro from "./pages/SurveyMockupIntro";
@@ -107,6 +108,7 @@ const App = () => (
           <Route path="/book" element={<BookingFunnel />} />
           <Route path="/bookv2" element={<BookingFunnelV2 />} />
           <Route path="/bookv2/spec" element={<BookingFunnelV2Spec />} />
+          <Route path="/book3" element={<BookingFunnelV3 />} />
           <Route path="/lp/ghl-trt" element={<GHLTRTLandingPage />} />
           <Route path="/lp/ghl-ed" element={<GHLEDLandingPage />} />
           <Route path="/lp/ghl-wl" element={<GHLWLLandingPage />} />
