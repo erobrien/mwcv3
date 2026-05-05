@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BatteryLow, HeartCrack, TrendingDown, HelpCircle, Syringe, Pill, Apple, Stethoscope, Check, ArrowRight, Phone, MessageSquare, ArrowLeft } from "lucide-react";
+import { BatteryLow, HeartCrack, TrendingDown, HelpCircle, Syringe, Pill, Apple, Stethoscope, Check, ArrowRight, Phone, MessageSquare, ArrowLeft, Mail, Send, CheckCircle2 } from "lucide-react";
 import V2Header from "@/components/booking-v2/V2Header";
 
 const font = "'Montserrat', sans-serif";
