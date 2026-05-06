@@ -54,12 +54,12 @@ export const TRTManifesto = () => {
           </div>
         </div>
 
-        {/* Right */}
-        <div>
+        {/* Right: image (mobile first) */}
+        <div className="order-1 md:order-2">
           <img
             src={imgManifesto}
             alt="Confident man after treatment"
-            className="rounded-2xl object-cover w-full h-[400px]"
+            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[400px]"
             loading="lazy"
           />
         </div>
