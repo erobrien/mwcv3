@@ -6,7 +6,7 @@ const stats = [
 
 export const TRTTrustBar = () => (
   <section style={{ background: "#000033", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-    <div className="max-w-[1200px] mx-auto px-6 py-10 md:py-14 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 text-center">
+    <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 text-center">
       {stats.map((s) => (
         <div key={s.label} className="flex flex-col items-center gap-2">
           <div
@@ -14,7 +14,7 @@ export const TRTTrustBar = () => (
             style={{
               fontFamily: "Oswald, sans-serif",
               color: "#FFFFFF",
-              fontSize: "clamp(36px, 5vw, 56px)",
+              fontSize: "clamp(40px, 5vw, 56px)",
               lineHeight: 1,
               letterSpacing: "-0.01em",
             }}
@@ -25,7 +25,7 @@ export const TRTTrustBar = () => (
             className="uppercase"
             style={{
               fontFamily: "Inter, sans-serif",
-              color: "rgba(255,255,255,0.65)",
+              color: "rgba(255,255,255,0.70)",
               fontSize: 12,
               letterSpacing: "0.12em",
               fontWeight: 600,
