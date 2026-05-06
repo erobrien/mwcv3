@@ -12,6 +12,7 @@ import { TRTMarquee } from "@/components/landing/trt/TRTMarquee";
 import { TRTPricingCTA } from "@/components/landing/trt/TRTPricingCTA";
 import { TRTPillars } from "@/components/landing/trt/TRTPillars";
 import { TRTFinalCTA } from "@/components/landing/trt/TRTFinalCTA";
+import { TRTLocations } from "@/components/landing/trt/TRTLocations";
 import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
 
@@ -37,6 +38,7 @@ const TRTLandingPage = () => {
         <TRTMarquee />
         <TRTPricingCTA />
         <TRTPillars />
+        <TRTLocations />
         <TRTFinalCTA />
       </main>
       <TRTFooter />
