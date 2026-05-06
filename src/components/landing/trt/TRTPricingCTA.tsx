@@ -1,4 +1,4 @@
-import imgDoctor from "@/assets/lp/provider-headshot.jpg";
+import imgFirstVisit from "@/assets/lp/first-visit-bloodwork.png";
 
 export const TRTPricingCTA = () => {
   const scrollToForm = () => {
@@ -66,9 +66,9 @@ export const TRTPricingCTA = () => {
         {/* Right */}
         <div>
           <img
-            src={imgDoctor}
-            alt="Dr. Popariello, Medical Director at Men's Wellness Centers"
-            className="rounded-2xl object-cover object-top h-[360px] w-full"
+            src={imgFirstVisit}
+            alt="Phlebotomist drawing blood for on-site testosterone panel at Men's Wellness Centers"
+            className="rounded-2xl object-cover h-[360px] w-full"
             loading="lazy"
           />
         </div>
