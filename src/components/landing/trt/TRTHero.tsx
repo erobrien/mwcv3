@@ -1,121 +1,111 @@
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Star } from "lucide-react";
 import heroBg from "@/assets/hero-trt-surfers.webp";
 
-const badges = ["LegitScript Certified", "Google Healthcare Certified"];
-
-const benefits = [
+const trustChecks = [
   "No referral needed",
+  "Same/next-day appointments",
   "FSA/HSA accepted",
-  "Same-day appointments",
+  "Licensed Virginia physicians",
 ];
 
-const subhead = "Same-day and next-day appointments at 3 Virginia clinics. Book in under 5 minutes. Labs, results, and your care plan – all in one visit.";
-
 export const TRTHero = () => {
-  const scrollToForm = () => {
-    document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => () => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="hero"
-      className="relative overflow-hidden flex items-end md:items-center"
-      style={{ background: "#000033", minHeight: "100vh" }}
+      className="relative overflow-hidden"
+      style={{ background: "#000033" }}
     >
       {/* Full-bleed background image */}
       <img
         src={heroBg}
-        alt="Surfers walking on beach"
+        alt=""
         className="absolute inset-0 w-full h-full object-cover"
         style={{ opacity: 0.35 }}
         loading="eager"
       />
-
-      {/* Dark gradient overlay */}
+      {/* Dark gradient overlays */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(to right, rgba(0,0,51,0.85) 0%, rgba(0,0,51,0.5) 50%, rgba(0,0,51,0.2) 100%)",
+          background: "linear-gradient(to right, rgba(0,0,51,0.92) 0%, rgba(0,0,51,0.65) 55%, rgba(0,0,51,0.35) 100%)",
         }}
       />
       <div
         className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to top, rgba(0,0,51,0.9) 0%, transparent 40%)",
-        }}
+        style={{ background: "linear-gradient(to top, rgba(0,0,51,0.9) 0%, transparent 40%)" }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-        {/* Trust badges */}
-        <div className="flex flex-wrap gap-3 mb-6">
-          {badges.map((b) => (
-            <span
-              key={b}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
-              style={{
-                background: "rgba(255,255,255,0.15)",
-                color: "rgba(255,255,255,0.80)",
-                border: "1px solid rgba(255,255,255,0.10)",
-              }}
-            >
-              ✓ {b}
-            </span>
-          ))}
-        </div>
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+        <span
+          className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase mb-6"
+          style={{ background: "#F5F0EB", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
+        >
+          Virginia's In-Person Men's Health Clinics
+        </span>
 
-        {/* Headline */}
         <h1
-          className="font-bold uppercase leading-[0.95] max-w-[900px]"
+          className="font-bold uppercase leading-[1.05] max-w-[900px]"
           style={{
             fontFamily: "Oswald, sans-serif",
-            fontSize: "clamp(40px, 8vw, 96px)",
+            fontSize: "clamp(40px, 7vw, 84px)",
             color: "#FFFFFF",
-            letterSpacing: "-0.02em",
             fontWeight: 700,
+            letterSpacing: "-0.01em",
             textShadow: "0 2px 12px rgba(0,0,0,0.4)",
           }}
         >
-          GET YOUR ENERGY, DRIVE, AND CONFIDENCE BACK
+          Physician-Led <span style={{ color: "#E8670A" }}>Testosterone Care</span>, In One Visit
         </h1>
 
-        {/* Subhead */}
         <p
-          className="mt-6 max-w-[640px] text-base md:text-lg"
-          style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif", lineHeight: 1.5 }}
+          className="mt-5 text-base md:text-lg leading-relaxed max-w-[680px]"
+          style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
         >
-          {subhead}
+          Walk into one of our 3 Virginia clinics for blood work, a face-to-face physician consultation, and a personalized care plan — typically completed in under 60 minutes. Same-day and next-day appointments available.
         </p>
 
-        {/* CTA */}
-        <div className="mt-8">
+        <div className="mt-5 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "Inter, sans-serif" }}>
+          <span className="flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" />)}
+          </span>
+          <span className="text-sm font-medium">4.9 average from 200+ verified Google reviews</span>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3">
           <button
-            onClick={scrollToForm}
-            className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
-            style={{
-              background: "#E8670A",
-              color: "#FFFFFF",
-              letterSpacing: "0.08em",
-              fontFamily: "Inter, sans-serif",
-              border: "none",
-            }}
+            onClick={scrollTo("final-cta")}
+            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+            style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Book My Consultation
-            <ArrowRight className="h-4 w-4" />
+            Book My Consultation <ArrowRight className="h-4 w-4" />
+          </button>
+          <button
+            onClick={scrollTo("how-it-works")}
+            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200"
+            style={{ height: 52, background: "transparent", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "1px solid rgba(255,255,255,0.4)" }}
+          >
+            See If You Qualify
           </button>
         </div>
 
-        {/* Benefit bullets */}
-        <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-          {benefits.map((b) => (
-            <li key={b} className="flex items-center gap-2">
+        <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-3">
+          {trustChecks.map((t) => (
+            <li key={t} className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "Inter, sans-serif" }}>
               <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
-              <span className="text-sm font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{b}</span>
+              <span className="text-sm font-medium">{t}</span>
             </li>
           ))}
         </ul>
+
+        <div className="mt-6 text-xs" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}>
+          Medically reviewed by licensed Virginia physicians.
+        </div>
       </div>
     </section>
   );
