@@ -36,24 +36,6 @@ export const TRTResults = () => (
         Patient Reviews & Outcomes
       </h2>
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
-        {stats.map((s) => (
-          <div key={s.label} className="rounded-2xl p-6 text-center" style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}>
-            <div
-              className="font-bold"
-              style={{ fontFamily: "Oswald, sans-serif", color: "#E8670A", fontSize: "clamp(36px, 4.5vw, 56px)", lineHeight: 1 }}
-            >
-              {s.value}
-            </div>
-            <div className="mt-3 text-sm leading-relaxed" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
-              {s.label}
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="mt-4 text-xs text-center max-w-[760px] mx-auto" style={{ color: "#5a5a6e", fontFamily: "Inter, sans-serif" }}>
-        Based on internal patient outcomes data from 2022–2024. Individual results vary. Treatment outcomes depend on adherence, baseline labs, and individual health factors.
-      </p>
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         {testimonials.map((t) => (
