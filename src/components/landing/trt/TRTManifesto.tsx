@@ -10,8 +10,18 @@ export const TRTManifesto = () => {
   return (
     <section className="py-10 md:py-16" style={{ background: "#000033" }}>
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-        {/* Left: copy (mobile second) */}
-        <div className="order-2 md:order-1">
+        {/* Left: image (first on both mobile & desktop) */}
+        <div className="order-1">
+          <img
+            src={imgManifesto}
+            alt="Confident man after testosterone therapy"
+            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[400px]"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Right: copy */}
+        <div className="order-2">
           <h2
             className="font-bold uppercase"
             style={{
@@ -22,7 +32,7 @@ export const TRTManifesto = () => {
               lineHeight: 1.1,
             }}
           >
-            MEN'S HEALTH CARE<br />
+            TESTOSTERONE CARE<br />
             WAS BROKEN.<br />
             <span>WE FIXED IT.</span>
           </h2>
@@ -31,7 +41,7 @@ export const TRTManifesto = () => {
             className="text-base mt-4 leading-[1.7]"
             style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}
           >
-            Men's Wellness Centers has been treating Virginia men since 2015. Not through a screen. Not through the mail. Face-to-face, same provider, every visit.
+            Most men get a lab slip and a 10-minute video call. We do it differently. On-site bloodwork, a face-to-face consultation, and a personalized TRT protocol — all in one visit. Same provider, every follow-up. No app. No mail-order doctor.
           </p>
 
           <div className="flex gap-8 mt-8">
@@ -52,16 +62,6 @@ export const TRTManifesto = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Right: image (mobile first) */}
-        <div className="order-1 md:order-2">
-          <img
-            src={imgManifesto}
-            alt="Confident man after treatment"
-            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[400px]"
-            loading="lazy"
-          />
         </div>
       </div>
     </section>
