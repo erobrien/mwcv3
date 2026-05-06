@@ -14,10 +14,10 @@ export const TRTPricingCTA = () => {
   ];
 
   return (
-    <section id="pricing-cta" className="py-14" style={{ background: "#E8670A" }}>
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left */}
-        <div>
+    <section id="pricing-cta" className="py-10 md:py-14" style={{ background: "#E8670A" }}>
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        {/* Left: copy (mobile second) */}
+        <div className="order-2 md:order-1">
           <h2
             className="font-bold uppercase"
             style={{
@@ -27,7 +27,7 @@ export const TRTPricingCTA = () => {
               fontWeight: 700,
             }}
           >
-            YOUR FIRST VISIT IS .
+            YOUR FIRST VISIT IS SIMPLE.
           </h2>
           <p
             className="text-base mt-3 leading-[1.6]"
@@ -65,12 +65,12 @@ export const TRTPricingCTA = () => {
           </ul>
         </div>
 
-        {/* Right */}
-        <div>
+        {/* Right: image (mobile first) */}
+        <div className="order-1 md:order-2">
           <img
             src={imgFirstVisit}
             alt="Phlebotomist drawing blood for on-site testosterone panel at Men's Wellness Centers"
-            className="rounded-2xl object-cover h-[360px] w-full"
+            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[360px]"
             loading="lazy"
           />
         </div>

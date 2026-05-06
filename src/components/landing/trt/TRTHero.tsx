@@ -39,7 +39,7 @@ export const TRTHero = () => {
         style={{ background: "linear-gradient(to top, rgba(0,0,51,0.9) 0%, transparent 40%)" }}
       />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-20 pb-12 md:pt-36 md:pb-24">
         <span
           className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase mb-6"
           style={{ background: "#F5F0EB", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
@@ -78,7 +78,7 @@ export const TRTHero = () => {
         <div className="mt-8 flex flex-wrap gap-3">
           <button
             onClick={scrollTo("final-cta")}
-            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02] w-full sm:w-auto justify-center"
             style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
@@ -87,7 +87,7 @@ export const TRTHero = () => {
           </button>
           <button
             onClick={scrollTo("how-it-works")}
-            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200"
             style={{ height: 52, background: "transparent", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "1px solid rgba(255,255,255,0.4)" }}
           >
             See If You Qualify

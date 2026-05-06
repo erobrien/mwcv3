@@ -16,6 +16,7 @@ import { TRTLocations } from "@/components/landing/trt/TRTLocations";
 import { TRTFAQ } from "@/components/landing/trt/TRTFAQ";
 import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
+import { TRTInlineLeadMobile } from "@/components/landing/trt/TRTInlineLeadMobile";
 
 const TRTLandingPage = () => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const TRTLandingPage = () => {
       <main className="flex-1">
         <TRTHero />
         <TRTTrustBar />
+        <TRTInlineLeadMobile />
         
         
         <TRTHowItWorks />

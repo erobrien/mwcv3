@@ -8,10 +8,10 @@ export const TRTManifesto = () => {
   ];
 
   return (
-    <section className="py-14 md:py-16" style={{ background: "#000033" }}>
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left */}
-        <div>
+    <section className="py-10 md:py-16" style={{ background: "#000033" }}>
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        {/* Left: copy (mobile second) */}
+        <div className="order-2 md:order-1">
           <h2
             className="font-bold uppercase"
             style={{
@@ -54,12 +54,12 @@ export const TRTManifesto = () => {
           </div>
         </div>
 
-        {/* Right */}
-        <div>
+        {/* Right: image (mobile first) */}
+        <div className="order-1 md:order-2">
           <img
             src={imgManifesto}
             alt="Confident man after treatment"
-            className="rounded-2xl object-cover w-full h-[400px]"
+            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[400px]"
             loading="lazy"
           />
         </div>

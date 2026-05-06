@@ -28,7 +28,7 @@ const testimonials = [
 
 export const TRTResults = () => (
   <section id="results" style={{ background: "#F5F0EB" }}>
-    <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-24">
       <h2
         className="font-bold uppercase text-center"
         style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}
