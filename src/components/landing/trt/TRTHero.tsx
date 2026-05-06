@@ -144,13 +144,6 @@ export const TRTHero = () => {
         <div className="mt-8 text-xs font-inter text-foreground/55">
           Medically reviewed by licensed Virginia providers. Individual results vary.
         </div>
-
-        <div
-          className="mt-8 text-xs"
-          style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}
-        >
-          Medically reviewed by licensed Virginia providers. Individual results vary.
-        </div>
       </div>
     </section>
   );
