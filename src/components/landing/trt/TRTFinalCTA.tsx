@@ -110,7 +110,7 @@ export const TRTFinalCTA = () => {
             <div>
               <input
                 type="text"
-                placeholder="Full Name"
+                placeholder="Full Name" aria-label="Full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onFocus={handleFocus}
@@ -125,7 +125,7 @@ export const TRTFinalCTA = () => {
             <div>
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="Email Address" aria-label="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={handleFocus}
@@ -144,7 +144,7 @@ export const TRTFinalCTA = () => {
             <div>
               <input
                 type="tel"
-                placeholder="Phone Number"
+                placeholder="Phone Number" aria-label="Phone number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 onFocus={handleFocus}
@@ -161,7 +161,7 @@ export const TRTFinalCTA = () => {
             </div>
 
             <div>
-              <select
+              <select aria-label="Preferred clinic location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 onFocus={handleFocus as any}
