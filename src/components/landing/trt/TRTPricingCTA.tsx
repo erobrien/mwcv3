@@ -65,12 +65,12 @@ export const TRTPricingCTA = () => {
           </ul>
         </div>
 
-        {/* Right */}
-        <div>
+        {/* Right: image (mobile first) */}
+        <div className="order-1 md:order-2">
           <img
             src={imgFirstVisit}
             alt="Phlebotomist drawing blood for on-site testosterone panel at Men's Wellness Centers"
-            className="rounded-2xl object-cover h-[360px] w-full"
+            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[360px]"
             loading="lazy"
           />
         </div>
