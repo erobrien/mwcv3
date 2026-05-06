@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     quote:
-      "Mood and motivation were the biggest changes for me. The physician walked me through every number on the panel — first time anyone has actually done that.",
+      "Mood and motivation were the biggest changes for me. The physician walked me through every number on the panel, first time anyone has actually done that.",
     name: "David K.",
     city: "Newport News, VA",
   },
