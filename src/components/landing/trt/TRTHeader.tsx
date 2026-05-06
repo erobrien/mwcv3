@@ -36,7 +36,7 @@ export const TRTHeader = () => {
         {/* Desktop right */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="tel:8663444955"
+            href="tel:+18663444955"
             className="text-sm font-medium transition-opacity hover:opacity-80"
             style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
           >
@@ -44,14 +44,19 @@ export const TRTHeader = () => {
           </a>
           <button
             onClick={() => scrollTo("final-cta")}
-            className="rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer transition-colors duration-200"
+            className="rounded-full font-bold uppercase cursor-pointer transition-colors duration-200"
             style={{
               background: "#E8670A",
               color: "#FFFFFF",
               letterSpacing: "0.08em",
               fontFamily: "Inter, sans-serif",
+              fontSize: 14,
+              height: 44,
+              paddingLeft: 22,
+              paddingRight: 22,
+              border: "none",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#C7560A"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
             Book Now
@@ -72,7 +77,7 @@ export const TRTHeader = () => {
       {menuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 py-4 px-6 space-y-4" style={{ background: "rgba(0,0,51,0.98)" }}>
           <a
-            href="tel:8663444955"
+            href="tel:+18663444955"
             className="block text-sm font-semibold"
             style={{ color: "#FFFFFF" }}
           >
