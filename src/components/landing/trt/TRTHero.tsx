@@ -77,27 +77,16 @@ export const TRTHero = () => {
           {/* Card 1 — Primary booking */}
           <button
             onClick={scrollTo("final-cta")}
-            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01]"
-            style={{
-              background:
-                "linear-gradient(135deg, #1A0B05 0%, #6B2A05 60%, #E8670A 100%)",
-              border: "1px solid rgba(232,103,10,0.35)",
-              minHeight: 220,
-            }}
+            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] bg-accent border border-accent/40"
+            style={{ minHeight: 220 }}
           >
-            <div
-              className="text-[11px] uppercase font-bold mb-3"
-              style={{ color: "rgba(255,255,255,0.85)", letterSpacing: "0.14em", fontFamily: "Inter, sans-serif" }}
-            >
+            <div className="text-[11px] uppercase font-inter font-bold mb-3 text-accent-foreground/85 tracking-[0.14em]">
               Same-Day TRT Visit
             </div>
             <div
-              className="font-bold uppercase"
+              className="font-oswald font-bold uppercase text-accent-foreground"
               style={{
-                fontFamily: "Oswald, sans-serif",
                 fontSize: "clamp(22px, 2.6vw, 32px)",
-                color: "#FFFFFF",
-                fontWeight: 700,
                 lineHeight: 1.05,
                 letterSpacing: "-0.01em",
                 maxWidth: 360,
@@ -105,17 +94,13 @@ export const TRTHero = () => {
             >
               Bloodwork, Visit & Plan In One Hour
             </div>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white text-[#000814] font-bold uppercase"
-                 style={{ height: 44, paddingLeft: 20, paddingRight: 20, fontSize: 13, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-background text-foreground font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em]">
               Book My Consultation <ArrowRight className="h-4 w-4" />
             </div>
             <div className="absolute right-6 top-6 hidden md:block opacity-30">
-              <CalendarClock size={120} color="#FFFFFF" strokeWidth={1} aria-hidden="true" />
+              <CalendarClock size={120} className="text-accent-foreground" strokeWidth={1} aria-hidden="true" />
             </div>
-            <div
-              className="mt-6 text-xs"
-              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
-            >
+            <div className="mt-6 text-xs font-inter text-accent-foreground/85">
               Treatment plans start at $199/month after approval.
             </div>
           </button>
@@ -123,27 +108,16 @@ export const TRTHero = () => {
           {/* Card 2 — Locations */}
           <button
             onClick={scrollTo("locations")}
-            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01]"
-            style={{
-              background:
-                "linear-gradient(135deg, #050B1A 0%, #0A1F4A 70%, #16336E 100%)",
-              border: "1px solid rgba(255,255,255,0.10)",
-              minHeight: 220,
-            }}
+            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] bg-card border border-foreground/10"
+            style={{ minHeight: 220 }}
           >
-            <div
-              className="text-[11px] uppercase font-bold mb-3"
-              style={{ color: "rgba(255,255,255,0.75)", letterSpacing: "0.14em", fontFamily: "Inter, sans-serif" }}
-            >
+            <div className="text-[11px] uppercase font-inter font-bold mb-3 text-foreground/75 tracking-[0.14em]">
               3 Virginia Clinics
             </div>
             <div
-              className="font-bold uppercase"
+              className="font-oswald font-bold uppercase text-foreground"
               style={{
-                fontFamily: "Oswald, sans-serif",
                 fontSize: "clamp(22px, 2.6vw, 32px)",
-                color: "#FFFFFF",
-                fontWeight: 700,
                 lineHeight: 1.05,
                 letterSpacing: "-0.01em",
                 maxWidth: 360,
@@ -151,24 +125,24 @@ export const TRTHero = () => {
             >
               Walk Into A Real Clinic Near You
             </div>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-bold uppercase"
-                 style={{ height: 44, paddingLeft: 20, paddingRight: 20, fontSize: 13, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", background: "transparent", color: "#FFFFFF", border: "1.5px solid rgba(255,255,255,0.5)" }}>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border border-foreground/50">
               See Locations <ArrowRight className="h-4 w-4" />
             </div>
             <div className="absolute right-6 top-6 hidden md:block opacity-25">
-              <MapPin size={120} color="#FFFFFF" strokeWidth={1} aria-hidden="true" />
+              <MapPin size={120} className="text-foreground" strokeWidth={1} aria-hidden="true" />
             </div>
-            <div
-              className="mt-6 text-xs flex items-center gap-3"
-              style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif" }}
-            >
+            <div className="mt-6 text-xs font-inter text-foreground/75 flex items-center gap-3">
               <span>Glen Allen</span>
-              <span style={{ color: "rgba(255,255,255,0.3)" }}>•</span>
+              <span className="text-foreground/30">•</span>
               <span>Newport News</span>
-              <span style={{ color: "rgba(255,255,255,0.3)" }}>•</span>
+              <span className="text-foreground/30">•</span>
               <span>Virginia Beach</span>
             </div>
           </button>
+        </div>
+
+        <div className="mt-8 text-xs font-inter text-foreground/55">
+          Medically reviewed by licensed Virginia providers. Individual results vary.
         </div>
 
         <div
