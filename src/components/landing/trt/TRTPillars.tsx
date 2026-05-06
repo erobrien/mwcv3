@@ -13,7 +13,7 @@ const pillars: { title: string; desc: string; Icon: LucideIcon }[] = [
   },
   {
     title: "Built For Men",
-    desc: "A clinic built around men's health — designed around your schedule, your privacy, and your goals.",
+    desc: "A clinic built around men's health, designed around your schedule, your privacy, and your goals.",
     Icon: ShieldCheck,
   },
   {

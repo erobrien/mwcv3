@@ -19,7 +19,7 @@ export const TRTHero = () => {
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20">
         {/* Top row: headline left, trust + rating right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left — Headline */}
+          {/* Left, Headline */}
           <div className="lg:col-span-7">
             <h1
               className="font-oswald font-bold uppercase text-foreground"
@@ -36,11 +36,11 @@ export const TRTHero = () => {
               </span>
             </h1>
             <p className="mt-6 font-inter text-base md:text-lg leading-relaxed max-w-[560px] text-foreground/75">
-              Physician-led TRT at three Virginia clinics. On-site labs, face-to-face consultation, and a personalized care plan — all in one visit.
+              Physician-led TRT at three Virginia clinics. On-site labs, face-to-face consultation, and a personalized care plan, all in one visit.
             </p>
           </div>
 
-          {/* Right — Trust + rating */}
+          {/* Right, Trust + rating */}
           <div className="lg:col-span-5 lg:pt-4">
             <ul className="space-y-3">
               {trustChecks.map((t) => (
@@ -74,7 +74,7 @@ export const TRTHero = () => {
 
         {/* CTA cards row */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {/* Card 1 — Primary booking */}
+          {/* Card 1, Primary booking */}
           <button
             onClick={scrollTo("final-cta")}
             className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] bg-accent border border-accent/40"
@@ -105,7 +105,7 @@ export const TRTHero = () => {
             </div>
           </button>
 
-          {/* Card 2 — Locations */}
+          {/* Card 2, Locations */}
           <button
             onClick={scrollTo("locations")}
             className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] bg-card border border-foreground/10"

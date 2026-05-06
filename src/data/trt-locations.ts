@@ -1,6 +1,6 @@
 // Single source of truth for landing-page locations.
 // TODO: Confirm Newport News and Virginia Beach phone numbers.
-// Both currently route to (757) 806-6263 — verify with ops if these
+// Both currently route to (757) 806-6263, verify with ops if these
 // should be distinct lines per clinic.
 export const TRT_HEADER_PHONE = "866-344-4955";
 export const TRT_HEADER_PHONE_HREF = "tel:+18663444955";
