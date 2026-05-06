@@ -33,22 +33,6 @@ export const TRTHeader = () => {
           className="h-7 w-auto"
         />
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <button
-              key={l.id}
-              onClick={() => scrollTo(l.id)}
-              className="text-sm font-medium cursor-pointer transition-colors duration-200"
-              style={{ color: "rgba(255,255,255,0.8)", fontFamily: "Inter, sans-serif" }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = "#FFFFFF"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.8)"; }}
-            >
-              {l.label}
-            </button>
-          ))}
-        </nav>
-
         {/* Desktop right */}
         <div className="hidden md:flex items-center gap-4">
           <a
