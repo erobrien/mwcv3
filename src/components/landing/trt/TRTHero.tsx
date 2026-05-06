@@ -108,7 +108,7 @@ export const TRTHero = () => {
           {/* Card 2, Locations */}
           <button
             onClick={scrollTo("locations")}
-            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] border border-foreground/20"
+            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-all duration-200 hover:scale-[1.01] border border-foreground/20 hover:border-accent focus-visible:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             style={{ minHeight: 220, background: "#1A1A2E" }}
           >
             <div className="text-[11px] uppercase font-inter font-bold mb-3 text-accent tracking-[0.14em]">
@@ -125,7 +125,7 @@ export const TRTHero = () => {
             >
               Walk Into A Real Clinic Near You
             </div>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border-2 border-foreground/90">
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border-2 border-foreground/90 transition-colors duration-150 group-hover:bg-foreground group-hover:text-[#1A1A2E] group-hover:border-foreground group-focus-visible:bg-foreground group-focus-visible:text-[#1A1A2E]">
               See Locations <ArrowRight className="h-4 w-4" />
             </div>
             <div className="absolute right-6 top-6 hidden md:block opacity-30">
