@@ -4,10 +4,12 @@ import heroBg from "@/assets/hero-trt-surfers.webp";
 const badges = ["LegitScript Certified", "Google Healthcare Certified"];
 
 const benefits = [
-  "Physician-supervised TRT at 3 Virginia centers",
-  "On-site labs with results reviewed in-visit",
-  "Testosterone testing and consultation",
+  "No referral needed",
+  "FSA/HSA accepted",
+  "Same-day appointments",
 ];
+
+const subhead = "Same-day and next-day appointments at 3 Virginia clinics. Book in under 5 minutes. Labs, results, and your care plan – all in one visit.";
 
 export const TRTHero = () => {
   const scrollToForm = () => {
@@ -64,7 +66,7 @@ export const TRTHero = () => {
 
         {/* Headline */}
         <h1
-          className="font-bold uppercase leading-[0.95] max-w-[700px]"
+          className="font-bold uppercase leading-[0.95] max-w-[900px]"
           style={{
             fontFamily: "Oswald, sans-serif",
             fontSize: "clamp(40px, 8vw, 96px)",
@@ -74,26 +76,22 @@ export const TRTHero = () => {
             textShadow: "0 2px 12px rgba(0,0,0,0.4)",
           }}
         >
-          GET YOUR<br />
-          TESTOSTERONE<br />
-          BACK.
+          GET YOUR ENERGY, DRIVE, AND CONFIDENCE BACK
         </h1>
 
-        {/* Benefit bullets */}
-        <ul className="mt-8 space-y-3">
-          {benefits.map((b) => (
-            <li key={b} className="flex items-center gap-2">
-              <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
-              <span className="text-base font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{b}</span>
-            </li>
-          ))}
-        </ul>
+        {/* Subhead */}
+        <p
+          className="mt-6 max-w-[640px] text-base md:text-lg"
+          style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif", lineHeight: 1.5 }}
+        >
+          {subhead}
+        </p>
 
-        {/* CTA row */}
-        <div className="mt-10 flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4">
+        {/* CTA */}
+        <div className="mt-8">
           <button
             onClick={scrollToForm}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
             style={{
               background: "#E8670A",
               color: "#FFFFFF",
@@ -107,21 +105,17 @@ export const TRTHero = () => {
             Book My Consultation
             <ArrowRight className="h-4 w-4" />
           </button>
-
-          {/* Rating badge */}
-          <div
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2.5"
-            style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.10)" }}
-          >
-            <span className="font-semibold text-sm" style={{ color: "#FFFFFF" }}>4.9</span>
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} style={{ color: "#D4A017", fontSize: "14px" }}>★</span>
-              ))}
-            </div>
-            <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>200+ Reviews</span>
-          </div>
         </div>
+
+        {/* Benefit bullets */}
+        <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+          {benefits.map((b) => (
+            <li key={b} className="flex items-center gap-2">
+              <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
+              <span className="text-sm font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{b}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
