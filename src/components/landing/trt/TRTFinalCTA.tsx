@@ -116,7 +116,7 @@ export const TRTFinalCTA = () => {
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 style={inputStyle}
-                className="placeholder:text-[#999999]"
+                className="placeholder:text-[#8B92A8]"
                 autoComplete="name"
               />
               {errors.name && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.name}</p>}
@@ -135,7 +135,7 @@ export const TRTFinalCTA = () => {
                   else setErrors((p) => { const { email: _, ...rest } = p; return rest; });
                 }}
                 style={inputStyle}
-                className="placeholder:text-[#999999]"
+                className="placeholder:text-[#8B92A8]"
                 autoComplete="email"
               />
               {errors.email && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.email}</p>}
@@ -154,7 +154,7 @@ export const TRTFinalCTA = () => {
                   else setErrors((p) => { const { phone: _, ...rest } = p; return rest; });
                 }}
                 style={inputStyle}
-                className="placeholder:text-[#999999]"
+                className="placeholder:text-[#8B92A8]"
                 autoComplete="tel"
               />
               {errors.phone && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.phone}</p>}
