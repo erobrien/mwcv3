@@ -20,6 +20,7 @@ import Sitemap from "./pages/Sitemap";
 import TelehealthConsent from "./pages/TelehealthConsent";
 import RefundPolicy from "./pages/RefundPolicy";
 import TRTLandingPage from "./pages/TRTLandingPage";
+import TRTv2CompliantLandingPage from "./pages/TRTv2CompliantLandingPage";
 import TRT2LandingPage from "./pages/TRT2LandingPage";
 import TRT2ThankYou from "./pages/TRT2ThankYou";
 import EDLandingPage from "./pages/EDLandingPage";
