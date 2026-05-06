@@ -48,7 +48,7 @@ export const TRTHero = () => {
                   key={t.label}
                   className="flex items-center gap-3 text-base font-inter text-foreground/90"
                 >
-                  <Check className="h-5 w-5 flex-shrink-0" style={{ color: "#E8670A" }} aria-hidden="true" strokeWidth={2.5} />
+                  <Check className="h-5 w-5 flex-shrink-0 text-accent" aria-hidden="true" strokeWidth={2.5} />
                   <span>{t.label}</span>
                 </li>
               ))}
@@ -58,19 +58,14 @@ export const TRTHero = () => {
               <div className="flex flex-col">
                 <div className="flex items-center gap-1" aria-label="Rated 4.9 out of 5 stars">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" aria-hidden="true" />
+                    <Star key={i} className="h-4 w-4 text-[#FFC107]" fill="currentColor" stroke="currentColor" aria-hidden="true" />
                   ))}
                 </div>
-                <div
-                  className="text-[11px] uppercase mt-1"
-                  style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.14em", fontFamily: "Inter, sans-serif", fontWeight: 600 }}
-                >
+                <div className="text-[11px] uppercase mt-1 font-inter font-semibold text-foreground/55 tracking-[0.14em]">
                   200+ Google Reviews
                 </div>
               </div>
-              <div
-                style={{ fontFamily: "Oswald, sans-serif", fontSize: 44, color: "#FFFFFF", fontWeight: 700, lineHeight: 1 }}
-              >
+              <div className="font-oswald font-bold text-foreground leading-none text-[44px]">
                 4.9
               </div>
             </div>
