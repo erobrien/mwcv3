@@ -52,15 +52,7 @@ export const TRTHero = () => {
             "radial-gradient(ellipse 600px 400px at 90% 10%, rgba(232,103,10,0.18) 0%, transparent 70%)",
         }}
       />
-      {/* Left-to-right navy gradient ensures headline always sits on solid color */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, #000033 0%, #000033 35%, rgba(0,0,51,0.55) 70%, rgba(0,0,51,0.2) 100%)",
-        }}
-      />
+
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 md:pt-36 md:pb-24">
         <span
