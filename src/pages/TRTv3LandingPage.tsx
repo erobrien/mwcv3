@@ -1105,7 +1105,7 @@ const Hero = () => (
             style={{
               fontFamily: FONT_BODY,
               fontSize: 11,
-              color: "rgba(255,255,255,0.32)",
+              color: "rgba(255,255,255,0.50)",
               marginTop: 18,
             }}
           >
@@ -1128,9 +1128,9 @@ const Hero = () => (
 const PressBar = () => (
   <section
     style={{
-      background: "#000033",
-      borderTop: "1px solid rgba(255,255,255,0.06)",
-      borderBottom: "1px solid rgba(255,255,255,0.06)",
+      background: "#FFFFFF",
+      borderTop: "1px solid #E8E5E0",
+      borderBottom: "1px solid #E8E5E0",
       padding: "20px 0",
     }}
   >
@@ -1153,7 +1153,7 @@ const PressBar = () => (
           fontWeight: 700,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.30)",
+          color: "rgba(0,0,51,0.35)",
           whiteSpace: "nowrap",
           flexShrink: 0,
         }}
@@ -1184,16 +1184,16 @@ const PressBar = () => (
               fontWeight: 800,
               letterSpacing: "0.05em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.38)",
+              color: "rgba(0,0,51,0.45)",
               whiteSpace: "nowrap",
               transition: "color 0.2s",
               cursor: "default",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "rgba(255,255,255,0.65)")
+              (e.currentTarget.style.color = "rgba(0,0,51,0.80)")
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "rgba(255,255,255,0.38)")
+              (e.currentTarget.style.color = "rgba(0,0,51,0.45)")
             }
           >
             {name}
@@ -1209,7 +1209,7 @@ const PressBar = () => (
 const TrustBar = () => (
   <section
     style={{
-      background: "#05061E",
+      background: "#000033",
       borderBottom: "1px solid rgba(255,255,255,0.06)",
     }}
   >
@@ -1227,7 +1227,7 @@ const TrustBar = () => (
           fontWeight: 700,
           letterSpacing: "0.16em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.32)",
+          color: "rgba(255,255,255,0.50)",
           textAlign: "center",
           marginBottom: 36,
         }}
@@ -1802,7 +1802,7 @@ const WhyUs = () => (
 /* ─── RESULTS ───────────────────────────────────────────────── */
 
 const Results = () => (
-  <section style={{ background: "#0A0A1A", padding: "96px 0" }}>
+  <section style={{ background: "#F5F0EB", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -1812,7 +1812,7 @@ const Results = () => (
     >
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         {eyebrow("Outcomes")}
-        {sectionHead("Real Results From Real Patients", "#fff", "center")}
+        {sectionHead("Real Results From Real Patients", "#000033", "center")}
       </div>
 
       {/* Stat cards */}
@@ -1824,7 +1824,8 @@ const Results = () => (
           <div
             key={r.value}
             style={{
-              background: "#000033",
+              background: "#FFFFFF",
+              border: "1px solid #E8E5E0",
               borderLeft: "4px solid #E8670A",
               borderRadius: 20,
               padding: "40px 32px",
@@ -1867,7 +1868,7 @@ const Results = () => (
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 15,
-                color: "rgba(255,255,255,0.78)",
+                color: "#4A4A4A",
                 marginTop: 12,
                 lineHeight: 1.5,
                 position: "relative",
@@ -1952,8 +1953,8 @@ const Results = () => (
           <div
             key={t.name}
             style={{
-              background: "#000033",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "#FFFFFF",
+              border: "1px solid #E8E5E0",
               borderRadius: 20,
               padding: 28,
               display: "flex",
@@ -1971,7 +1972,7 @@ const Results = () => (
                 fontFamily: "Georgia, serif",
                 fontSize: 130,
                 lineHeight: 1,
-                color: "rgba(232,103,10,0.08)",
+                color: "rgba(0,0,51,0.05)",
                 pointerEvents: "none",
                 userSelect: "none",
               }}
@@ -1988,7 +1989,7 @@ const Results = () => (
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 14,
-                color: "rgba(255,255,255,0.84)",
+                color: "#2A2A2A",
                 lineHeight: 1.7,
                 flex: 1,
                 position: "relative",
@@ -2000,7 +2001,7 @@ const Results = () => (
               style={{
                 marginTop: 18,
                 paddingTop: 16,
-                borderTop: "1px solid rgba(255,255,255,0.07)",
+                borderTop: "1px solid #F0EDE8",
               }}
             >
               <div
@@ -2008,7 +2009,7 @@ const Results = () => (
                   fontFamily: FONT_BODY,
                   fontSize: 13,
                   fontWeight: 700,
-                  color: "#fff",
+                  color: "#000033",
                 }}
               >
                 {t.name}
@@ -2017,7 +2018,7 @@ const Results = () => (
                 style={{
                   fontFamily: FONT_BODY,
                   fontSize: 11,
-                  color: "rgba(255,255,255,0.38)",
+                  color: "#888",
                   marginTop: 2,
                 }}
               >
@@ -2059,21 +2060,21 @@ const Results = () => (
             fontWeight: 800,
             letterSpacing: "0.07em",
             textTransform: "uppercase",
-            color: "#fff",
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.14)",
+            color: "#000033",
+            background: "rgba(0,0,51,0.06)",
+            border: "1px solid rgba(0,0,51,0.15)",
             borderRadius: 99,
             padding: "12px 24px",
             textDecoration: "none",
             transition: "background 0.15s, border-color 0.15s",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(232,103,10,0.18)";
-            e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)";
+            e.currentTarget.style.background = "rgba(232,103,10,0.10)";
+            e.currentTarget.style.borderColor = "rgba(232,103,10,0.35)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.14)";
+            e.currentTarget.style.background = "rgba(0,0,51,0.06)";
+            e.currentTarget.style.borderColor = "rgba(0,0,51,0.15)";
           }}
         >
           <Star size={14} fill="#FFC107" stroke="#FFC107" />
@@ -2320,7 +2321,7 @@ const DoctorSection = () => (
 const Pricing = () => (
   <section
     style={{
-      background: "#E8670A",
+      background: "#000033",
       padding: "96px 0",
       position: "relative",
       overflow: "hidden",
@@ -2524,8 +2525,8 @@ const PillarCard = ({
     <div
       ref={ref}
       style={{
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        background: "#FFFFFF",
+        border: "1px solid #E8E5E0",
         borderRadius: 16,
         padding: "28px 20px 24px",
         textAlign: "center",
@@ -2535,15 +2536,15 @@ const PillarCard = ({
       onMouseEnter={() => {
         if (ref.current) {
           ref.current.style.borderColor = "#E8670A";
-          ref.current.style.background = "rgba(232,103,10,0.06)";
+          ref.current.style.background = "#FFFAF7";
           ref.current.style.transform = "translateY(-4px)";
-          ref.current.style.boxShadow = "0 16px 40px rgba(0,0,0,0.3)";
+          ref.current.style.boxShadow = "0 12px 32px rgba(232,103,10,0.12)";
         }
       }}
       onMouseLeave={() => {
         if (ref.current) {
-          ref.current.style.borderColor = "rgba(255,255,255,0.08)";
-          ref.current.style.background = "rgba(255,255,255,0.04)";
+          ref.current.style.borderColor = "#E8E5E0";
+          ref.current.style.background = "#FFFFFF";
           ref.current.style.transform = "translateY(0)";
           ref.current.style.boxShadow = "none";
         }
@@ -2554,8 +2555,8 @@ const PillarCard = ({
           width: 76,
           height: 76,
           borderRadius: "50%",
-          background: "#0A0D2E",
-          border: "1px solid rgba(255,255,255,0.07)",
+          background: "#EAE6E0",
+          border: "1px solid #D8D3CC",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -2571,7 +2572,7 @@ const PillarCard = ({
           fontWeight: 700,
           letterSpacing: "0.05em",
           textTransform: "uppercase",
-          color: "#fff",
+          color: "#000033",
           margin: "0 0 8px",
         }}
       >
@@ -2581,7 +2582,7 @@ const PillarCard = ({
         style={{
           fontFamily: FONT_BODY,
           fontSize: 13,
-          color: "rgba(255,255,255,0.58)",
+          color: "#4A4A4A",
           lineHeight: 1.6,
           margin: 0,
         }}
@@ -2593,7 +2594,7 @@ const PillarCard = ({
 };
 
 const Pillars = () => (
-  <section style={{ background: "#05061E", padding: "96px 0" }}>
+  <section style={{ background: "#000033", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -2609,7 +2610,7 @@ const Pillars = () => (
             fontSize: "clamp(24px, 3.2vw, 40px)",
             fontWeight: 700,
             lineHeight: 1.1,
-            color: "#fff",
+            color: "#000033",
           }}
         >
           Why 10,000+ Men Choose MWC Over Everyone Else
@@ -2738,7 +2739,7 @@ const TeamSection = () => (
 const Locations = () => (
   <section
     id="locations"
-    style={{ background: "#05061E", padding: "96px 0" }}
+    style={{ background: "#000033", padding: "96px 0" }}
   >
     <div
       style={{
@@ -2817,8 +2818,8 @@ const Locations = () => (
           <div
             key={l.name}
             style={{
-              background: "#0D1235",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#FFFFFF",
+              border: "1px solid #E8E5E0",
               borderRadius: 20,
               padding: 28,
               display: "flex",
@@ -2826,11 +2827,11 @@ const Locations = () => (
               transition: "border-color 0.2s ease, transform 0.2s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(232,103,10,0.45)";
+              e.currentTarget.style.borderColor = "#E8670A";
               e.currentTarget.style.transform = "translateY(-3px)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+              e.currentTarget.style.borderColor = "#E8E5E0";
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
@@ -2850,7 +2851,7 @@ const Locations = () => (
                   fontWeight: 700,
                   letterSpacing: "0.02em",
                   textTransform: "uppercase",
-                  color: "#fff",
+                  color: "#000033",
                   margin: 0,
                 }}
               >
@@ -2861,7 +2862,7 @@ const Locations = () => (
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 14,
-                color: "rgba(255,255,255,0.58)",
+                color: "#555",
                 lineHeight: 1.65,
                 whiteSpace: "pre-line",
                 flex: 1,
@@ -2876,7 +2877,7 @@ const Locations = () => (
                 fontFamily: FONT_BODY,
                 fontSize: 14,
                 fontWeight: 700,
-                color: "rgba(255,255,255,0.78)",
+                color: "#000033",
                 textDecoration: "none",
                 marginTop: 12,
               }}
@@ -2890,8 +2891,8 @@ const Locations = () => (
                 fontFamily: FONT_BODY,
                 fontSize: 11,
                 fontWeight: 700,
-                background: "rgba(46,204,113,0.14)",
-                color: "#4DD884",
+                background: "rgba(46,180,80,0.12)",
+                color: "#1B7A3A",
                 borderRadius: 99,
                 padding: "4px 12px",
                 alignSelf: "flex-start",
@@ -3232,7 +3233,7 @@ const BottomCTA = () => (
 const SiteFooter = () => (
   <footer
     style={{
-      background: "#05061E",
+      background: "#000033",
       borderTop: "1px solid rgba(255,255,255,0.06)",
       padding: "36px 20px",
     }}
@@ -3258,7 +3259,7 @@ const SiteFooter = () => (
         style={{
           fontFamily: FONT_BODY,
           fontSize: 11,
-          color: "rgba(255,255,255,0.32)",
+          color: "rgba(255,255,255,0.50)",
           maxWidth: 500,
           lineHeight: 1.65,
         }}
