@@ -20,29 +20,39 @@ export const TRTHero = () => {
         background: "#000033",
       }}
     >
-      {/* Subtle medical grid pattern */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          maskImage:
-            "radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.7) 0%, transparent 70%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.7) 0%, transparent 70%)",
-        }}
-      />
-      {/* Left-to-right navy gradient ensures headline always sits on solid color */}
+      {/* Navy left-to-right gradient (back) */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, #000033 0%, #000033 35%, rgba(0,0,51,0.55) 70%, rgba(0,0,51,0.2) 100%)",
+            "linear-gradient(90deg, #000033 0%, #000033 30%, #001A66 70%, #002A99 100%)",
         }}
       />
+      {/* Medical grid pattern (on top, fades in from left) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          maskImage:
+            "linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0.6) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0.6) 100%)",
+        }}
+      />
+      {/* Soft orange glow accent in top-right */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 600px 400px at 90% 10%, rgba(232,103,10,0.18) 0%, transparent 70%)",
+        }}
+      />
+
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 md:pt-36 md:pb-24">
         <span
