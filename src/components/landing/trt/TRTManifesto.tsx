@@ -31,7 +31,7 @@ export const TRTManifesto = () => {
             className="text-base mt-4 leading-[1.7]"
             style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}
           >
-            Men's Wellness Centers has been treating Virginia men since 2015. Not through a screen. Not through the mail. Face-to-face, same physician, every visit.
+            Men's Wellness Centers has been treating Virginia men since 2015. Not through a screen. Not through the mail. Face-to-face, same provider, every visit.
           </p>
 
           <div className="flex gap-8 mt-8">

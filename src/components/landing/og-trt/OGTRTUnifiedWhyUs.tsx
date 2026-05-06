@@ -1,5 +1,5 @@
 const cards = [
-  { title: "Licensed Physicians, Every Visit", body: "Board-certified Virginia physicians. Not PAs, not nurses on a screen. A real physician, face to face, every time you come in." },
+  { title: "Licensed NPs & Physicians, Every Visit", body: "Licensed Virginia nurse practitioners and physicians. Not remote. Not an app. A real provider, face to face, every visit." },
   { title: "On-Site Labs, Same-Day Results", body: "Blood draw and full panel done in our center. Results back before you walk out the door. No outside lab visits. No waiting days." },
   { title: "Built for Men", body: "A men-only environment designed around your schedule, your privacy, and your goals. No group waiting rooms. No referral needed." },
   { title: "All Follow-Up Included", body: "Regular check-ins, lab work, and protocol adjustments. We do not write a script and disappear." },

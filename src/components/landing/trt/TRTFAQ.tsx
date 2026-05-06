@@ -4,20 +4,20 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "How much does treatment cost? Does insurance cover it?",
-    a: "Your first visit is [$XX], which includes blood work, your physician consultation, and your care plan. Ongoing treatment, if prescribed, starts at [$XX]/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
+    a: "Your first visit is [$XX], which includes blood work, your consultation with a licensed provider, and your care plan. Ongoing treatment, if prescribed, starts at [$XX]/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
     cta: true,
   },
   {
     q: "How do I know if testosterone treatment is right for me?",
-    a: "A diagnosis of low testosterone requires lab work and a physician evaluation. At your first visit, we'll run a comprehensive hormone panel and review your symptoms. Treatment is only prescribed when clinically appropriate.",
+    a: "A diagnosis of low testosterone requires lab work and a clinical evaluation. At your first visit, we'll run a comprehensive hormone panel and review your symptoms. Treatment is only prescribed when clinically appropriate.",
   },
   {
     q: "What does treatment typically involve?",
-    a: "Treatment plans are personalized based on your labs and symptoms. Common options include physician-prescribed hormone therapy administered through several delivery methods. Your physician will review the options that fit your situation at your consultation.",
+    a: "Treatment plans are personalized based on your labs and symptoms. Common options include clinician-prescribed hormone therapy administered through several delivery methods. Your provider will review the options that fit your situation at your consultation.",
   },
   {
     q: "Is testosterone replacement therapy safe?",
-    a: "TRT is FDA-approved when prescribed and monitored by a licensed physician for patients with clinically diagnosed low testosterone. Like any prescription treatment, it has potential side effects, which your physician will review with you. Ongoing lab monitoring is part of every care plan.",
+    a: "TRT is FDA-approved when prescribed and monitored by a licensed provider for patients with clinically diagnosed low testosterone. Like any prescription treatment, it has potential side effects, which your provider will review with you. Ongoing lab monitoring is part of every care plan.",
   },
   {
     q: "How soon do patients typically notice changes?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "What should I expect at my first visit?",
-    a: "Plan for about 60 minutes. You'll have your blood drawn on-site, meet face-to-face with a licensed physician to review your symptoms and history, and leave with a personalized care plan. If treatment is clinically appropriate, it can often begin the same day.",
+    a: "Plan for about 60 minutes. You'll have your blood drawn on-site, meet face-to-face with a licensed provider to review your symptoms and history, and leave with a personalized care plan. If treatment is clinically appropriate, it can often begin the same day.",
     cta: true,
   },
 ];

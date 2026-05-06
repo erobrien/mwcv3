@@ -5,7 +5,7 @@ const trustChecks = [
   "No referral needed",
   "Same/next-day appointments",
   "FSA/HSA accepted",
-  "Licensed Virginia physicians",
+  "Licensed Virginia providers",
 ];
 
 export const TRTHero = () => {
@@ -65,7 +65,7 @@ export const TRTHero = () => {
           className="mt-5 text-base md:text-lg leading-relaxed max-w-[680px]"
           style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
         >
-          Walk into one of our 3 Virginia clinics for blood work, a face-to-face physician consultation, and a personalized care plan — typically completed in under 60 minutes. Same-day and next-day appointments available.
+          Walk into one of our 3 Virginia clinics for blood work, a face-to-face consultation with a licensed provider, and a personalized care plan — typically completed in under 60 minutes. Same-day and next-day appointments available.
         </p>
 
         <div className="mt-5 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "Inter, sans-serif" }}>
@@ -104,7 +104,7 @@ export const TRTHero = () => {
         </ul>
 
         <div className="mt-6 text-xs" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}>
-          Medically reviewed by licensed Virginia physicians.
+          Medically reviewed by licensed Virginia providers.
         </div>
       </div>
     </section>
