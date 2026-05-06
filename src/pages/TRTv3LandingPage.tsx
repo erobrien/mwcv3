@@ -16,6 +16,16 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+import heroClinic from "@/assets/lp/trt-hero-clinic.jpg";
+import providerPatient from "@/assets/lp/trt-provider-patient.jpg";
+import firstVisitBloodwork from "@/assets/lp/first-visit-bloodwork.png";
+import trtLab from "@/assets/lp/trt-lab.jpg";
+import manConfident from "@/assets/lp/man-henley-confident.webp";
+import manRunning from "@/assets/lp/man-running-harbor.jpeg";
+import drPapariello from "@/assets/lp/dr-popariello.jpeg";
+import mwcTeam from "@/assets/lp/mwc-team-new.png";
+import lobbyInterior from "@/assets/lp/lobby-interior.jpg";
+
 /* ─── CONSTANTS ────────────────────────────────────────────── */
 
 const PHONE = "866-344-4955";
@@ -177,7 +187,20 @@ const LOCATIONS = [
   },
 ];
 
-/* ─── BANNER HEIGHT (shared constant so offsets stay in sync) ─ */
+const MARQUEE_ITEMS = [
+  "✦ Same-Day Blood Work",
+  "✦ Licensed Virginia Providers",
+  "✦ 10,000+ Men Treated",
+  "✦ Physician-Led Care",
+  "✦ In-Person Clinic",
+  "✦ 4.9★ Rated",
+  "✦ FSA/HSA Accepted",
+  "✦ No Referral Needed",
+  "✦ Results Same Visit",
+  "✦ No Telehealth Runaround",
+];
+
+/* ─── LAYOUT CONSTANTS ─────────────────────────────────────── */
 const BANNER_H = 36;
 const HEADER_H = 64;
 const TOTAL_OFFSET = BANNER_H + HEADER_H;
@@ -187,16 +210,16 @@ const TOTAL_OFFSET = BANNER_H + HEADER_H;
 const smoothTo = (id: string) => () =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-/* ─── SHARED STYLES ────────────────────────────────────────── */
+/* ─── SHARED STYLE HELPERS ─────────────────────────────────── */
 
-const eyebrow = (text: string) => (
+const eyebrow = (text: string, light = false) => (
   <p
     style={{
       fontFamily: FONT_BODY,
       fontSize: 11,
       fontWeight: 700,
       letterSpacing: "0.14em",
-      color: "#E8670A",
+      color: light ? "#E8670A" : "#E8670A",
       textTransform: "uppercase",
       marginBottom: 10,
     }}
@@ -213,9 +236,9 @@ const sectionHead = (
   <h2
     style={{
       fontFamily: FONT_DISPLAY,
-      fontSize: "clamp(26px, 3.5vw, 40px)",
+      fontSize: "clamp(26px, 3.5vw, 42px)",
       fontWeight: 700,
-      lineHeight: 1.08,
+      lineHeight: 1.05,
       letterSpacing: "-0.01em",
       color,
       textAlign: align,
@@ -224,6 +247,389 @@ const sectionHead = (
     {text}
   </h2>
 );
+
+/* ─── MARQUEE CSS INJECTION ────────────────────────────────── */
+
+const MarqueeStyles = () => (
+  <style>{`
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      animation: marquee-scroll 30s linear infinite;
+      will-change: transform;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+  `}</style>
+);
+
+/* ─── LEAD FORM CARD (shared, reusable) ────────────────────── */
+
+const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
+  const [tcpa, setTcpa] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitting, setSubmitting] = useState(false);
+
+  const isValidEmail = (v: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  const isValidPhone = (v: string) =>
+    v.replace(/\D/g, "").length >= 10;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const errs: Record<string, string> = {};
+    if (!name.trim()) errs.name = "Name is required";
+    if (!email.trim()) errs.email = "Email is required";
+    else if (!isValidEmail(email)) errs.email = "Enter a valid email";
+    if (!phone.trim()) errs.phone = "Phone is required";
+    else if (!isValidPhone(phone)) errs.phone = "Enter a valid phone number";
+    if (!location) errs.location = "Select a location";
+    if (!tcpa) errs.tcpa = "You must consent to continue";
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) return;
+
+    setSubmitting(true);
+    const params = new URLSearchParams({
+      name,
+      email,
+      phone,
+      location,
+      source: "lp-trt-v3",
+      service: "trt",
+    });
+    const urls: Record<string, string> = {
+      richmond: "https://menswellnesscenters.com/thank-you-richmond/",
+      "newport-news":
+        "https://menswellnesscenters.com/thank-you-newport-news/",
+      "virginia-beach":
+        "https://menswellnesscenters.com/thank-you-virginia-beach/",
+    };
+    window.location.href = `${urls[location]}?${params.toString()}`;
+  };
+
+  const baseInput: React.CSSProperties = {
+    width: "100%",
+    height: 50,
+    background: "#F8F8FC",
+    border: "1px solid #D6DAE6",
+    borderRadius: 10,
+    padding: "0 16px",
+    fontSize: 15,
+    color: "#0E1230",
+    outline: "none",
+    fontFamily: FONT_BODY,
+    boxSizing: "border-box",
+    transition: "border-color 200ms ease, box-shadow 200ms ease",
+  };
+
+  const focusIn = (
+    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    e.currentTarget.style.borderColor = "#E8670A";
+    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.16)";
+    e.currentTarget.style.background = "#fff";
+  };
+  const focusOut = (
+    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    e.currentTarget.style.borderColor = "#D6DAE6";
+    e.currentTarget.style.boxShadow = "none";
+    e.currentTarget.style.background = "#F8F8FC";
+  };
+
+  const FieldError = ({ msg }: { msg?: string }) =>
+    msg ? (
+      <p
+        style={{
+          fontFamily: FONT_BODY,
+          fontSize: 11,
+          color: "#D94444",
+          marginTop: 4,
+          textAlign: "left",
+        }}
+      >
+        {msg}
+      </p>
+    ) : null;
+
+  return (
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: 20,
+        padding: "32px 28px 24px",
+        boxShadow: "0 24px 80px rgba(0,0,0,0.36)",
+        textAlign: "left",
+      }}
+    >
+      <h3
+        style={{
+          fontFamily: FONT_DISPLAY,
+          fontSize: 22,
+          fontWeight: 700,
+          letterSpacing: "0.02em",
+          textTransform: "uppercase",
+          color: "#000033",
+          textAlign: "center",
+          marginBottom: 6,
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          fontFamily: FONT_BODY,
+          fontSize: 13,
+          color: "#888",
+          textAlign: "center",
+          marginBottom: 22,
+        }}
+      >
+        No commitment · No credit card to book
+      </p>
+
+      {/* Location selector — prominent first */}
+      <div style={{ marginBottom: 12 }}>
+        <label
+          style={{
+            fontFamily: FONT_BODY,
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "#000033",
+            display: "block",
+            marginBottom: 6,
+          }}
+        >
+          Choose Your Clinic
+        </label>
+        <select
+          aria-label="Preferred clinic location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          onFocus={focusIn as React.FocusEventHandler<HTMLSelectElement>}
+          onBlur={focusOut as React.FocusEventHandler<HTMLSelectElement>}
+          style={{
+            ...baseInput,
+            height: 54,
+            fontSize: 16,
+            fontWeight: location ? 600 : 400,
+            color: location ? "#0E1230" : "#999",
+            appearance: "none",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right 14px center",
+            paddingRight: 42,
+          }}
+        >
+          <option value="" disabled>
+            Select Location →
+          </option>
+          {LOCATIONS.map((l) => (
+            <option key={l.value} value={l.value}>
+              {l.name}, VA
+            </option>
+          ))}
+        </select>
+        <FieldError msg={errors.location} />
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        style={{ display: "flex", flexDirection: "column", gap: 12 }}
+      >
+        <div>
+          <input
+            type="text"
+            placeholder="Full Name"
+            aria-label="Full name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onFocus={focusIn}
+            onBlur={focusOut}
+            style={baseInput}
+            autoComplete="name"
+          />
+          <FieldError msg={errors.name} />
+        </div>
+        <div>
+          <input
+            type="email"
+            placeholder="Email Address"
+            aria-label="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onFocus={focusIn}
+            onBlur={focusOut}
+            style={baseInput}
+            autoComplete="email"
+          />
+          <FieldError msg={errors.email} />
+        </div>
+        <div>
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            aria-label="Phone number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            onFocus={focusIn}
+            onBlur={focusOut}
+            style={baseInput}
+            autoComplete="tel"
+          />
+          <FieldError msg={errors.phone} />
+        </div>
+
+        {/* TCPA */}
+        <div>
+          <label
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 10,
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={tcpa}
+              onChange={(e) => setTcpa(e.target.checked)}
+              style={{
+                width: 16,
+                height: 16,
+                marginTop: 2,
+                flexShrink: 0,
+                cursor: "pointer",
+                accentColor: "#E8670A",
+              }}
+            />
+            <span
+              style={{
+                fontFamily: FONT_BODY,
+                fontSize: 11,
+                color: "#777",
+                lineHeight: 1.6,
+              }}
+            >
+              I consent to receive appointment and marketing texts from
+              Men's Wellness Centers. Msg frequency varies. Msg &amp; data
+              rates may apply. Reply STOP to opt out or HELP for help.
+              Consent is not required to receive services.{" "}
+              <a
+                href="/privacy-policy"
+                style={{ color: "#000033" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Privacy Policy
+              </a>
+            </span>
+          </label>
+          <FieldError msg={errors.tcpa} />
+        </div>
+
+        <button
+          type="submit"
+          disabled={submitting}
+          style={{
+            width: "100%",
+            height: 56,
+            background: submitting ? "#aaa" : "#E8670A",
+            color: "#fff",
+            border: "none",
+            borderRadius: 99,
+            fontFamily: FONT_BODY,
+            fontSize: 14,
+            fontWeight: 800,
+            letterSpacing: "0.09em",
+            textTransform: "uppercase",
+            cursor: submitting ? "default" : "pointer",
+            transition: "background 0.15s, transform 0.1s",
+            marginTop: 4,
+          }}
+          onMouseEnter={(e) => {
+            if (!submitting) e.currentTarget.style.background = "#C7560A";
+          }}
+          onMouseLeave={(e) => {
+            if (!submitting) e.currentTarget.style.background = "#E8670A";
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "scale(0.97)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          {submitting ? "Submitting…" : "Claim My Free Consultation →"}
+        </button>
+      </form>
+
+      {/* Trust badges */}
+      <div
+        style={{
+          display: "flex",
+          gap: 12,
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 20,
+          paddingTop: 16,
+          borderTop: "1px solid #F0F0F0",
+        }}
+      >
+        <img
+          src="/images/badges/hipaa.png"
+          alt="HIPAA Compliant"
+          style={{ height: 34, filter: "grayscale(1)", opacity: 0.55 }}
+        />
+        <img
+          src="/images/badges/clia.png"
+          alt="CLIA Certified"
+          style={{ height: 34, filter: "grayscale(1)", opacity: 0.55 }}
+        />
+        <img
+          src="/images/badges/legitscript.png"
+          alt="LegitScript Certified"
+          style={{ height: 34, filter: "grayscale(1)", opacity: 0.55 }}
+        />
+      </div>
+      <p
+        style={{
+          fontFamily: FONT_BODY,
+          fontSize: 11,
+          color: "#aaa",
+          textAlign: "center",
+          marginTop: 10,
+        }}
+      >
+        HIPAA Compliant · No Spam · Response Within 1 Hour
+      </p>
+      <p style={{ textAlign: "center", marginTop: 8 }}>
+        <a
+          href={PHONE_HREF}
+          style={{
+            fontFamily: FONT_BODY,
+            fontSize: 14,
+            fontWeight: 700,
+            color: "#000033",
+            textDecoration: "none",
+          }}
+        >
+          Or call: {PHONE}
+        </a>
+      </p>
+    </div>
+  );
+};
 
 /* ─── URGENCY BANNER ───────────────────────────────────────── */
 
@@ -254,7 +660,7 @@ const UrgencyBanner = () => (
         whiteSpace: "nowrap",
       }}
     >
-      ⚡ Same-Day Appointments Available — Limited Slots This Week
+      ⚡ Same-Day Appointments — Limited This Week
     </span>
     <button
       onClick={smoothTo("form")}
@@ -285,16 +691,13 @@ const UrgencyBanner = () => (
 const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bookHovered, setBookHovered] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
-
-  const navBg = scrolled
-    ? "rgba(0,0,51,0.97)"
-    : "transparent";
 
   return (
     <header
@@ -305,12 +708,11 @@ const SiteHeader = () => {
         right: 0,
         zIndex: 60,
         height: HEADER_H,
-        background: navBg,
+        background: scrolled ? "rgba(0,0,51,0.97)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.07)"
-          : "none",
-        transition: "background 0.3s ease, backdrop-filter 0.3s ease",
+        borderBottom: scrolled ? "1px solid #E8670A" : "none",
+        transition:
+          "background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease",
       }}
     >
       <div
@@ -345,9 +747,7 @@ const SiteHeader = () => {
               textDecoration: "none",
               transition: "color 0.15s",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "#fff")
-            }
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
             onMouseLeave={(e) =>
               (e.currentTarget.style.color = "rgba(255,255,255,0.80)")
             }
@@ -356,27 +756,33 @@ const SiteHeader = () => {
           </a>
           <button
             onClick={smoothTo("form")}
+            onMouseEnter={() => setBookHovered(true)}
+            onMouseLeave={() => setBookHovered(false)}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "scale(0.97)";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
             style={{
               fontFamily: FONT_BODY,
               fontSize: 13,
               fontWeight: 800,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              background: "#E8670A",
+              background: bookHovered ? "#C7560A" : "#E8670A",
               color: "#fff",
               border: "none",
+              borderLeft: bookHovered
+                ? "3px solid rgba(255,255,255,0.3)"
+                : "3px solid transparent",
               borderRadius: 99,
               height: 42,
               padding: "0 22px",
               cursor: "pointer",
-              transition: "background 0.15s",
+              transition:
+                "background 0.15s, border-left 0.15s, transform 0.1s",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.background = "#C7560A")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.background = "#E8670A")
-            }
           >
             Book Now
           </button>
@@ -395,11 +801,7 @@ const SiteHeader = () => {
             padding: 4,
           }}
         >
-          {menuOpen ? (
-            <CloseIcon size={24} />
-          ) : (
-            <Menu size={24} />
-          )}
+          {menuOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -467,11 +869,20 @@ const SiteHeader = () => {
 
 const Hero = () => (
   <section
-    id="hero"
+    id="form"
     style={{
-      background: "#000033",
-      paddingTop: TOTAL_OFFSET + 40,
+      position: "relative",
+      minHeight: "100vh",
+      paddingTop: TOTAL_OFFSET + 48,
       paddingBottom: 80,
+      backgroundImage: `
+        radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(0,0,51,0.92) 0%, rgba(0,0,51,0.75) 50%, rgba(0,0,51,0.60) 100%),
+        url(${heroClinic})
+      `,
+      backgroundSize: "28px 28px, 100% 100%, cover",
+      backgroundPosition: "0 0, 0 0, center 30%",
+      backgroundAttachment: "scroll, scroll, fixed",
     }}
   >
     <div
@@ -483,27 +894,62 @@ const Hero = () => (
     >
       <div
         className="grid grid-cols-1 lg:grid-cols-12"
-        style={{ gap: 40, alignItems: "start" }}
+        style={{ gap: 48, alignItems: "start" }}
       >
         {/* Left: headline + trust */}
         <div className="lg:col-span-7">
+          {/* Eyebrow */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              background: "rgba(232,103,10,0.18)",
+              border: "1px solid rgba(232,103,10,0.40)",
+              borderRadius: 99,
+              padding: "6px 14px",
+              marginBottom: 20,
+            }}
+          >
+            <span
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                background: "#E8670A",
+                display: "inline-block",
+                flexShrink: 0,
+              }}
+            />
+            <span
+              style={{
+                fontFamily: FONT_BODY,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#E8670A",
+              }}
+            >
+              Virginia's Premier Men's Health Clinic
+            </span>
+          </div>
+
           {/* H1 */}
           <h1
             style={{
               fontFamily: FONT_DISPLAY,
-              fontSize: "clamp(52px, 7.5vw, 96px)",
+              fontSize: "clamp(52px, 7.5vw, 100px)",
               fontWeight: 800,
-              lineHeight: 0.93,
-              letterSpacing: "-0.025em",
+              lineHeight: 0.92,
+              letterSpacing: "-0.02em",
               textTransform: "uppercase",
               color: "#fff",
               margin: 0,
             }}
           >
             Testosterone
-            <span
-              style={{ display: "block", color: "#E8670A" }}
-            >
+            <span style={{ display: "block", color: "#E8670A" }}>
               Done Right.
             </span>
           </h1>
@@ -511,10 +957,10 @@ const Hero = () => (
           <p
             style={{
               fontFamily: FONT_BODY,
-              fontSize: "clamp(15px, 1.6vw, 18px)",
-              color: "rgba(255,255,255,0.72)",
+              fontSize: "clamp(15px, 1.6vw, 19px)",
+              color: "rgba(255,255,255,0.78)",
               lineHeight: 1.65,
-              marginTop: 18,
+              marginTop: 20,
               maxWidth: 520,
             }}
           >
@@ -528,21 +974,16 @@ const Hero = () => (
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              marginTop: 20,
+              marginTop: 22,
               padding: "10px 18px",
               borderRadius: 99,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.13)",
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.14)",
             }}
           >
             <div style={{ display: "flex", gap: 2 }}>
               {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={14}
-                  fill="#FFC107"
-                  stroke="#FFC107"
-                />
+                <Star key={i} size={14} fill="#FFC107" stroke="#FFC107" />
               ))}
             </div>
             <span
@@ -572,10 +1013,10 @@ const Hero = () => (
             style={{
               listStyle: "none",
               padding: 0,
-              margin: "22px 0 0",
+              margin: "24px 0 0",
               display: "flex",
               flexDirection: "column",
-              gap: 10,
+              gap: 12,
             }}
           >
             {TRUST_CHECKS.map((t) => (
@@ -586,269 +1027,176 @@ const Hero = () => (
                   alignItems: "center",
                   gap: 10,
                   fontFamily: FONT_BODY,
-                  fontSize: 14,
-                  color: "rgba(255,255,255,0.88)",
+                  fontSize: 15,
+                  color: "rgba(255,255,255,0.90)",
                 }}
               >
-                <Check
-                  size={15}
-                  strokeWidth={3}
-                  style={{ color: "#E8670A", flexShrink: 0 }}
-                />
+                <span
+                  style={{
+                    width: 22,
+                    height: 22,
+                    borderRadius: "50%",
+                    background: "rgba(232,103,10,0.25)",
+                    border: "1px solid rgba(232,103,10,0.50)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  <Check size={12} strokeWidth={3} color="#E8670A" />
+                </span>
                 {t}
               </li>
             ))}
           </ul>
+
+          {/* Outcome pills */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 10,
+              marginTop: 32,
+            }}
+          >
+            {OUTCOMES.map((o) => (
+              <button
+                key={o.label}
+                onClick={smoothTo("form")}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  fontFamily: FONT_BODY,
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#fff",
+                  background: "rgba(255,255,255,0.07)",
+                  border: "1px solid rgba(255,255,255,0.13)",
+                  borderRadius: 99,
+                  height: 40,
+                  padding: "0 16px",
+                  cursor: "pointer",
+                  transition: "border-color 0.15s, background 0.15s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#E8670A";
+                  e.currentTarget.style.background =
+                    "rgba(232,103,10,0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor =
+                    "rgba(255,255,255,0.13)";
+                  e.currentTarget.style.background =
+                    "rgba(255,255,255,0.07)";
+                }}
+              >
+                {o.icon} {o.label}{" "}
+                <ArrowRight size={12} style={{ opacity: 0.5 }} />
+              </button>
+            ))}
+          </div>
+
+          <p
+            style={{
+              fontFamily: FONT_BODY,
+              fontSize: 11,
+              color: "rgba(255,255,255,0.32)",
+              marginTop: 18,
+            }}
+          >
+            Medically reviewed by licensed Virginia providers. Individual
+            results vary.
+          </p>
         </div>
 
-        {/* Right: CTA cards */}
-        <div
-          className="lg:col-span-5"
-          style={{ display: "flex", flexDirection: "column", gap: 14 }}
-        >
-          {/* Primary card */}
-          <button
-            onClick={smoothTo("form")}
-            style={{
-              background: "#E8670A",
-              border: "none",
-              borderRadius: 20,
-              padding: "28px 28px 24px",
-              textAlign: "left",
-              cursor: "pointer",
-              minHeight: 190,
-              position: "relative",
-              overflow: "hidden",
-              transition: "transform 0.2s ease, box-shadow 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow =
-                "0 16px 40px rgba(232,103,10,0.35)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            {/* Open Today badge */}
-            <span
-              style={{
-                display: "inline-block",
-                fontFamily: FONT_BODY,
-                fontSize: 10,
-                fontWeight: 800,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                background: "rgba(0,255,80,0.22)",
-                color: "#00E564",
-                borderRadius: 99,
-                padding: "4px 10px",
-                marginBottom: 12,
-              }}
-            >
-              ● OPEN TODAY
-            </span>
-            <div
-              style={{
-                fontFamily: FONT_DISPLAY,
-                fontSize: "clamp(20px, 2.6vw, 30px)",
-                fontWeight: 700,
-                lineHeight: 1.05,
-                letterSpacing: "-0.01em",
-                textTransform: "uppercase",
-                color: "#fff",
-              }}
-            >
-              Same-Day Labs +<br />Results In One Visit
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                marginTop: 18,
-                background: "#fff",
-                color: "#000033",
-                fontFamily: FONT_BODY,
-                fontSize: 12,
-                fontWeight: 800,
-                letterSpacing: "0.09em",
-                textTransform: "uppercase",
-                borderRadius: 99,
-                height: 40,
-                padding: "0 18px",
-              }}
-            >
-              Book My Consultation <ArrowRight size={14} />
-            </div>
-            <p
-              style={{
-                fontFamily: FONT_BODY,
-                fontSize: 11,
-                color: "rgba(255,255,255,0.75)",
-                marginTop: 10,
-              }}
-            >
-              Plans start at {PRICE} after approval
-            </p>
-          </button>
-
-          {/* Secondary card */}
-          <button
-            onClick={smoothTo("locations")}
-            style={{
-              background: "#080D2A",
-              border: "1px solid rgba(255,255,255,0.13)",
-              borderRadius: 20,
-              padding: "24px 28px 20px",
-              textAlign: "left",
-              cursor: "pointer",
-              minHeight: 160,
-              transition:
-                "transform 0.2s ease, border-color 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.borderColor =
-                "rgba(232,103,10,0.5)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.borderColor =
-                "rgba(255,255,255,0.13)";
-            }}
-          >
-            <span
-              style={{
-                display: "inline-block",
-                fontFamily: FONT_BODY,
-                fontSize: 10,
-                fontWeight: 800,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                background: "rgba(232,103,10,0.18)",
-                color: "#E8670A",
-                borderRadius: 99,
-                padding: "4px 10px",
-                marginBottom: 12,
-              }}
-            >
-              Available This Week
-            </span>
-            <div
-              style={{
-                fontFamily: FONT_DISPLAY,
-                fontSize: "clamp(18px, 2.2vw, 26px)",
-                fontWeight: 700,
-                lineHeight: 1.05,
-                letterSpacing: "-0.01em",
-                textTransform: "uppercase",
-                color: "#fff",
-              }}
-            >
-              3 Virginia Clinics Near You
-            </div>
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                marginTop: 14,
-                border: "2px solid rgba(255,255,255,0.65)",
-                color: "#fff",
-                fontFamily: FONT_BODY,
-                fontSize: 12,
-                fontWeight: 800,
-                letterSpacing: "0.09em",
-                textTransform: "uppercase",
-                borderRadius: 99,
-                height: 40,
-                padding: "0 18px",
-              }}
-            >
-              <MapPin size={13} /> See Locations
-            </div>
-            <p
-              style={{
-                fontFamily: FONT_BODY,
-                fontSize: 11,
-                color: "rgba(255,255,255,0.45)",
-                marginTop: 10,
-                display: "flex",
-                gap: 8,
-                flexWrap: "wrap",
-              }}
-            >
-              <span>Richmond</span>
-              <span style={{ opacity: 0.35 }}>·</span>
-              <span>Newport News</span>
-              <span style={{ opacity: 0.35 }}>·</span>
-              <span>Virginia Beach</span>
-            </p>
-          </button>
+        {/* Right: form card */}
+        <div className="lg:col-span-5" style={{ position: "sticky", top: TOTAL_OFFSET + 16 }}>
+          <LeadFormCard title="Book My Same-Day Visit" />
         </div>
       </div>
+    </div>
+  </section>
+);
 
-      {/* Outcome pills */}
+/* ─── PRESS BAR ────────────────────────────────────────────── */
+
+const PressBar = () => (
+  <section
+    style={{
+      background: "#000033",
+      borderTop: "1px solid rgba(255,255,255,0.06)",
+      borderBottom: "1px solid rgba(255,255,255,0.06)",
+      padding: "20px 0",
+    }}
+  >
+    <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 20px",
+        display: "flex",
+        alignItems: "center",
+        gap: 32,
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: FONT_BODY,
+          fontSize: 10,
+          fontWeight: 700,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.30)",
+          whiteSpace: "nowrap",
+          flexShrink: 0,
+        }}
+      >
+        Featured In
+      </span>
       <div
         style={{
           display: "flex",
+          alignItems: "center",
+          gap: 36,
           flexWrap: "wrap",
-          gap: 10,
-          marginTop: 36,
+          justifyContent: "center",
         }}
       >
-        {OUTCOMES.map((o) => (
-          <button
-            key={o.label}
-            onClick={smoothTo("form")}
+        {[
+          "Forbes Health",
+          "WebMD",
+          "Healthline",
+          "Men's Journal",
+          "Yahoo Health",
+        ].map((name) => (
+          <span
+            key={name}
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
               fontFamily: FONT_BODY,
               fontSize: 13,
-              fontWeight: 600,
-              color: "#fff",
-              background: "#12183A",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: 99,
-              height: 40,
-              padding: "0 16px",
-              cursor: "pointer",
-              transition: "border-color 0.15s, background 0.15s",
+              fontWeight: 800,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.38)",
+              whiteSpace: "nowrap",
+              transition: "color 0.2s",
+              cursor: "default",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#E8670A";
-              e.currentTarget.style.background = "#1C2245";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor =
-                "rgba(255,255,255,0.12)";
-              e.currentTarget.style.background = "#12183A";
-            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "rgba(255,255,255,0.65)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "rgba(255,255,255,0.38)")
+            }
           >
-            {o.icon} {o.label}{" "}
-            <ArrowRight
-              size={13}
-              style={{ opacity: 0.5 }}
-            />
-          </button>
+            {name}
+          </span>
         ))}
       </div>
-
-      <p
-        style={{
-          fontFamily: FONT_BODY,
-          fontSize: 11,
-          color: "rgba(255,255,255,0.35)",
-          marginTop: 20,
-        }}
-      >
-        Medically reviewed by licensed Virginia providers. Individual
-        results vary.
-      </p>
     </div>
   </section>
 );
@@ -859,7 +1207,6 @@ const TrustBar = () => (
   <section
     style={{
       background: "#05061E",
-      borderTop: "1px solid rgba(255,255,255,0.06)",
       borderBottom: "1px solid rgba(255,255,255,0.06)",
     }}
   >
@@ -867,7 +1214,7 @@ const TrustBar = () => (
       style={{
         maxWidth: 1200,
         margin: "0 auto",
-        padding: "52px 20px",
+        padding: "56px 20px",
       }}
     >
       <p
@@ -877,16 +1224,16 @@ const TrustBar = () => (
           fontWeight: 700,
           letterSpacing: "0.16em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.38)",
+          color: "rgba(255,255,255,0.32)",
           textAlign: "center",
-          marginBottom: 32,
+          marginBottom: 36,
         }}
       >
         Trusted by Virginia men since 2015
       </p>
       <div
         className="grid grid-cols-2 md:grid-cols-4"
-        style={{ gap: "24px 16px", textAlign: "center" }}
+        style={{ gap: "28px 16px", textAlign: "center" }}
       >
         {STATS.map((s) => (
           <div
@@ -895,18 +1242,18 @@ const TrustBar = () => (
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: 6,
+              gap: 8,
             }}
           >
             <span
               style={{
                 fontFamily: FONT_DISPLAY,
-                fontSize: "clamp(34px, 4.5vw, 52px)",
+                fontSize: "clamp(36px, 4.5vw, 54px)",
                 fontWeight: 700,
                 color: "#fff",
                 lineHeight: 1,
                 borderBottom: "3px solid #E8670A",
-                paddingBottom: 5,
+                paddingBottom: 6,
                 display: "inline-block",
               }}
             >
@@ -919,7 +1266,7 @@ const TrustBar = () => (
                 fontWeight: 600,
                 letterSpacing: "0.13em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.50)",
+                color: "rgba(255,255,255,0.48)",
               }}
             >
               {s.label}
@@ -931,12 +1278,59 @@ const TrustBar = () => (
   </section>
 );
 
+/* ─── MARQUEE ───────────────────────────────────────────────── */
+
+const Marquee = () => {
+  // Double the items for seamless loop
+  const doubled = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+  return (
+    <div
+      style={{
+        background: "#E8670A",
+        height: 40,
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+      }}
+      aria-hidden="true"
+    >
+      <div
+        className="marquee-track"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 0,
+          whiteSpace: "nowrap",
+          willChange: "transform",
+        }}
+      >
+        {doubled.map((item, i) => (
+          <span
+            key={i}
+            style={{
+              fontFamily: FONT_BODY,
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#fff",
+              padding: "0 28px",
+            }}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 /* ─── PROBLEM + HOW IT WORKS ───────────────────────────────── */
 
 const ProblemSection = () => (
   <section
     id="symptoms"
-    style={{ background: "#F5F0EB", padding: "80px 0" }}
+    style={{ background: "#F5F0EB", padding: "96px 0" }}
   >
     <div
       className="grid grid-cols-1 md:grid-cols-2"
@@ -944,67 +1338,103 @@ const ProblemSection = () => (
         maxWidth: 1200,
         margin: "0 auto",
         padding: "0 20px",
-        gap: 56,
+        gap: 64,
         alignItems: "start",
       }}
     >
-      {/* Left: Problem agitation */}
-      <div>
-        {eyebrow("Sound Familiar?")}
-        {sectionHead(
-          "Tired of Feeling Like a Worse Version of Yourself?"
-        )}
-        <p
+      {/* Left: Problem agitation with image background */}
+      <div style={{ position: "relative", borderRadius: 20, overflow: "hidden", minHeight: 520 }}>
+        {/* Full-height background image */}
+        <div
           style={{
-            fontFamily: FONT_BODY,
-            fontSize: 15,
-            color: "#4A4A4A",
-            lineHeight: 1.7,
-            marginTop: 14,
-            maxWidth: 500,
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${manRunning})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-        >
-          You used to have energy. You used to have drive. Now you drag
-          through the day, can't focus, can't sleep right, and the weight
-          won't move no matter what you do. Your doctor says your labs are
-          "normal." You know they're not.
-        </p>
-        <ul
+        />
+        {/* Dark gradient overlay — heavier at bottom so text is readable */}
+        <div
           style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "24px 0 0",
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(0,0,51,0.55) 0%, rgba(0,0,51,0.92) 55%, rgba(0,0,51,0.98) 100%)",
+          }}
+        />
+        {/* Content on top */}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            padding: "40px 32px 40px",
             display: "flex",
             flexDirection: "column",
-            gap: 12,
+            justifyContent: "flex-end",
+            minHeight: 520,
           }}
         >
-          {SYMPTOMS.map((s) => (
-            <li
-              key={s}
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 10,
-                fontFamily: FONT_BODY,
-                fontSize: 14,
-                color: "#1A1A1A",
-                lineHeight: 1.5,
-              }}
-            >
-              <XCircle
-                size={16}
-                strokeWidth={2}
+          {eyebrow("Sound Familiar?")}
+          <h2
+            style={{
+              fontFamily: FONT_DISPLAY,
+              fontSize: "clamp(24px, 3vw, 36px)",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              color: "#fff",
+              margin: "0 0 16px",
+            }}
+          >
+            Tired of Feeling Like a Worse Version of Yourself?
+          </h2>
+          <p
+            style={{
+              fontFamily: FONT_BODY,
+              fontSize: 15,
+              color: "rgba(255,255,255,0.78)",
+              lineHeight: 1.7,
+              marginBottom: 20,
+            }}
+          >
+            You used to have energy. You used to have drive. Now you drag
+            through the day, can't focus, can't sleep right, and the
+            weight won't move no matter what you do. Your doctor says
+            your labs are "normal." You know they're not.
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+            }}
+          >
+            {SYMPTOMS.map((s) => (
+              <li
+                key={s}
                 style={{
-                  color: "#E8670A",
-                  flexShrink: 0,
-                  marginTop: 1,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 10,
+                  fontFamily: FONT_BODY,
+                  fontSize: 14,
+                  color: "rgba(255,255,255,0.88)",
+                  lineHeight: 1.5,
                 }}
-              />
-              {s}
-            </li>
-          ))}
-        </ul>
+              >
+                <XCircle
+                  size={16}
+                  strokeWidth={2}
+                  style={{ color: "#E8670A", flexShrink: 0, marginTop: 1 }}
+                />
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Right: How it works */}
@@ -1026,81 +1456,87 @@ const ProblemSection = () => (
 
         <div
           style={{
-            marginTop: 28,
+            marginTop: 32,
             display: "flex",
             flexDirection: "column",
-            gap: 24,
+            gap: 0,
+            borderLeft: "3px solid #E8670A",
+            paddingLeft: 24,
           }}
         >
-          {STEPS.map((s) => (
+          {STEPS.map((s, idx) => (
             <div
               key={s.num}
-              style={{ display: "flex", gap: 16 }}
+              style={{
+                paddingBottom: idx < STEPS.length - 1 ? 28 : 0,
+              }}
             >
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  background: "#000033",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 13,
-                  fontWeight: 700,
-                  flexShrink: 0,
-                }}
-              >
-                {s.num}
-              </div>
-              <div>
-                <h3
+              <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                <div
                   style={{
-                    fontFamily: FONT_BODY,
-                    fontSize: 15,
+                    width: 38,
+                    height: 38,
+                    borderRadius: "50%",
+                    background: "#000033",
+                    color: "#fff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: FONT_DISPLAY,
+                    fontSize: 13,
                     fontWeight: 700,
-                    color: "#000033",
-                    margin: 0,
+                    flexShrink: 0,
                   }}
                 >
-                  {s.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: FONT_BODY,
-                    fontSize: 14,
-                    color: "#4A4A4A",
-                    lineHeight: 1.6,
-                    marginTop: 4,
-                  }}
-                >
-                  {s.desc}
-                </p>
+                  {s.num}
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontFamily: FONT_BODY,
+                      fontSize: 15,
+                      fontWeight: 700,
+                      color: "#000033",
+                      margin: "0 0 4px",
+                    }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: FONT_BODY,
+                      fontSize: 14,
+                      color: "#4A4A4A",
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}
+                  >
+                    {s.desc}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* What happens next callout */}
+        {/* Callout */}
         <div
           style={{
-            marginTop: 28,
+            marginTop: 32,
             background: "#000033",
             borderRadius: 14,
-            padding: "18px 20px",
+            padding: "20px 24px",
           }}
         >
           <p
             style={{
               fontFamily: FONT_BODY,
-              fontSize: 13,
+              fontSize: 12,
               fontWeight: 700,
               color: "#E8670A",
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              marginBottom: 4,
+              marginBottom: 6,
             }}
           >
             What happens next?
@@ -1111,6 +1547,7 @@ const ProblemSection = () => (
               fontSize: 14,
               color: "rgba(255,255,255,0.75)",
               lineHeight: 1.6,
+              margin: 0,
             }}
           >
             Most patients leave with a prescription the same day.
@@ -1120,24 +1557,26 @@ const ProblemSection = () => (
 
         <button
           onClick={smoothTo("form")}
+          onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
+          onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: 8,
-            marginTop: 22,
+            marginTop: 24,
             background: "#E8670A",
             color: "#fff",
             border: "none",
             borderRadius: 99,
-            height: 52,
-            padding: "0 28px",
+            height: 54,
+            padding: "0 30px",
             fontFamily: FONT_BODY,
             fontSize: 13,
             fontWeight: 800,
             letterSpacing: "0.08em",
             textTransform: "uppercase",
             cursor: "pointer",
-            transition: "background 0.15s",
+            transition: "background 0.15s, transform 0.1s",
           }}
           onMouseEnter={(e) =>
             (e.currentTarget.style.background = "#C7560A")
@@ -1167,21 +1606,21 @@ const ProblemSection = () => (
 /* ─── WHY US ────────────────────────────────────────────────── */
 
 const WhyUs = () => (
-  <section style={{ background: "#000033", padding: "80px 0" }}>
+  <section style={{ background: "#000033", padding: "96px 0" }}>
     <div
       className="grid grid-cols-1 md:grid-cols-2"
       style={{
         maxWidth: 1200,
         margin: "0 auto",
         padding: "0 20px",
-        gap: 56,
+        gap: 64,
         alignItems: "center",
       }}
     >
       {/* Image */}
-      <div>
+      <div style={{ position: "relative" }}>
         <img
-          src="/images/hero-still.jpg"
+          src={providerPatient}
           alt="Face-to-face TRT consultation at Men's Wellness Centers Virginia"
           style={{
             borderRadius: 20,
@@ -1189,9 +1628,48 @@ const WhyUs = () => (
             width: "100%",
             aspectRatio: "4/3",
             display: "block",
+            boxShadow:
+              "0 20px 60px rgba(232,103,10,0.15), 0 4px 20px rgba(0,0,0,0.3)",
           }}
           loading="lazy"
         />
+        {/* Credential badge overlay */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 20,
+            left: 20,
+            background: "#E8670A",
+            borderRadius: 12,
+            padding: "12px 20px",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: FONT_BODY,
+              fontSize: 11,
+              fontWeight: 800,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.80)",
+              margin: "0 0 2px",
+            }}
+          >
+            Our Track Record
+          </p>
+          <p
+            style={{
+              fontFamily: FONT_DISPLAY,
+              fontSize: 16,
+              fontWeight: 700,
+              color: "#fff",
+              margin: 0,
+              letterSpacing: "0.02em",
+            }}
+          >
+            10 YEARS · 10K+ PATIENTS · 4.9★
+          </p>
+        </div>
       </div>
 
       {/* Copy */}
@@ -1218,10 +1696,10 @@ const WhyUs = () => (
         {/* Comparison rows */}
         <div
           style={{
-            marginTop: 24,
+            marginTop: 28,
             display: "flex",
             flexDirection: "column",
-            gap: 10,
+            gap: 12,
           }}
         >
           {COMPARISONS.map((c) => (
@@ -1273,8 +1751,10 @@ const WhyUs = () => (
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "16px 32px",
-            marginTop: 32,
+            gap: "16px 36px",
+            marginTop: 36,
+            paddingTop: 28,
+            borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
           {[
@@ -1287,7 +1767,7 @@ const WhyUs = () => (
               <div
                 style={{
                   fontFamily: FONT_DISPLAY,
-                  fontSize: "clamp(20px, 2.5vw, 28px)",
+                  fontSize: "clamp(20px, 2.5vw, 30px)",
                   fontWeight: 700,
                   color: "#fff",
                   lineHeight: 1,
@@ -1302,7 +1782,7 @@ const WhyUs = () => (
                   fontWeight: 600,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.45)",
+                  color: "rgba(255,255,255,0.42)",
                   marginTop: 4,
                 }}
               >
@@ -1319,7 +1799,7 @@ const WhyUs = () => (
 /* ─── RESULTS ───────────────────────────────────────────────── */
 
 const Results = () => (
-  <section style={{ background: "#F5F0EB", padding: "80px 0" }}>
+  <section style={{ background: "#0A0A1A", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -1327,30 +1807,55 @@ const Results = () => (
         padding: "0 20px",
       }}
     >
-      {sectionHead("Real Results From Real Patients", "#000033", "center")}
+      <div style={{ textAlign: "center", marginBottom: 48 }}>
+        {eyebrow("Outcomes")}
+        {sectionHead("Real Results From Real Patients", "#fff", "center")}
+      </div>
 
       {/* Stat cards */}
       <div
         className="grid grid-cols-1 sm:grid-cols-2"
-        style={{ gap: 16, marginTop: 36 }}
+        style={{ gap: 16, marginBottom: 24 }}
       >
         {RESULT_STATS.map((r) => (
           <div
             key={r.value}
             style={{
-              background: "#E8670A",
+              background: "#000033",
+              borderLeft: "4px solid #E8670A",
               borderRadius: 20,
-              padding: "36px 28px",
-              textAlign: "center",
+              padding: "40px 32px",
+              textAlign: "left",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
+            {/* Decorative large number bg */}
+            <span
+              style={{
+                position: "absolute",
+                top: -20,
+                right: 20,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 140,
+                fontWeight: 900,
+                color: "rgba(232,103,10,0.06)",
+                lineHeight: 1,
+                pointerEvents: "none",
+                userSelect: "none",
+              }}
+              aria-hidden="true"
+            >
+              {r.value}
+            </span>
             <div
               style={{
                 fontFamily: FONT_DISPLAY,
-                fontSize: "clamp(56px, 8vw, 80px)",
+                fontSize: "clamp(56px, 8vw, 84px)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#E8670A",
                 lineHeight: 1,
+                position: "relative",
               }}
             >
               {r.value}
@@ -1358,10 +1863,11 @@ const Results = () => (
             <p
               style={{
                 fontFamily: FONT_BODY,
-                fontSize: 14,
-                color: "rgba(255,255,255,0.85)",
-                marginTop: 10,
+                fontSize: 15,
+                color: "rgba(255,255,255,0.78)",
+                marginTop: 12,
                 lineHeight: 1.5,
+                position: "relative",
               }}
             >
               {r.label}
@@ -1370,47 +1876,126 @@ const Results = () => (
         ))}
       </div>
 
+      {/* Lab photo strip */}
+      <div
+        style={{
+          borderRadius: 16,
+          overflow: "hidden",
+          marginBottom: 24,
+          position: "relative",
+          height: 220,
+        }}
+      >
+        <img
+          src={trtLab}
+          alt="On-site testosterone lab at Men's Wellness Centers"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            display: "block",
+          }}
+          loading="lazy"
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(10,10,26,0.85) 0%, rgba(10,10,26,0.30) 60%, rgba(10,10,26,0.10) 100%)",
+            display: "flex",
+            alignItems: "center",
+            padding: "0 40px",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontFamily: FONT_BODY,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "#E8670A",
+                marginBottom: 6,
+              }}
+            >
+              On-Site Labs
+            </p>
+            <h3
+              style={{
+                fontFamily: FONT_DISPLAY,
+                fontSize: "clamp(20px, 2.5vw, 32px)",
+                fontWeight: 700,
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              Results Before You Leave.
+              <br />
+              Not Two Weeks Later.
+            </h3>
+          </div>
+        </div>
+      </div>
+
       {/* Testimonials */}
       <div
         className="grid grid-cols-1 md:grid-cols-3"
-        style={{ gap: 16, marginTop: 24 }}
+        style={{ gap: 16, marginBottom: 32 }}
       >
         {TESTIMONIALS.map((t) => (
           <div
             key={t.name}
             style={{
-              background: "#0A0A1A",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#000033",
+              border: "1px solid rgba(255,255,255,0.07)",
               borderRadius: 20,
-              padding: 24,
+              padding: 28,
               display: "flex",
               flexDirection: "column",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
-            <div style={{ display: "flex", gap: 2, marginBottom: 14 }}>
+            {/* Decorative quote mark */}
+            <span
+              style={{
+                position: "absolute",
+                top: -20,
+                left: 12,
+                fontFamily: "Georgia, serif",
+                fontSize: 130,
+                lineHeight: 1,
+                color: "rgba(232,103,10,0.08)",
+                pointerEvents: "none",
+                userSelect: "none",
+              }}
+              aria-hidden="true"
+            >
+              "
+            </span>
+            <div style={{ display: "flex", gap: 2, marginBottom: 16, position: "relative" }}>
               {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={14}
-                  fill="#FFC107"
-                  stroke="#FFC107"
-                />
+                <Star key={i} size={14} fill="#FFC107" stroke="#FFC107" />
               ))}
             </div>
             <p
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 14,
-                color: "rgba(255,255,255,0.82)",
-                lineHeight: 1.65,
+                color: "rgba(255,255,255,0.84)",
+                lineHeight: 1.7,
                 flex: 1,
+                position: "relative",
               }}
             >
               "{t.quote}"
             </p>
             <div
               style={{
-                marginTop: 16,
+                marginTop: 18,
                 paddingTop: 16,
                 borderTop: "1px solid rgba(255,255,255,0.07)",
               }}
@@ -1429,7 +2014,7 @@ const Results = () => (
                 style={{
                   fontFamily: FONT_BODY,
                   fontSize: 11,
-                  color: "rgba(255,255,255,0.40)",
+                  color: "rgba(255,255,255,0.38)",
                   marginTop: 2,
                 }}
               >
@@ -1438,7 +2023,7 @@ const Results = () => (
               <span
                 style={{
                   display: "inline-block",
-                  marginTop: 8,
+                  marginTop: 10,
                   fontFamily: FONT_BODY,
                   fontSize: 10,
                   fontWeight: 700,
@@ -1447,7 +2032,7 @@ const Results = () => (
                   background: "rgba(46,204,113,0.14)",
                   color: "#4DD884",
                   borderRadius: 4,
-                  padding: "2px 7px",
+                  padding: "3px 8px",
                 }}
               >
                 ✓ Verified Review
@@ -1457,21 +2042,39 @@ const Results = () => (
         ))}
       </div>
 
-      <div style={{ textAlign: "center", marginTop: 28 }}>
+      <div style={{ textAlign: "center", marginBottom: 48 }}>
         <a
           href="https://www.google.com/search?q=Men%27s+Wellness+Centers+Virginia+reviews"
           target="_blank"
           rel="noopener noreferrer"
           style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
             fontFamily: FONT_BODY,
             fontSize: 13,
-            fontWeight: 700,
-            color: "#000033",
-            textDecoration: "underline",
-            textUnderlineOffset: 4,
+            fontWeight: 800,
+            letterSpacing: "0.07em",
+            textTransform: "uppercase",
+            color: "#fff",
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.14)",
+            borderRadius: 99,
+            padding: "12px 24px",
+            textDecoration: "none",
+            transition: "background 0.15s, border-color 0.15s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(232,103,10,0.18)";
+            e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.14)";
           }}
         >
-          Read all 200+ reviews on Google →
+          <Star size={14} fill="#FFC107" stroke="#FFC107" />
+          Read All 200+ Google Reviews →
         </a>
       </div>
 
@@ -1482,7 +2085,6 @@ const Results = () => (
           flexWrap: "wrap",
           gap: 10,
           justifyContent: "center",
-          marginTop: 48,
         }}
       >
         {[
@@ -1499,8 +2101,8 @@ const Results = () => (
               fontSize: 13,
               fontWeight: 600,
               color: "#fff",
-              background: "#12183A",
-              border: "1px solid rgba(255,255,255,0.14)",
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.12)",
               borderRadius: 99,
               height: 42,
               padding: "0 20px",
@@ -1509,12 +2111,11 @@ const Results = () => (
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = "#E8670A";
-              e.currentTarget.style.background = "#1A2048";
+              e.currentTarget.style.background = "rgba(232,103,10,0.12)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor =
-                "rgba(255,255,255,0.14)";
-              e.currentTarget.style.background = "#12183A";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
             }}
           >
             {label}
@@ -1525,29 +2126,236 @@ const Results = () => (
   </section>
 );
 
-/* ─── PRICING / INCLUDED ────────────────────────────────────── */
+/* ─── DOCTOR SECTION ────────────────────────────────────────── */
 
-const Pricing = () => (
-  <section style={{ background: "#E8670A", padding: "80px 0" }}>
+const DoctorSection = () => (
+  <section style={{ background: "#F5F0EB", padding: "96px 0" }}>
     <div
       className="grid grid-cols-1 md:grid-cols-2"
       style={{
         maxWidth: 1200,
         margin: "0 auto",
         padding: "0 20px",
-        gap: 56,
+        gap: 64,
         alignItems: "center",
       }}
     >
-      {/* Copy — order 2 on mobile, 1 on desktop */}
+      {/* Left: headshot */}
+      <div
+        className="order-2 md:order-1"
+        style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <img
+            src={drPapariello}
+            alt="Dr. Steven Papariello, Medical Director at Men's Wellness Centers"
+            style={{
+              width: "min(320px, 100%)",
+              aspectRatio: "3/4",
+              objectFit: "cover",
+              objectPosition: "top",
+              borderRadius: 20,
+              display: "block",
+              boxShadow: "0 20px 60px rgba(0,0,51,0.15), 0 4px 20px rgba(0,0,0,0.10)",
+            }}
+            loading="lazy"
+          />
+          {/* Orange accent border */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: -6,
+              left: -6,
+              right: 24,
+              height: 6,
+              background: "#E8670A",
+              borderRadius: 99,
+            }}
+          />
+        </div>
+        {/* Credential badge */}
+        <div
+          style={{
+            marginTop: 20,
+            background: "#000033",
+            borderRadius: 12,
+            padding: "14px 24px",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: FONT_DISPLAY,
+              fontSize: 16,
+              fontWeight: 700,
+              color: "#fff",
+              margin: "0 0 4px",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Steven Papariello, MD
+          </p>
+          <p
+            style={{
+              fontFamily: FONT_BODY,
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#E8670A",
+              margin: 0,
+            }}
+          >
+            Medical Director
+          </p>
+        </div>
+      </div>
+
+      {/* Right: copy */}
+      <div className="order-1 md:order-2">
+        {eyebrow("Physician-Led Care")}
+        <h2
+          style={{
+            fontFamily: FONT_DISPLAY,
+            fontSize: "clamp(26px, 3.5vw, 44px)",
+            fontWeight: 700,
+            lineHeight: 1.06,
+            color: "#000033",
+            margin: "0 0 18px",
+          }}
+        >
+          You'll See a Real Doctor.
+          <br />
+          <span style={{ color: "#E8670A" }}>Not a PA on a Screen.</span>
+        </h2>
+        <p
+          style={{
+            fontFamily: FONT_BODY,
+            fontSize: 16,
+            color: "#4A4A4A",
+            lineHeight: 1.75,
+          }}
+        >
+          Every care plan at MWC is overseen by Dr. Steven Papariello,
+          MD — our Medical Director and a specialist in men's hormone
+          health. Your first visit is face-to-face. Your follow-ups are
+          face-to-face. Your questions get real answers.
+        </p>
+
+        {/* Credential chips */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 10,
+            marginTop: 28,
+          }}
+        >
+          {[
+            "Board-Reviewed Protocols",
+            "Licensed in Virginia",
+            "10+ Years Men's Health",
+          ].map((chip) => (
+            <span
+              key={chip}
+              style={{
+                fontFamily: FONT_BODY,
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: "0.05em",
+                color: "#000033",
+                background: "rgba(0,0,51,0.07)",
+                border: "1px solid rgba(0,0,51,0.12)",
+                borderRadius: 99,
+                padding: "7px 16px",
+              }}
+            >
+              ✓ {chip}
+            </span>
+          ))}
+        </div>
+
+        <button
+          onClick={smoothTo("form")}
+          onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
+          onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            marginTop: 32,
+            background: "#E8670A",
+            color: "#fff",
+            border: "none",
+            borderRadius: 99,
+            height: 54,
+            padding: "0 30px",
+            fontFamily: FONT_BODY,
+            fontSize: 13,
+            fontWeight: 800,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            transition: "background 0.15s, transform 0.1s",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.background = "#C7560A")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.background = "#E8670A")
+          }
+        >
+          Book With Our Team <ArrowRight size={15} />
+        </button>
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── PRICING ───────────────────────────────────────────────── */
+
+const Pricing = () => (
+  <section
+    style={{
+      background: "#E8670A",
+      padding: "96px 0",
+      position: "relative",
+      overflow: "hidden",
+    }}
+  >
+    {/* Diagonal lines texture overlay */}
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='20' x2='20' y2='0' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E")`,
+        backgroundSize: "20px 20px",
+        pointerEvents: "none",
+      }}
+      aria-hidden="true"
+    />
+
+    <div
+      className="grid grid-cols-1 md:grid-cols-2"
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 20px",
+        gap: 64,
+        alignItems: "center",
+        position: "relative",
+      }}
+    >
+      {/* Copy */}
       <div className="order-2 md:order-1">
         <h2
           style={{
             fontFamily: FONT_DISPLAY,
-            fontSize: "clamp(28px, 3.8vw, 46px)",
+            fontSize: "clamp(30px, 3.8vw, 50px)",
             fontWeight: 800,
             lineHeight: 1.0,
             color: "#fff",
+            margin: "0 0 16px",
           }}
         >
           Walk In Today.
@@ -1560,78 +2368,103 @@ const Pricing = () => (
             fontSize: 15,
             color: "rgba(255,255,255,0.88)",
             lineHeight: 1.65,
-            marginTop: 14,
           }}
         >
           No commitment. No credit card to book. Walk into any of our 3
           Virginia centers for a same-day consultation.
         </p>
 
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "20px 0 0",
-            display: "flex",
-            flexDirection: "column",
-            gap: 10,
-          }}
-        >
-          {[
-            "On-site testosterone panel — results same visit",
-            "Face-to-face physician consultation",
-            "Personalized protocol built around your labs",
-          ].map((item) => (
-            <li
-              key={item}
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 10,
-                fontFamily: FONT_BODY,
-                fontSize: 14,
-                color: "#fff",
-                lineHeight: 1.5,
-              }}
-            >
-              <Check
-                size={15}
-                strokeWidth={3}
+        {/* What's included checklist */}
+        <div style={{ marginTop: 24 }}>
+          <p
+            style={{
+              fontFamily: FONT_BODY,
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.70)",
+              marginBottom: 14,
+            }}
+          >
+            What's Included
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
+            {[
+              "On-site testosterone panel — results same visit",
+              "Face-to-face physician consultation",
+              "Personalized protocol built around your labs",
+              "Ongoing monitoring & protocol adjustments",
+              "FSA / HSA accepted · No contract · Cancel anytime",
+            ].map((item) => (
+              <li
+                key={item}
                 style={{
-                  color: "rgba(255,255,255,0.90)",
-                  flexShrink: 0,
-                  marginTop: 1,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 12,
+                  fontFamily: FONT_BODY,
+                  fontSize: 14,
+                  color: "#fff",
+                  lineHeight: 1.5,
                 }}
-              />
-              {item}
-            </li>
-          ))}
-        </ul>
+              >
+                {/* Green checkmark circle */}
+                <span
+                  style={{
+                    width: 22,
+                    height: 22,
+                    borderRadius: "50%",
+                    background: "rgba(255,255,255,0.20)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    marginTop: 1,
+                  }}
+                >
+                  <Check size={12} strokeWidth={3} color="#fff" />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <button
           onClick={smoothTo("form")}
+          onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
+          onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: 8,
-            marginTop: 28,
+            marginTop: 32,
             background: "#fff",
             color: "#000033",
             border: "none",
             borderRadius: 99,
-            height: 54,
-            padding: "0 30px",
+            height: 56,
+            padding: "0 32px",
             fontFamily: FONT_BODY,
             fontSize: 13,
             fontWeight: 800,
             letterSpacing: "0.08em",
             textTransform: "uppercase",
             cursor: "pointer",
-            transition: "background 0.15s",
+            transition: "background 0.15s, transform 0.1s",
           }}
           onMouseEnter={(e) =>
-            (e.currentTarget.style.background =
-              "rgba(255,255,255,0.90)")
+            (e.currentTarget.style.background = "rgba(255,255,255,0.90)")
           }
           onMouseLeave={(e) =>
             (e.currentTarget.style.background = "#fff")
@@ -1645,34 +2478,17 @@ const Pricing = () => (
             fontFamily: FONT_BODY,
             fontSize: 13,
             color: "rgba(255,255,255,0.78)",
-            marginTop: 12,
+            marginTop: 14,
           }}
         >
           Starting at {PRICE} after approval · FSA/HSA accepted
         </p>
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            marginTop: 10,
-            background: "rgba(0,0,0,0.15)",
-            color: "#fff",
-            fontFamily: FONT_BODY,
-            fontSize: 12,
-            fontWeight: 700,
-            borderRadius: 99,
-            padding: "5px 14px",
-          }}
-        >
-          <Check size={13} /> No contract · Cancel anytime
-        </div>
       </div>
 
-      {/* Image — order 1 on mobile */}
+      {/* Image */}
       <div className="order-1 md:order-2">
         <img
-          src="/images/services/labs.jpg"
+          src={firstVisitBloodwork}
           alt="On-site testosterone blood panel at Men's Wellness Centers"
           style={{
             borderRadius: 20,
@@ -1680,7 +2496,7 @@ const Pricing = () => (
             width: "100%",
             aspectRatio: "4/3",
             display: "block",
-            boxShadow: "0 20px 60px rgba(0,0,0,0.20)",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.25)",
           }}
           loading="lazy"
         />
@@ -1710,21 +2526,23 @@ const PillarCard = ({
         borderRadius: 16,
         padding: "28px 20px 24px",
         textAlign: "center",
-        transition: "border-color 0.2s ease, background 0.2s ease",
+        transition: "border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
         cursor: "default",
       }}
       onMouseEnter={() => {
         if (ref.current) {
           ref.current.style.borderColor = "#E8670A";
           ref.current.style.background = "rgba(232,103,10,0.06)";
+          ref.current.style.transform = "translateY(-4px)";
+          ref.current.style.boxShadow = "0 16px 40px rgba(0,0,0,0.3)";
         }
       }}
       onMouseLeave={() => {
         if (ref.current) {
-          ref.current.style.borderColor =
-            "rgba(255,255,255,0.08)";
-          ref.current.style.background =
-            "rgba(255,255,255,0.04)";
+          ref.current.style.borderColor = "rgba(255,255,255,0.08)";
+          ref.current.style.background = "rgba(255,255,255,0.04)";
+          ref.current.style.transform = "translateY(0)";
+          ref.current.style.boxShadow = "none";
         }
       }}
     >
@@ -1733,7 +2551,7 @@ const PillarCard = ({
           width: 76,
           height: 76,
           borderRadius: "50%",
-          background: "#081640",
+          background: "#0A0D2E",
           border: "1px solid rgba(255,255,255,0.07)",
           display: "flex",
           alignItems: "center",
@@ -1760,7 +2578,7 @@ const PillarCard = ({
         style={{
           fontFamily: FONT_BODY,
           fontSize: 13,
-          color: "rgba(255,255,255,0.60)",
+          color: "rgba(255,255,255,0.58)",
           lineHeight: 1.6,
           margin: 0,
         }}
@@ -1772,7 +2590,7 @@ const PillarCard = ({
 };
 
 const Pillars = () => (
-  <section style={{ background: "#000033", padding: "80px 0" }}>
+  <section style={{ background: "#05061E", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -1780,19 +2598,20 @@ const Pillars = () => (
         padding: "0 20px",
       }}
     >
-      <h2
-        style={{
-          fontFamily: FONT_DISPLAY,
-          fontSize: "clamp(24px, 3.2vw, 38px)",
-          fontWeight: 700,
-          lineHeight: 1.1,
-          color: "#fff",
-          textAlign: "center",
-          marginBottom: 44,
-        }}
-      >
-        Why 10,000+ Men Choose MWC Over Everyone Else
-      </h2>
+      <div style={{ textAlign: "center", marginBottom: 48 }}>
+        {eyebrow("Why MWC")}
+        <h2
+          style={{
+            fontFamily: FONT_DISPLAY,
+            fontSize: "clamp(24px, 3.2vw, 40px)",
+            fontWeight: 700,
+            lineHeight: 1.1,
+            color: "#fff",
+          }}
+        >
+          Why 10,000+ Men Choose MWC Over Everyone Else
+        </h2>
+      </div>
       <div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
         style={{ gap: 16 }}
@@ -1805,12 +2624,118 @@ const Pillars = () => (
   </section>
 );
 
+/* ─── TEAM SECTION ──────────────────────────────────────────── */
+
+const TeamSection = () => (
+  <section style={{ background: "#000033", padding: "96px 0" }}>
+    <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 20px",
+      }}
+    >
+      <div style={{ textAlign: "center", marginBottom: 40 }}>
+        {eyebrow("Our Team")}
+        <h2
+          style={{
+            fontFamily: FONT_DISPLAY,
+            fontSize: "clamp(26px, 3.5vw, 44px)",
+            fontWeight: 700,
+            lineHeight: 1.08,
+            color: "#fff",
+          }}
+        >
+          The People Behind Your Care
+        </h2>
+      </div>
+
+      {/* Full-bleed team photo */}
+      <div
+        style={{
+          borderRadius: 20,
+          overflow: "hidden",
+          maxHeight: 400,
+        }}
+      >
+        <img
+          src={mwcTeam}
+          alt="Men's Wellness Centers team of licensed Virginia providers"
+          style={{
+            width: "100%",
+            height: 400,
+            objectFit: "cover",
+            objectPosition: "center top",
+            display: "block",
+          }}
+          loading="lazy"
+        />
+      </div>
+
+      {/* Copy + CTA below photo */}
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: 36,
+          maxWidth: 680,
+          margin: "36px auto 0",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: FONT_BODY,
+            fontSize: 16,
+            color: "rgba(255,255,255,0.72)",
+            lineHeight: 1.75,
+          }}
+        >
+          Men's Wellness Centers is staffed by licensed Virginia providers
+          who specialize exclusively in men's health. Same provider every
+          visit. No revolving door.
+        </p>
+        <a
+          href="/providers"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            marginTop: 28,
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.16)",
+            color: "#fff",
+            borderRadius: 99,
+            height: 52,
+            padding: "0 28px",
+            fontFamily: FONT_BODY,
+            fontSize: 13,
+            fontWeight: 800,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            transition: "background 0.15s, border-color 0.15s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(232,103,10,0.18)";
+            e.currentTarget.style.borderColor = "rgba(232,103,10,0.4)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.16)";
+          }}
+        >
+          Meet Our Team <ArrowRight size={14} />
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── LOCATIONS ─────────────────────────────────────────────── */
 
 const Locations = () => (
   <section
     id="locations"
-    style={{ background: "#F5F0EB", padding: "80px 0" }}
+    style={{ background: "#05061E", padding: "96px 0" }}
   >
     <div
       style={{
@@ -1819,25 +2744,91 @@ const Locations = () => (
         padding: "0 20px",
       }}
     >
-      {sectionHead(
-        "3 Virginia Clinics. Same-Day Appointments.",
-        "#000033",
-        "center"
-      )}
+      {/* Section header with lobby photo */}
+      <div
+        style={{
+          borderRadius: 16,
+          overflow: "hidden",
+          position: "relative",
+          marginBottom: 48,
+          height: 200,
+        }}
+      >
+        <img
+          src={lobbyInterior}
+          alt="Men's Wellness Centers clinic lobby"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            display: "block",
+          }}
+          loading="lazy"
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(90deg, rgba(5,6,30,0.90) 0%, rgba(5,6,30,0.55) 60%, rgba(5,6,30,0.20) 100%)",
+            display: "flex",
+            alignItems: "center",
+            padding: "0 40px",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontFamily: FONT_BODY,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "#E8670A",
+                marginBottom: 8,
+              }}
+            >
+              3 Virginia Locations
+            </p>
+            <h2
+              style={{
+                fontFamily: FONT_DISPLAY,
+                fontSize: "clamp(22px, 3vw, 38px)",
+                fontWeight: 700,
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              Same-Day Appointments at Every Clinic
+            </h2>
+          </div>
+        </div>
+      </div>
+
       <div
         className="grid grid-cols-1 md:grid-cols-3"
-        style={{ gap: 16, marginTop: 36 }}
+        style={{ gap: 16 }}
       >
         {LOCATIONS.map((l) => (
           <div
             key={l.name}
             style={{
-              background: "#fff",
-              border: "1px solid #E5E5E5",
+              background: "#0D1235",
+              border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: 20,
-              padding: 24,
+              padding: 28,
               display: "flex",
               flexDirection: "column",
+              transition: "border-color 0.2s ease, transform 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "rgba(232,103,10,0.45)";
+              e.currentTarget.style.transform = "translateY(-3px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+              e.currentTarget.style.transform = "translateY(0)";
             }}
           >
             <div
@@ -1845,21 +2836,18 @@ const Locations = () => (
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                marginBottom: 10,
+                marginBottom: 12,
               }}
             >
-              <MapPin
-                size={16}
-                style={{ color: "#E8670A", flexShrink: 0 }}
-              />
+              <MapPin size={16} style={{ color: "#E8670A", flexShrink: 0 }} />
               <h3
                 style={{
                   fontFamily: FONT_DISPLAY,
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: 700,
                   letterSpacing: "0.02em",
                   textTransform: "uppercase",
-                  color: "#000033",
+                  color: "#fff",
                   margin: 0,
                 }}
               >
@@ -1869,9 +2857,9 @@ const Locations = () => (
             <p
               style={{
                 fontFamily: FONT_BODY,
-                fontSize: 13,
-                color: "#555",
-                lineHeight: 1.6,
+                fontSize: 14,
+                color: "rgba(255,255,255,0.58)",
+                lineHeight: 1.65,
                 whiteSpace: "pre-line",
                 flex: 1,
               }}
@@ -1883,11 +2871,11 @@ const Locations = () => (
               style={{
                 display: "block",
                 fontFamily: FONT_BODY,
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: 700,
-                color: "#000033",
+                color: "rgba(255,255,255,0.78)",
                 textDecoration: "none",
-                marginTop: 10,
+                marginTop: 12,
               }}
             >
               {l.phone}
@@ -1895,12 +2883,12 @@ const Locations = () => (
             <div
               style={{
                 display: "inline-block",
-                marginTop: 8,
+                marginTop: 10,
                 fontFamily: FONT_BODY,
                 fontSize: 11,
                 fontWeight: 700,
-                background: "rgba(46,204,113,0.12)",
-                color: "#1B7A3A",
+                background: "rgba(46,204,113,0.14)",
+                color: "#4DD884",
                 borderRadius: 99,
                 padding: "4px 12px",
                 alignSelf: "flex-start",
@@ -1910,13 +2898,15 @@ const Locations = () => (
             </div>
             <button
               onClick={smoothTo("form")}
+              onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
+              onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
               style={{
-                marginTop: 18,
-                background: "#000033",
+                marginTop: 20,
+                background: "#E8670A",
                 color: "#fff",
                 border: "none",
                 borderRadius: 99,
-                height: 44,
+                height: 46,
                 width: "100%",
                 fontFamily: FONT_BODY,
                 fontSize: 13,
@@ -1924,13 +2914,13 @@ const Locations = () => (
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
                 cursor: "pointer",
-                transition: "background 0.15s",
+                transition: "background 0.15s, transform 0.1s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#1A2055")
+                (e.currentTarget.style.background = "#C7560A")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "#000033")
+                (e.currentTarget.style.background = "#E8670A")
               }
             >
               Book at {l.name}
@@ -1969,7 +2959,7 @@ const FAQItem = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "16px 20px",
+        padding: "18px 22px",
         background: open
           ? "rgba(255,255,255,0.07)"
           : "rgba(255,255,255,0.03)",
@@ -2001,7 +2991,7 @@ const FAQItem = ({
       />
     </button>
     {open && (
-      <div style={{ padding: "0 20px 18px" }}>
+      <div style={{ padding: "0 22px 20px" }}>
         <p
           style={{
             fontFamily: FONT_BODY,
@@ -2021,7 +3011,7 @@ const FAQItem = ({
 const FAQSection = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   return (
-    <section style={{ background: "#000033", padding: "80px 0" }}>
+    <section style={{ background: "#000033", padding: "96px 0" }}>
       <div
         style={{
           maxWidth: 720,
@@ -2029,18 +3019,19 @@ const FAQSection = () => {
           padding: "0 20px",
         }}
       >
-        <h2
-          style={{
-            fontFamily: FONT_DISPLAY,
-            fontSize: "clamp(24px, 3vw, 36px)",
-            fontWeight: 700,
-            color: "#fff",
-            textAlign: "center",
-            marginBottom: 36,
-          }}
-        >
-          Common Questions
-        </h2>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          {eyebrow("FAQ")}
+          <h2
+            style={{
+              fontFamily: FONT_DISPLAY,
+              fontSize: "clamp(24px, 3vw, 38px)",
+              fontWeight: 700,
+              color: "#fff",
+            }}
+          >
+            Common Questions
+          </h2>
+        </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {FAQS.map((f, i) => (
             <FAQItem
@@ -2059,439 +3050,179 @@ const FAQSection = () => {
   );
 };
 
-/* ─── LEAD FORM ─────────────────────────────────────────────── */
+/* ─── BOTTOM CTA + FALLBACK FORM ────────────────────────────── */
 
-const LeadForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const [tcpa, setTcpa] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitting, setSubmitting] = useState(false);
-
-  const isValidEmail = (v: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-  const isValidPhone = (v: string) =>
-    v.replace(/\D/g, "").length >= 10;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const errs: Record<string, string> = {};
-    if (!name.trim()) errs.name = "Name is required";
-    if (!email.trim()) errs.email = "Email is required";
-    else if (!isValidEmail(email)) errs.email = "Enter a valid email";
-    if (!phone.trim()) errs.phone = "Phone is required";
-    else if (!isValidPhone(phone)) errs.phone = "Enter a valid phone number";
-    if (!location) errs.location = "Select a location";
-    if (!tcpa) errs.tcpa = "You must consent to continue";
-    setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
-
-    setSubmitting(true);
-    const params = new URLSearchParams({
-      name,
-      email,
-      phone,
-      location,
-      source: "lp-trt-v3",
-      service: "trt",
-    });
-    const urls: Record<string, string> = {
-      richmond: "https://menswellnesscenters.com/thank-you-richmond/",
-      "newport-news":
-        "https://menswellnesscenters.com/thank-you-newport-news/",
-      "virginia-beach":
-        "https://menswellnesscenters.com/thank-you-virginia-beach/",
-    };
-    window.location.href = `${urls[location]}?${params.toString()}`;
-  };
-
-  const baseInput: React.CSSProperties = {
-    width: "100%",
-    height: 50,
-    background: "#F8F8FC",
-    border: "1px solid #D6DAE6",
-    borderRadius: 10,
-    padding: "0 16px",
-    fontSize: 15,
-    color: "#0E1230",
-    outline: "none",
-    fontFamily: FONT_BODY,
-    boxSizing: "border-box",
-    transition: "border-color 200ms ease, box-shadow 200ms ease",
-  };
-
-  const focusIn = (
-    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    e.currentTarget.style.borderColor = "#E8670A";
-    e.currentTarget.style.boxShadow =
-      "0 0 0 3px rgba(232,103,10,0.16)";
-    e.currentTarget.style.background = "#fff";
-  };
-  const focusOut = (
-    e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    e.currentTarget.style.borderColor = "#D6DAE6";
-    e.currentTarget.style.boxShadow = "none";
-    e.currentTarget.style.background = "#F8F8FC";
-  };
-
-  const FieldError = ({ msg }: { msg?: string }) =>
-    msg ? (
-      <p
-        style={{
-          fontFamily: FONT_BODY,
-          fontSize: 11,
-          color: "#D94444",
-          marginTop: 4,
-          textAlign: "left",
-        }}
-      >
-        {msg}
-      </p>
-    ) : null;
-
-  return (
-    <section id="form" style={{ background: "#000033", padding: "80px 0" }}>
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 20px",
-          textAlign: "center",
-        }}
-      >
-        {/* Why today chips */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 10,
-            justifyContent: "center",
-            marginBottom: 28,
-          }}
-        >
-          {[
-            "⚡ Same-day appointments",
-            "🔬 On-site labs & results",
-            "📋 Leave with a plan",
-          ].map((chip) => (
-            <span
-              key={chip}
-              style={{
-                fontFamily: FONT_BODY,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#fff",
-                background: "rgba(255,255,255,0.09)",
-                borderRadius: 99,
-                padding: "8px 16px",
-              }}
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
-
+const BottomCTA = () => (
+  <section
+    style={{
+      background: "#000033",
+      padding: "96px 0",
+      position: "relative",
+      overflow: "hidden",
+    }}
+  >
+    {/* Decorative confident man image — far right, faded */}
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        width: "40%",
+        backgroundImage: `url(${manConfident})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+        maskImage:
+          "linear-gradient(to left, rgba(0,0,0,0.35) 0%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to left, rgba(0,0,0,0.35) 0%, transparent 100%)",
+      }}
+      aria-hidden="true"
+    />
+    <div
+      style={{
+        position: "relative",
+        zIndex: 2,
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 20px",
+      }}
+    >
+      {/* Big CTA */}
+      <div style={{ textAlign: "center", marginBottom: 48 }}>
         <h2
           style={{
             fontFamily: FONT_DISPLAY,
-            fontSize: "clamp(28px, 3.5vw, 44px)",
+            fontSize: "clamp(36px, 5vw, 68px)",
             fontWeight: 800,
-            lineHeight: 1.05,
+            lineHeight: 1.0,
             color: "#fff",
+            letterSpacing: "-0.02em",
           }}
         >
-          Claim Your Free Consultation
+          Ready When You Are.
         </h2>
         <p
           style={{
             fontFamily: FONT_BODY,
-            fontSize: 15,
-            color: "rgba(255,255,255,0.72)",
-            maxWidth: 500,
-            margin: "12px auto 0",
+            fontSize: 18,
+            color: "rgba(255,255,255,0.70)",
+            marginTop: 14,
             lineHeight: 1.65,
+            maxWidth: 520,
+            margin: "14px auto 0",
           }}
         >
-          Walk into any of our 3 Virginia centers. No commitment. No
-          credit card. Leave knowing exactly where you stand.
+          Same-day appointments. No commitment. Walk in and get tested.
         </p>
 
-        {/* Stars */}
+        {/* 2 big CTA buttons */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 14,
             justifyContent: "center",
-            gap: 8,
-            marginTop: 14,
+            marginTop: 36,
           }}
         >
-          {[...Array(5)].map((_, i) => (
-            <span key={i} style={{ color: "#D4A017", fontSize: 18 }}>
-              ★
-            </span>
-          ))}
-          <span
+          <button
+            onClick={smoothTo("form")}
+            onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
+            onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              background: "#E8670A",
+              color: "#fff",
+              border: "none",
+              borderRadius: 99,
+              height: 60,
+              padding: "0 36px",
               fontFamily: FONT_BODY,
-              fontSize: 13,
-              color: "rgba(255,255,255,0.70)",
+              fontSize: 14,
+              fontWeight: 800,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              transition: "background 0.15s, transform 0.1s",
             }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = "#C7560A")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.background = "#E8670A")
+            }
           >
-            200+ Reviews
-          </span>
+            Book My Consultation <ArrowRight size={16} />
+          </button>
+          <a
+            href={PHONE_HREF}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              color: "#fff",
+              borderRadius: 99,
+              height: 60,
+              padding: "0 36px",
+              fontFamily: FONT_BODY,
+              fontSize: 14,
+              fontWeight: 800,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              transition: "background 0.15s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = "rgba(255,255,255,0.14)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.background = "rgba(255,255,255,0.08)")
+            }
+          >
+            <Phone size={16} /> Call 866-344-4955
+          </a>
         </div>
 
-        {/* Form card */}
+        {/* Trust badge row */}
         <div
           style={{
-            background: "#fff",
-            borderRadius: 24,
-            padding: "36px 32px 28px",
-            maxWidth: 460,
-            margin: "28px auto 0",
-            boxShadow: "0 16px 60px rgba(0,0,0,0.40)",
-            textAlign: "left",
+            display: "flex",
+            gap: 16,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 28,
           }}
         >
-          <h3
-            style={{
-              fontFamily: FONT_DISPLAY,
-              fontSize: 20,
-              fontWeight: 700,
-              letterSpacing: "0.02em",
-              textTransform: "uppercase",
-              color: "#000033",
-              textAlign: "center",
-              marginBottom: 24,
-            }}
-          >
-            Book My Consultation
-          </h3>
-
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 14,
-            }}
-          >
-            <div>
-              <input
-                type="text"
-                placeholder="Full Name"
-                aria-label="Full name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                onFocus={focusIn}
-                onBlur={focusOut}
-                style={baseInput}
-                autoComplete="name"
-              />
-              <FieldError msg={errors.name} />
-            </div>
-            <div>
-              <input
-                type="email"
-                placeholder="Email Address"
-                aria-label="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={focusIn}
-                onBlur={focusOut}
-                style={baseInput}
-                autoComplete="email"
-              />
-              <FieldError msg={errors.email} />
-            </div>
-            <div>
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                aria-label="Phone number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                onFocus={focusIn}
-                onBlur={focusOut}
-                style={baseInput}
-                autoComplete="tel"
-              />
-              <FieldError msg={errors.phone} />
-            </div>
-            <div>
-              <select
-                aria-label="Preferred clinic location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                onFocus={focusIn as React.FocusEventHandler<HTMLSelectElement>}
-                onBlur={focusOut as React.FocusEventHandler<HTMLSelectElement>}
-                style={{
-                  ...baseInput,
-                  color: location ? "#0E1230" : "#999",
-                  appearance: "none",
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "right 14px center",
-                  paddingRight: 42,
-                }}
-              >
-                <option value="" disabled>
-                  Select Location
-                </option>
-                {LOCATIONS.map((l) => (
-                  <option key={l.value} value={l.value}>
-                    {l.name}, VA
-                  </option>
-                ))}
-              </select>
-              <FieldError msg={errors.location} />
-            </div>
-
-            {/* TCPA */}
-            <div>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 10,
-                  cursor: "pointer",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={tcpa}
-                  onChange={(e) => setTcpa(e.target.checked)}
-                  style={{
-                    width: 16,
-                    height: 16,
-                    marginTop: 2,
-                    flexShrink: 0,
-                    cursor: "pointer",
-                    accentColor: "#E8670A",
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: FONT_BODY,
-                    fontSize: 11,
-                    color: "#777",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  I consent to receive appointment and marketing texts
-                  from Men's Wellness Centers. Msg frequency varies. Msg
-                  & data rates may apply. Reply STOP to opt out or HELP
-                  for help. Consent is not required to receive services.{" "}
-                  <a
-                    href="/privacy-policy"
-                    style={{ color: "#000033" }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Privacy Policy
-                  </a>
-                </span>
-              </label>
-              <FieldError msg={errors.tcpa} />
-            </div>
-
-            <button
-              type="submit"
-              disabled={submitting}
-              style={{
-                width: "100%",
-                height: 54,
-                background: submitting ? "#aaa" : "#E8670A",
-                color: "#fff",
-                border: "none",
-                borderRadius: 99,
-                fontFamily: FONT_BODY,
-                fontSize: 14,
-                fontWeight: 800,
-                letterSpacing: "0.09em",
-                textTransform: "uppercase",
-                cursor: submitting ? "default" : "pointer",
-                transition: "background 0.15s",
-                marginTop: 4,
-              }}
-              onMouseEnter={(e) => {
-                if (!submitting)
-                  e.currentTarget.style.background = "#C7560A";
-              }}
-              onMouseLeave={(e) => {
-                if (!submitting)
-                  e.currentTarget.style.background = "#E8670A";
-              }}
-            >
-              {submitting ? "Submitting…" : "Claim My Consultation"}
-            </button>
-          </form>
-
-          {/* Trust badge row */}
-          <div
-            style={{
-              display: "flex",
-              gap: 14,
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 22,
-              paddingTop: 18,
-              borderTop: "1px solid #F0F0F0",
-            }}
-          >
-            <img
-              src="/images/badges/hipaa.png"
-              alt="HIPAA Compliant"
-              style={{ height: 38, filter: "grayscale(1)", opacity: 0.6 }}
-            />
-            <img
-              src="/images/badges/clia.png"
-              alt="CLIA Certified"
-              style={{ height: 38, filter: "grayscale(1)", opacity: 0.6 }}
-            />
-            <img
-              src="/images/badges/legitscript.png"
-              alt="LegitScript Certified"
-              style={{ height: 38, filter: "grayscale(1)", opacity: 0.6 }}
-            />
-          </div>
-
-          <p
-            style={{
-              fontFamily: FONT_BODY,
-              fontSize: 11,
-              color: "#aaa",
-              textAlign: "center",
-              marginTop: 12,
-            }}
-          >
-            HIPAA Compliant · No Spam · Response Within 1 Hour
-          </p>
-          <p style={{ textAlign: "center", marginTop: 8 }}>
-            <a
-              href={PHONE_HREF}
-              style={{
-                fontFamily: FONT_BODY,
-                fontSize: 14,
-                fontWeight: 700,
-                color: "#000033",
-                textDecoration: "none",
-              }}
-            >
-              Or call: {PHONE}
-            </a>
-          </p>
+          <img
+            src="/images/badges/hipaa.png"
+            alt="HIPAA Compliant"
+            style={{ height: 36, filter: "grayscale(1)", opacity: 0.45 }}
+          />
+          <img
+            src="/images/badges/clia.png"
+            alt="CLIA Certified"
+            style={{ height: 36, filter: "grayscale(1)", opacity: 0.45 }}
+          />
+          <img
+            src="/images/badges/legitscript.png"
+            alt="LegitScript Certified"
+            style={{ height: 36, filter: "grayscale(1)", opacity: 0.45 }}
+          />
         </div>
       </div>
-    </section>
-  );
-};
+
+      {/* Full form fallback — for SEO + users who scroll */}
+      <div style={{ maxWidth: 460, margin: "0 auto" }}>
+        <LeadFormCard title="Claim Your Free Consultation" />
+      </div>
+    </div>
+  </section>
+);
 
 /* ─── FOOTER ────────────────────────────────────────────────── */
 
@@ -2518,15 +3249,15 @@ const SiteFooter = () => (
       <img
         src="/logos/Text_Logo_white.png"
         alt="Men's Wellness Centers"
-        style={{ height: 24, opacity: 0.75 }}
+        style={{ height: 24, opacity: 0.70 }}
       />
       <p
         style={{
           fontFamily: FONT_BODY,
           fontSize: 11,
-          color: "rgba(255,255,255,0.35)",
-          maxWidth: 480,
-          lineHeight: 1.6,
+          color: "rgba(255,255,255,0.32)",
+          maxWidth: 500,
+          lineHeight: 1.65,
         }}
       >
         © 2026 Men's Wellness Centers. Individual results vary.
@@ -2540,7 +3271,7 @@ const SiteFooter = () => (
           gap: 20,
           fontFamily: FONT_BODY,
           fontSize: 12,
-          color: "rgba(255,255,255,0.38)",
+          color: "rgba(255,255,255,0.36)",
         }}
       >
         <a
@@ -2550,7 +3281,7 @@ const SiteFooter = () => (
             (e.currentTarget.style.color = "rgba(255,255,255,0.70)")
           }
           onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.38)")
+            (e.currentTarget.style.color = "rgba(255,255,255,0.36)")
           }
         >
           Privacy
@@ -2562,7 +3293,7 @@ const SiteFooter = () => (
             (e.currentTarget.style.color = "rgba(255,255,255,0.70)")
           }
           onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.38)")
+            (e.currentTarget.style.color = "rgba(255,255,255,0.36)")
           }
         >
           Terms
@@ -2574,7 +3305,7 @@ const SiteFooter = () => (
             (e.currentTarget.style.color = "rgba(255,255,255,0.70)")
           }
           onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.38)")
+            (e.currentTarget.style.color = "rgba(255,255,255,0.36)")
           }
         >
           {PHONE}
@@ -2627,6 +3358,8 @@ const MobileCTA = () => (
     </a>
     <button
       onClick={smoothTo("form")}
+      onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
+      onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
       style={{
         flex: 2.5,
         background: "#E8670A",
@@ -2640,6 +3373,7 @@ const MobileCTA = () => (
         textTransform: "uppercase",
         color: "#fff",
         cursor: "pointer",
+        transition: "transform 0.1s",
       }}
     >
       Book My Consultation
@@ -2665,7 +3399,7 @@ const TRTv3LandingPage = () => {
       if (!el) {
         el = document.createElement("meta");
         const isProperty = selector.includes("property=");
-        const key = selector.match(/"([^"]+)"/)?.[1] ?? "";
+        const key = (selector.match(/"([^"]+)"/) ?? [])[1] ?? "";
         if (isProperty) el.setAttribute("property", key);
         else el.setAttribute("name", key);
         document.head.appendChild(el);
@@ -2687,12 +3421,6 @@ const TRTv3LandingPage = () => {
   }, []);
 
   return (
-    /*
-     * paddingTop = BANNER_H so the page content starts below the
-     * fixed urgency banner. The header sits on top of that offset.
-     * Body has a global padding-bottom:56px on mobile (from index.css)
-     * which naturally clears the MobileCTA bar.
-     */
     <div
       style={{
         minHeight: "100vh",
@@ -2701,19 +3429,24 @@ const TRTv3LandingPage = () => {
         fontFamily: FONT_BODY,
       }}
     >
+      <MarqueeStyles />
       <UrgencyBanner />
       <SiteHeader />
       <main style={{ flex: 1 }}>
         <Hero />
+        <PressBar />
         <TrustBar />
+        <Marquee />
         <ProblemSection />
         <WhyUs />
         <Results />
+        <DoctorSection />
         <Pricing />
         <Pillars />
+        <TeamSection />
         <Locations />
         <FAQSection />
-        <LeadForm />
+        <BottomCTA />
       </main>
       <SiteFooter />
       <MobileCTA />
