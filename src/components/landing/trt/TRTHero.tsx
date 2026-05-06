@@ -78,7 +78,7 @@ export const TRTHero = () => {
         <div className="mt-8 flex flex-wrap gap-3">
           <button
             onClick={scrollTo("final-cta")}
-            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02] w-full sm:w-auto justify-center"
             style={{ height: 52, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
@@ -87,7 +87,7 @@ export const TRTHero = () => {
           </button>
           <button
             onClick={scrollTo("how-it-works")}
-            className="inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200"
             style={{ height: 52, background: "transparent", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "1px solid rgba(255,255,255,0.4)" }}
           >
             See If You Qualify
