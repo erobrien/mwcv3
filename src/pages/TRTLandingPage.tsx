@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { TRTHeader } from "@/components/landing/trt/TRTHeader";
 import { TRTHero } from "@/components/landing/trt/TRTHero";
+import { TRTTrustBar } from "@/components/landing/trt/TRTTrustBar";
 
 
 import { TRTHowItWorks } from "@/components/landing/trt/TRTHowItWorks";
@@ -26,6 +27,7 @@ const TRTLandingPage = () => {
       <TRTHeader />
       <main className="flex-1">
         <TRTHero />
+        <TRTTrustBar />
         
         
         <TRTHowItWorks />
