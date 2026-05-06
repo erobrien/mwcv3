@@ -27,7 +27,7 @@ export const TRTPricingCTA = () => {
               fontWeight: 700,
             }}
           >
-            YOUR FIRST VISIT IS .
+            YOUR FIRST VISIT IS SIMPLE.
           </h2>
           <p
             className="text-base mt-3 leading-[1.6]"
