@@ -1,25 +1,17 @@
-## Fix invisible hero pattern on /lp/testosterone
+## Fix locations card color in TRT hero
 
-The grid lines were drawn at 4% white opacity over near-black navy, then a second navy gradient layer covered them — net result: nothing visible. Two fixes:
+The "3 Virginia Clinics / Walk Into A Real Clinic Near You" card currently uses `bg-card`, which resolves to the deep navy `--card: 240 29% 14%`. The screenshot shows it rendering as a near-black slate that doesn't match the rest of the OLED Midnight Navy palette (#000814) — it reads as a different hue rather than a sibling surface to the page background.
 
-1. **Reorder layers**: navy gradient first, grid pattern on top.
-2. **Make the gradient and grid actually readable**:
-   - Gradient now goes from `#000033` (left) → `#001A66` → `#002A99` (right), giving real left-to-right depth.
-   - Grid lines bumped to 12% white opacity, 56px cells, masked so the left 30% stays solid (for headline contrast) and the pattern fades in across the right side.
-   - Add a soft orange radial glow in the top-right corner to anchor the brand color and break up the flat field.
+### Change
 
-3. **Layer order in the section** (back → front):
-   ```
-   #000033 base
-   navy 90deg gradient (#000033 → #001A66 → #002A99)
-   grid pattern (12% white, masked from left)
-   orange radial glow (top-right, 18% E8670A)
-   content
-   ```
+In `src/components/landing/trt/TRTHero.tsx`, the second CTA card (Locations):
 
-Headline still sits on solid `#000033` thanks to the gradient mask + the pattern's left-side fade-out, so contrast stays AA.
+- Replace `bg-card` with an explicit elevated navy that matches the brand: `#0A1228` (one step lighter than the `#000814` background, same hue family).
+- Keep the orange CTA card as-is (it's correct).
+- Keep border/typography tokens unchanged.
 
-### File touched
-- `src/components/landing/trt/TRTHero.tsx` — replace the two background `<div>`s with the four-layer stack above.
+### Result
 
-No other components, copy, or assets change.
+The Locations card will read as a clean, slightly elevated navy panel against the page background — same hue family, just lifted — instead of the cool slate cast it has now.
+
+No other files change.
