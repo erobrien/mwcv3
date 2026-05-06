@@ -39,7 +39,7 @@ export const TRTHero = () => {
         style={{ background: "linear-gradient(to top, rgba(0,0,51,0.9) 0%, transparent 40%)" }}
       />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-20 pb-12 md:pt-36 md:pb-24">
         <span
           className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase mb-6"
           style={{ background: "#F5F0EB", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
