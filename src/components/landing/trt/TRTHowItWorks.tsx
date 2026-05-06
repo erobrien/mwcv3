@@ -48,13 +48,13 @@ export const TRTHowItWorks = () => {
 
   const heading = (text: string) => (
     <h2
-      className="font-bold uppercase"
+      className="font-bold"
       style={{
         fontFamily: "Oswald, sans-serif",
-        fontSize: "clamp(28px, 4vw, 44px)",
+        fontSize: "clamp(28px, 3.6vw, 40px)",
         color: "#000033",
         fontWeight: 700,
-        lineHeight: 1.05,
+        lineHeight: 1.1,
         letterSpacing: "-0.01em",
       }}
     >
@@ -63,7 +63,7 @@ export const TRTHowItWorks = () => {
   );
 
   return (
-    <section id="how-it-works" className="py-10 md:py-20" style={{ background: "#F5F0EB" }}>
+    <section id="how-it-works" className="py-16 md:py-24" style={{ background: "#F5F0EB" }}>
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Left: Symptoms (mobile shown second) */}
         <div className="order-2 md:order-1">
