@@ -14,66 +14,28 @@ export const TRTHero = () => {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden"
-      style={{ background: "#000814" }}
+      className="relative overflow-hidden bg-background"
     >
-      {/* Subtle navy depth gradient */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 20% 20%, rgba(22,51,110,0.55) 0%, rgba(10,31,74,0.25) 40%, rgba(0,8,20,0) 70%)",
-        }}
-      />
-      {/* Orange glow behind headline */}
-      <div
-        aria-hidden="true"
-        className="absolute pointer-events-none"
-        style={{
-          top: "10%",
-          left: "-5%",
-          width: "55%",
-          height: "70%",
-          background:
-            "radial-gradient(circle at 30% 40%, rgba(232,103,10,0.22) 0%, rgba(232,103,10,0.08) 35%, rgba(232,103,10,0) 65%)",
-          filter: "blur(40px)",
-        }}
-      />
-      {/* Soft top vignette */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-40 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%)",
-        }}
-      />
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20">
         {/* Top row: headline left, trust + rating right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left — Headline */}
           <div className="lg:col-span-7">
             <h1
-              className="font-bold uppercase"
+              className="font-oswald font-bold uppercase text-foreground"
               style={{
-                fontFamily: "Oswald, sans-serif",
                 fontSize: "clamp(44px, 6.4vw, 84px)",
-                color: "#FFFFFF",
                 fontWeight: 700,
                 letterSpacing: "-0.02em",
                 lineHeight: 0.98,
               }}
             >
-              Leading The Charge
-              <span className="block" style={{ color: "#E8670A" }}>
-                In Testosterone Care
+              Testosterone
+              <span className="block text-accent">
+                Done Right
               </span>
             </h1>
-            <p
-              className="mt-6 text-base md:text-lg leading-relaxed max-w-[560px]"
-              style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif" }}
-            >
+            <p className="mt-6 font-inter text-base md:text-lg leading-relaxed max-w-[560px] text-foreground/75">
               Physician-led TRT at three Virginia clinics. On-site bloodwork, face-to-face consultation, and a personalized care plan — all in one visit.
             </p>
           </div>
@@ -84,8 +46,7 @@ export const TRTHero = () => {
               {trustChecks.map((t) => (
                 <li
                   key={t.label}
-                  className="flex items-center gap-3 text-base"
-                  style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}
+                  className="flex items-center gap-3 text-base font-inter text-foreground/90"
                 >
                   <Check className="h-5 w-5 flex-shrink-0" style={{ color: "#E8670A" }} aria-hidden="true" strokeWidth={2.5} />
                   <span>{t.label}</span>
