@@ -1,10 +1,9 @@
-import { Check, ArrowRight, Star } from "lucide-react";
+import { Check, ArrowRight, Star, MapPin, CalendarClock } from "lucide-react";
 
 const trustChecks = [
-  "No referral needed",
-  "Same/next-day appointments",
-  "FSA/HSA accepted",
-  "Licensed Virginia providers",
+  { icon: "💉", label: "Licensed Virginia providers" },
+  { icon: "🩺", label: "Same/next-day appointments" },
+  { icon: "📍", label: "3 in-person Virginia clinics" },
 ];
 
 export const TRTHero = () => {
@@ -16,112 +15,179 @@ export const TRTHero = () => {
     <section
       id="hero"
       className="relative overflow-hidden"
-      style={{
-        background: "#000033",
-      }}
+      style={{ background: "#000814" }}
     >
-      {/* Navy left-to-right gradient (back) */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, #000033 0%, #000033 30%, #001A66 70%, #002A99 100%)",
-        }}
-      />
-      {/* Medical grid pattern (on top, fades in from left) */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0.6) 100%)",
-          WebkitMaskImage:
-            "linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0.6) 100%)",
-        }}
-      />
-      {/* Soft orange glow accent in top-right */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 600px 400px at 90% 10%, rgba(232,103,10,0.18) 0%, transparent 70%)",
-        }}
-      />
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20">
+        {/* Top row: headline left, trust + rating right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left — Headline */}
+          <div className="lg:col-span-7">
+            <h1
+              className="font-bold uppercase"
+              style={{
+                fontFamily: "Oswald, sans-serif",
+                fontSize: "clamp(44px, 6.4vw, 84px)",
+                color: "#FFFFFF",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                lineHeight: 0.98,
+              }}
+            >
+              Leading The Charge
+              <span className="block" style={{ color: "#E8670A" }}>
+                In Testosterone Care
+              </span>
+            </h1>
+            <p
+              className="mt-6 text-base md:text-lg leading-relaxed max-w-[560px]"
+              style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif" }}
+            >
+              Physician-led TRT at three Virginia clinics. On-site bloodwork, face-to-face consultation, and a personalized care plan — all in one visit.
+            </p>
+          </div>
 
+          {/* Right — Trust + rating */}
+          <div className="lg:col-span-5 lg:pt-4">
+            <ul className="space-y-3">
+              {trustChecks.map((t) => (
+                <li
+                  key={t.label}
+                  className="flex items-center gap-3 text-base"
+                  style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}
+                >
+                  <Check className="h-5 w-5 flex-shrink-0" style={{ color: "#E8670A" }} aria-hidden="true" strokeWidth={2.5} />
+                  <span>{t.label}</span>
+                </li>
+              ))}
+            </ul>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 md:pt-36 md:pb-24">
-        <span
-          className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase mb-6"
-          style={{ background: "#F5F0EB", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
-        >
-          Virginia's In-Person Men's Health Clinics
-        </span>
-
-        <h1
-          className="font-bold uppercase max-w-[820px]"
-          style={{
-            fontFamily: "Oswald, sans-serif",
-            fontSize: "clamp(40px, 6vw, 68px)",
-            color: "#FFFFFF",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.05,
-          }}
-        >
-          Physician-Led{" "}
-          <span style={{ color: "#E8670A" }}>Testosterone Care</span>
-          <span className="block">In One Visit</span>
-        </h1>
-
-        <p
-          className="mt-5 text-base md:text-lg leading-relaxed max-w-[680px]"
-          style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
-        >
-          Walk into one of our 3 Virginia clinics for blood work, a face-to-face consultation with a licensed provider, and a personalized care plan — typically completed in under 60 minutes. Same-day and next-day appointments available.
-        </p>
-
-        <div className="mt-5 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}>
-          <span className="flex items-center gap-0.5" aria-label="Rated 4.9 out of 5 stars">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" aria-hidden="true" />)}
-          </span>
-          <span className="text-sm font-medium">4.9 average from 200+ verified Google reviews</span>
+            <div className="mt-8 flex items-center gap-4">
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1" aria-label="Rated 4.9 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" aria-hidden="true" />
+                  ))}
+                </div>
+                <div
+                  className="text-[11px] uppercase mt-1"
+                  style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.14em", fontFamily: "Inter, sans-serif", fontWeight: 600 }}
+                >
+                  200+ Google Reviews
+                </div>
+              </div>
+              <div
+                style={{ fontFamily: "Oswald, sans-serif", fontSize: 44, color: "#FFFFFF", fontWeight: 700, lineHeight: 1 }}
+              >
+                4.9
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        {/* CTA cards row */}
+        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Card 1 — Primary booking */}
           <button
             onClick={scrollTo("final-cta")}
-            className="inline-flex items-center gap-2 rounded-full font-bold uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02] w-full sm:w-auto justify-center"
-            style={{ height: 52, paddingLeft: 28, paddingRight: 28, fontSize: 14, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#C7560A"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
+            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01]"
+            style={{
+              background:
+                "linear-gradient(135deg, #1A0B05 0%, #6B2A05 60%, #E8670A 100%)",
+              border: "1px solid rgba(232,103,10,0.35)",
+              minHeight: 220,
+            }}
           >
-            Book My Consultation <ArrowRight className="h-4 w-4" />
+            <div
+              className="text-[11px] uppercase font-bold mb-3"
+              style={{ color: "rgba(255,255,255,0.85)", letterSpacing: "0.14em", fontFamily: "Inter, sans-serif" }}
+            >
+              Same-Day TRT Visit
+            </div>
+            <div
+              className="font-bold uppercase"
+              style={{
+                fontFamily: "Oswald, sans-serif",
+                fontSize: "clamp(22px, 2.6vw, 32px)",
+                color: "#FFFFFF",
+                fontWeight: 700,
+                lineHeight: 1.05,
+                letterSpacing: "-0.01em",
+                maxWidth: 360,
+              }}
+            >
+              Bloodwork, Visit & Plan In One Hour
+            </div>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white text-[#000814] font-bold uppercase"
+                 style={{ height: 44, paddingLeft: 20, paddingRight: 20, fontSize: 13, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}>
+              Book My Consultation <ArrowRight className="h-4 w-4" />
+            </div>
+            <div className="absolute right-6 top-6 hidden md:block opacity-30">
+              <CalendarClock size={120} color="#FFFFFF" strokeWidth={1} aria-hidden="true" />
+            </div>
+            <div
+              className="mt-6 text-xs"
+              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
+            >
+              Treatment plans start at $199/month after approval.
+            </div>
           </button>
+
+          {/* Card 2 — Locations */}
           <button
-            onClick={scrollTo("how-it-works")}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full font-bold uppercase cursor-pointer transition-all duration-200"
-            style={{ height: 52, paddingLeft: 28, paddingRight: 28, fontSize: 14, background: "transparent", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "1.5px solid rgba(255,255,255,0.6)" }}
+            onClick={scrollTo("locations")}
+            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01]"
+            style={{
+              background:
+                "linear-gradient(135deg, #050B1A 0%, #0A1F4A 70%, #16336E 100%)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              minHeight: 220,
+            }}
           >
-            See If You Qualify
+            <div
+              className="text-[11px] uppercase font-bold mb-3"
+              style={{ color: "rgba(255,255,255,0.75)", letterSpacing: "0.14em", fontFamily: "Inter, sans-serif" }}
+            >
+              3 Virginia Clinics
+            </div>
+            <div
+              className="font-bold uppercase"
+              style={{
+                fontFamily: "Oswald, sans-serif",
+                fontSize: "clamp(22px, 2.6vw, 32px)",
+                color: "#FFFFFF",
+                fontWeight: 700,
+                lineHeight: 1.05,
+                letterSpacing: "-0.01em",
+                maxWidth: 360,
+              }}
+            >
+              Walk Into A Real Clinic Near You
+            </div>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-bold uppercase"
+                 style={{ height: 44, paddingLeft: 20, paddingRight: 20, fontSize: 13, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", background: "transparent", color: "#FFFFFF", border: "1.5px solid rgba(255,255,255,0.5)" }}>
+              See Locations <ArrowRight className="h-4 w-4" />
+            </div>
+            <div className="absolute right-6 top-6 hidden md:block opacity-25">
+              <MapPin size={120} color="#FFFFFF" strokeWidth={1} aria-hidden="true" />
+            </div>
+            <div
+              className="mt-6 text-xs flex items-center gap-3"
+              style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif" }}
+            >
+              <span>Glen Allen</span>
+              <span style={{ color: "rgba(255,255,255,0.3)" }}>•</span>
+              <span>Newport News</span>
+              <span style={{ color: "rgba(255,255,255,0.3)" }}>•</span>
+              <span>Virginia Beach</span>
+            </div>
           </button>
         </div>
 
-        <ul className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-3">
-          {trustChecks.map((t) => (
-            <li key={t} className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}>
-              <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} aria-hidden="true" />
-              <span className="text-sm font-medium">{t}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-6 text-xs" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>
-          Medically reviewed by licensed Virginia providers.
+        <div
+          className="mt-8 text-xs"
+          style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}
+        >
+          Medically reviewed by licensed Virginia providers. Individual results vary.
         </div>
       </div>
     </section>
