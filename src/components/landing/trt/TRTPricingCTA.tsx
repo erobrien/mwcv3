@@ -1,17 +1,23 @@
 import imgFirstVisit from "@/assets/lp/first-visit-bloodwork.png";
 import { Check } from "lucide-react";
 
+const included = [
+  "On-site testosterone panel — results same visit",
+  "Face-to-face physician consultation",
+  "Personalized protocol built around your labs",
+];
+
+const trust = [
+  "Physician-Led",
+  "LegitScript Certified",
+  "HIPAA Compliant",
+  "3 Virginia Locations",
+];
+
 export const TRTPricingCTA = () => {
   const scrollToForm = () => {
     document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const trust = [
-    "Physician-Led",
-    "LegitScript Certified",
-    "HIPAA Compliant",
-    "3 Virginia Locations",
-  ];
 
   return (
     <section id="pricing-cta" className="py-16 md:py-24" style={{ background: "#E8670A" }}>
@@ -29,7 +35,7 @@ export const TRTPricingCTA = () => {
               letterSpacing: "-0.01em",
             }}
           >
-            Your First Visit Is Simple.
+            Walk In Today. Walk Out With A Plan.
           </h2>
           <p
             className="text-base mt-3 leading-[1.6]"
@@ -37,13 +43,27 @@ export const TRTPricingCTA = () => {
           >
             Walk into any of our 3 Virginia centers for a same-day consultation. No commitment, no credit card.
           </p>
-          <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>
-            Treatment plans start at $199/month after approval.
-          </p>
+
+          {/* Included items */}
+          <ul className="mt-6 space-y-3">
+            {included.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span
+                  className="flex-shrink-0 font-bold text-base"
+                  style={{ color: "#FFFFFF" }}
+                >
+                  ✓
+                </span>
+                <span className="text-base font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
 
           <button
             onClick={scrollToForm}
-            className="mt-6 inline-flex items-center gap-2 rounded-full font-bold uppercase cursor-pointer transition-colors duration-200"
+            className="mt-7 inline-flex items-center gap-2 rounded-full font-bold uppercase cursor-pointer transition-colors duration-200"
             style={{
               height: 52,
               paddingLeft: 28,
@@ -61,11 +81,31 @@ export const TRTPricingCTA = () => {
             Book My Consultation
           </button>
 
+          <p
+            className="text-sm mt-3"
+            style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
+          >
+            Starting at $199/mo after approval · FSA/HSA accepted
+          </p>
+
+          {/* Green trust chip */}
+          <div
+            className="mt-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold"
+            style={{
+              background: "rgba(46,204,113,0.20)",
+              color: "#2ECC71",
+              border: "1px solid rgba(46,204,113,0.35)",
+              fontFamily: "Inter, sans-serif",
+            }}
+          >
+            ✓ No contract · Cancel anytime
+          </div>
+
           <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-5">
             {trust.map((label) => (
               <li key={label} className="flex items-center gap-2">
-                <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
-                <span className="text-sm font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{label}</span>
+                <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "rgba(255,255,255,0.70)" }} />
+                <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>{label}</span>
               </li>
             ))}
           </ul>

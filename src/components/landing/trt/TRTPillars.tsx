@@ -1,4 +1,4 @@
-import { Stethoscope, TestTube2, ShieldCheck, Activity, type LucideIcon } from "lucide-react";
+import { Stethoscope, TestTube2, ShieldCheck, Activity, Building2, type LucideIcon } from "lucide-react";
 
 const pillars: { title: string; desc: string; Icon: LucideIcon }[] = [
   {
@@ -21,6 +21,11 @@ const pillars: { title: string; desc: string; Icon: LucideIcon }[] = [
     desc: "Regular check-ins, lab work, and protocol adjustments. We don't write a script and disappear.",
     Icon: Activity,
   },
+  {
+    title: "No Telehealth Runaround",
+    desc: "You see a real doctor in a real clinic. No app. No video call. No runaround.",
+    Icon: Building2,
+  },
 ];
 
 export const TRTPillars = () => (
@@ -37,18 +42,21 @@ export const TRTPillars = () => (
           letterSpacing: "-0.01em",
         }}
       >
-        Everything You Need To Get Your Health Back. Now.
+        Why 10,000+ Men Choose MWC Over Everyone Else
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {pillars.map((p) => (
           <div
             key={p.title}
-            className="rounded-xl overflow-hidden text-center transition-all duration-300 px-5 pb-6"
+            className="rounded-xl overflow-hidden text-center px-5 pb-6 transition-all duration-300"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.10)",
+              transition: "border-color 300ms ease",
             }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#E8670A"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.10)"; }}
           >
             <div className="flex justify-center mt-8">
               <div

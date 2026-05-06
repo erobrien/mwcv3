@@ -1,10 +1,17 @@
 import { useState } from "react";
 
+const whyTodayChips = [
+  "⚡ Same-day appointments",
+  "🔬 On-site labs & results",
+  "📋 Leave with a plan",
+];
+
 export const TRTFinalCTA = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
+  const [tcpaConsent, setTcpaConsent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -19,6 +26,7 @@ export const TRTFinalCTA = () => {
     if (!phone.trim()) errs.phone = "Phone is required";
     else if (!validatePhone(phone)) errs.phone = "Please enter a valid phone number";
     if (!location) errs.location = "Please select a location";
+    if (!tcpaConsent) errs.tcpa = "You must consent to continue";
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
@@ -85,9 +93,29 @@ export const TRTFinalCTA = () => {
           <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>200+ Reviews</span>
         </div>
 
+        {/* Why-today chips */}
+        <div
+          className="flex flex-wrap justify-center gap-3 mt-8"
+          style={{ marginBottom: 24 }}
+        >
+          {whyTodayChips.map((chip) => (
+            <span
+              key={chip}
+              className="rounded-full px-4 py-2 text-sm font-semibold"
+              style={{
+                background: "rgba(255,255,255,0.10)",
+                color: "#FFFFFF",
+                fontFamily: "Inter, sans-serif",
+              }}
+            >
+              {chip}
+            </span>
+          ))}
+        </div>
+
         {/* Form */}
         <div
-          className="mx-auto mt-8 rounded-2xl p-8 mx-4 md:mx-auto"
+          className="mx-auto mt-2 rounded-2xl p-8"
           style={{
             background: "#FFFFFF",
             maxWidth: 480,
@@ -103,7 +131,7 @@ export const TRTFinalCTA = () => {
               fontWeight: 700,
             }}
           >
-            Book My Consultation
+            Claim Your Free Consultation
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -184,6 +212,30 @@ export const TRTFinalCTA = () => {
               {errors.location && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.location}</p>}
             </div>
 
+            {/* TCPA Consent */}
+            <div>
+              <label
+                className="flex items-start gap-2 cursor-pointer"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                <input
+                  type="checkbox"
+                  checked={tcpaConsent}
+                  onChange={(e) => {
+                    setTcpaConsent(e.target.checked);
+                    if (e.target.checked) {
+                      setErrors((p) => { const { tcpa: _, ...rest } = p; return rest; });
+                    }
+                  }}
+                  style={{ marginTop: 2, flexShrink: 0, accentColor: "#E8670A", width: 16, height: 16, cursor: "pointer" }}
+                />
+                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>
+                  I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out.
+                </span>
+              </label>
+              {errors.tcpa && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.tcpa}</p>}
+            </div>
+
             <button
               type="submit"
               className="w-full rounded-full uppercase font-bold cursor-pointer transition-colors duration-200"
@@ -217,6 +269,13 @@ export const TRTFinalCTA = () => {
               Or call: 866-344-4955
             </a>
           </p>
+        </div>
+
+        {/* Trust badge row */}
+        <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center", marginTop: 16 }}>
+          <img src="/images/badges/hipaa.png" alt="HIPAA Compliant" style={{ height: 40, filter: "grayscale(1)", opacity: 0.7 }} />
+          <img src="/images/badges/clia.png" alt="CLIA Certified" style={{ height: 40, filter: "grayscale(1)", opacity: 0.7 }} />
+          <img src="/images/badges/legitscript.png" alt="LegitScript Certified" style={{ height: 40, filter: "grayscale(1)", opacity: 0.7 }} />
         </div>
       </div>
     </section>

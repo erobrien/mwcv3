@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
 
 const symptoms = [
   "Constant fatigue no matter how much you sleep",
@@ -119,9 +119,28 @@ export const TRTHowItWorks = () => {
             ))}
           </div>
 
+          {/* What happens next? dark card */}
+          <div
+            className="mt-8 rounded-xl p-5"
+            style={{ background: "#000033" }}
+          >
+            <div
+              className="text-xs uppercase font-semibold mb-2"
+              style={{ color: "#E8670A", fontFamily: "Inter, sans-serif", letterSpacing: "0.10em" }}
+            >
+              What happens next?
+            </div>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
+            >
+              Most patients leave with a prescription the same day. Treatment starts at <strong style={{ color: "#FFFFFF" }}>$199/month</strong>.
+            </p>
+          </div>
+
           <button
             onClick={scrollToForm}
-            className="mt-10 inline-flex items-center justify-center rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
             style={{
               background: "#E8670A",
               color: "#FFFFFF",
@@ -132,8 +151,15 @@ export const TRTHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Schedule My Consultation
+            Start Today — Book My Same-Day Visit <ArrowRight className="h-4 w-4" />
           </button>
+
+          <p
+            className="mt-3 text-sm"
+            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif" }}
+          >
+            📅 Appointments filling this week. Secure your slot.
+          </p>
         </div>
       </div>
     </section>
