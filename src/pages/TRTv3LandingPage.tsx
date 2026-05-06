@@ -390,7 +390,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
         style={{
           fontFamily: FONT_BODY,
           fontSize: 13,
-          color: "#888",
+          color: "#555",
           textAlign: "center",
           marginBottom: 22,
         }}
@@ -520,7 +520,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 11,
-                color: "#777",
+                color: "#555",
                 lineHeight: 1.6,
               }}
             >
@@ -589,27 +589,15 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
           borderTop: "1px solid #F0F0F0",
         }}
       >
-        <img
-          src="/images/badges/hipaa.png"
-          alt="HIPAA Compliant"
-          style={{ height: 34, filter: "grayscale(1)", opacity: 0.55 }}
-        />
-        <img
-          src="/images/badges/clia.png"
-          alt="CLIA Certified"
-          style={{ height: 34, filter: "grayscale(1)", opacity: 0.55 }}
-        />
-        <img
-          src="/images/badges/legitscript.png"
-          alt="LegitScript Certified"
-          style={{ height: 34, filter: "grayscale(1)", opacity: 0.55 }}
-        />
+        <img src="/images/badges/hipaa.png" alt="HIPAA Compliant" style={{ height: 38, opacity: 0.88 }} />
+        <img src="/images/badges/clia.png" alt="CLIA Certified" style={{ height: 38, opacity: 0.88 }} />
+        <img src="/images/badges/legitscript.png" alt="LegitScript Certified" style={{ height: 38, opacity: 0.88 }} />
       </div>
       <p
         style={{
           fontFamily: FONT_BODY,
           fontSize: 11,
-          color: "#aaa",
+          color: "#555",
           textAlign: "center",
           marginTop: 10,
         }}
@@ -680,9 +668,8 @@ const UrgencyBanner = () => (
         padding: "4px 12px",
         cursor: "pointer",
         flexShrink: 0,
-        display: "none",
       }}
-      className="sm:block"
+      className="hidden sm:inline-flex items-center"
     >
       Book Now →
     </button>
@@ -907,8 +894,8 @@ const Hero = () => (
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              background: "rgba(232,103,10,0.18)",
-              border: "1px solid rgba(232,103,10,0.40)",
+              background: "rgba(255,255,255,0.92)",
+              border: "1px solid rgba(232,103,10,0.35)",
               borderRadius: 99,
               padding: "6px 14px",
               marginBottom: 20,
@@ -931,7 +918,8 @@ const Hero = () => (
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#E8670A",
+                color: "#C7560A",
+                fontWeight: 700,
               }}
             >
               Virginia's Premier Men's Health Clinic
@@ -961,7 +949,7 @@ const Hero = () => (
             style={{
               fontFamily: FONT_BODY,
               fontSize: "clamp(15px, 1.6vw, 19px)",
-              color: "rgba(255,255,255,0.78)",
+              color: "rgba(255,255,255,0.90)",
               lineHeight: 1.65,
               marginTop: 20,
               maxWidth: 520,
@@ -1158,45 +1146,37 @@ const PressBar = () => (
           flexShrink: 0,
         }}
       >
-        Featured In
+        Certified &amp; Compliant
       </span>
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 36,
+          gap: 32,
           flexWrap: "wrap",
           justifyContent: "center",
         }}
       >
+        <img src="/images/badges/hipaa.png" alt="HIPAA Compliant" style={{ height: 32, opacity: 0.70 }} />
+        <img src="/images/badges/clia.png" alt="CLIA Certified" style={{ height: 32, opacity: 0.70 }} />
+        <img src="/images/badges/legitscript.png" alt="LegitScript Certified" style={{ height: 32, opacity: 0.70 }} />
         {[
-          "Forbes Health",
-          "WebMD",
-          "Healthline",
-          "Men's Journal",
-          "Yahoo Health",
-        ].map((name) => (
+          "Licensed in Virginia",
+          "State-Licensed Practice",
+          "Physician-Led Care",
+        ].map((label) => (
           <span
-            key={name}
+            key={label}
             style={{
               fontFamily: FONT_BODY,
-              fontSize: 13,
-              fontWeight: 800,
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-              color: "rgba(0,0,51,0.45)",
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              color: "rgba(0,0,51,0.50)",
               whiteSpace: "nowrap",
-              transition: "color 0.2s",
-              cursor: "default",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "rgba(0,0,51,0.80)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "rgba(0,0,51,0.45)")
-            }
           >
-            {name}
+            ✓ {label}
           </span>
         ))}
       </div>
@@ -1907,7 +1887,7 @@ const Results = () => (
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(90deg, rgba(10,10,26,0.85) 0%, rgba(10,10,26,0.30) 60%, rgba(10,10,26,0.10) 100%)",
+              "linear-gradient(90deg, rgba(0,0,51,0.88) 0%, rgba(0,0,51,0.45) 60%, rgba(0,0,51,0.10) 100%)",
             display: "flex",
             alignItems: "center",
             padding: "0 40px",
@@ -2105,8 +2085,8 @@ const Results = () => (
               fontSize: 13,
               fontWeight: 600,
               color: "#fff",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              background: "#000033",
+              border: "1px solid rgba(255,255,255,0.22)",
               borderRadius: 99,
               height: 42,
               padding: "0 20px",
@@ -2118,8 +2098,8 @@ const Results = () => (
               e.currentTarget.style.background = "rgba(232,103,10,0.12)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
-              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.22)";
+              e.currentTarget.style.background = "#000033";
             }}
           >
             {label}
@@ -2268,8 +2248,8 @@ const DoctorSection = () => (
                 fontWeight: 700,
                 letterSpacing: "0.05em",
                 color: "#000033",
-                background: "rgba(0,0,51,0.07)",
-                border: "1px solid rgba(0,0,51,0.12)",
+                background: "transparent",
+                border: "1.5px solid rgba(0,0,51,0.28)",
                 borderRadius: 99,
                 padding: "7px 16px",
               }}
@@ -3329,7 +3309,7 @@ const MobileCTA = () => (
       bottom: 0,
       left: 0,
       right: 0,
-      zIndex: 55,
+      zIndex: 65,
       display: "flex",
       gap: 10,
       padding: "10px 14px",
