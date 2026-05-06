@@ -60,6 +60,7 @@ import RichmondLocation from "./pages/locations/RichmondLocation";
 import NewportNewsLocation from "./pages/locations/NewportNewsLocation";
 import VirginiaBeachLocation from "./pages/locations/VirginiaBeachLocation";
 import NewportNewsTRT from "./pages/locations/NewportNewsTRT";
+import TRTv3LandingPage from "./pages/TRTv3LandingPage";
 
 const queryClient = new QueryClient();
 
@@ -94,6 +95,7 @@ const App = () => (
           <Route path="/lp/testosterone" element={<TRTLandingPage />} />
           <Route path="/lp/testosterone-v2" element={<TRTv2CompliantLandingPage />} />
           <Route path="/lp/trt" element={<TRTLandingPage />} />
+          <Route path="/lp/trt-v3" element={<TRTv3LandingPage />} />
           <Route path="/lp/trt2" element={<TRT2LandingPage />} />
           <Route path="/lp/trt2/thank-you" element={<TRT2ThankYou />} />
           <Route path="/lp/ed" element={<EDLandingPage />} />
