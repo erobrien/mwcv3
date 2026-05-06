@@ -1,4 +1,5 @@
 import imgFirstVisit from "@/assets/lp/first-visit-bloodwork.png";
+import { Check } from "lucide-react";
 
 export const TRTPricingCTA = () => {
   const scrollToForm = () => {
@@ -6,10 +7,10 @@ export const TRTPricingCTA = () => {
   };
 
   const trust = [
-    { icon: "🩺", label: "Physician-Led" },
-    { icon: "✓", label: "LegitScript Certified" },
-    { icon: "🔒", label: "HIPAA Compliant" },
-    { icon: "📍", label: "3 Virginia Locations" },
+    "Physician-Led",
+    "LegitScript Certified",
+    "HIPAA Compliant",
+    "3 Virginia Locations",
   ];
 
   return (
@@ -54,13 +55,14 @@ export const TRTPricingCTA = () => {
             Book My Consultation
           </button>
 
-          <div className="flex flex-wrap gap-6 mt-4">
-            {trust.map((t) => (
-              <span key={t.label} className="text-xs flex items-center gap-1" style={{ color: "rgba(255,255,255,0.80)", fontFamily: "Inter, sans-serif" }}>
-                {t.icon} {t.label}
-              </span>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-5">
+            {trust.map((label) => (
+              <li key={label} className="flex items-center gap-2">
+                <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
+                <span className="text-sm font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{label}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         {/* Right */}
