@@ -35,16 +35,26 @@ export const TRTFinalCTA = () => {
 
   const inputStyle: React.CSSProperties = {
     width: "100%",
-    height: 52,
-    background: "#F5F0EB",
-    border: "2px solid #C8C6C1",
+    height: 48,
+    background: "#FFFFFF",
+    border: "1px solid #D6DAE6",
     borderRadius: 8,
     padding: "0 16px",
     fontSize: 16,
-    color: "#000033",
+    color: "#0E1230",
     outline: "none",
     fontFamily: "Inter, sans-serif",
     transition: "border-color 200ms ease, box-shadow 200ms ease",
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    e.currentTarget.style.borderColor = "#E8670A";
+    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.20)";
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    e.currentTarget.style.borderColor = "#D6DAE6";
+    e.currentTarget.style.boxShadow = "none";
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -58,21 +68,23 @@ export const TRTFinalCTA = () => {
   };
 
   return (
-    <section id="final-cta" className="py-14 md:py-20" style={{ background: "#000033" }}>
+    <section id="final-cta" className="py-16 md:py-24" style={{ background: "#000033" }}>
       <div className="max-w-[1200px] mx-auto px-6 text-center">
         <h2
-          className="font-bold uppercase"
+          className="font-bold"
           style={{
             fontFamily: "Oswald, sans-serif",
-            fontSize: "clamp(28px, 4vw, 40px)",
+            fontSize: "clamp(28px, 3.6vw, 40px)",
             color: "#FFFFFF",
             fontWeight: 700,
+            lineHeight: 1.1,
+            letterSpacing: "-0.01em",
           }}
         >
-          READY TO GET TESTED?
+          Ready to Get Tested?
         </h2>
-        <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-          Walk into any of our 3 Virginia centers. Consultation.
+        <p className="text-base mt-3 max-w-[640px] mx-auto" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>
+          Walk into any of our 3 Virginia centers for a same-day consultation. No commitment, no credit card.
         </p>
 
         {/* Stars */}
