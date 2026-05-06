@@ -16,15 +16,18 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+// Real MWC photography only — no stock or AI-generated images
 import heroClinic from "@/assets/lp/trt-hero-clinic.jpg";
 import providerPatient from "@/assets/lp/trt-provider-patient.jpg";
 import firstVisitBloodwork from "@/assets/lp/first-visit-bloodwork.png";
 import trtLab from "@/assets/lp/trt-lab.jpg";
-import manConfident from "@/assets/lp/man-henley-confident.webp";
-import manRunning from "@/assets/lp/man-running-harbor.jpeg";
-import drPapariello from "@/assets/lp/dr-popariello.jpeg";
-import mwcTeam from "@/assets/lp/mwc-team-new.png";
+import lobbyInnslake from "@/assets/lp/lobby-innslake.jpg";
 import lobbyInterior from "@/assets/lp/lobby-interior.jpg";
+import lobbyAtrium from "@/assets/lp/lobby-atrium.webp";
+import drPapariello from "@/assets/lp/dr-popariello.jpeg";
+import mwcTeam from "@/assets/lp/mwc-team-scrubs.webp";
+import mwcTeamNew from "@/assets/lp/mwc-team-new.png";
+import providerHeadshot from "@/assets/lp/provider-headshot.jpg";
 
 /* ─── CONSTANTS ────────────────────────────────────────────── */
 
@@ -1349,9 +1352,9 @@ const ProblemSection = () => (
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url(${manRunning})`,
+            backgroundImage: `url(${lobbyInnslake})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "center top",
           }}
         />
         {/* Dark gradient overlay — heavier at bottom so text is readable */}
@@ -2659,7 +2662,7 @@ const TeamSection = () => (
         }}
       >
         <img
-          src={mwcTeam}
+          src={mwcTeamNew}
           alt="Men's Wellness Centers team of licensed Virginia providers"
           style={{
             width: "100%",
@@ -3069,7 +3072,7 @@ const BottomCTA = () => (
         right: 0,
         bottom: 0,
         width: "40%",
-        backgroundImage: `url(${manConfident})`,
+        backgroundImage: `url(${lobbyAtrium})`,
         backgroundSize: "cover",
         backgroundPosition: "center top",
         maskImage:
