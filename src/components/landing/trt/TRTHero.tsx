@@ -108,10 +108,10 @@ export const TRTHero = () => {
           {/* Card 2, Locations */}
           <button
             onClick={scrollTo("locations")}
-            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] border border-foreground/10"
+            className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] border border-foreground/20"
             style={{ minHeight: 220, background: "#1A1A2E" }}
           >
-            <div className="text-[11px] uppercase font-inter font-bold mb-3 text-foreground/75 tracking-[0.14em]">
+            <div className="text-[11px] uppercase font-inter font-bold mb-3 text-accent tracking-[0.14em]">
               3 Virginia Clinics
             </div>
             <div
@@ -125,17 +125,17 @@ export const TRTHero = () => {
             >
               Walk Into A Real Clinic Near You
             </div>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border border-foreground/50">
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border-2 border-foreground/90">
               See Locations <ArrowRight className="h-4 w-4" />
             </div>
-            <div className="absolute right-6 top-6 hidden md:block opacity-25">
+            <div className="absolute right-6 top-6 hidden md:block opacity-30">
               <MapPin size={120} className="text-foreground" strokeWidth={1} aria-hidden="true" />
             </div>
-            <div className="mt-6 text-xs font-inter text-foreground/75 flex items-center gap-3">
+            <div className="mt-6 text-xs font-inter text-foreground/85 flex items-center gap-3">
               <span>Glen Allen</span>
-              <span className="text-foreground/30">•</span>
+              <span className="text-foreground/40">•</span>
               <span>Newport News</span>
-              <span className="text-foreground/30">•</span>
+              <span className="text-foreground/40">•</span>
               <span>Virginia Beach</span>
             </div>
           </button>
