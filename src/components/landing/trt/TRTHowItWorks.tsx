@@ -85,8 +85,8 @@ export const TRTHowItWorks = () => {
           </ul>
         </div>
 
-        {/* Right: How it works */}
-        <div>
+        {/* Right: How it works (mobile shown first) */}
+        <div className="order-1 md:order-2">
           {eyebrow("The Fix")}
           {heading("Here's how it works in one visit")}
           <p
