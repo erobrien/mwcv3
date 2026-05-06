@@ -16,7 +16,7 @@ const pillars = [
   },
   {
     title: "BUILT FOR MEN",
-    desc: "A men-only environment designed around your schedule, your privacy, and your goals.",
+    desc: "A clinic built around men's health — designed around your schedule, your privacy, and your goals.",
     image: imgGymConfident,
   },
   {
