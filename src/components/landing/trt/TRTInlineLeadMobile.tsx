@@ -108,7 +108,7 @@ export const TRTInlineLeadMobile = () => {
             Book My Consultation <ArrowRight className="h-4 w-4" />
           </button>
           <p className="text-[11px] text-center mt-1" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}>
-            No commitment. No credit card. Licensed Virginia physicians.
+            No commitment. No credit card. Licensed Virginia providers.
           </p>
         </form>
       </div>
