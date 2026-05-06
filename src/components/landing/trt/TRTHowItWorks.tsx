@@ -63,10 +63,10 @@ export const TRTHowItWorks = () => {
   );
 
   return (
-    <section id="how-it-works" className="py-14 md:py-20" style={{ background: "#F5F0EB" }}>
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-        {/* Left: Symptoms */}
-        <div>
+    <section id="how-it-works" className="py-10 md:py-20" style={{ background: "#F5F0EB" }}>
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+        {/* Left: Symptoms (mobile shown second) */}
+        <div className="order-2 md:order-1">
           {eyebrow("Sound Familiar?")}
           {heading("Tired of feeling like a worse version of yourself?")}
           <p
