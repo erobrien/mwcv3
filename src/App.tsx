@@ -92,6 +92,7 @@ const App = () => (
           <Route path="/services/wellness-vitality" element={<WellnessVitalityService />} />
           <Route path="/lp" element={<LPIndex />} />
           <Route path="/lp/testosterone" element={<TRTLandingPage />} />
+          <Route path="/lp/testosterone-v2" element={<TRTv2CompliantLandingPage />} />
           <Route path="/lp/trt" element={<TRTLandingPage />} />
           <Route path="/lp/trt2" element={<TRT2LandingPage />} />
           <Route path="/lp/trt2/thank-you" element={<TRT2ThankYou />} />
