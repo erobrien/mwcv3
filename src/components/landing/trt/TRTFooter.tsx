@@ -43,7 +43,7 @@ export const TRTFooter = () => (
 
       <div className="mt-10 pt-8 border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
         <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}>
-          The information provided on this website is for general educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions about a medical condition. Treatment decisions are made by a licensed physician based on individual evaluation. Men's Wellness Centers operates in the state of Virginia.
+          The information provided on this website is for general educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions about a medical condition. Treatment decisions are made by a licensed provider based on individual evaluation. Men's Wellness Centers operates in the state of Virginia.
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs" style={{ color: "rgba(255,255,255,0.5)", fontFamily: "Inter, sans-serif" }}>
           <div>© {new Date().getFullYear()} Men's Wellness Centers, LLC. All rights reserved.</div>
