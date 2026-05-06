@@ -16,12 +16,6 @@ export const TRTHeader = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const links = [
-    { label: "Services", id: "services" },
-    { label: "Our Process", id: "how-it-works" },
-    { label: "Locations", id: "pricing-cta" },
-    { label: "Reviews", id: "results" },
-  ];
 
   return (
     <header
@@ -38,22 +32,6 @@ export const TRTHeader = () => {
           alt="Men's Wellness Centers"
           className="h-7 w-auto"
         />
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <button
-              key={l.id}
-              onClick={() => scrollTo(l.id)}
-              className="text-sm font-medium cursor-pointer transition-colors duration-200"
-              style={{ color: "rgba(255,255,255,0.8)", fontFamily: "Inter, sans-serif" }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = "#FFFFFF"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.8)"; }}
-            >
-              {l.label}
-            </button>
-          ))}
-        </nav>
 
         {/* Desktop right */}
         <div className="hidden md:flex items-center gap-4">
@@ -93,16 +71,6 @@ export const TRTHeader = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 py-4 px-6 space-y-4" style={{ background: "rgba(0,0,51,0.98)" }}>
-          {links.map((l) => (
-            <button
-              key={l.id}
-              onClick={() => scrollTo(l.id)}
-              className="block w-full text-left text-sm font-medium cursor-pointer"
-              style={{ color: "rgba(255,255,255,0.8)", fontFamily: "Inter, sans-serif" }}
-            >
-              {l.label}
-            </button>
-          ))}
           <a
             href="tel:8663444955"
             className="block text-sm font-semibold"
