@@ -109,7 +109,7 @@ export const TRTHero = () => {
           <button
             onClick={scrollTo("locations")}
             className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-transform duration-200 hover:scale-[1.01] border border-foreground/10"
-            style={{ minHeight: 220, background: "#0A1228" }}
+            style={{ minHeight: 220, background: "#1A1A2E" }}
           >
             <div className="text-[11px] uppercase font-inter font-bold mb-3 text-foreground/75 tracking-[0.14em]">
               3 Virginia Clinics
