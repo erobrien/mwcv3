@@ -1,4 +1,4 @@
-import imgDoctor from "@/assets/lp/dr-popariello.jpeg";
+import imgDoctor from "@/assets/lp/provider-headshot.jpg";
 
 export const TRTPricingCTA = () => {
   const scrollToForm = () => {
