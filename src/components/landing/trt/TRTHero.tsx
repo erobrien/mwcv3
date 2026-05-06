@@ -36,7 +36,7 @@ export const TRTHero = () => {
               </span>
             </h1>
             <p className="mt-6 font-inter text-base md:text-lg leading-relaxed max-w-[560px] text-foreground/75">
-              Physician-led TRT at three Virginia clinics. On-site bloodwork, face-to-face consultation, and a personalized care plan — all in one visit.
+              Physician-led TRT at three Virginia clinics. On-site labs, face-to-face consultation, and a personalized care plan — all in one visit.
             </p>
           </div>
 
@@ -92,7 +92,7 @@ export const TRTHero = () => {
                 maxWidth: 360,
               }}
             >
-              Bloodwork, Visit & Plan In One Hour
+              Labs, Visit Bloodwork, Visit & Plan Plan In One Hour
             </div>
             <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-background text-foreground font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em]">
               Book My Consultation <ArrowRight className="h-4 w-4" />

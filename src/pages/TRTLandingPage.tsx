@@ -19,7 +19,7 @@ import { TRT_LOCATIONS } from "@/data/trt-locations";
 const META = {
   title: "Physician-Led TRT in Virginia | Men's Wellness Centers",
   description:
-    "In-person testosterone replacement therapy at 3 Virginia clinics. Same-day blood work, face-to-face provider visit, personalized plan in one visit.",
+    "In-person testosterone replacement therapy at 3 Virginia clinics. Same-day labs, face-to-face provider visit, personalized plan in one visit.",
   ogImage: "https://mwcv3.lovable.app/og/trt-lp.jpg",
 };
 

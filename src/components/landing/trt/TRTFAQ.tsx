@@ -4,7 +4,7 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "How much does treatment cost? Does insurance cover it?",
-    a: "Your first visit is [TODO: first-visit price], which includes blood work, your consultation with a licensed provider, and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
+    a: "Your first visit is [TODO: first-visit price], which includes labs, your consultation with a licensed provider, and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
     cta: true,
   },
   {
