@@ -14,7 +14,7 @@ export const TRTHero = () => {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-background"
+      className="dark relative overflow-hidden bg-background"
     >
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20">
         {/* Top row: headline left, trust + rating right */}
