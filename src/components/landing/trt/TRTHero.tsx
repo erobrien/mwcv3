@@ -20,18 +20,36 @@ export const TRTHero = () => {
         background: "#000033",
       }}
     >
-      {/* Subtle medical grid pattern */}
+      {/* Navy left-to-right gradient (back) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, #000033 0%, #000033 30%, #001A66 70%, #002A99 100%)",
+        }}
+      />
+      {/* Medical grid pattern (on top, fades in from left) */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+            "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
           maskImage:
-            "radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.7) 0%, transparent 70%)",
+            "linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0.6) 100%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.7) 0%, transparent 70%)",
+            "linear-gradient(90deg, transparent 0%, transparent 30%, rgba(0,0,0,0.9) 70%, rgba(0,0,0,0.6) 100%)",
+        }}
+      />
+      {/* Soft orange glow accent in top-right */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 600px 400px at 90% 10%, rgba(232,103,10,0.18) 0%, transparent 70%)",
         }}
       />
       {/* Left-to-right navy gradient ensures headline always sits on solid color */}

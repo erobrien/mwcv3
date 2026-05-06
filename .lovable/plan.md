@@ -1,43 +1,25 @@
-## Remove "Turn On Your Testosterone" Section
+## Fix invisible hero pattern on /lp/testosterone
 
-Delete the `TRTSymptomToggle` section (the OPTIMAL/LOW T toggle with benefit chips) and re-sequence neighbors so the cream → navy → cream → navy alternation stays intact.
+The grid lines were drawn at 4% white opacity over near-black navy, then a second navy gradient layer covered them — net result: nothing visible. Two fixes:
 
-### Current section order & backgrounds
+1. **Reorder layers**: navy gradient first, grid pattern on top.
+2. **Make the gradient and grid actually readable**:
+   - Gradient now goes from `#000033` (left) → `#001A66` → `#002A99` (right), giving real left-to-right depth.
+   - Grid lines bumped to 12% white opacity, 56px cells, masked so the left 30% stays solid (for headline contrast) and the pattern fades in across the right side.
+   - Add a soft orange radial glow in the top-right corner to anchor the brand color and break up the flat field.
 
-```text
-TRTHowItWorks    cream   #F5F0EB
-TRTSymptomToggle navy    #000033   ← DELETE
-TRTResults       cream   #F5F0EB
-TRTManifesto     navy    #000033
-TRTMarquee       orange  #E8670A
-TRTPricingCTA    orange  #E8670A
-TRTPillars       navy    #000033
-TRTLocations     white   #FFFFFF
-TRTFAQ           cream   #F5F0EB
-TRTFinalCTA      navy    #000033
-```
+3. **Layer order in the section** (back → front):
+   ```
+   #000033 base
+   navy 90deg gradient (#000033 → #001A66 → #002A99)
+   grid pattern (12% white, masked from left)
+   orange radial glow (top-right, 18% E8670A)
+   content
+   ```
 
-Removing `TRTSymptomToggle` puts two cream sections back-to-back (HowItWorks → Results). To preserve alternation, swap `TRTResults` and `TRTManifesto`.
+Headline still sits on solid `#000033` thanks to the gradient mask + the pattern's left-side fade-out, so contrast stays AA.
 
-### New order
+### File touched
+- `src/components/landing/trt/TRTHero.tsx` — replace the two background `<div>`s with the four-layer stack above.
 
-```text
-TRTHowItWorks    cream
-TRTManifesto     navy
-TRTResults       cream
-TRTMarquee       orange
-TRTPricingCTA    orange
-TRTPillars       navy
-TRTLocations     white
-TRTFAQ           cream
-TRTFinalCTA      navy
-```
-
-### Changes
-
-**`src/pages/TRTLandingPage.tsx`**
-- Remove `<TRTSymptomToggle />`
-- Swap `<TRTResults />` and `<TRTManifesto />` so navy follows cream
-- Remove the now-unused `TRTSymptomToggle` import
-
-No other files require edits. The component file itself can stay in the repo (unused) in case we want to bring it back.
+No other components, copy, or assets change.
