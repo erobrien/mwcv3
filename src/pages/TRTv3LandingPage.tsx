@@ -253,6 +253,12 @@ const sectionHead = (
 
 /* ─── MARQUEE CSS INJECTION ────────────────────────────────── */
 
+/* ─── SECTION DIVIDER ──────────────────────────────────────── */
+// Thin orange accent line — use between dark→light and light→dark transitions
+const OrangeDivider = () => (
+  <div style={{ height: 3, background: "linear-gradient(90deg, transparent 0%, #E8670A 30%, #E8670A 70%, transparent 100%)", opacity: 0.7 }} />
+);
+
 const MarqueeStyles = () => (
   <style>{`
     @keyframes marquee-scroll {
@@ -450,48 +456,28 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
         noValidate
         style={{ display: "flex", flexDirection: "column", gap: 12 }}
       >
-        <div>
-          <input
-            type="text"
-            placeholder="Full Name"
-            aria-label="Full name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            onFocus={focusIn}
-            onBlur={focusOut}
-            style={baseInput}
-            autoComplete="name"
-          />
-          <FieldError msg={errors.name} />
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Email Address"
-            aria-label="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onFocus={focusIn}
-            onBlur={focusOut}
-            style={baseInput}
-            autoComplete="email"
-          />
-          <FieldError msg={errors.email} />
-        </div>
-        <div>
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            aria-label="Phone number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            onFocus={focusIn}
-            onBlur={focusOut}
-            style={baseInput}
-            autoComplete="tel"
-          />
-          <FieldError msg={errors.phone} />
-        </div>
+        {/* Field label helper */}
+        {([
+          { label: "Full Name", type: "text", value: name, setter: setName, complete: "name", err: errors.name, ariaLabel: "Full name" },
+          { label: "Email Address", type: "email", value: email, setter: setEmail, complete: "email", err: errors.email, ariaLabel: "Email address" },
+          { label: "Phone Number", type: "tel", value: phone, setter: setPhone, complete: "tel", err: errors.phone, ariaLabel: "Phone number" },
+        ] as const).map(({ label, type, value, setter, complete, err, ariaLabel }) => (
+          <div key={label}>
+            <label style={{ display: "block", fontFamily: FONT_BODY, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#000033", marginBottom: 5 }}>{label}</label>
+            <input
+              type={type}
+              placeholder={label}
+              aria-label={ariaLabel}
+              value={value}
+              onChange={(e) => setter(e.target.value)}
+              onFocus={focusIn}
+              onBlur={focusOut}
+              style={baseInput}
+              autoComplete={complete}
+            />
+            <FieldError msg={err} />
+          </div>
+        ))}
 
         {/* TCPA */}
         <div>
@@ -577,34 +563,37 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
         </button>
       </form>
 
-      {/* Trust badges */}
+      {/* Trust row — above the fold in form */}
       <div
         style={{
           display: "flex",
-          gap: 12,
+          gap: 10,
           justifyContent: "center",
           alignItems: "center",
-          marginTop: 20,
+          marginTop: 18,
           paddingTop: 16,
-          borderTop: "1px solid #F0F0F0",
+          borderTop: "1px solid #EEEAE4",
+          flexWrap: "wrap",
         }}
       >
-        <img src="/images/badges/hipaa.png" alt="HIPAA Compliant" style={{ height: 38, opacity: 0.88 }} />
-        <img src="/images/badges/clia.png" alt="CLIA Certified" style={{ height: 38, opacity: 0.88 }} />
-        <img src="/images/badges/legitscript.png" alt="LegitScript Certified" style={{ height: 38, opacity: 0.88 }} />
+        <img src="/images/badges/hipaa.png" alt="HIPAA Compliant" style={{ height: 42, opacity: 0.90 }} />
+        <img src="/images/badges/clia.png" alt="CLIA Certified" style={{ height: 42, opacity: 0.90 }} />
+        <img src="/images/badges/legitscript.png" alt="LegitScript Certified" style={{ height: 42, opacity: 0.90 }} />
       </div>
       <p
         style={{
           fontFamily: FONT_BODY,
           fontSize: 11,
+          fontWeight: 600,
           color: "#555",
           textAlign: "center",
-          marginTop: 10,
+          marginTop: 8,
+          letterSpacing: "0.04em",
         }}
       >
-        HIPAA Compliant · No Spam · Response Within 1 Hour
+        HIPAA Compliant · CLIA Certified · LegitScript Verified
       </p>
-      <p style={{ textAlign: "center", marginTop: 8 }}>
+      <p style={{ textAlign: "center", marginTop: 10 }}>
         <a
           href={PHONE_HREF}
           style={{
@@ -613,9 +602,12 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
             fontWeight: 700,
             color: "#000033",
             textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
           }}
         >
-          Or call: {PHONE}
+          📞 Call: {PHONE}
         </a>
       </p>
     </div>
@@ -1093,12 +1085,11 @@ const Hero = () => (
             style={{
               fontFamily: FONT_BODY,
               fontSize: 11,
-              color: "rgba(255,255,255,0.50)",
+              color: "rgba(255,255,255,0.65)",
               marginTop: 18,
             }}
           >
-            Medically reviewed by licensed Virginia providers. Individual
-            results vary.
+            Medically reviewed by licensed Virginia providers. Individual results vary.
           </p>
         </div>
 
@@ -2095,7 +2086,7 @@ const Results = () => (
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = "#E8670A";
-              e.currentTarget.style.background = "rgba(232,103,10,0.12)";
+              e.currentTarget.style.background = "#1A2255";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.22)";
@@ -3422,11 +3413,17 @@ const TRTv3LandingPage = () => {
         <TrustBar />
         <Marquee />
         <ProblemSection />
+        <OrangeDivider />
         <WhyUs />
+        <OrangeDivider />
         <Results />
+        <OrangeDivider />
         <DoctorSection />
+        <OrangeDivider />
         <Pricing />
+        <OrangeDivider />
         <Pillars />
+        <OrangeDivider />
         <TeamSection />
         <Locations />
         <FAQSection />
