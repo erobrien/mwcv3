@@ -14,10 +14,10 @@ export const TRTPricingCTA = () => {
   ];
 
   return (
-    <section id="pricing-cta" className="py-14" style={{ background: "#E8670A" }}>
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left */}
-        <div>
+    <section id="pricing-cta" className="py-10 md:py-14" style={{ background: "#E8670A" }}>
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        {/* Left: copy (mobile second) */}
+        <div className="order-2 md:order-1">
           <h2
             className="font-bold uppercase"
             style={{
