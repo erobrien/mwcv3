@@ -111,11 +111,20 @@ export const TRTHero = () => {
             className="group relative overflow-hidden rounded-2xl text-left p-7 md:p-9 cursor-pointer transition-all duration-200 hover:scale-[1.01] border border-foreground/20 hover:border-accent focus-visible:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             style={{ minHeight: 220, background: "#1A1A2E" }}
           >
-            <div className="text-[11px] uppercase font-inter font-bold mb-3 text-accent tracking-[0.14em]">
+            {/* Hover overlay: subtle navy/orange wash */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+              style={{
+                background:
+                  "radial-gradient(ellipse 70% 90% at 100% 0%, rgba(232,103,10,0.10) 0%, rgba(232,103,10,0) 60%), linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%)",
+              }}
+            />
+            <div className="relative text-[11px] uppercase font-inter font-bold mb-3 text-accent tracking-[0.14em]">
               3 Virginia Clinics
             </div>
             <div
-              className="font-oswald font-bold uppercase text-foreground"
+              className="relative font-oswald font-bold uppercase text-foreground"
               style={{
                 fontSize: "clamp(22px, 2.6vw, 32px)",
                 lineHeight: 1.05,
@@ -125,10 +134,10 @@ export const TRTHero = () => {
             >
               Walk Into A Real Clinic Near You
             </div>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border-2 border-foreground/90 transition-colors duration-150 group-hover:bg-foreground group-hover:text-[#1A1A2E] group-hover:border-foreground group-focus-visible:bg-foreground group-focus-visible:text-[#1A1A2E]">
+            <div className="relative mt-6 inline-flex items-center gap-2 rounded-full font-inter font-bold uppercase h-11 px-5 text-[13px] tracking-[0.08em] bg-transparent text-foreground border-2 border-foreground/90 transition-colors duration-150 group-hover:bg-foreground group-hover:text-[#1A1A2E] group-hover:border-foreground group-focus-visible:bg-foreground group-focus-visible:text-[#1A1A2E]">
               See Locations <ArrowRight className="h-4 w-4" />
             </div>
-            <div className="absolute right-6 top-6 hidden md:block opacity-30">
+            <div className="absolute right-6 top-6 hidden md:block opacity-30 transition-opacity duration-300 group-hover:opacity-50">
               <MapPin size={120} className="text-foreground" strokeWidth={1} aria-hidden="true" />
             </div>
             <div className="mt-6 text-xs font-inter text-foreground/85 flex items-center gap-3">
