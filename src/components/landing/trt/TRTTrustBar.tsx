@@ -14,7 +14,7 @@ export const TRTTrustBar = () => (
             style={{
               fontFamily: "Oswald, sans-serif",
               color: "#FFFFFF",
-              fontSize: 56,
+              fontSize: "clamp(40px, 5vw, 56px)",
               lineHeight: 1,
               letterSpacing: "-0.01em",
             }}
