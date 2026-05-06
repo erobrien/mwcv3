@@ -42,7 +42,7 @@ export const TRTManifesto = () => {
             className="text-base mt-5 leading-[1.7]"
             style={{ color: "rgba(255,255,255,0.80)", fontFamily: "Inter, sans-serif" }}
           >
-            Most men get a lab slip and a 10-minute video call. We do it differently. On-site bloodwork, a face-to-face consultation, and a personalized TRT protocol — all in one visit. Same provider, every follow-up. No app. No mail-order doctor.
+            Most men get a lab slip and a 10-minute video call. We do it differently. On-site labs, a face-to-face consultation, and a personalized TRT protocol — all in one visit. Same provider, every follow-up. No app. No mail-order doctor.
           </p>
 
           <div className="flex flex-wrap gap-8 mt-8">

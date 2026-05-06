@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     quote:
-      "I was skeptical of any clinic that wasn't my regular doctor, but the in-person visit and on-site bloodwork made it feel legit. Body comp has shifted noticeably alongside training.",
+      "I was skeptical of any clinic that wasn't my regular doctor, but the in-person visit and on-site labs made it feel legit. Body comp has shifted noticeably alongside training.",
     name: "James R.",
     city: "Virginia Beach, VA",
   },
