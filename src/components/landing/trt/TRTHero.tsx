@@ -17,6 +17,38 @@ export const TRTHero = () => {
       className="relative overflow-hidden"
       style={{ background: "#000814" }}
     >
+      {/* Subtle navy depth gradient */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 20% 20%, rgba(22,51,110,0.55) 0%, rgba(10,31,74,0.25) 40%, rgba(0,8,20,0) 70%)",
+        }}
+      />
+      {/* Orange glow behind headline */}
+      <div
+        aria-hidden="true"
+        className="absolute pointer-events-none"
+        style={{
+          top: "10%",
+          left: "-5%",
+          width: "55%",
+          height: "70%",
+          background:
+            "radial-gradient(circle at 30% 40%, rgba(232,103,10,0.22) 0%, rgba(232,103,10,0.08) 35%, rgba(232,103,10,0) 65%)",
+          filter: "blur(40px)",
+        }}
+      />
+      {/* Soft top vignette */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%)",
+        }}
+      />
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20">
         {/* Top row: headline left, trust + rating right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
