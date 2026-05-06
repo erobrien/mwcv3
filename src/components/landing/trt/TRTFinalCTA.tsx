@@ -57,16 +57,6 @@ export const TRTFinalCTA = () => {
     e.currentTarget.style.boxShadow = "none";
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
-    e.currentTarget.style.borderColor = "#E8670A";
-    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)";
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
-    e.currentTarget.style.borderColor = "#C8C6C1";
-    e.currentTarget.style.boxShadow = "none";
-  };
-
   return (
     <section id="final-cta" className="py-16 md:py-24" style={{ background: "#000033" }}>
       <div className="max-w-[1200px] mx-auto px-6 text-center">
