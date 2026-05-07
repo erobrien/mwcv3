@@ -58,8 +58,8 @@ export const TRTHeader = () => {
           </button>
         </div>
 
-        {/* Mobile: phone icon + pill */}
-        <div className="md:hidden flex items-center gap-3">
+        {/* Mobile: phone icon only */}
+        <div className="md:hidden flex items-center">
           <a
             href="tel:8663444955"
             aria-label="Call 866-344-4955"
@@ -78,21 +78,6 @@ export const TRTHeader = () => {
             />
             <Phone size={20} className="relative" strokeWidth={2.5} />
           </a>
-          <button
-            onClick={() => scrollTo("final-cta")}
-            className="inline-flex items-center justify-center rounded-full px-4 font-bold uppercase cursor-pointer border-none"
-            style={{
-              height: 44,
-              background: "#E8670A",
-              color: "#FFFFFF",
-              fontSize: 12,
-              letterSpacing: "0.08em",
-              fontFamily: "Inter, sans-serif",
-            }}
-            aria-label="Book My Consult"
-          >
-            Book My Consult
-          </button>
         </div>
       </div>
     </header>
