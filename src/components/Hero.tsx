@@ -15,7 +15,11 @@ export const Hero = () => {
     <section
       id="hero"
       className="relative overflow-hidden"
-      style={{ background: "#000814", paddingTop: 80 }}
+      style={{
+        background: "#000033",
+        paddingTop: "clamp(112px, 16vh, 160px)",
+        paddingBottom: "clamp(48px, 8vh, 96px)",
+      }}
     >
       <img
         src="/images/hero-still.jpg"
@@ -23,14 +27,40 @@ export const Hero = () => {
         aria-hidden="true"
         loading="eager"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: 0.6 }}
+        style={{ opacity: 0.55 }}
       />
+      {/* Top-down navy gradient — heavier at the top so headline & nav read cleanly over the pattern */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(180deg, rgba(0,8,20,0.2) 0%, rgba(0,8,20,0.45) 100%)" }}
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0,0,51,0.85) 0%, rgba(0,0,51,0.55) 30%, rgba(0,0,51,0.55) 70%, rgba(0,0,51,0.80) 100%)",
+        }}
+      />
+      {/* Left vignette to keep copy legible over the brightest ripples */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden md:block"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(0,0,51,0.55) 0%, rgba(0,0,51,0.20) 45%, rgba(0,0,51,0) 70%)",
+        }}
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-5 flex flex-col items-center justify-center text-center" style={{ minHeight: "clamp(320px, 50vh, 500px)" }}>
+        {/* Heritage eyebrow — establishes Virginia trust before the headline */}
+        <p
+          className="mb-3 md:mb-4 uppercase"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "clamp(0.7rem, 1.3vw, 0.8rem)",
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            color: "#E8670A",
+            textShadow: "0 1px 8px rgba(0,0,0,0.5)",
+          }}
+        >
+          Trusted by Virginia men since 2015 · 10,000+ treated
+        </p>
         <h1
           id="hero-heading"
           className="uppercase mx-auto"
@@ -90,9 +120,9 @@ export const Hero = () => {
           <a
             href="/book"
             className="rounded-full px-8 py-4 font-semibold text-sm uppercase tracking-[0.05em] transition-all duration-200 text-center cursor-pointer hover:scale-[1.02]"
-            style={{ backgroundColor: "#F97316", color: "#FFFFFF", textDecoration: "none" }}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#EA580C"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#F97316"; }}
+            style={{ backgroundColor: "#E8670A", color: "#FFFFFF", textDecoration: "none" }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#CF5B09"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#E8670A"; }}
           >
             Book My Consultation
           </a>
