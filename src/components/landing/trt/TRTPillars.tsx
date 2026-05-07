@@ -38,8 +38,8 @@ export const TRTPillars = () => (
           fontWeight: 700,
         }}
       >
-        EVERYTHING YOU NEED TO<br />
-        GET YOUR HEALTH BACK. NOW.
+        EVERYTHING YOU NEED FOR TRT, ED,<br />
+        AND WEIGHT LOSS — UNDER ONE ROOF.
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
