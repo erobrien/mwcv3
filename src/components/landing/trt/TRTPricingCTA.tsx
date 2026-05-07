@@ -27,14 +27,14 @@ export const TRTPricingCTA = () => {
               fontWeight: 700,
             }}
           >
-            YOUR FIRST VISIT IS ON US.<br />HERE'S WHAT'S INCLUDED.
+            CONSULTS ARE ALWAYS FREE.<br />HERE'S WHAT'S INCLUDED.
           </h2>
 
           <ul className="mt-6 space-y-3" style={{ fontFamily: "Inter, sans-serif" }}>
             <li className="flex items-start gap-3">
               <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
               <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
-                <strong>First visit: $0.</strong> Blood work, physician consult, and your plan.
+                <strong>Free consult, every time.</strong> Blood work, physician visit, and your plan reviewed at no cost.
               </span>
             </li>
             <li className="flex items-start gap-3">
