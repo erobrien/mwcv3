@@ -32,10 +32,8 @@ const NewLandingPage = () => {
         <TRTHero />
         <TRTTrustBar />
         <TRTInlineLeadMobile />
-        
-        
-        <TRTHowItWorks />
         <TRTManifesto />
+        <TRTHowItWorks />
         <TRTResults />
         <TRTPillars />
         <TRTMarquee />
