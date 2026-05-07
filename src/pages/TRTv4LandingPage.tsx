@@ -116,7 +116,7 @@ const HeroForm: React.FC = () => {
   };
 
   const inputClass =
-    'h-12 w-full bg-white border border-mwc-line rounded-lg px-4 text-mwc-ink text-base outline-none focus:ring-2 focus:ring-mwc-orange/50 focus:border-mwc-orange transition-colors';
+    'h-12 w-full bg-white border border-mwc-line rounded-lg px-4 text-mwc-navy text-base outline-none focus:ring-2 focus:ring-mwc-orange/50 focus:border-mwc-orange transition-colors';
   const labelClass = 'block text-[11px] font-semibold uppercase tracking-[0.12em] text-mwc-inkMuted mb-2';
 
   return (
@@ -426,7 +426,7 @@ const TRTv4LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="font-sans bg-mwc-bone text-mwc-ink">
+    <div className="font-sans bg-white text-mwc-navy">
       <Nav />
 
       {/* ------------------------------------------------------------------ */}
@@ -454,7 +454,7 @@ const TRTv4LandingPage: React.FC = () => {
               </FadeIn>
               <FadeIn delay={0.06}>
                 <h1
-                  className="font-fraunces text-white leading-[1.02] -tracking-[0.02em]"
+                  className="font-fraunces text-white leading-[1.02] tracking-[0.01em]"
                   style={{ fontSize: 'clamp(44px, 5vw, 72px)' }}
                 >
                   {CONTENT.hero.h1Line1}
@@ -522,7 +522,7 @@ const TRTv4LandingPage: React.FC = () => {
               </FadeIn>
               <FadeIn delay={0.06}>
                 <h2
-                  className="font-fraunces text-mwc-navy leading-[1.06] -tracking-[0.015em] mb-6"
+                  className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em] mb-6"
                   style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
                 >
                   {CONTENT.problem.h2}
@@ -543,7 +543,7 @@ const TRTv4LandingPage: React.FC = () => {
                   {CONTENT.problem.symptoms.map((s, i) => (
                     <li
                       key={i}
-                      className={`flex gap-3 text-[17px] text-mwc-ink py-4 ${
+                      className={`flex gap-3 text-[17px] text-mwc-navy py-4 ${
                         i < CONTENT.problem.symptoms.length - 1 ? 'border-b border-mwc-line' : ''
                       }`}
                     >
@@ -561,13 +561,13 @@ const TRTv4LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------------ */}
       {/* HOW IT WORKS                                                         */}
       {/* ------------------------------------------------------------------ */}
-      <section id="how-it-works" className="bg-mwc-bone py-24">
+      <section id="how-it-works" className="bg-white py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <FadeIn>
             <div className="text-center max-w-[560px] mx-auto mb-16">
               <Eyebrow>{CONTENT.howItWorks.eyebrow}</Eyebrow>
               <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] -tracking-[0.015em]"
+                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
                 style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
               >
                 {CONTENT.howItWorks.h2}
@@ -590,7 +590,7 @@ const TRTv4LandingPage: React.FC = () => {
           </div>
 
           <FadeIn delay={0.18}>
-            <p className="text-[18px] text-mwc-ink text-center border-t border-mwc-line mt-16 pt-8 max-w-[640px] mx-auto">
+            <p className="text-[18px] text-mwc-navy text-center border-t border-mwc-line mt-16 pt-8 max-w-[640px] mx-auto">
               {CONTENT.howItWorks.footer}
             </p>
           </FadeIn>
@@ -606,7 +606,7 @@ const TRTv4LandingPage: React.FC = () => {
             <div className="text-center">
               <Eyebrow light>{CONTENT.comparison.eyebrow}</Eyebrow>
               <h2
-                className="font-fraunces text-white leading-[1.06] -tracking-[0.015em]"
+                className="font-fraunces text-white leading-[1.06] tracking-[0.005em]"
                 style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
               >
                 {CONTENT.comparison.h2}
@@ -649,7 +649,7 @@ const TRTv4LandingPage: React.FC = () => {
             <div className="text-center mb-12">
               <Eyebrow>{CONTENT.outcomes.eyebrow}</Eyebrow>
               <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] -tracking-[0.015em]"
+                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
                 style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
               >
                 {CONTENT.outcomes.h2}
@@ -688,7 +688,7 @@ const TRTv4LandingPage: React.FC = () => {
               {CONTENT.outcomes.testimonials.map((t, i) => (
                 <div
                   key={i}
-                  className="min-w-[320px] max-w-[380px] bg-mwc-bone rounded-2xl p-8 border border-mwc-line flex-shrink-0 snap-start"
+                  className="min-w-[320px] max-w-[380px] bg-white rounded-2xl p-8 border border-mwc-line flex-shrink-0 snap-start"
                 >
                   <p className="font-fraunces text-[20px] text-mwc-navy leading-[1.5] mb-6">
                     &ldquo;{t.quote}&rdquo;
@@ -704,7 +704,7 @@ const TRTv4LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------------ */}
       {/* PHYSICIAN                                                            */}
       {/* ------------------------------------------------------------------ */}
-      <section id="physician" className="bg-mwc-bone py-24">
+      <section id="physician" className="bg-white py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image */}
@@ -720,7 +720,7 @@ const TRTv4LandingPage: React.FC = () => {
             <FadeIn delay={0.08}>
               <div>
                 <Eyebrow>{CONTENT.physician.eyebrow}</Eyebrow>
-                <h2 className="font-fraunces text-[40px] text-mwc-navy leading-[1.08] -tracking-[0.015em] mb-6">
+                <h2 className="font-fraunces text-[40px] text-mwc-navy leading-[1.08] tracking-[0.005em] mb-6">
                   {CONTENT.physician.h2}
                 </h2>
                 <p className="text-[17px] text-mwc-inkMuted leading-[1.6]">{CONTENT.physician.body}</p>
@@ -749,7 +749,7 @@ const TRTv4LandingPage: React.FC = () => {
             <div className="text-center mb-4">
               <Eyebrow light>{CONTENT.whyMwc.eyebrow}</Eyebrow>
               <h2
-                className="font-fraunces text-white leading-[1.06] -tracking-[0.015em]"
+                className="font-fraunces text-white leading-[1.06] tracking-[0.005em]"
                 style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
               >
                 {CONTENT.whyMwc.h2}
@@ -784,7 +784,7 @@ const TRTv4LandingPage: React.FC = () => {
             <div className="text-center mb-12">
               <Eyebrow>OUR LOCATIONS</Eyebrow>
               <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] -tracking-[0.015em]"
+                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
                 style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
               >
                 Three Virginia clinics, ready today.
@@ -795,7 +795,7 @@ const TRTv4LandingPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {CONTENT.locations.map((loc, i) => (
               <FadeIn key={loc.city} delay={i * 0.06}>
-                <div className="bg-mwc-bone rounded-2xl p-8 border border-mwc-line flex flex-col h-full">
+                <div className="bg-white rounded-2xl p-8 border border-mwc-line flex flex-col h-full">
                   <h3 className="font-fraunces text-[28px] text-mwc-navy mb-3">{loc.city}</h3>
                   <p className="text-[16px] text-mwc-inkMuted leading-[1.6] whitespace-pre-line mb-3">
                     {loc.address}
@@ -830,13 +830,13 @@ const TRTv4LandingPage: React.FC = () => {
       {/* ------------------------------------------------------------------ */}
       {/* FAQ                                                                  */}
       {/* ------------------------------------------------------------------ */}
-      <section id="faq" className="bg-mwc-bone py-24">
+      <section id="faq" className="bg-white py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <FadeIn>
             <div className="text-center max-w-[680px] mx-auto">
               <Eyebrow>COMMON QUESTIONS</Eyebrow>
               <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] -tracking-[0.015em]"
+                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
                 style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
               >
                 What patients ask before their first visit.
@@ -852,7 +852,7 @@ const TRTv4LandingPage: React.FC = () => {
                   value={`faq-${i}`}
                   className="border-b border-mwc-line"
                 >
-                  <AccordionTrigger className="text-[17px] font-medium text-mwc-ink text-left py-5 hover:no-underline hover:text-mwc-navy">
+                  <AccordionTrigger className="text-[17px] font-medium text-mwc-navy text-left py-5 hover:no-underline hover:text-mwc-navy">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-[16px] text-mwc-inkMuted leading-[1.7] pb-5">
@@ -875,7 +875,7 @@ const TRTv4LandingPage: React.FC = () => {
           </FadeIn>
           <FadeIn delay={0.06}>
             <h2
-              className="font-fraunces text-white leading-[1.04] -tracking-[0.02em]"
+              className="font-fraunces text-white leading-[1.04] tracking-[0.01em]"
               style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
             >
               {CONTENT.finalCta.h2}

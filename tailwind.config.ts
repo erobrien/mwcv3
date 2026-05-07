@@ -18,14 +18,18 @@ export default {
       },
       colors: {
         mwc: {
-          navy: '#0B1733',
-          navy2: '#1A2255',
-          orange: '#E86A2C',
-          cream: '#F7F3EC',
-          bone: '#FFFFFF',
-          ink: '#14181F',
-          inkMuted: '#4A5160',
-          line: '#E4DDD1',
+          navy:     '#1B2B4B', // dominant dark — real site usage
+          navyDk:   '#0B1029', // deepest navy — Elementor primary
+          navy2:    '#1B2B4B', // keep alias for backward compat
+          orange:   '#E8670A', // primary accent (live site)
+          cream:    '#F5F3F0', // warm grey section bg (live site)
+          pale:     '#F9FBFF', // near-white section bg (live site)
+          bone:     '#FFFFFF',
+          ink:      '#1B2B4B', // heading color
+          inkMuted: '#54595F', // secondary text (live site)
+          text:     '#666666', // body text (live site)
+          line:     '#D9DEF0', // borders (live site)
+          muted:    '#B0ADA8', // muted/placeholder
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -98,7 +102,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Oswald', 'sans-serif'],
-        fraunces: ['Fraunces', 'Georgia', 'serif'],
+        fraunces: ['Oswald', 'sans-serif'], // font-fraunces → Oswald (MWC live brand)
       },
       boxShadow: {
         sm: 'var(--shadow-sm)',
