@@ -44,7 +44,7 @@ export const TRTHero = () => {
           className="mt-4 text-base md:text-lg leading-relaxed max-w-[680px]"
           style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif", fontSize: 16 }}
         >
-          Same-day blood work, a Virginia physician, and your plan. All booked online in minutes.
+          Same-day labs, a Virginia physician, and your plan. All booked online in minutes.
         </p>
 
         <div className="mt-4 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}>

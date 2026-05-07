@@ -4,17 +4,17 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "How much does treatment cost? Does insurance cover it?",
-    a: "Consults with our providers are always free, including blood work review and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
+    a: "Consults with our providers are always free, including labs review and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
     cta: true,
   },
   {
     q: "What should I expect at my first visit?",
-    a: "Plan for about 60 minutes. You'll have your blood drawn on-site, meet face-to-face with a licensed provider to review your symptoms and history, and leave with a personalized care plan. If treatment is clinically appropriate, it can often begin the same day.",
+    a: "Plan for about 60 minutes. You'll have your labs drawn on-site, meet face-to-face with a licensed provider to review your symptoms and history, and leave with a personalized care plan. If treatment is clinically appropriate, it can often begin the same day.",
     cta: true,
   },
   {
     q: "Are consults really free? What is included?",
-    a: "Yes. Consultations with our providers are always at no cost. That includes a comprehensive hormone blood panel, a face-to-face visit with a licensed Virginia physician, and a personalized care plan based on your labs. You decide whether to begin treatment.",
+    a: "Yes. Consultations with our providers are always at no cost. That includes a comprehensive hormone lab panel, a face-to-face visit with a licensed Virginia physician, and a personalized care plan based on your labs. You decide whether to begin treatment.",
   },
   {
     q: "How is this different from Hims, Hone, or online TRT?",

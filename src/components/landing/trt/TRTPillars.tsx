@@ -11,7 +11,7 @@ const pillars = [
   },
   {
     title: "ON-SITE LABS",
-    desc: "Blood draw and full panel done in-center, with results back before you walk out.",
+    desc: "Full labs done in-center, with results back before you walk out.",
     image: imgLobby,
   },
   {

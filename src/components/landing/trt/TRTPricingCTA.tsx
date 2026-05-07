@@ -34,7 +34,7 @@ export const TRTPricingCTA = () => {
             <li className="flex items-start gap-3">
               <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
               <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
-                <strong>Free consult, every time.</strong> Blood work, physician visit, and your plan reviewed at no cost.
+                <strong>Free consult, every time.</strong> Labs, physician visit, and your plan reviewed at no cost.
               </span>
             </li>
             <li className="flex items-start gap-3">
