@@ -1,5 +1,5 @@
 import { Check, ArrowRight, Star } from "lucide-react";
-import heroBg from "@/assets/hero-trt-surfers.webp";
+
 
 const trustChecks = [
   "No referral needed",
@@ -19,25 +19,8 @@ export const TRTHero = () => {
       className="relative overflow-hidden"
       style={{ background: "#000033" }}
     >
-      {/* Full-bleed background image */}
-      <img
-        src={heroBg}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: 0.35 }}
-        loading="eager"
-      />
-      {/* Dark gradient overlays */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to right, rgba(0,0,51,0.92) 0%, rgba(0,0,51,0.65) 55%, rgba(0,0,51,0.35) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(to top, rgba(0,0,51,0.9) 0%, transparent 40%)" }}
-      />
+      {/* Background removed */}
+
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-20 pb-12 md:pt-36 md:pb-24">
         <span
