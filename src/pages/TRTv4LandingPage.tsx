@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -9,17 +9,20 @@ import {
 } from '@/components/ui/accordion';
 import { CONTENT } from './trt-v4/content';
 
-import heroClinic from '@/assets/lp/trt-hero-clinic.jpg';
-import providerPatient from '@/assets/lp/trt-provider-patient.jpg';
-import firstVisitBloodwork from '@/assets/lp/first-visit-bloodwork.png';
-import trtLab from '@/assets/lp/trt-lab.jpg';
-import drPapariello from '@/assets/lp/dr-popariello.jpeg';
-import mwcTeam from '@/assets/lp/mwc-team-scrubs.webp';
-import lobbyInnslake from '@/assets/lp/lobby-innslake.jpg';
+/* ============================================================
+   /lp/trt-v4 — Editorial physician-led rebuild
+   Brand tokens (scoped):
+     --mwc-navy: #0B1733
+     --mwc-navy-2: #1A2255
+     --mwc-orange: #E86A2C
+     --mwc-cream: #F7F3EC
+     --mwc-bone: #FFFFFF
+     --mwc-ink: #14181F
+     --mwc-ink-muted: #4A5160
+     --mwc-line: #E4DDD1
+   Fonts: Fraunces (display) + Inter (body)
+   ============================================================ */
 
-// ---------------------------------------------------------------------------
-// FadeIn wrapper
-// ---------------------------------------------------------------------------
 const FadeIn = ({
   children,
   delay = 0,
@@ -40,599 +43,443 @@ const FadeIn = ({
   </motion.div>
 );
 
-// ---------------------------------------------------------------------------
-// Eyebrow
-// ---------------------------------------------------------------------------
 const Eyebrow = ({
   children,
-  light = false,
+  tone = 'orange',
+  className = '',
 }: {
   children: React.ReactNode;
-  light?: boolean;
-}) => (
-  <p
-    className={`text-xs font-semibold tracking-[0.18em] uppercase mb-4 ${
-      light ? 'text-mwc-orange' : 'text-mwc-navy/60'
-    }`}
-  >
-    {children}
-  </p>
-);
-
-// ---------------------------------------------------------------------------
-// Hero Form
-// ---------------------------------------------------------------------------
-interface FormState {
-  name: string;
-  email: string;
-  phone: string;
-  location: string;
-  tcpa: boolean;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  phone?: string;
-  location?: string;
-  tcpa?: string;
-}
-
-const THANK_YOU_URLS: Record<string, string> = {
-  richmond: 'https://menswellnesscenters.com/thank-you-richmond/?source=lp-trt-v4',
-  'newport-news': 'https://menswellnesscenters.com/thank-you-newport-news/?source=lp-trt-v4',
-  'virginia-beach': 'https://menswellnesscenters.com/thank-you-virginia-beach/?source=lp-trt-v4',
-};
-
-const HeroForm: React.FC = () => {
-  const [form, setForm] = useState<FormState>({
-    name: '',
-    email: '',
-    phone: '',
-    location: '',
-    tcpa: false,
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitting, setSubmitting] = useState(false);
-
-  const validate = (): boolean => {
-    const e: FormErrors = {};
-    if (!form.name.trim()) e.name = 'Name is required';
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email is required';
-    if (!form.phone.trim() || !/^\+?[\d\s\-().]{7,}$/.test(form.phone))
-      e.phone = 'Valid phone number is required';
-    if (!form.location) e.location = 'Please select a location';
-    if (!form.tcpa) e.tcpa = 'Please confirm your consent to continue';
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setSubmitting(true);
-    const url = THANK_YOU_URLS[form.location];
-    if (url) window.location.href = url;
-  };
-
-  const inputClass =
-    'h-12 w-full bg-white border border-mwc-line rounded-lg px-4 text-mwc-navy text-base outline-none focus:ring-2 focus:ring-mwc-orange/50 focus:border-mwc-orange transition-colors';
-  const labelClass = 'block text-[11px] font-semibold uppercase tracking-[0.12em] text-mwc-inkMuted mb-2';
-
+  tone?: 'orange' | 'navy' | 'white';
+  className?: string;
+}) => {
+  const color =
+    tone === 'orange' ? 'var(--mwc-orange)' : tone === 'navy' ? 'var(--mwc-navy)' : 'rgba(255,255,255,0.7)';
   return (
     <div
-      id="hero-form"
-      className="bg-mwc-cream rounded-2xl p-8 border border-mwc-line sticky top-[88px]"
+      className={`uppercase ${className}`}
+      style={{
+        fontFamily: 'Inter, sans-serif',
+        fontWeight: 600,
+        fontSize: 12,
+        letterSpacing: '0.18em',
+        color,
+      }}
     >
-      <h3 className="font-fraunces text-2xl text-mwc-navy mb-6">{CONTENT.hero.formTitle}</h3>
-      <form onSubmit={handleSubmit} noValidate className="space-y-5">
-        {/* Name */}
-        <div>
-          <label className={labelClass}>Full Name</label>
-          <input
-            type="text"
-            className={inputClass}
-            placeholder="John Smith"
-            value={form.name}
-            onChange={(ev) => setForm({ ...form, name: ev.target.value })}
-          />
-          {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-        </div>
-
-        {/* Email */}
-        <div>
-          <label className={labelClass}>Email Address</label>
-          <input
-            type="email"
-            className={inputClass}
-            placeholder="john@email.com"
-            value={form.email}
-            onChange={(ev) => setForm({ ...form, email: ev.target.value })}
-          />
-          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label className={labelClass}>Phone Number</label>
-          <input
-            type="tel"
-            className={inputClass}
-            placeholder="(555) 000-0000"
-            value={form.phone}
-            onChange={(ev) => setForm({ ...form, phone: ev.target.value })}
-          />
-          {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
-        </div>
-
-        {/* Location */}
-        <div>
-          <label className={labelClass}>Nearest Location</label>
-          <div className="relative">
-            <select
-              className={`${inputClass} appearance-none pr-10 cursor-pointer`}
-              value={form.location}
-              onChange={(ev) => setForm({ ...form, location: ev.target.value })}
-            >
-              <option value="">Select a location</option>
-              {CONTENT.locations.map((loc) => (
-                <option key={loc.value} value={loc.value}>
-                  {loc.city}
-                </option>
-              ))}
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-              <svg
-                className="h-4 w-4 text-mwc-inkMuted"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          {errors.location && <p className="text-red-500 text-xs mt-1">{errors.location}</p>}
-        </div>
-
-        {/* TCPA */}
-        <div className="flex items-start gap-2.5">
-          <input
-            type="checkbox"
-            id="tcpa-v4"
-            checked={form.tcpa}
-            onChange={(ev) => setForm({ ...form, tcpa: ev.target.checked })}
-            className="mt-0.5 h-4 w-4 rounded border-mwc-line flex-shrink-0 cursor-pointer accent-[#E86A2C]"
-          />
-          <label htmlFor="tcpa-v4" className="text-[11px] text-mwc-inkMuted leading-relaxed cursor-pointer">
-            By submitting, I consent to be contacted by Men's Wellness Centers via phone, text, or email
-            regarding my inquiry. Message &amp; data rates may apply. Reply STOP to opt out.
-          </label>
-        </div>
-        {errors.tcpa && <p className="text-red-500 text-xs -mt-3">{errors.tcpa}</p>}
-
-        {/* Submit */}
-        <button
-          type="submit"
-          disabled={submitting}
-          className="w-full h-14 bg-mwc-orange text-white font-semibold text-[15px] tracking-wide rounded-xl hover:bg-[#C95A20] active:scale-[0.98] transition-all duration-150 disabled:opacity-60"
-        >
-          {submitting ? 'Redirecting...' : CONTENT.hero.ctaLabel}
-        </button>
-        <p className="text-[12px] text-mwc-inkMuted text-center">{CONTENT.hero.noCommitment}</p>
-      </form>
+      {children}
     </div>
   );
 };
 
-// ---------------------------------------------------------------------------
-// Nav
-// ---------------------------------------------------------------------------
-const Nav: React.FC = () => {
+const TRTv4LandingPage: React.FC = () => {
+  const C = CONTENT;
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [form, setForm] = useState({ firstName: '', email: '', phone: '', location: '' });
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    setMobileOpen(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Inject Fraunces (page-scoped). Inter is already loaded globally.
+  useEffect(() => {
+    const id = 'fraunces-font-trtv4';
+    if (document.getElementById(id)) return;
+    const l1 = document.createElement('link');
+    l1.rel = 'preconnect';
+    l1.href = 'https://fonts.googleapis.com';
+    const l2 = document.createElement('link');
+    l2.rel = 'preconnect';
+    l2.href = 'https://fonts.gstatic.com';
+    l2.crossOrigin = 'anonymous';
+    const l3 = document.createElement('link');
+    l3.id = id;
+    l3.rel = 'stylesheet';
+    l3.href =
+      'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap';
+    document.head.appendChild(l1);
+    document.head.appendChild(l2);
+    document.head.appendChild(l3);
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('[trt-v4 lead]', form);
+    window.location.href = '/thank-you';
   };
 
-  const navLinks = [
-    { label: 'How It Works', id: 'how-it-works' },
-    { label: 'Our Doctors', id: 'physician' },
-    { label: 'Locations', id: 'locations' },
-    { label: 'FAQ', id: 'faq' },
-  ];
+  const scrollToForm = () => {
+    document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  const display = { fontFamily: "'Fraunces', Georgia, serif", fontFeatureSettings: '"ss01"' };
+  const body = { fontFamily: "Inter, system-ui, sans-serif" };
 
   return (
-    <>
+    <div
+      className="trtv4-root"
+      style={{
+        ...body,
+        color: 'var(--mwc-ink)',
+        background: 'var(--mwc-bone)',
+        // expose tokens locally
+        ['--mwc-navy' as any]: '#0B1733',
+        ['--mwc-navy-2' as any]: '#1A2255',
+        ['--mwc-orange' as any]: '#E86A2C',
+        ['--mwc-cream' as any]: '#F7F3EC',
+        ['--mwc-bone' as any]: '#FFFFFF',
+        ['--mwc-ink' as any]: '#14181F',
+        ['--mwc-ink-muted' as any]: '#4A5160',
+        ['--mwc-line' as any]: '#E4DDD1',
+      }}
+    >
+      <style>{`
+        .trtv4-root :focus-visible { outline: 2px solid var(--mwc-orange); outline-offset: 2px; border-radius: 4px; }
+        .trtv4-root .h-display { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.02em; line-height: 1.02; font-weight: 600; }
+        .trtv4-root .h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 3.5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.015em; font-weight: 600; }
+        .trtv4-root .body-lg { font-size: 17px; line-height: 1.55; }
+        @media (max-width: 768px) { .trtv4-root .body-lg { font-size: 16px; line-height: 1.6; } }
+        .trtv4-root .container-lg { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+        .trtv4-root .section { padding-top: 96px; padding-bottom: 96px; }
+        @media (min-width: 768px) { .trtv4-root .section { padding-top: 128px; padding-bottom: 128px; } }
+        .trtv4-root .hairline-card { border-radius: 16px; border: 1px solid var(--mwc-line); transition: border-color 200ms ease; }
+        .trtv4-root .hairline-card:hover { border-color: var(--mwc-orange); }
+        .trtv4-root .hairline-card-dark { border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: border-color 200ms ease; }
+        .trtv4-root .hairline-card-dark:hover { border-color: var(--mwc-orange); }
+        .trtv4-root .btn-primary { background: var(--mwc-orange); color: #fff; border: none; border-radius: 10px; font-weight: 600; letter-spacing: 0.01em; transition: background 200ms; cursor: pointer; }
+        .trtv4-root .btn-primary:hover { background: #d15a20; }
+        .trtv4-root .field-label { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mwc-ink-muted); font-weight: 600; margin-bottom: 6px; display: block; }
+        .trtv4-root .field-input { width: 100%; height: 48px; padding: 0 14px; background: #fff; border: 1px solid var(--mwc-line); border-radius: 10px; font-size: 16px; color: var(--mwc-ink); font-family: Inter, sans-serif; transition: border-color 150ms, box-shadow 150ms; }
+        .trtv4-root .field-input:focus { border-color: var(--mwc-orange); box-shadow: 0 0 0 3px rgba(232,106,44,0.15); outline: none; }
+        .trtv4-root .divider-orange { height: 1px; width: 100%; background: var(--mwc-orange); }
+        .trtv4-root .nav-link { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; transition: color 150ms; }
+        .trtv4-root .nav-link:hover { color: var(--mwc-orange); }
+      `}</style>
+
+      {/* ============= NAV ============= */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-300 ${
-          scrolled ? 'bg-mwc-navy/95 backdrop-blur-sm' : 'bg-mwc-navy'
-        }`}
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+          height: 72,
+          background: 'var(--mwc-navy)',
+          boxShadow: scrolled ? '0 1px 0 rgba(255,255,255,0.06)' : 'none',
+          transition: 'box-shadow 200ms',
+        }}
       >
-        <div className="max-w-[1200px] mx-auto px-5 w-full flex items-center justify-between">
-          {/* Logo */}
-          <a href="/lp/trt-v4" className="flex-shrink-0">
-            <img src="/logos/Text_Logo_white.png" alt="Men's Wellness Centers" className="h-8 w-auto" />
+        <div className="container-lg" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a href="/" aria-label="Men's Wellness Centers" style={{ ...display, color: '#fff', fontSize: 20, fontWeight: 700, letterSpacing: '-0.01em' }}>
+            MWC
           </a>
-
-          {/* Desktop center links */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className="text-[14px] font-medium text-white/70 hover:text-white transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#how" className="nav-link">How It Works</a>
+            <a href="#doctor" className="nav-link">Our Doctors</a>
+            <a href="#locations" className="nav-link">Locations</a>
+            <a href="#faq" className="nav-link">FAQ</a>
           </div>
-
-          {/* Desktop right */}
-          <div className="hidden lg:flex items-center gap-5">
-            <a
-              href={CONTENT.phoneHref}
-              className="text-[14px] font-medium text-white/80 hover:text-white transition-colors flex items-center gap-2"
-            >
-              <Phone className="h-4 w-4" />
-              {CONTENT.phone}
+          <div className="hidden md:flex items-center gap-4">
+            <a href={C.phoneHref} className="nav-link" style={{ fontWeight: 600 }}>
+              (804) 346-4636
             </a>
-            <button
-              onClick={() => scrollTo('hero-form')}
-              className="h-10 px-5 bg-mwc-orange text-white text-sm font-semibold rounded-full hover:bg-[#C95A20] transition-colors"
-            >
+            <button onClick={scrollToForm} className="btn-primary" style={{ height: 40, padding: '0 18px', fontSize: 13 }}>
               Book Same-Day Visit
             </button>
           </div>
-
-          {/* Mobile hamburger */}
           <button
-            className="lg:hidden text-white p-2"
-            onClick={() => setMobileOpen(true)}
+            className="md:hidden"
             aria-label="Open menu"
+            onClick={() => setMenuOpen(true)}
+            style={{ background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }}
           >
-            <Menu className="h-6 w-6" />
+            <Menu size={24} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[60] bg-mwc-navy flex flex-col p-8">
-          <div className="flex justify-between items-center mb-12">
-            <img src="/logos/Text_Logo_white.png" alt="Men's Wellness Centers" className="h-8 w-auto" />
-            <button onClick={() => setMobileOpen(false)} className="text-white" aria-label="Close menu">
-              <X className="h-7 w-7" />
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div
+          style={{
+            position: 'fixed', inset: 0, zIndex: 100, background: 'var(--mwc-navy)',
+            display: 'flex', flexDirection: 'column', padding: '24px',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: 48 }}>
+            <span style={{ ...display, color: '#fff', fontSize: 20, fontWeight: 700 }}>MWC</span>
+            <button aria-label="Close menu" onClick={() => setMenuOpen(false)} style={{ background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }}>
+              <X size={24} />
             </button>
           </div>
-          <nav className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className="font-fraunces text-4xl text-white text-left hover:text-mwc-orange transition-colors"
-              >
-                {link.label}
-              </button>
+          <div style={{ marginTop: 48, display: 'flex', flexDirection: 'column', gap: 28 }}>
+            {[
+              ['How It Works', '#how'],
+              ['Our Doctors', '#doctor'],
+              ['Locations', '#locations'],
+              ['FAQ', '#faq'],
+            ].map(([l, h]) => (
+              <a key={h} href={h} onClick={() => setMenuOpen(false)} style={{ ...display, color: '#fff', fontSize: 32, fontWeight: 600 }}>
+                {l}
+              </a>
             ))}
-          </nav>
-          <div className="mt-auto">
-            <button
-              onClick={() => scrollTo('hero-form')}
-              className="w-full h-14 bg-mwc-orange text-white font-semibold rounded-xl"
-            >
+            <a href={C.phoneHref} style={{ color: 'var(--mwc-orange)', fontSize: 18, fontWeight: 600, marginTop: 16 }}>
+              (804) 346-4636
+            </a>
+            <button onClick={() => { setMenuOpen(false); scrollToForm(); }} className="btn-primary" style={{ height: 56, marginTop: 16 }}>
               Book Same-Day Visit
             </button>
-            <a
-              href={CONTENT.phoneHref}
-              className="block text-center mt-4 text-white/70 text-sm"
-            >
-              {CONTENT.phone}
-            </a>
           </div>
         </div>
       )}
-    </>
-  );
-};
 
-// ---------------------------------------------------------------------------
-// Trust Badges
-// ---------------------------------------------------------------------------
-const TrustBadges: React.FC = () => {
-  const badges = [
-    { src: '/images/badges/hipaa.png', label: 'HIPAA Compliant', isImg: true },
-    { src: '/images/badges/clia.png', label: 'CLIA Certified', isImg: true },
-    { src: '/images/badges/legitscript.png', label: 'LegitScript Verified', isImg: true },
-    { src: '', label: 'Licensed in Virginia', isImg: false },
-  ];
-
-  return (
-    <div className="flex flex-wrap items-end gap-6 mt-8">
-      {badges.map((b) => (
-        <div key={b.label} className="flex flex-col items-center gap-1.5">
-          {b.isImg ? (
-            <img src={b.src} alt={b.label} className="h-[42px] w-auto opacity-90 object-contain" />
-          ) : (
-            <ShieldCheck className="h-[42px] w-[42px] text-white/80" />
-          )}
-          <span className="text-[11px] font-medium uppercase tracking-wide text-white/60">
-            {b.label}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// ---------------------------------------------------------------------------
-// Mobile Sticky CTA
-// ---------------------------------------------------------------------------
-const MobileStickyBar: React.FC = () => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const formEl = document.getElementById('hero-form');
-    if (!formEl) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(formEl);
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToForm = () => {
-    const el = document.getElementById('hero-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  if (!visible) return null;
-
-  return (
-    <div
-      className="md:hidden fixed bottom-0 left-0 right-0 z-[65] bg-mwc-navy border-t border-white/10"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
-    >
-      <div className="p-3">
-        <button
-          onClick={scrollToForm}
-          className="w-full h-14 bg-mwc-orange text-white font-semibold text-[15px] rounded-xl hover:bg-[#C95A20] active:scale-[0.98] transition-all"
-        >
-          Book Same-Day Visit
-        </button>
-      </div>
-    </div>
-  );
-};
-
-// ---------------------------------------------------------------------------
-// Main Page
-// ---------------------------------------------------------------------------
-const TRTv4LandingPage: React.FC = () => {
-  const scrollToForm = () => {
-    const el = document.getElementById('hero-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <div className="font-sans bg-white text-mwc-navy">
-      <Nav />
-
-      {/* ------------------------------------------------------------------ */}
-      {/* HERO                                                                 */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="relative min-h-[90vh] bg-mwc-navy overflow-hidden pt-[72px]">
-        {/* Background image */}
-        <img
-          src={heroClinic}
-          alt="Men's Wellness Centers clinic"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-mwc-navy/95 via-mwc-navy/80 to-mwc-navy/40 z-[1]" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-[1200px] mx-auto px-5 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-            {/* Left: copy */}
-            <div className="lg:col-span-7">
+      {/* ============= HERO ============= */}
+      <header style={{ background: 'var(--mwc-navy)', minHeight: '90vh', display: 'flex', alignItems: 'center', paddingTop: 64, paddingBottom: 64 }}>
+        <div className="container-lg" style={{ width: '100%' }}>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
               <FadeIn>
-                <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-mwc-orange mb-4">
-                  {CONTENT.hero.eyebrow}
-                </p>
+                <Eyebrow>PHYSICIAN-LED · IN-PERSON · VIRGINIA</Eyebrow>
               </FadeIn>
               <FadeIn delay={0.06}>
                 <h1
-                  className="font-fraunces text-white leading-[1.02] tracking-[0.01em]"
-                  style={{ fontSize: 'clamp(44px, 5vw, 72px)' }}
+                  className="h-display"
+                  style={{
+                    ...display,
+                    color: '#fff',
+                    fontSize: 'clamp(2.75rem, 5vw, 4.5rem)',
+                    marginTop: 20,
+                  }}
                 >
-                  {CONTENT.hero.h1Line1}
-                  <br />
-                  <span>
-                    {CONTENT.hero.h1Line2.replace('.', '')}<span className="text-mwc-orange">.</span>
-                  </span>
+                  Testosterone, done right<span style={{ color: 'var(--mwc-orange)' }}>.</span>
                 </h1>
               </FadeIn>
               <FadeIn delay={0.12}>
-                <p className="mt-5 text-[19px] font-normal text-white/85 max-w-[540px] leading-[1.6]">
-                  {CONTENT.hero.subhead}
+                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 20, lineHeight: 1.5, maxWidth: 560, marginTop: 24 }}>
+                  Same-day labs. Face-to-face with a real doctor who walks you through every number. Three Virginia clinics. No apps, no mail-order scripts.
                 </p>
               </FadeIn>
-              <FadeIn delay={0.18}>
-                <TrustBadges />
-              </FadeIn>
-            </div>
 
-            {/* Right: form */}
-            <div className="lg:col-span-5">
-              <FadeIn delay={0.1}>
-                <HeroForm />
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------------ */}
-      {/* STATS STRIP                                                          */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-mwc-navy2 border-y border-mwc-orange/30 py-10">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-            {CONTENT.stats.map((stat, i) => (
-              <FadeIn key={stat.label} delay={i * 0.06}>
-                <div
-                  className={`text-center py-4 ${
-                    i < CONTENT.stats.length - 1 ? 'border-r border-white/10' : ''
-                  }`}
-                >
-                  <p className="font-fraunces text-[48px] text-white leading-none">{stat.value}</p>
-                  <p className="text-[13px] uppercase tracking-[0.14em] text-white/60 mt-2">{stat.label}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section divider */}
-      <div className="h-px w-full bg-mwc-orange/50" />
-
-      {/* ------------------------------------------------------------------ */}
-      {/* PROBLEM                                                              */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-mwc-cream py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <div className="grid lg:grid-cols-11 gap-12 lg:gap-16 items-start">
-            {/* Copy */}
-            <div className="lg:col-span-6">
-              <FadeIn>
-                <Eyebrow>{CONTENT.problem.eyebrow}</Eyebrow>
-              </FadeIn>
-              <FadeIn delay={0.06}>
-                <h2
-                  className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em] mb-6"
-                  style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-                >
-                  {CONTENT.problem.h2}
-                </h2>
-              </FadeIn>
-              <FadeIn delay={0.12}>
-                <div className="space-y-4">
-                  <p className="text-[17px] text-mwc-inkMuted leading-[1.6]">{CONTENT.problem.p1}</p>
-                  <p className="text-[17px] text-mwc-inkMuted leading-[1.6]">{CONTENT.problem.p2}</p>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Symptoms */}
-            <div className="lg:col-span-5 lg:pt-16">
-              <FadeIn delay={0.08}>
-                <ul>
-                  {CONTENT.problem.symptoms.map((s, i) => (
-                    <li
-                      key={i}
-                      className={`flex gap-3 text-[17px] text-mwc-navy py-4 ${
-                        i < CONTENT.problem.symptoms.length - 1 ? 'border-b border-mwc-line' : ''
-                      }`}
-                    >
-                      <span className="text-mwc-orange font-semibold flex-shrink-0">&ndash;</span>
-                      <span>{s}</span>
-                    </li>
+              {/* Trust row */}
+              <FadeIn delay={0.2}>
+                <div style={{ marginTop: 40, display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0,1fr))', gap: 16, maxWidth: 520 }}>
+                  {[
+                    ['HIPAA', 'Compliant'],
+                    ['CLIA', 'Certified'],
+                    ['LegitScript', 'Verified'],
+                    ['Licensed', 'in Virginia'],
+                  ].map(([a, b]) => (
+                    <div key={a} style={{ textAlign: 'left', opacity: 0.9 }}>
+                      <div
+                        aria-hidden
+                        style={{
+                          width: 42, height: 42, borderRadius: 8,
+                          border: '1px solid rgba(255,255,255,0.18)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          color: 'var(--mwc-orange)', fontFamily: "'Fraunces', serif", fontWeight: 700, fontSize: 14,
+                          marginBottom: 8,
+                        }}
+                      >
+                        {a.slice(0, 2).toUpperCase()}
+                      </div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', lineHeight: 1.3 }}>
+                        <div style={{ fontWeight: 600, color: 'rgba(255,255,255,0.9)' }}>{a}</div>
+                        {b}
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </FadeIn>
             </div>
+
+            {/* Form card */}
+            <FadeIn delay={0.1}>
+              <form
+                id="lead-form"
+                onSubmit={handleSubmit}
+                style={{
+                  background: 'var(--mwc-cream)',
+                  borderRadius: 16,
+                  padding: 32,
+                  border: '1px solid var(--mwc-line)',
+                }}
+              >
+                <h2 style={{ ...display, fontSize: 24, color: 'var(--mwc-ink)', fontWeight: 600 }}>
+                  Book your same-day visit
+                </h2>
+                <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <div>
+                    <label htmlFor="v4-firstname" className="field-label">First Name</label>
+                    <input id="v4-firstname" required value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} className="field-input" autoComplete="given-name" />
+                  </div>
+                  <div>
+                    <label htmlFor="v4-email" className="field-label">Email</label>
+                    <input id="v4-email" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="field-input" autoComplete="email" />
+                  </div>
+                  <div>
+                    <label htmlFor="v4-phone" className="field-label">Phone</label>
+                    <input id="v4-phone" type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="field-input" autoComplete="tel" />
+                  </div>
+                  <div>
+                    <label htmlFor="v4-location" className="field-label">Location</label>
+                    <select
+                      id="v4-location" required value={form.location}
+                      onChange={(e) => setForm({ ...form, location: e.target.value })}
+                      className="field-input"
+                      style={{ appearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%234A5160' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: 40 }}
+                    >
+                      <option value="" disabled>Select a location</option>
+                      <option value="richmond">Richmond</option>
+                      <option value="newport-news">Newport News</option>
+                      <option value="virginia-beach">Virginia Beach</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" className="btn-primary" style={{ width: '100%', height: 56, marginTop: 24, fontSize: 15 }}>
+                  Request My Appointment
+                </button>
+                <p style={{ marginTop: 12, fontSize: 13, color: 'var(--mwc-ink-muted)', textAlign: 'center' }}>
+                  No credit card. No commitment.
+                </p>
+                <p style={{ marginTop: 14, fontSize: 12, color: 'var(--mwc-ink-muted)', lineHeight: 1.5 }}>
+                  By submitting this form, you consent to receive calls, SMS, and emails from Men's Wellness Centers regarding your inquiry. Message and data rates may apply. Reply STOP to opt out.
+                </p>
+              </form>
+            </FadeIn>
+          </div>
+        </div>
+      </header>
+
+      {/* ============= STATS STRIP ============= */}
+      <section style={{ background: 'var(--mwc-navy-2)', borderTop: '1px solid var(--mwc-orange)', borderBottom: '1px solid var(--mwc-orange)', padding: '40px 0' }}>
+        <div className="container-lg">
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {C.stats.map((s, i) => (
+              <div
+                key={s.label}
+                style={{
+                  padding: '12px 24px', textAlign: 'center',
+                  borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+                }}
+              >
+                <div style={{ ...display, fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, color: '#fff', lineHeight: 1 }}>
+                  {s.value}
+                </div>
+                <div style={{ marginTop: 10, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}>
+                  {s.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* HOW IT WORKS                                                         */}
-      {/* ------------------------------------------------------------------ */}
-      <section id="how-it-works" className="bg-white py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
-            <div className="text-center max-w-[560px] mx-auto mb-16">
-              <Eyebrow>{CONTENT.howItWorks.eyebrow}</Eyebrow>
-              <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
-                style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-              >
-                {CONTENT.howItWorks.h2}
-              </h2>
+      {/* ============= PROBLEM ============= */}
+      <section className="section" style={{ background: 'var(--mwc-cream)' }}>
+        <div className="container-lg">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+            <div>
+              <FadeIn><Eyebrow tone="navy">IF THIS SOUNDS LIKE YOU</Eyebrow></FadeIn>
+              <FadeIn delay={0.05}>
+                <h2 className="h2" style={{ marginTop: 16, color: 'var(--mwc-ink)', maxWidth: 520 }}>
+                  You don't feel like yourself anymore. Your labs say you're "fine."
+                </h2>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="body-lg" style={{ marginTop: 24, color: 'var(--mwc-ink-muted)' }}>
+                  {C.problem.p1}
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <p className="body-lg" style={{ marginTop: 18, color: 'var(--mwc-ink-muted)' }}>
+                  {C.problem.p2}
+                </p>
+              </FadeIn>
             </div>
-          </FadeIn>
+            <FadeIn delay={0.1}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, borderTop: '1px solid var(--mwc-line)' }}>
+                {C.problem.symptoms.map((s) => (
+                  <li
+                    key={s}
+                    className="body-lg"
+                    style={{
+                      borderBottom: '1px solid var(--mwc-line)',
+                      padding: '20px 0',
+                      color: 'var(--mwc-ink)',
+                      display: 'flex', gap: 16,
+                    }}
+                  >
+                    <span aria-hidden style={{ color: 'var(--mwc-orange)' }}>—</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {CONTENT.howItWorks.steps.map((step, i) => (
-              <FadeIn key={step.num} delay={i * 0.06}>
-                <div className="p-8 rounded-2xl border border-mwc-line hover:border-mwc-orange transition-colors duration-200">
-                  <p className="font-fraunces text-[56px] text-mwc-orange leading-none mb-4">
+      {/* ============= HOW IT WORKS ============= */}
+      <section id="how" className="section" style={{ background: 'var(--mwc-bone)' }}>
+        <div className="container-lg">
+          <FadeIn><Eyebrow tone="navy">ONE VISIT. ONE PLAN.</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: 'var(--mwc-ink)', maxWidth: 720 }}>
+              Walk in with questions. Walk out with a protocol.
+            </h2>
+          </FadeIn>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-10" style={{ marginTop: 56 }}>
+            {C.howItWorks.steps.map((step, i) => (
+              <FadeIn key={step.num} delay={0.06 * i}>
+                <div className="hairline-card" style={{ padding: 32, height: '100%' }}>
+                  <div style={{ ...display, fontSize: 56, color: 'var(--mwc-orange)', fontWeight: 600, lineHeight: 1 }}>
                     {step.num}
+                  </div>
+                  <h3 style={{ ...display, fontSize: 22, color: 'var(--mwc-ink)', marginTop: 20, fontWeight: 600 }}>
+                    {step.title}
+                  </h3>
+                  <p style={{ marginTop: 12, color: 'var(--mwc-ink-muted)', fontSize: 16, lineHeight: 1.6 }}>
+                    {step.desc}
                   </p>
-                  <h3 className="font-fraunces text-[22px] text-mwc-navy mb-3">{step.title}</h3>
-                  <p className="text-[16px] text-mwc-inkMuted leading-[1.6]">{step.desc}</p>
                 </div>
               </FadeIn>
             ))}
           </div>
-
-          <FadeIn delay={0.18}>
-            <p className="text-[18px] text-mwc-navy text-center border-t border-mwc-line mt-16 pt-8 max-w-[640px] mx-auto">
-              {CONTENT.howItWorks.footer}
+          <FadeIn delay={0.2}>
+            <p style={{ marginTop: 48, textAlign: 'center', fontSize: 18, color: 'var(--mwc-ink)' }}>
+              {C.howItWorks.footer}
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* COMPARISON                                                           */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-mwc-navy py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
-            <div className="text-center">
-              <Eyebrow light>{CONTENT.comparison.eyebrow}</Eyebrow>
-              <h2
-                className="font-fraunces text-white leading-[1.06] tracking-[0.005em]"
-                style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-              >
-                {CONTENT.comparison.h2}
-              </h2>
-            </div>
+      {/* ============= COMPARISON ============= */}
+      <section className="section" style={{ background: 'var(--mwc-navy)' }}>
+        <div className="container-lg">
+          <FadeIn><Eyebrow tone="orange">MOST CLINICS HAND YOU A LAB SLIP. WE DON'T.</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: '#fff', maxWidth: 720 }}>
+              What in-person care actually looks like.
+            </h2>
           </FadeIn>
-
           <FadeIn delay={0.1}>
-            <div className="max-w-[800px] mx-auto mt-12">
-              {/* Header row */}
-              <div className="grid grid-cols-2 pb-4 mb-2">
-                <p className="text-[13px] font-semibold uppercase tracking-wide text-white/50">
-                  {CONTENT.comparison.leftHeader}
-                </p>
-                <p className="text-[13px] font-semibold uppercase tracking-wide text-mwc-orange">
-                  {CONTENT.comparison.rightHeader}
-                </p>
+            <div style={{ marginTop: 56, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+              <div className="grid grid-cols-2" style={{ padding: '20px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>
+                  {C.comparison.leftHeader}
+                </div>
+                <div style={{ fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--mwc-orange)' }}>
+                  {C.comparison.rightHeader}
+                </div>
               </div>
-              {/* Data rows */}
-              {CONTENT.comparison.rows.map((row, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-2 border-t border-white/10 py-5 gap-4"
-                >
-                  <p className="text-[16px] text-white/55">{row.left}</p>
-                  <p className="text-[16px] font-semibold text-white">{row.right}</p>
+              {C.comparison.rows.map((r) => (
+                <div key={r.left} className="grid grid-cols-2 gap-6" style={{ padding: '24px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                  <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 17, lineHeight: 1.5, fontWeight: 400 }}>
+                    {r.left}
+                  </div>
+                  <div style={{ color: '#fff', fontSize: 17, lineHeight: 1.5, fontWeight: 600 }}>
+                    {r.right}
+                  </div>
                 </div>
               ))}
             </div>
@@ -640,133 +487,165 @@ const TRTv4LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* OUTCOMES                                                             */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-mwc-cream py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <Eyebrow>{CONTENT.outcomes.eyebrow}</Eyebrow>
-              <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
-                style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-              >
-                {CONTENT.outcomes.h2}
-              </h2>
-            </div>
+      {/* ============= OUTCOMES ============= */}
+      <section className="section" style={{ background: 'var(--mwc-cream)' }}>
+        <div className="container-lg">
+          <FadeIn><Eyebrow tone="navy">OUTCOMES</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: 'var(--mwc-ink)', maxWidth: 720 }}>
+              Real numbers from real patients.
+            </h2>
           </FadeIn>
-
-          {/* Stat blocks */}
-          <FadeIn delay={0.06}>
-            <div className="flex flex-col sm:flex-row gap-8 max-w-[800px] mx-auto">
-              {CONTENT.outcomes.stats.map((s, i) => (
-                <div key={i} className="flex-1 border-l-4 border-mwc-orange pl-8 py-2">
-                  <p
-                    className="font-fraunces text-mwc-navy leading-none"
-                    style={{ fontSize: 'clamp(56px, 7vw, 80px)' }}
-                  >
+          <div className="grid md:grid-cols-2 gap-10 md:gap-20" style={{ marginTop: 56 }}>
+            {C.outcomes.stats.map((s) => (
+              <FadeIn key={s.value}>
+                <div style={{ borderTop: '1px solid var(--mwc-orange)', paddingTop: 32 }}>
+                  <div style={{ ...display, fontSize: 'clamp(3.5rem, 7vw, 6rem)', color: 'var(--mwc-ink)', fontWeight: 600, lineHeight: 1 }}>
                     {s.value}
-                  </p>
-                  <p className="text-[18px] text-mwc-inkMuted leading-[1.5] mt-3 max-w-[280px]">
-                    {s.desc}
+                  </div>
+                  <p style={{ marginTop: 20, fontSize: 18, color: 'var(--mwc-ink-muted)', lineHeight: 1.5, maxWidth: 380 }}>
+                    {s.desc}<sup>*</sup>
                   </p>
                 </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <p className="text-[13px] text-mwc-inkMuted/70 mt-6 text-center">
-              {CONTENT.outcomes.footnote}
+              </FadeIn>
+            ))}
+          </div>
+          <FadeIn delay={0.15}>
+            <p style={{ marginTop: 32, fontSize: 13, color: 'var(--mwc-ink-muted)' }}>
+              *{C.outcomes.footnote}
             </p>
           </FadeIn>
 
-          {/* Testimonials */}
-          <FadeIn delay={0.12}>
-            <div className="mt-16 flex gap-6 overflow-x-auto pb-4 -mx-5 px-5 snap-x snap-mandatory">
-              {CONTENT.outcomes.testimonials.map((t, i) => (
-                <div
-                  key={i}
-                  className="min-w-[320px] max-w-[380px] bg-white rounded-2xl p-8 border border-mwc-line flex-shrink-0 snap-start"
-                >
-                  <p className="font-fraunces text-[20px] text-mwc-navy leading-[1.5] mb-6">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <p className="text-[14px] text-mwc-inkMuted tracking-wide">{t.attr}</p>
-                </div>
+          {/* Testimonials scroller */}
+          <div style={{ marginTop: 64, overflowX: 'auto', scrollSnapType: 'x mandatory' }} className="scrollbar-hide">
+            <div className="grid md:grid-cols-3 gap-6" style={{ minWidth: 'min(900px, 100%)' }}>
+              {C.outcomes.testimonials.map((t, i) => (
+                <FadeIn key={i} delay={0.05 * i}>
+                  <figure className="hairline-card" style={{ padding: 32, background: 'var(--mwc-bone)', height: '100%', scrollSnapAlign: 'start' }}>
+                    <blockquote style={{ ...display, fontSize: 20, color: 'var(--mwc-ink)', lineHeight: 1.4, fontWeight: 500, margin: 0 }}>
+                      "{t.quote}"
+                    </blockquote>
+                    <figcaption style={{ marginTop: 24, fontSize: 13, color: 'var(--mwc-ink-muted)', letterSpacing: '0.05em' }}>
+                      — {t.attr}
+                    </figcaption>
+                  </figure>
+                </FadeIn>
               ))}
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* PHYSICIAN                                                            */}
-      {/* ------------------------------------------------------------------ */}
-      <section id="physician" className="bg-white py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
+      {/* ============= PHYSICIAN ============= */}
+      <section id="doctor" className="section" style={{ background: 'var(--mwc-bone)' }}>
+        <div className="container-lg">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <FadeIn>
-              <img
-                src={drPapariello}
-                alt={CONTENT.physician.photoAlt}
-                className="rounded-2xl object-cover w-full aspect-[3/4] max-h-[520px]"
-              />
+              <div
+                role="img"
+                aria-label="Real photo of Dr. Steven Papariello, Medical Director — placeholder"
+                style={{
+                  background: 'var(--mwc-navy)',
+                  aspectRatio: '4 / 5',
+                  borderRadius: 16,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'rgba(255,255,255,0.5)', fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase',
+                  textAlign: 'center', padding: 24,
+                }}
+              >
+                REAL_PHOTO_NEEDED<br/>Dr. Steven Papariello, MD
+              </div>
             </FadeIn>
-
-            {/* Copy */}
-            <FadeIn delay={0.08}>
-              <div>
-                <Eyebrow>{CONTENT.physician.eyebrow}</Eyebrow>
-                <h2 className="font-fraunces text-[40px] text-mwc-navy leading-[1.08] tracking-[0.005em] mb-6">
-                  {CONTENT.physician.h2}
+            <div>
+              <FadeIn><Eyebrow tone="navy">PHYSICIAN-LED CARE</Eyebrow></FadeIn>
+              <FadeIn delay={0.05}>
+                <h2 className="h2" style={{ marginTop: 16, color: 'var(--mwc-ink)' }}>
+                  You'll see a real doctor. Every visit.
                 </h2>
-                <p className="text-[17px] text-mwc-inkMuted leading-[1.6]">{CONTENT.physician.body}</p>
-                <div className="inline-flex flex-wrap gap-2 mt-6">
-                  {CONTENT.physician.credentials.map((c) => (
-                    <span
-                      key={c}
-                      className="border border-mwc-navy text-mwc-navy text-[12px] font-semibold tracking-wide uppercase px-4 py-2 rounded-full"
-                    >
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="body-lg" style={{ marginTop: 24, color: 'var(--mwc-ink-muted)' }}>
+                  {C.physician.body}
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                  {C.physician.credentials.map((c) => (
+                    <span key={c} style={{ border: '1px solid var(--mwc-navy)', color: 'var(--mwc-navy)', borderRadius: 999, padding: '8px 16px', fontSize: 13, fontWeight: 500 }}>
                       {c}
                     </span>
                   ))}
                 </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* WHY MWC                                                              */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-mwc-navy py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
-            <div className="text-center mb-4">
-              <Eyebrow light>{CONTENT.whyMwc.eyebrow}</Eyebrow>
-              <h2
-                className="font-fraunces text-white leading-[1.06] tracking-[0.005em]"
-                style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-              >
-                {CONTENT.whyMwc.h2}
-              </h2>
-            </div>
+      {/* ============= WHY MWC ============= */}
+      <section className="section" style={{ background: 'var(--mwc-navy)' }}>
+        <div className="container-lg">
+          <FadeIn><Eyebrow tone="orange">WHY MWC</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: '#fff', maxWidth: 720 }}>
+              Five things we don't compromise on.
+            </h2>
           </FadeIn>
-
-          <div className="max-w-[800px] mx-auto mt-8">
-            {CONTENT.whyMwc.items.map((item, i) => (
-              <FadeIn key={item.num} delay={i * 0.06}>
-                <div className="flex gap-8 items-start border-t border-white/10 py-10">
-                  <p className="font-fraunces text-[32px] text-mwc-orange w-16 flex-shrink-0 pt-1 leading-none">
+          <div style={{ marginTop: 56, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            {C.whyMwc.items.map((item, i) => (
+              <FadeIn key={item.num} delay={0.04 * i}>
+                <div className="grid md:grid-cols-12 gap-6" style={{ padding: '32px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', alignItems: 'baseline' }}>
+                  <div className="md:col-span-1" style={{ ...display, color: 'var(--mwc-orange)', fontSize: 32, fontWeight: 600 }}>
                     {item.num}
+                  </div>
+                  <h3 className="md:col-span-4" style={{ ...display, color: '#fff', fontSize: 24, fontWeight: 600 }}>
+                    {item.title}
+                  </h3>
+                  <p className="md:col-span-7" style={{ color: 'rgba(255,255,255,0.75)', fontSize: 17, lineHeight: 1.55 }}>
+                    {item.desc}
                   </p>
-                  <div>
-                    <h3 className="font-fraunces text-[24px] text-white leading-tight">{item.title}</h3>
-                    <p className="text-[17px] text-white/70 mt-2 leading-[1.6]">{item.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============= LOCATIONS ============= */}
+      <section id="locations" className="section" style={{ background: 'var(--mwc-cream)' }}>
+        <div className="container-lg">
+          <FadeIn><Eyebrow tone="navy">THREE VIRGINIA CLINICS</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: 'var(--mwc-ink)', maxWidth: 720 }}>
+              Same-day appointments at every location.
+            </h2>
+          </FadeIn>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8" style={{ marginTop: 56 }}>
+            {C.locations.map((loc) => (
+              <FadeIn key={loc.value}>
+                <div className="hairline-card" style={{ background: 'var(--mwc-bone)', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  {/* Static map placeholder — REPLACE_WITH_GOOGLE_MAPS_API_KEY */}
+                  <div
+                    style={{
+                      aspectRatio: '16 / 9',
+                      background: `linear-gradient(135deg, var(--mwc-navy) 0%, var(--mwc-navy-2) 100%)`,
+                      backgroundImage: `url("https://maps.googleapis.com/maps/api/staticmap?center=${encodeURIComponent(loc.address.replace('\n', ' '))}&zoom=14&size=600x340&maptype=roadmap&key=REPLACE_WITH_GOOGLE_MAPS_API_KEY")`,
+                      backgroundSize: 'cover', backgroundPosition: 'center',
+                      borderBottom: '1px solid var(--mwc-line)',
+                    }}
+                    aria-label={`Map of ${loc.city}`}
+                  />
+                  <div style={{ padding: 28, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <h3 style={{ ...display, fontSize: 28, color: 'var(--mwc-ink)', fontWeight: 600 }}>{loc.city}</h3>
+                    <address style={{ fontStyle: 'normal', marginTop: 12, color: 'var(--mwc-ink-muted)', fontSize: 16, lineHeight: 1.55, whiteSpace: 'pre-line' }}>
+                      {loc.address}
+                    </address>
+                    <a href={loc.phoneHref} style={{ marginTop: 12, color: 'var(--mwc-orange)', fontSize: 16, fontWeight: 600 }}>
+                      {loc.phone}
+                    </a>
+                    <a href={loc.mapsUrl} target="_blank" rel="noopener noreferrer" style={{ marginTop: 16, fontSize: 13, fontWeight: 600, color: 'var(--mwc-navy)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                      Get Directions →
+                    </a>
                   </div>
                 </div>
               </FadeIn>
@@ -775,88 +654,26 @@ const TRTv4LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* LOCATIONS                                                            */}
-      {/* ------------------------------------------------------------------ */}
-      <section id="locations" className="bg-mwc-cream py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <Eyebrow>OUR LOCATIONS</Eyebrow>
-              <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
-                style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-              >
-                Three Virginia clinics, ready today.
-              </h2>
-            </div>
+      {/* ============= FAQ ============= */}
+      <section id="faq" className="section" style={{ background: 'var(--mwc-bone)' }}>
+        <div className="container-lg" style={{ maxWidth: 880 }}>
+          <FadeIn><Eyebrow tone="navy">COMMON QUESTIONS</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: 'var(--mwc-ink)' }}>
+              Everything you might be wondering.
+            </h2>
           </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {CONTENT.locations.map((loc, i) => (
-              <FadeIn key={loc.city} delay={i * 0.06}>
-                <div className="bg-white rounded-2xl p-8 border border-mwc-line flex flex-col h-full">
-                  <h3 className="font-fraunces text-[28px] text-mwc-navy mb-3">{loc.city}</h3>
-                  <p className="text-[16px] text-mwc-inkMuted leading-[1.6] whitespace-pre-line mb-3">
-                    {loc.address}
-                  </p>
-                  <a
-                    href={loc.phoneHref}
-                    className="text-[16px] font-semibold text-mwc-orange hover:underline"
+          <FadeIn delay={0.1}>
+            <Accordion type="single" collapsible className="w-full" style={{ marginTop: 48 }}>
+              {C.faq.map((f, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} style={{ borderBottom: '1px solid var(--mwc-line)' }}>
+                  <AccordionTrigger
+                    style={{ ...display, fontSize: 19, color: 'var(--mwc-ink)', fontWeight: 600, padding: '24px 0', textAlign: 'left' }}
                   >
-                    {loc.phone}
-                  </a>
-                  <a
-                    href={loc.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 text-[14px] text-mwc-navy/60 underline underline-offset-4 hover:text-mwc-navy"
-                  >
-                    Get Directions
-                  </a>
-                  <button
-                    onClick={scrollToForm}
-                    className="mt-6 w-full h-12 bg-mwc-navy text-white font-semibold rounded-xl text-sm hover:bg-mwc-navy2 transition-colors"
-                  >
-                    Book at {loc.city}
-                  </button>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------------ */}
-      {/* FAQ                                                                  */}
-      {/* ------------------------------------------------------------------ */}
-      <section id="faq" className="bg-white py-24">
-        <div className="max-w-[1200px] mx-auto px-5">
-          <FadeIn>
-            <div className="text-center max-w-[680px] mx-auto">
-              <Eyebrow>COMMON QUESTIONS</Eyebrow>
-              <h2
-                className="font-fraunces text-mwc-navy leading-[1.06] tracking-[0.005em]"
-                style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}
-              >
-                What patients ask before their first visit.
-              </h2>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.08}>
-            <Accordion type="single" collapsible className="w-full max-w-[680px] mx-auto mt-12">
-              {CONTENT.faq.map((item, i) => (
-                <AccordionItem
-                  key={i}
-                  value={`faq-${i}`}
-                  className="border-b border-mwc-line"
-                >
-                  <AccordionTrigger className="text-[17px] font-medium text-mwc-navy text-left py-5 hover:no-underline hover:text-mwc-navy">
-                    {item.q}
+                    {f.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-[16px] text-mwc-inkMuted leading-[1.7] pb-5">
-                    {item.a}
+                  <AccordionContent style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--mwc-ink-muted)', paddingBottom: 24 }}>
+                    {f.a}
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -865,120 +682,89 @@ const TRTv4LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* FINAL CTA                                                            */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-mwc-navy py-24 border-t border-mwc-orange/30">
-        <div className="max-w-[1200px] mx-auto px-5 text-center">
-          <FadeIn>
-            <Eyebrow light>{CONTENT.finalCta.eyebrow}</Eyebrow>
-          </FadeIn>
-          <FadeIn delay={0.06}>
-            <h2
-              className="font-fraunces text-white leading-[1.04] tracking-[0.01em]"
-              style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}
-            >
-              {CONTENT.finalCta.h2}
+      {/* ============= FINAL CTA ============= */}
+      <section style={{ background: 'var(--mwc-navy)', borderTop: '1px solid var(--mwc-orange)', padding: '96px 0' }}>
+        <div className="container-lg" style={{ textAlign: 'center' }}>
+          <FadeIn><Eyebrow>READY WHEN YOU ARE</Eyebrow></FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="h2" style={{ marginTop: 16, color: '#fff' }}>
+              Book your same-day visit.
             </h2>
           </FadeIn>
-          <FadeIn delay={0.12}>
-            <p className="text-[20px] text-white/75 mt-4 mb-10">{CONTENT.finalCta.subhead}</p>
+          <FadeIn delay={0.1}>
+            <p style={{ marginTop: 16, fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
+              Three Virginia clinics. On-site labs. A real doctor.
+            </p>
           </FadeIn>
-          <FadeIn delay={0.16}>
-            <button
-              onClick={scrollToForm}
-              className="inline-flex items-center justify-center h-14 px-10 bg-mwc-orange text-white font-semibold text-[15px] rounded-full hover:bg-[#C95A20] transition-colors active:scale-[0.98]"
-            >
-              {CONTENT.finalCta.cta}
+          <FadeIn delay={0.15}>
+            <button onClick={scrollToForm} className="btn-primary" style={{ marginTop: 32, height: 56, padding: '0 32px', fontSize: 15 }}>
+              Request My Appointment
             </button>
-            <p className="text-[13px] text-white/50 mt-4">{CONTENT.finalCta.sub}</p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p style={{ marginTop: 16, fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
+              No credit card. No commitment.
+            </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* FOOTER                                                               */}
-      {/* ------------------------------------------------------------------ */}
-      <footer className="bg-mwc-navy2 py-16">
-        <div className="max-w-[1200px] mx-auto px-5">
+      {/* ============= FOOTER ============= */}
+      <footer style={{ background: 'var(--mwc-navy-2)', padding: '64px 0 80px' }}>
+        <div className="container-lg">
           <div className="grid md:grid-cols-3 gap-10">
-            {/* Locations */}
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40 mb-4">
-                Locations
-              </p>
-              <div className="space-y-4">
-                {CONTENT.footer.locations.map((loc) => (
-                  <div key={loc.city}>
-                    <p className="text-[14px] text-white/80 font-semibold">{loc.city}</p>
-                    <p className="text-[13px] text-white/60 leading-relaxed">{loc.address}</p>
-                    <a
-                      href={loc.phoneHref}
-                      className="text-[13px] text-white/60 hover:text-white transition-colors"
-                    >
-                      {loc.phone}
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Care */}
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40 mb-4">
-                Care
-              </p>
-              <ul className="space-y-2">
-                {CONTENT.footer.care.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-[14px] text-white/60 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
+              <h4 style={{ ...display, color: '#fff', fontSize: 16, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Locations</h4>
+              <ul style={{ marginTop: 20, listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {C.footer.locations.map((l) => (
+                  <li key={l.city} style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, lineHeight: 1.5 }}>
+                    <div style={{ color: '#fff', fontWeight: 600 }}>{l.city}</div>
+                    {l.address}<br/>
+                    <a href={l.phoneHref} style={{ color: 'var(--mwc-orange)' }}>{l.phone}</a>
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* Legal */}
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40 mb-4">
-                Legal
-              </p>
-              <ul className="space-y-2">
-                {CONTENT.footer.legal.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-[14px] text-white/60 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
+              <h4 style={{ ...display, color: '#fff', fontSize: 16, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Care</h4>
+              <ul style={{ marginTop: 20, listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {C.footer.care.map((l) => (
+                  <li key={l.href}>
+                    <a href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14 }}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ ...display, color: '#fff', fontSize: 16, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Legal</h4>
+              <ul style={{ marginTop: 20, listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {C.footer.legal.map((l) => (
+                  <li key={l.href}>
+                    <a href={l.href} style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14 }}>{l.label}</a>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-
-          {/* Bottom bar */}
-          <div className="border-t border-white/10 pt-6 mt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <p className="text-[13px] text-white/45">
-              &copy; 2026 Men&apos;s Wellness Centers &middot; Licensed in Virginia &middot; HIPAA Compliant
-            </p>
-            <a
-              href={CONTENT.phoneHref}
-              className="text-[13px] text-white/45 hover:text-white/70 transition-colors"
-            >
-              {CONTENT.phone}
-            </a>
+          <div style={{ marginTop: 48, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.08)', fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>
+            © 2026 Men's Wellness Centers · Licensed in Virginia · HIPAA Compliant
           </div>
         </div>
       </footer>
 
-      {/* Mobile sticky CTA */}
-      <MobileStickyBar />
+      {/* ============= STICKY MOBILE CTA ============= */}
+      <div
+        className="md:hidden"
+        style={{
+          position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 65,
+          padding: '12px 16px calc(12px + env(safe-area-inset-bottom)) 16px',
+          background: 'var(--mwc-navy)', borderTop: '1px solid rgba(255,255,255,0.08)',
+        }}
+      >
+        <button onClick={scrollToForm} className="btn-primary" style={{ width: '100%', height: 56, fontSize: 15 }}>
+          Book Same-Day Visit
+        </button>
+      </div>
     </div>
   );
 };
