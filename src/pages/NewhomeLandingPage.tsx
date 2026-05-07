@@ -419,7 +419,7 @@ const MobileStickyBar: React.FC = () => {
 // ---------------------------------------------------------------------------
 // Main Page
 // ---------------------------------------------------------------------------
-const TRTv4LandingPage: React.FC = () => {
+const NewhomeLandingPage: React.FC = () => {
   const scrollToForm = () => {
     const el = document.getElementById('hero-form');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -983,4 +983,4 @@ const TRTv4LandingPage: React.FC = () => {
   );
 };
 
-export default TRTv4LandingPage;
+export default NewhomeLandingPage;
