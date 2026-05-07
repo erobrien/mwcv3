@@ -71,10 +71,10 @@ export const TRTFinalCTA = () => {
               fontWeight: 700,
             }}
           >
-            READY TO START TRT, ED, OR WEIGHT-LOSS TREATMENT?
+            READY TO BOOK YOUR FIRST VISIT?
           </h2>
-          <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-            Walk into any of our 3 Virginia centers for a same-day TRT, ED, or weight-loss consultation.
+          <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
+            Start here. You will pick your location, time, and provider on the next step.
           </p>
 
           <div className="flex items-center justify-center gap-2 mt-4">
@@ -95,7 +95,7 @@ export const TRTFinalCTA = () => {
             </p>
 
             <ul className="mt-6 space-y-3">
-              {["No obligation", "Same-day appointments", "100% confidential"].map((t) => (
+              {["100% confidential", "FSA/HSA accepted", "Same-day visits available"].map((t) => (
                 <li key={t} className="flex items-center gap-3" style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}>
                   <Check className="h-5 w-5 flex-shrink-0" strokeWidth={3} style={{ color: "#2ECC71" }} />
                   <span className="text-base">{t}</span>
@@ -149,7 +149,7 @@ export const TRTFinalCTA = () => {
               fontWeight: 700,
             }}
           >
-            Book My Consultation
+            Book My Consult
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -246,12 +246,12 @@ export const TRTFinalCTA = () => {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
             >
-              Claim My Consultation
+              Book My Consult
             </button>
           </form>
 
           <p className="text-center text-xs mt-4" style={{ color: "#999999", fontFamily: "Inter, sans-serif" }}>
-            HIPAA Compliant · No Spam · Response Within 1 Hour
+            HIPAA Compliant · No Spam · Book entirely online
           </p>
 
           <p className="text-center text-sm mt-3">
