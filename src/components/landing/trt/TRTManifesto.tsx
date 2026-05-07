@@ -71,24 +71,6 @@ export const TRTManifesto = () => {
               </div>
             ))}
           </div>
-          <div className="flex gap-8 mt-8">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col">
-                <span
-                  className="font-bold"
-                  style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(24px, 3vw, 32px)", color: "#FFFFFF", fontWeight: 700 }}
-                >
-                  {s.num}
-                </span>
-                <span
-                  className="text-xs uppercase mt-1"
-                  style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
-                >
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Right: image (mobile first) */}
