@@ -2,21 +2,16 @@ import { useEffect } from "react";
 import { TRTHeader } from "@/components/landing/trt/TRTHeader";
 import { TRTHero } from "@/components/landing/trt/TRTHero";
 import { TRTTrustBar } from "@/components/landing/trt/TRTTrustBar";
-
-
 import { TRTHowItWorks } from "@/components/landing/trt/TRTHowItWorks";
-
 import { TRTResults } from "@/components/landing/trt/TRTResults";
 import { TRTManifesto } from "@/components/landing/trt/TRTManifesto";
 import { TRTMarquee } from "@/components/landing/trt/TRTMarquee";
-import { TRTPricingCTA } from "@/components/landing/trt/TRTPricingCTA";
 import { TRTPillars } from "@/components/landing/trt/TRTPillars";
 import { TRTFinalCTA } from "@/components/landing/trt/TRTFinalCTA";
 import { TRTLocations } from "@/components/landing/trt/TRTLocations";
 import { TRTFAQ } from "@/components/landing/trt/TRTFAQ";
 import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
-import { TRTInlineLeadMobile } from "@/components/landing/trt/TRTInlineLeadMobile";
 
 const NewLandingPage = () => {
   useEffect(() => {
@@ -32,12 +27,10 @@ const NewLandingPage = () => {
         <TRTHero />
         <TRTTrustBar />
         <TRTHowItWorks />
-        <TRTInlineLeadMobile />
         <TRTManifesto />
         <TRTResults />
         <TRTPillars />
         <TRTMarquee />
-        <TRTPricingCTA />
         <TRTLocations />
         <TRTFAQ />
         <TRTFinalCTA />
@@ -50,3 +43,4 @@ const NewLandingPage = () => {
 };
 
 export default NewLandingPage;
+

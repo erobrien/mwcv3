@@ -3,16 +3,20 @@ import { Check, MapPin } from "lucide-react";
 
 export const TRTFinalCTA = () => {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validatePhone = (v: string) => v.replace(/\D/g, "").length >= 10;
+  const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!name.trim()) errs.name = "Name is required";
+    if (!email.trim()) errs.email = "Email is required";
+    else if (!validateEmail(email)) errs.email = "Please enter a valid email";
     if (!phone.trim()) errs.phone = "Phone is required";
     else if (!validatePhone(phone)) errs.phone = "Please enter a valid phone number";
     if (!location) errs.location = "Please select a location";
@@ -20,7 +24,7 @@ export const TRTFinalCTA = () => {
     if (Object.keys(errs).length > 0) return;
 
     const params = new URLSearchParams({
-      name, phone, location, source: "landing-page", service: "trt",
+      name, email, phone, location, source: "landing-page", service: "trt",
     });
     const urls: Record<string, string> = {
       richmond: "https://menswellnesscenters.com/thank-you-richmond/",
@@ -91,7 +95,7 @@ export const TRTFinalCTA = () => {
             </p>
 
             <ul className="mt-6 space-y-3">
-              {["100% confidential", "FSA/HSA accepted", "Same-day visits available"].map((t) => (
+              {["100% confidential", "Face-to-face with a physician", "Same-day visits available"].map((t) => (
                 <li key={t} className="flex items-center gap-3" style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}>
                   <Check className="h-5 w-5 flex-shrink-0" strokeWidth={3} style={{ color: "#2ECC71" }} />
                   <span className="text-base">{t}</span>
@@ -162,6 +166,21 @@ export const TRTFinalCTA = () => {
                 autoComplete="name"
               />
               {errors.name && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.name}</p>}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                style={inputStyle}
+                className="placeholder:text-[#999999]"
+                autoComplete="email"
+              />
+              {errors.email && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.email}</p>}
             </div>
 
             <div>
