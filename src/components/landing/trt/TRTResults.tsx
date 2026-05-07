@@ -72,17 +72,6 @@ export const TRTResults = () => (
         ))}
       </div>
 
-      <div className="mt-8 text-center">
-        <a
-          href="https://www.google.com/search?q=Men%27s+Wellness+Centers+Virginia+reviews"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-semibold underline underline-offset-4"
-          style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}
-        >
-          Read all 200+ reviews on Google →
-        </a>
-      </div>
     </div>
   </section>
 );
