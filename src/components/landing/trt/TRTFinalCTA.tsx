@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Check, MapPin } from "lucide-react";
 
 export const TRTFinalCTA = () => {
   const [name, setName] = useState("");
