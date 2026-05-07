@@ -152,7 +152,7 @@ export const TRTFinalCTA = () => {
             <div>
               <input
                 type="text"
-                placeholder="Full Name"
+                placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onFocus={handleFocus}
@@ -162,25 +162,6 @@ export const TRTFinalCTA = () => {
                 autoComplete="name"
               />
               {errors.name && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.name}</p>}
-            </div>
-
-            <div>
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={handleFocus}
-                onBlur={(e) => {
-                  handleBlur(e);
-                  if (email && !validateEmail(email)) setErrors((p) => ({ ...p, email: "Please enter a valid email" }));
-                  else setErrors((p) => { const { email: _, ...rest } = p; return rest; });
-                }}
-                style={inputStyle}
-                className="placeholder:text-[#999999]"
-                autoComplete="email"
-              />
-              {errors.email && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.email}</p>}
             </div>
 
             <div>
