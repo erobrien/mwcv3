@@ -12,6 +12,7 @@ import { TRTLocations } from "@/components/landing/trt/TRTLocations";
 import { TRTFAQ } from "@/components/landing/trt/TRTFAQ";
 import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
+import { SectionReveal } from "@/components/landing/trt/SectionReveal";
 
 const NewLandingPage = () => {
   useEffect(() => {
@@ -25,15 +26,15 @@ const NewLandingPage = () => {
       <TRTHeader />
       <main className="flex-1">
         <TRTHero />
-        <TRTTrustBar />
-        <TRTHowItWorks />
-        <TRTManifesto />
-        <TRTResults />
-        <TRTPillars />
-        <TRTMarquee />
-        <TRTLocations />
-        <TRTFAQ />
-        <TRTFinalCTA />
+        <SectionReveal><TRTTrustBar /></SectionReveal>
+        <SectionReveal><TRTHowItWorks /></SectionReveal>
+        <SectionReveal><TRTManifesto /></SectionReveal>
+        <SectionReveal><TRTResults /></SectionReveal>
+        <SectionReveal><TRTPillars /></SectionReveal>
+        <SectionReveal><TRTMarquee /></SectionReveal>
+        <SectionReveal><TRTLocations /></SectionReveal>
+        <SectionReveal><TRTFAQ /></SectionReveal>
+        <SectionReveal><TRTFinalCTA /></SectionReveal>
       </main>
       <TRTFooter />
       <TRTMobileCTA />
