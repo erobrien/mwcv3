@@ -12,7 +12,7 @@ const steps = [
   {
     num: "1",
     title: "Same-Day Blood Work",
-    desc: "On-site labs. Results typically reviewed in minutes — not 2 weeks.",
+    desc: "On-site labs. Results typically reviewed in minutes, not 2 weeks.",
   },
   {
     num: "2",
