@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export const TRTHeader = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +36,7 @@ export const TRTHeader = () => {
         {/* Desktop right */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="tel:+18663444955"
+            href="tel:8663444955"
             className="text-sm font-medium transition-opacity hover:opacity-80"
             style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
           >
@@ -44,47 +44,42 @@ export const TRTHeader = () => {
           </a>
           <button
             onClick={() => scrollTo("final-cta")}
-            className="rounded-full font-bold uppercase cursor-pointer transition-colors duration-200"
+            className="rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer transition-colors duration-200"
             style={{
               background: "#E8670A",
               color: "#FFFFFF",
               letterSpacing: "0.08em",
               fontFamily: "Inter, sans-serif",
-              fontSize: 14,
-              height: 44,
-              paddingLeft: 22,
-              paddingRight: 22,
-              border: "none",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#C7560A"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Book Now
+            Book My Consult
           </button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 py-4 px-6 space-y-4" style={{ background: "rgba(0,0,51,0.98)" }}>
+        {/* Mobile: phone icon only */}
+        <div className="md:hidden flex items-center">
           <a
-            href="tel:+18663444955"
-            className="block text-sm font-semibold"
-            style={{ color: "#FFFFFF" }}
+            href="tel:8663444955"
+            aria-label="Call 866-344-4955"
+            className="relative inline-flex items-center justify-center rounded-full"
+            style={{
+              width: 44,
+              height: 44,
+              background: "#E8670A",
+              color: "#FFFFFF",
+            }}
           >
-            <Phone className="inline h-4 w-4 mr-2" />866-344-4955
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full animate-ping"
+              style={{ background: "#E8670A", opacity: 0.5 }}
+            />
+            <Phone size={20} className="relative" strokeWidth={2.5} />
           </a>
         </div>
-      )}
+      </div>
     </header>
   );
 };

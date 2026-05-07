@@ -1,85 +1,83 @@
-import { Stethoscope, TestTube2, ShieldCheck, Activity, Building2, type LucideIcon } from "lucide-react";
+import imgDoctor from "@/assets/lp/provider-headshot.jpg";
+import imgLobby from "@/assets/lp/onsite-labs-centrifuge.jpg";
+import imgGymConfident from "@/assets/lp/man-gym-confident.jpeg";
+import imgTeam from "@/assets/lp/mwc-team.webp";
 
-const pillars: { title: string; desc: string; Icon: LucideIcon }[] = [
+const pillars = [
   {
-    title: "Licensed Providers",
-    desc: "Licensed Virginia nurse practitioners and physicians. Not remote. Not an app. A real provider, every visit.",
-    Icon: Stethoscope,
+    title: "LICENSED PROVIDERS",
+    desc: "Licensed Virginia physicians and nurse practitioners. A real provider, every visit.",
+    image: imgDoctor,
   },
   {
-    title: "On-Site Labs",
-    desc: "Blood draw and full panel done in our center. Results back before you walk out the door.",
-    Icon: TestTube2,
+    title: "ON-SITE LABS",
+    desc: "Full labs done in-center, with results back before you walk out.",
+    image: imgLobby,
   },
   {
-    title: "Built For Men",
-    desc: "A clinic built around men's health, designed around your schedule, your privacy, and your goals.",
-    Icon: ShieldCheck,
+    title: "BUILT FOR MEN",
+    desc: "TRT, ED, and weight loss is all we do. Not a side service at a general practice.",
+    image: imgGymConfident,
   },
   {
-    title: "Ongoing Monitoring",
-    desc: "Regular check-ins, lab work, and protocol adjustments. We don't write a script and disappear.",
-    Icon: Activity,
-  },
-  {
-    title: "No Telehealth Runaround",
-    desc: "You see a real doctor in a real clinic. No app. No video call. No runaround.",
-    Icon: Building2,
+    title: "ONGOING MONITORING",
+    desc: "Regular check-ins, labs, and protocol adjustments. We don't write a script and disappear.",
+    image: imgTeam,
   },
 ];
 
 export const TRTPillars = () => (
-  <section className="py-16 md:py-24" style={{ background: "#000033" }}>
+  <section className="py-14 md:py-20" style={{ background: "#000033" }}>
     <div className="max-w-[1200px] mx-auto px-6">
       <h2
-        className="font-bold text-center mb-12"
+        className="font-bold uppercase text-center mb-12"
         style={{
           fontFamily: "Oswald, sans-serif",
-          fontSize: "clamp(28px, 3.6vw, 40px)",
+          fontSize: "clamp(28px, 4vw, 40px)",
           color: "#FFFFFF",
           fontWeight: 700,
-          lineHeight: 1.1,
-          letterSpacing: "-0.01em",
         }}
       >
-        Why 10,000+ Men Choose MWC Over Everyone Else
+        EVERYTHING YOU NEED FOR TRT, ED,<br />
+        AND WEIGHT LOSS, UNDER ONE ROOF.
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {pillars.map((p) => (
           <div
             key={p.title}
-            className="rounded-xl overflow-hidden text-center px-5 pb-6 transition-all duration-300"
+            className="rounded-xl overflow-hidden text-center transition-all duration-300"
             style={{
-              background: "rgba(255,255,255,0.04)",
+              background: "rgba(255,255,255,0.06)",
               border: "1px solid rgba(255,255,255,0.10)",
-              transition: "border-color 300ms ease",
             }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#E8670A"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.10)"; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+            }}
           >
-            <div className="flex justify-center mt-8">
-              <div
-                className="flex items-center justify-center rounded-full"
-                style={{
-                  width: 96,
-                  height: 96,
-                  background: "#0A1A4A",
-                  border: "1px solid rgba(255,255,255,0.10)",
-                }}
-              >
-                <p.Icon size={44} strokeWidth={1.5} color="#E8670A" aria-hidden="true" />
-              </div>
+            <div className="flex justify-center mt-6">
+              <img
+                src={p.image}
+                alt={p.title}
+                className="w-[140px] h-[140px] rounded-full object-cover"
+                style={{ border: "3px solid rgba(255,255,255,0.15)" }}
+                loading="lazy"
+              />
             </div>
             <h3
-              className="font-bold text-base uppercase mt-5 tracking-wide"
-              style={{ fontFamily: "Oswald, sans-serif", color: "#FFFFFF", fontWeight: 700, letterSpacing: "0.04em" }}
+              className="font-bold text-base uppercase mt-4 tracking-wide"
+              style={{ fontFamily: "Oswald, sans-serif", color: "#FFFFFF", fontWeight: 700 }}
             >
               {p.title}
             </h3>
             <p
-              className="text-sm mt-2 leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}
+              className="text-sm px-5 pb-6 mt-2 leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}
             >
               {p.desc}
             </p>

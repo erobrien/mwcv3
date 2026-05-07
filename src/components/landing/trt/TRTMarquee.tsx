@@ -27,12 +27,7 @@ const MarqueeContent = () => (
 export const TRTMarquee = () => (
   <section
     className="overflow-hidden"
-    style={{
-      background: "#E8670A",
-      height: 56,
-      maskImage: "linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%)",
-      WebkitMaskImage: "linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%)",
-    }}
+    style={{ background: "#E8670A", height: 56 }}
   >
     <div className="flex items-center h-full gap-6 animate-marquee hover:[animation-play-state:paused]">
       <MarqueeContent />

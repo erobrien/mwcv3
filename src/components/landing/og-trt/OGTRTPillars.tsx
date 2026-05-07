@@ -6,7 +6,7 @@ import imgTeam from "@/assets/lp/mwc-team.webp";
 const pillars = [
   { title: "Licensed Physicians", desc: "Board-certified Virginia physicians. Not PAs, not nurses on a screen. A real doctor, every visit.", image: imgDoctor },
   { title: "On-Site Labs", desc: "Blood draw and full panel done in our center. Results back before you walk out the door.", image: imgLobby },
-  { title: "Built for Men", desc: "A clinic built around men's health — designed around your schedule, your privacy, and your goals.", image: imgGymConfident },
+  { title: "Built for Men", desc: "A men-only environment designed around your schedule, your privacy, and your goals.", image: imgGymConfident },
   { title: "Ongoing Monitoring", desc: "Regular check-ins, lab work, and protocol adjustments. We don't write a script and disappear.", image: imgTeam },
 ];
 

@@ -1,18 +1,18 @@
-import { X, ArrowRight } from "lucide-react";
+import { X } from "lucide-react";
 
 const symptoms = [
-  "Constant fatigue no matter how much you sleep",
-  "Lost your drive, confidence, and motivation",
-  "Brain fog so bad you can't focus at work",
-  "Gaining belly fat and losing muscle despite working out",
-  'Your doctor says your labs are "normal" but you feel anything but',
+  "Persistent fatigue.",
+  "Loss of drive and motivation.",
+  "Difficulty focusing.",
+  "Stubborn belly fat and muscle loss.",
+  '"Normal" labs that do not match how you feel.',
 ];
 
 const steps = [
   {
     num: "1",
-    title: "Same-Day Blood Work",
-    desc: "On-site labs. Results typically reviewed in minutes, not 2 weeks.",
+    title: "Book Online In Under 5 Minutes",
+    desc: "Pick the location and time that works for you. No referral, no phone tag.",
   },
   {
     num: "2",
@@ -21,8 +21,8 @@ const steps = [
   },
   {
     num: "3",
-    title: "Get Your Personalized Plan",
-    desc: "Your doctor builds a plan around your labs and symptoms. Many patients are able to begin their personalized plan the same day, based on their evaluation.",
+    title: "Walk Out The Same Day With A Plan",
+    desc: "A personalized plan built around your labs and your goals. Many patients begin treatment the same day, when clinically appropriate.",
   },
 ];
 
@@ -48,13 +48,13 @@ export const TRTHowItWorks = () => {
 
   const heading = (text: string) => (
     <h2
-      className="font-bold"
+      className="font-bold uppercase"
       style={{
         fontFamily: "Oswald, sans-serif",
-        fontSize: "clamp(28px, 3.6vw, 40px)",
+        fontSize: "clamp(28px, 4vw, 44px)",
         color: "#000033",
         fontWeight: 700,
-        lineHeight: 1.1,
+        lineHeight: 1.05,
         letterSpacing: "-0.01em",
       }}
     >
@@ -63,17 +63,17 @@ export const TRTHowItWorks = () => {
   );
 
   return (
-    <section id="how-it-works" className="py-16 md:py-24" style={{ background: "#F5F0EB" }}>
+    <section id="how-it-works" className="py-10 md:py-20" style={{ background: "#F5F0EB" }}>
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Left: Symptoms (mobile shown second) */}
         <div className="order-2 md:order-1">
           {eyebrow("Sound Familiar?")}
-          {heading("Tired of feeling like a worse version of yourself?")}
+          {heading("Common signs men ask us about")}
           <p
             className="mt-5 text-base leading-relaxed"
             style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
           >
-            You used to have energy. You used to have drive. Now you drag yourself through the day, can't focus, can't sleep right, and the weight won't come off no matter what you do. Your doctor says your labs are "normal." You know they're wrong.
+            Many men in their 40s, 50s, and beyond tell us the same story. The energy, focus, and drive they used to have just are not there. Their doctor says their labs are "normal," but they know something is off.
           </p>
           <ul className="mt-8 space-y-4">
             {symptoms.map((s) => (
@@ -89,12 +89,6 @@ export const TRTHowItWorks = () => {
         <div className="order-1 md:order-2">
           {eyebrow("The Fix")}
           {heading("Here's how it works in one visit")}
-          <p
-            className="mt-5 text-base leading-relaxed"
-            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
-          >
-            No referrals. No waiting weeks. Book online in minutes, come in, and leave with a plan.
-          </p>
 
           <div className="mt-8 flex flex-col gap-6">
             {steps.map((s) => (
@@ -119,28 +113,9 @@ export const TRTHowItWorks = () => {
             ))}
           </div>
 
-          {/* What happens next? dark card */}
-          <div
-            className="mt-8 rounded-xl p-5"
-            style={{ background: "#000033" }}
-          >
-            <div
-              className="text-xs uppercase font-semibold mb-2"
-              style={{ color: "#E8670A", fontFamily: "Inter, sans-serif", letterSpacing: "0.10em" }}
-            >
-              What happens next?
-            </div>
-            <p
-              className="text-sm leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
-            >
-              Most patients leave with a prescription the same day. Treatment starts at <strong style={{ color: "#FFFFFF" }}>$199/month</strong>.
-            </p>
-          </div>
-
           <button
             onClick={scrollToForm}
-            className="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
+            className="mt-10 inline-flex items-center justify-center rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
             style={{
               background: "#E8670A",
               color: "#FFFFFF",
@@ -151,15 +126,8 @@ export const TRTHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Start Today — Book My Same-Day Visit <ArrowRight className="h-4 w-4" />
+            Book My Consult
           </button>
-
-          <p
-            className="mt-3 text-sm"
-            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif" }}
-          >
-            📅 Appointments filling this week. Secure your slot.
-          </p>
         </div>
       </div>
     </section>

@@ -18,7 +18,7 @@ import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
 import { TRTInlineLeadMobile } from "@/components/landing/trt/TRTInlineLeadMobile";
 
-const TRTLandingPage = () => {
+const NewLandingPage = () => {
   useEffect(() => {
     document.title = "TRT in Virginia | Testing | Men's Wellness Centers";
     const meta = document.querySelector('meta[name="description"]');
@@ -31,10 +31,8 @@ const TRTLandingPage = () => {
       <main className="flex-1">
         <TRTHero />
         <TRTTrustBar />
-        <TRTInlineLeadMobile />
-        
-        
         <TRTHowItWorks />
+        <TRTInlineLeadMobile />
         <TRTManifesto />
         <TRTResults />
         <TRTPillars />
@@ -50,4 +48,4 @@ const TRTLandingPage = () => {
   );
 };
 
-export default TRTLandingPage;
+export default NewLandingPage;

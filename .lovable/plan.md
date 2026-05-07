@@ -1,17 +1,47 @@
-## Fix locations card color in TRT hero
+## Goal
+Remove the "Turn On Your Testosterone" Optimal/Low T toggle section (TRTSymptomToggle) from `/lp/testosterone` while preserving a clean, alternating background rhythm down the page.
 
-The "3 Virginia Clinics / Walk Into A Real Clinic Near You" card currently uses `bg-card`, which resolves to the deep navy `--card: 240 29% 14%`. The screenshot shows it rendering as a near-black slate that doesn't match the rest of the OLED Midnight Navy palette (#000814) — it reads as a different hue rather than a sibling surface to the page background.
+## Current section order & backgrounds
+1. TRTHero — navy
+2. TRTTrustBar — navy
+3. TRTInlineLeadMobile — cream (mobile only)
+4. TRTHowItWorks — cream
+5. TRTSymptomToggle — navy ← remove
+6. TRTResults — cream
+7. TRTManifesto — navy
+8. TRTMarquee — orange (divider strip)
+9. TRTPricingCTA — orange
+10. TRTPillars — navy
+11. TRTLocations — white
+12. TRTFAQ — cream
+13. TRTFinalCTA — navy
 
-### Change
+Removing SymptomToggle would leave HowItWorks(cream) → Results(cream), breaking the rhythm.
 
-In `src/components/landing/trt/TRTHero.tsx`, the second CTA card (Locations):
+## Change
+Edit `src/pages/TRTLandingPage.tsx` only. Remove `<TRTSymptomToggle />` and reorder so cream/navy alternates:
 
-- Replace `bg-card` with an explicit elevated navy that matches the brand: `#0A1228` (one step lighter than the `#000814` background, same hue family).
-- Keep the orange CTA card as-is (it's correct).
-- Keep border/typography tokens unchanged.
+```text
+TRTHero               navy
+TRTTrustBar           navy
+TRTInlineLeadMobile   cream (mobile)
+TRTHowItWorks         cream
+TRTManifesto          navy   ← moved up
+TRTResults            cream
+TRTPillars            navy   ← moved up
+TRTMarquee            orange (divider)
+TRTPricingCTA         orange
+TRTLocations          white
+TRTFAQ                cream
+TRTFinalCTA           navy
+```
 
-### Result
+Also remove the `TRTSymptomToggle` import line.
 
-The Locations card will read as a clean, slightly elevated navy panel against the page background — same hue family, just lifted — instead of the cool slate cast it has now.
+## Notes
+- No component internals change; only page composition.
+- Marquee + PricingCTA stay paired as the orange "break" between the editorial cream/navy stack and the white Locations block.
+- No copy, schema, or tracking changes.
 
-No other files change.
+## Files
+- `src/pages/TRTLandingPage.tsx` (edit imports + JSX order)

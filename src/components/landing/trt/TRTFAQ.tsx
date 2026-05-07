@@ -4,8 +4,21 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "How much does treatment cost? Does insurance cover it?",
-    a: "Your first visit is [TODO: first-visit price], which includes labs, your consultation with a licensed provider, and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
+    a: "Consults with our providers are always free, including labs review and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
     cta: true,
+  },
+  {
+    q: "What should I expect at my first visit?",
+    a: "Plan for about 60 minutes. You'll have your labs drawn on-site, meet face-to-face with a licensed provider to review your symptoms and history, and leave with a personalized care plan. If treatment is clinically appropriate, it can often begin the same day.",
+    cta: true,
+  },
+  {
+    q: "Are consults really free? What is included?",
+    a: "Yes. Consultations with our providers are always at no cost. That includes a comprehensive hormone lab panel, a face-to-face visit with a licensed Virginia physician, and a personalized care plan based on your labs. You decide whether to begin treatment.",
+  },
+  {
+    q: "How is this different from Hims, Hone, or online TRT?",
+    a: "We are an in-person Virginia clinic, not a telehealth app. You see the same physician at the same center, your blood is drawn on-site, and your provider knows your case. No mail-order chatbots, no rotating clinicians, no shipping delays.",
   },
   {
     q: "How do I know if testosterone treatment is right for me?",
@@ -21,12 +34,7 @@ const faqs = [
   },
   {
     q: "How soon do patients typically notice changes?",
-    a: "Many patients report initial changes in energy and mood within the first few weeks, with broader symptom improvements over 2–3 months. Individual results vary based on baseline labs, adherence, and individual health factors.",
-  },
-  {
-    q: "What should I expect at my first visit?",
-    a: "Plan for about 60 minutes. You'll have your blood drawn on-site, meet face-to-face with a licensed provider to review your symptoms and history, and leave with a personalized care plan. If treatment is clinically appropriate, it can often begin the same day.",
-    cta: true,
+    a: "Many patients report initial changes in energy and mood within the first few weeks, with broader symptom improvements over 2 to 3 months. Individual results vary based on baseline labs, adherence, and individual health factors.",
   },
 ];
 
@@ -49,8 +57,8 @@ export const TRTFAQ = () => {
 
   return (
     <section id="faq" style={{ background: "#F5F0EB" }}>
-      <div className="max-w-[820px] mx-auto px-4 md:px-6 py-16 md:py-24">
-        <h2 className="font-bold text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(28px, 3.6vw, 40px)", letterSpacing: "-0.01em", lineHeight: 1.1 }}>
+      <div className="max-w-[820px] mx-auto px-6 py-16 md:py-24">
+        <h2 className="font-bold uppercase text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}>
           Frequently Asked Questions
         </h2>
 
@@ -76,7 +84,7 @@ export const TRTFAQ = () => {
                         className="mt-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer"
                         style={{ background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", border: "none" }}
                       >
-                        Book My Consultation <ArrowRight className="h-3.5 w-3.5" />
+                        Book My Consult <ArrowRight className="h-3.5 w-3.5" />
                       </button>
                     )}
                   </div>

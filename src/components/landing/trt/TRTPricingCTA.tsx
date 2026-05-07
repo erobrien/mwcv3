@@ -1,111 +1,80 @@
 import imgFirstVisit from "@/assets/lp/first-visit-bloodwork.png";
 import { Check } from "lucide-react";
 
-const included = [
-  "On-site testosterone panel — results same visit",
-  "Face-to-face physician consultation",
-  "Personalized protocol built around your labs",
-];
-
-const trust = [
-  "Physician-Led",
-  "LegitScript Certified",
-  "HIPAA Compliant",
-  "3 Virginia Locations",
-];
-
 export const TRTPricingCTA = () => {
   const scrollToForm = () => {
     document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const trust = [
+    "Physician-Led",
+    "LegitScript Certified",
+    "HIPAA Compliant",
+    "3 Virginia Locations",
+  ];
+
   return (
-    <section id="pricing-cta" className="py-16 md:py-24" style={{ background: "#E8670A" }}>
+    <section id="pricing-cta" className="py-10 md:py-14" style={{ background: "#E8670A" }}>
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
         {/* Left: copy (mobile second) */}
         <div className="order-2 md:order-1">
           <h2
-            className="font-bold"
+            className="font-bold uppercase"
             style={{
               fontFamily: "Oswald, sans-serif",
-              fontSize: "clamp(28px, 3.6vw, 40px)",
+              fontSize: "clamp(28px, 4vw, 40px)",
               color: "#FFFFFF",
               fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: "-0.01em",
             }}
           >
-            Walk In Today. Walk Out With A Plan.
+            CONSULTS ARE ALWAYS FREE.<br />HERE'S WHAT'S INCLUDED.
           </h2>
-          <p
-            className="text-base mt-3 leading-[1.6]"
-            style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}
-          >
-            Walk into any of our 3 Virginia centers for a same-day consultation. No commitment, no credit card.
-          </p>
 
-          {/* Included items */}
-          <ul className="mt-6 space-y-3">
-            {included.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span
-                  className="flex-shrink-0 font-bold text-base"
-                  style={{ color: "#FFFFFF" }}
-                >
-                  ✓
-                </span>
-                <span className="text-base font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>
-                  {item}
-                </span>
-              </li>
-            ))}
+          <ul className="mt-6 space-y-3" style={{ fontFamily: "Inter, sans-serif" }}>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
+              <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
+                <strong>Free consult, every time.</strong> Labs, physician visit, and your plan reviewed at no cost.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
+              <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
+                <strong>Treatment, if prescribed:</strong> from $199/month.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
+              <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
+                FSA/HSA accepted.
+              </span>
+            </li>
           </ul>
 
           <button
             onClick={scrollToForm}
-            className="mt-7 inline-flex items-center gap-2 rounded-full font-bold uppercase cursor-pointer transition-colors duration-200"
+            className="mt-6 rounded-full px-8 font-bold uppercase cursor-pointer transition-colors duration-200 w-full sm:w-auto"
             style={{
-              height: 52,
-              paddingLeft: 28,
-              paddingRight: 28,
-              fontSize: 14,
+              height: 56,
+              minHeight: 56,
               background: "#FFFFFF",
               color: "#000033",
+              fontSize: 15,
               letterSpacing: "0.08em",
               fontFamily: "Inter, sans-serif",
               border: "none",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.92)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.90)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#FFFFFF"; }}
           >
-            Book My Consultation
+            Book My Consult
           </button>
-
-          <p
-            className="text-sm mt-3"
-            style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
-          >
-            Starting at $199/mo after approval · FSA/HSA accepted
-          </p>
-
-          {/* Green trust chip */}
-          <div
-            className="mt-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold"
-            style={{
-              background: "rgba(46,204,113,0.20)",
-              color: "#2ECC71",
-              border: "1px solid rgba(46,204,113,0.35)",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            ✓ No contract · Cancel anytime
-          </div>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-5">
             {trust.map((label) => (
               <li key={label} className="flex items-center gap-2">
-                <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "rgba(255,255,255,0.70)" }} />
-                <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>{label}</span>
+                <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
+                <span className="text-sm font-medium" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{label}</span>
               </li>
             ))}
           </ul>

@@ -27,7 +27,7 @@ export const TRTMobileCTA = () => {
     >
       <a
         href="tel:8663444955"
-        className="flex-1 flex items-center justify-center gap-2 text-[14px] font-bold uppercase tracking-[0.06em]"
+        className="flex-1 flex items-center justify-center gap-2 text-[12px] font-bold uppercase tracking-[0.06em]"
         style={{
           background: "#000033",
           color: "#FFFFFF",
@@ -43,7 +43,7 @@ export const TRTMobileCTA = () => {
         className="flex-1 flex items-center justify-center text-[14px] font-bold uppercase tracking-[0.06em] cursor-pointer border-none"
         style={{ background: "#E8670A", color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
       >
-        Book Consultation
+        Book My Consult
       </button>
     </div>
   );

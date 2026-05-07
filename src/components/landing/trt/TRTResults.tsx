@@ -1,42 +1,48 @@
-import { Star, ShieldCheck } from "lucide-react";
-
-const resultStats = [
-  { value: "2–5×", label: "Increase in Total Testosterone Within 2 Months*" },
-  { value: "84%", label: "Of Patients Report Meaningful Symptom Improvement*" },
-];
+import { useState } from "react";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
     quote:
-      "Energy is back to where it was a decade ago. I'm sleeping better, focused at work, and the team actually answers when I call.",
-    name: "Mark T.",
+      "Six months on TRT and I finally feel like myself again. Energy is up, mood is stable, and I'm sleeping through the night for the first time in years.",
+    name: "Mark B.",
     city: "Richmond, VA",
   },
   {
     quote:
-      "I was skeptical of any clinic that wasn't my regular doctor, but the in-person visit and on-site labs made it feel legit. Body comp has shifted noticeably alongside training.",
-    name: "James R.",
+      "The nursing staff here is top-notch. They walk you through everything, answer every question, and actually follow up after your visits. Never experienced that anywhere else.",
+    name: "Howard B.",
     city: "Virginia Beach, VA",
   },
   {
     quote:
-      "Mood and motivation were the biggest changes for me. The physician walked me through every number on the panel, first time anyone has actually done that.",
-    name: "David K.",
+      "From the front desk to the physician, every person I've dealt with has been professional and genuinely helpful. You can tell they care about results, not just billing.",
+    name: "Douglas H.",
     city: "Newport News, VA",
+  },
+  {
+    quote:
+      "Got my labs back in two days and started treatment the same week. No runaround, no waiting months. The team moves fast and knows what they're doing.",
+    name: "James R.",
+    city: "Richmond, VA",
+  },
+  {
+    quote:
+      "I feel stronger and more focused than I have in years. My wife says I'm a different person. Should've done this years ago.",
+    name: "Steve P.",
+    city: "Chesapeake, VA",
+  },
+  {
+    quote:
+      "I was hesitant about hormone therapy but the doctor laid everything out honestly. No pressure, just facts. Three months in and I wish I'd started sooner.",
+    name: "David K.",
+    city: "Norfolk, VA",
   },
 ];
 
-const outcomeCTAs = [
-  "Want more energy →",
-  "Want to lose fat →",
-  "Want better focus →",
-  "All of the above →",
-];
-
 export const TRTResults = () => {
-  const scrollToFinalCTA = () => {
-    document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [showAll, setShowAll] = useState(false);
+  const scrollToForm = () => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section id="results" style={{ background: "#F5F0EB" }}>
@@ -45,106 +51,54 @@ export const TRTResults = () => {
           className="font-bold uppercase text-center"
           style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}
         >
-          Patient Reviews
+          Real Members. Real Experiences.
         </h2>
 
-        {/* Stat cards */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[760px] mx-auto">
-          {resultStats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-2xl p-7 flex flex-col items-center text-center"
-              style={{ background: "#E8670A" }}
-            >
-              <div
-                className="font-bold"
-                style={{
-                  fontFamily: "Oswald, sans-serif",
-                  fontSize: "clamp(44px, 5.5vw, 64px)",
-                  color: "#FFFFFF",
-                  lineHeight: 1,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                {s.value}
-              </div>
-              <div
-                className="mt-2 text-sm leading-snug font-semibold"
-                style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
-              >
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Testimonials */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
+          {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className="rounded-2xl p-6 flex flex-col"
-              style={{
-                background: "#0A0A1A",
-                border: "1px solid rgba(255,255,255,0.10)",
-              }}
+              className={`rounded-2xl p-6 flex flex-col ${i >= 3 && !showAll ? "hidden md:flex" : ""}`}
+              style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}
             >
               <div className="flex items-center gap-0.5 mb-3">
-                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" />)}
+                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#E8670A" stroke="#E8670A" />)}
               </div>
-              <p className="text-sm leading-relaxed flex-1" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>
+              <p className="text-sm italic leading-relaxed flex-1" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
                 "{t.quote}"
               </p>
-              <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.10)" }}>
-                <div className="text-sm font-semibold" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>{t.name}</div>
-                <div className="text-xs" style={{ color: "rgba(255,255,255,0.50)", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
-                <div
-                  className="mt-2 inline-flex items-center gap-1 text-[10px] uppercase font-semibold px-2 py-0.5 rounded"
-                  style={{ background: "rgba(46,204,113,0.15)", color: "#2ECC71", letterSpacing: "0.08em" }}
-                >
-                  <ShieldCheck className="h-3 w-3" /> Verified Patient Review
-                </div>
+              <div className="mt-4 pt-4 border-t" style={{ borderColor: "#E5E5EA" }}>
+                <div className="text-sm font-semibold" style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}>{t.name}</div>
+                <div className="text-xs" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <a
-            href="https://www.google.com/search?q=Men%27s+Wellness+Centers+Virginia+reviews"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold underline underline-offset-4"
-            style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}
-          >
-            Read all 200+ reviews on Google →
-          </a>
-        </div>
-
-        {/* Outcome CTA row */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          {outcomeCTAs.map((label) => (
+        {!showAll && (
+          <div className="md:hidden text-center mt-6">
             <button
-              key={label}
-              onClick={scrollToFinalCTA}
-              className="rounded-full px-5 py-2.5 text-sm font-semibold cursor-pointer transition-colors duration-200"
-              style={{
-                background: "#1A1A2E",
-                color: "#FFFFFF",
-                border: "1px solid rgba(255,255,255,0.20)",
-                fontFamily: "Inter, sans-serif",
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#E8670A"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.20)"; }}
+              onClick={() => setShowAll(true)}
+              className="text-sm font-semibold underline underline-offset-4 cursor-pointer"
+              style={{ color: "#000033", fontFamily: "Inter, sans-serif", background: "none", border: "none" }}
             >
-              {label}
+              Show more reviews
             </button>
-          ))}
-        </div>
+          </div>
+        )}
 
-        <p className="mt-6 text-center text-xs" style={{ color: "rgba(0,0,0,0.40)", fontFamily: "Inter, sans-serif" }}>
-          *Individual results vary. Based on patient-reported outcomes at Men's Wellness Centers Virginia locations.
-        </p>
+        <div className="mt-10 text-center">
+          <p className="text-base mb-4" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
+            Join 10,000+ Virginia men who have taken the first step.
+          </p>
+          <button
+            onClick={scrollToForm}
+            className="inline-flex items-center justify-center rounded-full px-8 font-bold uppercase cursor-pointer border-none"
+            style={{ height: 56, minHeight: 56, background: "#E8670A", color: "#FFFFFF", fontSize: 15, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
+          >
+            Book My Consult
+          </button>
+        </div>
       </div>
     </section>
   );

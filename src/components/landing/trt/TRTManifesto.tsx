@@ -1,108 +1,86 @@
-import imgManifesto from "@/assets/lp/trt-provider-patient.jpg";
-
-const comparisons = [
-  { bad: "10-min video call", good: "Face-to-face doctor" },
-  { bad: "2-week lab wait", good: "Results same visit" },
-  { bad: "Cookie-cutter script", good: "Your personalized plan" },
-];
+import imgManifesto from "@/assets/lp/man-athletic-smiling.jpeg";
 
 export const TRTManifesto = () => {
   const stats = [
-    { num: "10,000+", label: "Men Treated" },
-    { num: "Since 2015", label: "Serving Virginia" },
-    { num: "4.9★", label: "Average Rating" },
-    { num: "3 Clinics", label: "Across Virginia" },
+    { num: "10,000+", label: "MEN TREATED" },
+    { num: "Since 2015", label: "SERVING VIRGINIA" },
+    { num: "4.9★", label: "AVERAGE RATING" },
   ];
 
   return (
-    <section className="py-16 md:py-24" style={{ background: "#000033" }}>
+    <section className="py-10 md:py-16" style={{ background: "#000033" }}>
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-        {/* Left: image */}
-        <div className="order-1">
-          <img
-            src={imgManifesto}
-            alt="Licensed Virginia provider speaking face-to-face with a male patient during a TRT consultation"
-            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[420px]"
-            loading="lazy"
-            width={1024}
-            height={1024}
-          />
-        </div>
-
-        {/* Right: copy */}
-        <div className="order-2">
+        {/* Left: copy (mobile second) */}
+        <div className="order-2 md:order-1">
           <h2
-            className="font-bold"
+            className="font-bold uppercase"
             style={{
               fontFamily: "Oswald, sans-serif",
-              fontSize: "clamp(28px, 3.6vw, 40px)",
+              fontSize: "clamp(28px, 4vw, 40px)",
               color: "#FFFFFF",
               fontWeight: 700,
               lineHeight: 1.1,
-              letterSpacing: "-0.01em",
             }}
           >
-            Most Clinics Send You Home With A Lab Slip. We Don't.
+            COMMON SIGNS MEN<br />
+            ASK US ABOUT.
           </h2>
 
           <p
-            className="text-base mt-5 leading-[1.7]"
-            style={{ color: "rgba(255,255,255,0.80)", fontFamily: "Inter, sans-serif" }}
+            className="text-base mt-4 leading-[1.7]"
+            style={{ color: "rgba(255,255,255,0.80)", fontFamily: "Inter, sans-serif", fontSize: 16 }}
           >
-            Most men get a lab slip and a 10-minute video call. We do it differently. On-site labs, a face-to-face consultation, and a personalized TRT protocol — all in one visit. Same provider, every follow-up. No app. No mail-order doctor.
+            Many men in their 40s, 50s, and beyond tell us the same story. The energy, focus, and drive they used to have just are not there. Their doctor says their labs are "normal," but they know something is off.
           </p>
 
-          {/* Comparison rows */}
-          <div className="mt-8 flex flex-col gap-3">
-            {comparisons.map((row) => (
-              <div key={row.bad} className="flex flex-wrap items-center gap-3">
-                <span
-                  className="rounded-full px-3 py-1.5"
-                  style={{
-                    background: "rgba(255,0,0,0.12)",
-                    color: "#FF6B6B",
-                    fontSize: 12,
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 600,
-                  }}
-                >
-                  ❌ {row.bad}
-                </span>
-                <span style={{ color: "rgba(255,255,255,0.40)", fontSize: 14 }}>→</span>
-                <span
-                  className="rounded-full px-3 py-1.5"
-                  style={{
-                    background: "rgba(46,204,113,0.15)",
-                    color: "#2ECC71",
-                    fontSize: 12,
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 600,
-                  }}
-                >
-                  ✅ {row.good}
-                </span>
-              </div>
-            ))}
-          </div>
+          <ul className="mt-6 space-y-2 text-base" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
+            <li>• Persistent fatigue.</li>
+            <li>• Loss of drive and motivation.</li>
+            <li>• Difficulty focusing.</li>
+            <li>• Stubborn belly fat and muscle loss.</li>
+            <li>• "Normal" labs that do not match how you feel.</li>
+          </ul>
 
-          <div className="flex flex-wrap gap-8 mt-10">
+          <p className="mt-6 text-base leading-[1.6]" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
+            Sound familiar? A Virginia physician can review your labs and give you real answers.
+          </p>
+
+          <button
+            onClick={() => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" })}
+            className="mt-6 inline-flex items-center justify-center rounded-full px-8 font-bold uppercase cursor-pointer border-none"
+            style={{ height: 56, minHeight: 56, background: "#E8670A", color: "#FFFFFF", fontSize: 15, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
+          >
+            Book My Consult
+          </button>
+
+          <div className="flex gap-8 mt-8">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col">
                 <span
                   className="font-bold"
-                  style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(22px, 2.8vw, 30px)", color: "#FFFFFF", fontWeight: 700 }}
+                  style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(24px, 3vw, 32px)", color: "#FFFFFF", fontWeight: 700 }}
                 >
                   {s.num}
                 </span>
                 <span
                   className="text-xs uppercase mt-1"
-                  style={{ color: "rgba(255,255,255,0.60)", letterSpacing: "0.12em", fontFamily: "Inter, sans-serif", fontWeight: 600 }}
+                  style={{ color: "rgba(255,255,255,0.50)", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
                 >
                   {s.label}
                 </span>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Right: image (mobile first) */}
+        <div className="order-1 md:order-2">
+          <img
+            src={imgManifesto}
+            alt="Confident man after treatment"
+            className="rounded-2xl object-cover w-full aspect-[4/3] md:aspect-auto md:h-[400px]"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

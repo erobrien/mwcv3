@@ -18,7 +18,7 @@ export const TRTSymptomToggle = () => {
       className="py-14 md:py-20 relative"
       style={{ background: "#000033" }}
     >
-      {/* Radial glow, very subtle */}
+      {/* Radial glow — very subtle */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
