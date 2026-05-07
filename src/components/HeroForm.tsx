@@ -59,24 +59,24 @@ export const HeroForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="hero-email" className="sr-only">Email</label>
-            <input
-              id="hero-email" type="email" placeholder="Email"
-              value={email} onChange={(e) => setEmail(e.target.value)}
-              onFocus={handleFocus} onBlur={handleBlur}
-              style={inputStyle} required autoComplete="email"
-              className="placeholder:text-[#999]"
-            />
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
             <label htmlFor="hero-phone" className="sr-only">Phone</label>
             <input
               id="hero-phone" type="tel" placeholder="Phone"
               value={phone} onChange={(e) => setPhone(e.target.value)}
               onFocus={handleFocus} onBlur={handleBlur}
               style={inputStyle} required autoComplete="tel"
+              className="placeholder:text-[#999]"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label htmlFor="hero-email" className="sr-only">Email</label>
+            <input
+              id="hero-email" type="email" placeholder="Email"
+              value={email} onChange={(e) => setEmail(e.target.value)}
+              onFocus={handleFocus} onBlur={handleBlur}
+              style={inputStyle} required autoComplete="email"
               className="placeholder:text-[#999]"
             />
           </div>

@@ -170,21 +170,6 @@ export const TRTFinalCTA = () => {
 
             <div>
               <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                style={inputStyle}
-                className="placeholder:text-[#999999]"
-                autoComplete="email"
-              />
-              {errors.email && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.email}</p>}
-            </div>
-
-            <div>
-              <input
                 type="tel"
                 placeholder="Phone Number"
                 value={phone}
@@ -200,6 +185,21 @@ export const TRTFinalCTA = () => {
                 autoComplete="tel"
               />
               {errors.phone && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.phone}</p>}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                style={inputStyle}
+                className="placeholder:text-[#999999]"
+                autoComplete="email"
+              />
+              {errors.email && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.email}</p>}
             </div>
 
             <div>
