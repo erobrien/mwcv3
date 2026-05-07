@@ -49,7 +49,7 @@ export const TRTLocations = () => {
     <section id="locations" style={{ background: "#FFFFFF" }}>
       <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
         <h2 className="font-bold uppercase text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}>
-          3 Virginia Clinics
+          3 Virginia Centers
         </h2>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">

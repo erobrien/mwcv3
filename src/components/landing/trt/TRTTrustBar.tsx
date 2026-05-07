@@ -1,6 +1,6 @@
 const stats = [
   { value: "10,000+", label: "Men Treated Since 2015" },
-  { value: "3", label: "Virginia Clinics" },
+  { value: "3", label: "Virginia Centers" },
   { value: "4.9★", label: "Google Rating, 200+ Reviews" },
 ];
 
