@@ -219,12 +219,12 @@ const eyebrow = (text: string, light = false) => (
   <p
     style={{
       fontFamily: FONT_BODY,
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: "0.14em",
-      color: light ? "#E8670A" : "#E8670A",
+      fontSize: 12,
+      fontWeight: 600,
+      letterSpacing: "0.18em",
+      color: light ? "#E8670A" : "rgba(27,43,75,0.60)",
       textTransform: "uppercase",
-      marginBottom: 10,
+      marginBottom: 12,
     }}
   >
     {text}
@@ -233,16 +233,16 @@ const eyebrow = (text: string, light = false) => (
 
 const sectionHead = (
   text: string,
-  color: string = "#000033",
+  color: string = "#1B2B4B",
   align: "left" | "center" = "left"
 ) => (
   <h2
     style={{
       fontFamily: FONT_DISPLAY,
-      fontSize: "clamp(26px, 3.5vw, 42px)",
+      fontSize: "clamp(28px, 3.5vw, 44px)",
       fontWeight: 700,
-      lineHeight: 1.05,
-      letterSpacing: "-0.01em",
+      lineHeight: 1.08,
+      letterSpacing: "0.01em",
       color,
       textAlign: align,
     }}
@@ -256,7 +256,7 @@ const sectionHead = (
 /* ─── SECTION DIVIDER ──────────────────────────────────────── */
 // Thin orange accent line — use between dark→light and light→dark transitions
 const OrangeDivider = () => (
-  <div style={{ height: 3, background: "linear-gradient(90deg, transparent 0%, #E8670A 30%, #E8670A 70%, transparent 100%)", opacity: 0.7 }} />
+  <div style={{ height: 1, background: "#E8670A", opacity: 0.35, width: "100%" }} />
 );
 
 const MarqueeStyles = () => (
@@ -326,12 +326,12 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
   const baseInput: React.CSSProperties = {
     width: "100%",
     height: 50,
-    background: "#F8F8FC",
-    border: "1px solid #D6DAE6",
-    borderRadius: 10,
+    background: "#FFFFFF",
+    border: "1px solid #D9DEF0",
+    borderRadius: 8,
     padding: "0 16px",
     fontSize: 15,
-    color: "#0E1230",
+    color: "#1B2B4B",
     outline: "none",
     fontFamily: FONT_BODY,
     boxSizing: "border-box",
@@ -348,9 +348,9 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
   const focusOut = (
     e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    e.currentTarget.style.borderColor = "#D6DAE6";
+    e.currentTarget.style.borderColor = "#D9DEF0";
     e.currentTarget.style.boxShadow = "none";
-    e.currentTarget.style.background = "#F8F8FC";
+    e.currentTarget.style.background = "#FFFFFF";
   };
 
   const FieldError = ({ msg }: { msg?: string }) =>
@@ -371,10 +371,11 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
   return (
     <div
       style={{
-        background: "#fff",
+        background: "#F5F3F0",
         borderRadius: 20,
         padding: "32px 28px 24px",
-        boxShadow: "0 24px 80px rgba(0,0,0,0.36)",
+        border: "1px solid #D9DEF0",
+        boxShadow: "0 8px 32px rgba(27,43,75,0.12)",
         textAlign: "left",
       }}
     >
@@ -385,7 +386,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
           fontWeight: 700,
           letterSpacing: "0.02em",
           textTransform: "uppercase",
-          color: "#000033",
+          color: "#1B2B4B",
           textAlign: "center",
           marginBottom: 6,
         }}
@@ -396,7 +397,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
         style={{
           fontFamily: FONT_BODY,
           fontSize: 13,
-          color: "#555",
+          color: "#54595F",
           textAlign: "center",
           marginBottom: 22,
         }}
@@ -413,7 +414,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
             fontWeight: 700,
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#000033",
+            color: "#1B2B4B",
             display: "block",
             marginBottom: 6,
           }}
@@ -463,7 +464,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
           { label: "Phone Number", type: "tel", value: phone, setter: setPhone, complete: "tel", err: errors.phone, ariaLabel: "Phone number" },
         ] as const).map(({ label, type, value, setter, complete, err, ariaLabel }) => (
           <div key={label}>
-            <label style={{ display: "block", fontFamily: FONT_BODY, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#000033", marginBottom: 5 }}>{label}</label>
+            <label style={{ display: "block", fontFamily: FONT_BODY, fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#54595F", marginBottom: 6 }}>{label}</label>
             <input
               type={type}
               placeholder={label}
@@ -506,7 +507,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 11,
-                color: "#555",
+                color: "#54595F",
                 lineHeight: 1.6,
               }}
             >
@@ -516,7 +517,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
               Consent is not required to receive services.{" "}
               <a
                 href="/privacy-policy"
-                style={{ color: "#000033" }}
+                style={{ color: "#1B2B4B" }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -536,18 +537,18 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
             background: submitting ? "#aaa" : "#E8670A",
             color: "#fff",
             border: "none",
-            borderRadius: 99,
+            borderRadius: 12,
             fontFamily: FONT_BODY,
-            fontSize: 14,
-            fontWeight: 800,
-            letterSpacing: "0.09em",
+            fontSize: 15,
+            fontWeight: 600,
+            letterSpacing: "0.05em",
             textTransform: "uppercase",
             cursor: submitting ? "default" : "pointer",
             transition: "background 0.15s, transform 0.1s",
             marginTop: 4,
           }}
           onMouseEnter={(e) => {
-            if (!submitting) e.currentTarget.style.background = "#C7560A";
+            if (!submitting) e.currentTarget.style.background = "#C95A20";
           }}
           onMouseLeave={(e) => {
             if (!submitting) e.currentTarget.style.background = "#E8670A";
@@ -585,7 +586,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
           fontFamily: FONT_BODY,
           fontSize: 11,
           fontWeight: 600,
-          color: "#555",
+          color: "#54595F",
           textAlign: "center",
           marginTop: 8,
           letterSpacing: "0.04em",
@@ -600,7 +601,7 @@ const LeadFormCard = ({ title = "Book My Consultation" }: { title?: string }) =>
             fontFamily: FONT_BODY,
             fontSize: 14,
             fontWeight: 700,
-            color: "#000033",
+            color: "#1B2B4B",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",
@@ -690,7 +691,7 @@ const SiteHeader = () => {
         right: 0,
         zIndex: 60,
         height: HEADER_H,
-        background: scrolled ? "rgba(0,0,51,0.97)" : "transparent",
+        background: scrolled ? "rgba(27,43,75,0.97)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         borderBottom: scrolled ? "1px solid #E8670A" : "none",
         transition:
@@ -752,7 +753,7 @@ const SiteHeader = () => {
               fontWeight: 800,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              background: bookHovered ? "#C7560A" : "#E8670A",
+              background: bookHovered ? "#C95A20" : "#E8670A",
               color: "#fff",
               border: "none",
               borderLeft: bookHovered
@@ -795,12 +796,12 @@ const SiteHeader = () => {
             top: HEADER_H,
             left: 0,
             right: 0,
-            background: "rgba(0,0,51,0.99)",
+            background: "rgba(27,43,75,0.99)",
             padding: "16px 20px",
             display: "flex",
             flexDirection: "column",
             gap: 12,
-            borderTop: "1px solid rgba(255,255,255,0.08)",
+            borderTop: "1px solid #D9DEF0",
           }}
         >
           <a
@@ -859,7 +860,7 @@ const Hero = () => (
       paddingBottom: 80,
       backgroundImage: `
         radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px),
-        linear-gradient(135deg, rgba(0,0,51,0.92) 0%, rgba(0,0,51,0.75) 50%, rgba(0,0,51,0.60) 100%),
+        linear-gradient(135deg, rgba(27,43,75,0.92) 0%, rgba(27,43,75,0.75) 50%, rgba(27,43,75,0.60) 100%),
         url(${heroClinic})
       `,
       backgroundSize: "28px 28px, 100% 100%, cover",
@@ -910,7 +911,7 @@ const Hero = () => (
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#C7560A",
+                color: "#C95A20",
                 fontWeight: 700,
               }}
             >
@@ -1132,7 +1133,7 @@ const PressBar = () => (
           fontWeight: 700,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "rgba(0,0,51,0.35)",
+          color: "rgba(27,43,75,0.35)",
           whiteSpace: "nowrap",
           flexShrink: 0,
         }}
@@ -1163,7 +1164,7 @@ const PressBar = () => (
               fontSize: 12,
               fontWeight: 700,
               letterSpacing: "0.04em",
-              color: "rgba(0,0,51,0.50)",
+              color: "rgba(27,43,75,0.50)",
               whiteSpace: "nowrap",
             }}
           >
@@ -1180,7 +1181,7 @@ const PressBar = () => (
 const TrustBar = () => (
   <section
     style={{
-      background: "#000033",
+      background: "#1B2B4B",
       borderBottom: "1px solid rgba(255,255,255,0.06)",
     }}
   >
@@ -1304,7 +1305,7 @@ const Marquee = () => {
 const ProblemSection = () => (
   <section
     id="symptoms"
-    style={{ background: "#F5F0EB", padding: "96px 0" }}
+    style={{ background: "#F5F3F0", padding: "96px 0" }}
   >
     <div
       className="grid grid-cols-1 md:grid-cols-2"
@@ -1334,7 +1335,7 @@ const ProblemSection = () => (
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to bottom, rgba(0,0,51,0.55) 0%, rgba(0,0,51,0.92) 55%, rgba(0,0,51,0.98) 100%)",
+              "linear-gradient(to bottom, rgba(27,43,75,0.55) 0%, rgba(27,43,75,0.92) 55%, rgba(27,43,75,0.98) 100%)",
           }}
         />
         {/* Content on top */}
@@ -1419,7 +1420,7 @@ const ProblemSection = () => (
           style={{
             fontFamily: FONT_BODY,
             fontSize: 15,
-            color: "#4A4A4A",
+            color: "#54595F",
             lineHeight: 1.7,
             marginTop: 14,
           }}
@@ -1451,7 +1452,7 @@ const ProblemSection = () => (
                     width: 38,
                     height: 38,
                     borderRadius: "50%",
-                    background: "#000033",
+                    background: "#1B2B4B",
                     color: "#fff",
                     display: "flex",
                     alignItems: "center",
@@ -1470,7 +1471,7 @@ const ProblemSection = () => (
                       fontFamily: FONT_BODY,
                       fontSize: 15,
                       fontWeight: 700,
-                      color: "#000033",
+                      color: "#1B2B4B",
                       margin: "0 0 4px",
                     }}
                   >
@@ -1480,7 +1481,7 @@ const ProblemSection = () => (
                     style={{
                       fontFamily: FONT_BODY,
                       fontSize: 14,
-                      color: "#4A4A4A",
+                      color: "#54595F",
                       lineHeight: 1.6,
                       margin: 0,
                     }}
@@ -1497,7 +1498,7 @@ const ProblemSection = () => (
         <div
           style={{
             marginTop: 32,
-            background: "#000033",
+            background: "#1B2B4B",
             borderRadius: 14,
             padding: "20px 24px",
           }}
@@ -1553,7 +1554,7 @@ const ProblemSection = () => (
             transition: "background 0.15s, transform 0.1s",
           }}
           onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "#C7560A")
+            (e.currentTarget.style.background = "#C95A20")
           }
           onMouseLeave={(e) =>
             (e.currentTarget.style.background = "#E8670A")
@@ -1580,7 +1581,7 @@ const ProblemSection = () => (
 /* ─── WHY US ────────────────────────────────────────────────── */
 
 const WhyUs = () => (
-  <section style={{ background: "#000033", padding: "96px 0" }}>
+  <section style={{ background: "#1B2B4B", padding: "96px 0" }}>
     <div
       className="grid grid-cols-1 md:grid-cols-2"
       style={{
@@ -1728,7 +1729,7 @@ const WhyUs = () => (
             gap: "16px 36px",
             marginTop: 36,
             paddingTop: 28,
-            borderTop: "1px solid rgba(255,255,255,0.08)",
+            borderTop: "1px solid #D9DEF0",
           }}
         >
           {[
@@ -1773,7 +1774,7 @@ const WhyUs = () => (
 /* ─── RESULTS ───────────────────────────────────────────────── */
 
 const Results = () => (
-  <section style={{ background: "#F5F0EB", padding: "96px 0" }}>
+  <section style={{ background: "#F5F3F0", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -1783,7 +1784,7 @@ const Results = () => (
     >
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         {eyebrow("Outcomes")}
-        {sectionHead("Real Results From Real Patients", "#000033", "center")}
+        {sectionHead("Real Results From Real Patients", "#1B2B4B", "center")}
       </div>
 
       {/* Stat cards */}
@@ -1839,7 +1840,7 @@ const Results = () => (
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 15,
-                color: "#4A4A4A",
+                color: "#54595F",
                 marginTop: 12,
                 lineHeight: 1.5,
                 position: "relative",
@@ -1878,7 +1879,7 @@ const Results = () => (
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(90deg, rgba(0,0,51,0.88) 0%, rgba(0,0,51,0.45) 60%, rgba(0,0,51,0.10) 100%)",
+              "linear-gradient(90deg, rgba(27,43,75,0.88) 0%, rgba(27,43,75,0.45) 60%, rgba(27,43,75,0.10) 100%)",
             display: "flex",
             alignItems: "center",
             padding: "0 40px",
@@ -1943,7 +1944,7 @@ const Results = () => (
                 fontFamily: "Georgia, serif",
                 fontSize: 130,
                 lineHeight: 1,
-                color: "rgba(0,0,51,0.05)",
+                color: "rgba(27,43,75,0.05)",
                 pointerEvents: "none",
                 userSelect: "none",
               }}
@@ -1960,7 +1961,7 @@ const Results = () => (
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 14,
-                color: "#2A2A2A",
+                color: "#1B2B4B",
                 lineHeight: 1.7,
                 flex: 1,
                 position: "relative",
@@ -1980,7 +1981,7 @@ const Results = () => (
                   fontFamily: FONT_BODY,
                   fontSize: 13,
                   fontWeight: 700,
-                  color: "#000033",
+                  color: "#1B2B4B",
                 }}
               >
                 {t.name}
@@ -2031,9 +2032,9 @@ const Results = () => (
             fontWeight: 800,
             letterSpacing: "0.07em",
             textTransform: "uppercase",
-            color: "#000033",
-            background: "rgba(0,0,51,0.06)",
-            border: "1px solid rgba(0,0,51,0.15)",
+            color: "#1B2B4B",
+            background: "rgba(27,43,75,0.06)",
+            border: "1px solid rgba(27,43,75,0.15)",
             borderRadius: 99,
             padding: "12px 24px",
             textDecoration: "none",
@@ -2044,8 +2045,8 @@ const Results = () => (
             e.currentTarget.style.borderColor = "rgba(232,103,10,0.35)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(0,0,51,0.06)";
-            e.currentTarget.style.borderColor = "rgba(0,0,51,0.15)";
+            e.currentTarget.style.background = "rgba(27,43,75,0.06)";
+            e.currentTarget.style.borderColor = "rgba(27,43,75,0.15)";
           }}
         >
           <Star size={14} fill="#FFC107" stroke="#FFC107" />
@@ -2076,7 +2077,7 @@ const Results = () => (
               fontSize: 13,
               fontWeight: 600,
               color: "#fff",
-              background: "#000033",
+              background: "#1B2B4B",
               border: "1px solid rgba(255,255,255,0.22)",
               borderRadius: 99,
               height: 42,
@@ -2086,11 +2087,11 @@ const Results = () => (
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = "#E8670A";
-              e.currentTarget.style.background = "#1A2255";
+              e.currentTarget.style.background = "#253560";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.22)";
-              e.currentTarget.style.background = "#000033";
+              e.currentTarget.style.background = "#1B2B4B";
             }}
           >
             {label}
@@ -2104,7 +2105,7 @@ const Results = () => (
 /* ─── DOCTOR SECTION ────────────────────────────────────────── */
 
 const DoctorSection = () => (
-  <section style={{ background: "#F5F0EB", padding: "96px 0" }}>
+  <section style={{ background: "#F5F3F0", padding: "96px 0" }}>
     <div
       className="grid grid-cols-1 md:grid-cols-2"
       style={{
@@ -2131,7 +2132,7 @@ const DoctorSection = () => (
               objectPosition: "top",
               borderRadius: 20,
               display: "block",
-              boxShadow: "0 20px 60px rgba(0,0,51,0.15), 0 4px 20px rgba(0,0,0,0.10)",
+              boxShadow: "0 20px 60px rgba(27,43,75,0.15), 0 4px 20px rgba(0,0,0,0.10)",
             }}
             loading="lazy"
           />
@@ -2152,7 +2153,7 @@ const DoctorSection = () => (
         <div
           style={{
             marginTop: 20,
-            background: "#000033",
+            background: "#1B2B4B",
             borderRadius: 12,
             padding: "14px 24px",
             textAlign: "center",
@@ -2195,7 +2196,7 @@ const DoctorSection = () => (
             fontSize: "clamp(26px, 3.5vw, 44px)",
             fontWeight: 700,
             lineHeight: 1.06,
-            color: "#000033",
+            color: "#1B2B4B",
             margin: "0 0 18px",
           }}
         >
@@ -2207,7 +2208,7 @@ const DoctorSection = () => (
           style={{
             fontFamily: FONT_BODY,
             fontSize: 16,
-            color: "#4A4A4A",
+            color: "#54595F",
             lineHeight: 1.75,
           }}
         >
@@ -2238,9 +2239,9 @@ const DoctorSection = () => (
                 fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: "0.05em",
-                color: "#000033",
+                color: "#1B2B4B",
                 background: "transparent",
-                border: "1.5px solid rgba(0,0,51,0.28)",
+                border: "1.5px solid rgba(27,43,75,0.28)",
                 borderRadius: 99,
                 padding: "7px 16px",
               }}
@@ -2274,7 +2275,7 @@ const DoctorSection = () => (
             transition: "background 0.15s, transform 0.1s",
           }}
           onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "#C7560A")
+            (e.currentTarget.style.background = "#C95A20")
           }
           onMouseLeave={(e) =>
             (e.currentTarget.style.background = "#E8670A")
@@ -2292,7 +2293,7 @@ const DoctorSection = () => (
 const Pricing = () => (
   <section
     style={{
-      background: "#000033",
+      background: "#1B2B4B",
       padding: "96px 0",
       position: "relative",
       overflow: "hidden",
@@ -2425,7 +2426,7 @@ const Pricing = () => (
             gap: 8,
             marginTop: 32,
             background: "#fff",
-            color: "#000033",
+            color: "#1B2B4B",
             border: "none",
             borderRadius: 99,
             height: 56,
@@ -2514,7 +2515,7 @@ const PillarCard = ({
       }}
       onMouseLeave={() => {
         if (ref.current) {
-          ref.current.style.borderColor = "#E8E5E0";
+          ref.current.style.borderColor = "#D9DEF0";
           ref.current.style.background = "#FFFFFF";
           ref.current.style.transform = "translateY(0)";
           ref.current.style.boxShadow = "none";
@@ -2543,7 +2544,7 @@ const PillarCard = ({
           fontWeight: 700,
           letterSpacing: "0.05em",
           textTransform: "uppercase",
-          color: "#000033",
+          color: "#1B2B4B",
           margin: "0 0 8px",
         }}
       >
@@ -2553,7 +2554,7 @@ const PillarCard = ({
         style={{
           fontFamily: FONT_BODY,
           fontSize: 13,
-          color: "#4A4A4A",
+          color: "#54595F",
           lineHeight: 1.6,
           margin: 0,
         }}
@@ -2565,7 +2566,7 @@ const PillarCard = ({
 };
 
 const Pillars = () => (
-  <section style={{ background: "#000033", padding: "96px 0" }}>
+  <section style={{ background: "#1B2B4B", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -2581,7 +2582,7 @@ const Pillars = () => (
             fontSize: "clamp(24px, 3.2vw, 40px)",
             fontWeight: 700,
             lineHeight: 1.1,
-            color: "#000033",
+            color: "#1B2B4B",
           }}
         >
           Why 10,000+ Men Choose MWC Over Everyone Else
@@ -2602,7 +2603,7 @@ const Pillars = () => (
 /* ─── TEAM SECTION ──────────────────────────────────────────── */
 
 const TeamSection = () => (
-  <section style={{ background: "#000033", padding: "96px 0" }}>
+  <section style={{ background: "#1B2B4B", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -2710,7 +2711,7 @@ const TeamSection = () => (
 const Locations = () => (
   <section
     id="locations"
-    style={{ background: "#000033", padding: "96px 0" }}
+    style={{ background: "#1B2B4B", padding: "96px 0" }}
   >
     <div
       style={{
@@ -2802,7 +2803,7 @@ const Locations = () => (
               e.currentTarget.style.transform = "translateY(-3px)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "#E8E5E0";
+              e.currentTarget.style.borderColor = "#D9DEF0";
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
@@ -2822,7 +2823,7 @@ const Locations = () => (
                   fontWeight: 700,
                   letterSpacing: "0.02em",
                   textTransform: "uppercase",
-                  color: "#000033",
+                  color: "#1B2B4B",
                   margin: 0,
                 }}
               >
@@ -2833,7 +2834,7 @@ const Locations = () => (
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 14,
-                color: "#555",
+                color: "#54595F",
                 lineHeight: 1.65,
                 whiteSpace: "pre-line",
                 flex: 1,
@@ -2848,7 +2849,7 @@ const Locations = () => (
                 fontFamily: FONT_BODY,
                 fontSize: 14,
                 fontWeight: 700,
-                color: "#000033",
+                color: "#1B2B4B",
                 textDecoration: "none",
                 marginTop: 12,
               }}
@@ -2892,7 +2893,7 @@ const Locations = () => (
                 transition: "background 0.15s, transform 0.1s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#C7560A")
+                (e.currentTarget.style.background = "#C95A20")
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.background = "#E8670A")
@@ -2986,7 +2987,7 @@ const FAQItem = ({
 const FAQSection = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   return (
-    <section style={{ background: "#000033", padding: "96px 0" }}>
+    <section style={{ background: "#1B2B4B", padding: "96px 0" }}>
       <div
         style={{
           maxWidth: 720,
@@ -3030,7 +3031,7 @@ const FAQSection = () => {
 const BottomCTA = () => (
   <section
     style={{
-      background: "#000033",
+      background: "#1B2B4B",
       padding: "96px 0",
       position: "relative",
       overflow: "hidden",
@@ -3124,7 +3125,7 @@ const BottomCTA = () => (
               transition: "background 0.15s, transform 0.1s",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.background = "#C7560A")
+              (e.currentTarget.style.background = "#C95A20")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.style.background = "#E8670A")
@@ -3176,17 +3177,17 @@ const BottomCTA = () => (
           <img
             src="/images/badges/hipaa.png"
             alt="HIPAA Compliant"
-            style={{ height: 36, filter: "grayscale(1)", opacity: 0.45 }}
+            style={{ height: 38, opacity: 0.88 }}
           />
           <img
             src="/images/badges/clia.png"
             alt="CLIA Certified"
-            style={{ height: 36, filter: "grayscale(1)", opacity: 0.45 }}
+            style={{ height: 38, opacity: 0.88 }}
           />
           <img
             src="/images/badges/legitscript.png"
             alt="LegitScript Certified"
-            style={{ height: 36, filter: "grayscale(1)", opacity: 0.45 }}
+            style={{ height: 38, opacity: 0.88 }}
           />
         </div>
       </div>
@@ -3204,7 +3205,7 @@ const BottomCTA = () => (
 const SiteFooter = () => (
   <footer
     style={{
-      background: "#000033",
+      background: "#1B2B4B",
       borderTop: "1px solid rgba(255,255,255,0.06)",
       padding: "36px 20px",
     }}
@@ -3304,7 +3305,7 @@ const MobileCTA = () => (
       display: "flex",
       gap: 10,
       padding: "10px 14px",
-      background: "#000033",
+      background: "#1B2B4B",
       borderTop: "1px solid rgba(255,255,255,0.09)",
     }}
   >
