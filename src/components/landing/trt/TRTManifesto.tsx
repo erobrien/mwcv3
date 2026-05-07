@@ -23,7 +23,7 @@ export const TRTManifesto = () => {
             }}
           >
             TRT, ED, AND WEIGHT LOSS<br />
-            FOR MEN — DONE RIGHT.<br />
+            FOR MEN, DONE RIGHT.<br />
             <span>IN PERSON. IN VIRGINIA.</span>
           </h2>
 
