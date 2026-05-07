@@ -58,7 +58,7 @@ export const TRTHero = () => {
             textShadow: "0 2px 12px rgba(0,0,0,0.4)",
           }}
         >
-          Physician-Led <span style={{ color: "#E8670A" }}>Testosterone Care</span>, In One Visit
+          Physician-Led <span style={{ color: "#E8670A" }}>TRT and ED Therapy</span>, In One Visit
         </h1>
 
         <p
