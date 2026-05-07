@@ -93,7 +93,7 @@ export const TRTHowItWorks = () => {
             className="mt-5 text-base leading-relaxed"
             style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
           >
-            No referrals. No waiting weeks. Walk into one of our centers, and leave with a plan.
+            Book your visit in under 5 minutes. Pick one of our 3 Virginia clinics, choose a same-day or next-day time, and you're set. No referral, no phone tag, no waiting weeks for care.
           </p>
 
           <div className="mt-8 flex flex-col gap-6">
