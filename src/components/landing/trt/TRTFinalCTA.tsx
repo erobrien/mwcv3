@@ -91,7 +91,7 @@ export const TRTFinalCTA = () => {
             </p>
 
             <ul className="mt-6 space-y-3">
-              {["100% confidential", "FSA/HSA accepted", "Same-day visits available"].map((t) => (
+              {["100% confidential", "Face-to-face with a physician", "Same-day visits available"].map((t) => (
                 <li key={t} className="flex items-center gap-3" style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}>
                   <Check className="h-5 w-5 flex-shrink-0" strokeWidth={3} style={{ color: "#2ECC71" }} />
                   <span className="text-base">{t}</span>

@@ -3,8 +3,8 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 
 const faqs = [
   {
-    q: "How much does treatment cost? Does insurance cover it?",
-    a: "Consults with our providers are always free, including labs review and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
+    q: "Does insurance cover this?",
+    a: "Consults with our providers are always free, including labs review and your care plan. We don't bill insurance directly, but we accept FSA and HSA. Many men find our straightforward process simpler than navigating insurance approvals.",
     cta: true,
   },
   {
