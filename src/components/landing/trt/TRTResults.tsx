@@ -1,4 +1,4 @@
-import { Star, ShieldCheck } from "lucide-react";
+import { Star } from "lucide-react";
 
 const stats = [
   { value: "2–5×", label: "Increase in total testosterone within first 2 months" },
