@@ -93,7 +93,7 @@ export const TRTHowItWorks = () => {
             className="mt-5 text-base leading-relaxed"
             style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
           >
-            No referrals. No waiting weeks. Book online in minutes, come in, and leave with a plan.
+            No referrals. No waiting weeks. Walk into one of our centers, and leave with a plan.
           </p>
 
           <div className="mt-8 flex flex-col gap-6">
