@@ -50,4 +50,4 @@ const NewLandingPage = () => {
   );
 };
 
-export default TRTLandingPage;
+export default NewLandingPage;
