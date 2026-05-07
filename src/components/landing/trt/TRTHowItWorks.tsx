@@ -1,4 +1,4 @@
-import { X, ArrowRight } from "lucide-react";
+import { X } from "lucide-react";
 
 const symptoms = [
   "Constant fatigue no matter how much you sleep",
@@ -12,7 +12,7 @@ const steps = [
   {
     num: "1",
     title: "Same-Day Blood Work",
-    desc: "On-site labs. Results typically reviewed in minutes, not 2 weeks.",
+    desc: "On-site labs. Results typically reviewed in minutes — not 2 weeks.",
   },
   {
     num: "2",
@@ -48,13 +48,13 @@ export const TRTHowItWorks = () => {
 
   const heading = (text: string) => (
     <h2
-      className="font-bold"
+      className="font-bold uppercase"
       style={{
         fontFamily: "Oswald, sans-serif",
-        fontSize: "clamp(28px, 3.6vw, 40px)",
+        fontSize: "clamp(28px, 4vw, 44px)",
         color: "#000033",
         fontWeight: 700,
-        lineHeight: 1.1,
+        lineHeight: 1.05,
         letterSpacing: "-0.01em",
       }}
     >
@@ -63,7 +63,7 @@ export const TRTHowItWorks = () => {
   );
 
   return (
-    <section id="how-it-works" className="py-16 md:py-24" style={{ background: "#F5F0EB" }}>
+    <section id="how-it-works" className="py-10 md:py-20" style={{ background: "#F5F0EB" }}>
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Left: Symptoms (mobile shown second) */}
         <div className="order-2 md:order-1">
@@ -119,28 +119,9 @@ export const TRTHowItWorks = () => {
             ))}
           </div>
 
-          {/* What happens next? dark card */}
-          <div
-            className="mt-8 rounded-xl p-5"
-            style={{ background: "#000033" }}
-          >
-            <div
-              className="text-xs uppercase font-semibold mb-2"
-              style={{ color: "#E8670A", fontFamily: "Inter, sans-serif", letterSpacing: "0.10em" }}
-            >
-              What happens next?
-            </div>
-            <p
-              className="text-sm leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
-            >
-              Most patients leave with a prescription the same day. Treatment starts at <strong style={{ color: "#FFFFFF" }}>$199/month</strong>.
-            </p>
-          </div>
-
           <button
             onClick={scrollToForm}
-            className="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
+            className="mt-10 inline-flex items-center justify-center rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
             style={{
               background: "#E8670A",
               color: "#FFFFFF",
@@ -151,15 +132,8 @@ export const TRTHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Start Today — Book My Same-Day Visit <ArrowRight className="h-4 w-4" />
+            Schedule My Consultation
           </button>
-
-          <p
-            className="mt-3 text-sm"
-            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif" }}
-          >
-            📅 Appointments filling this week. Secure your slot.
-          </p>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "How much does treatment cost? Does insurance cover it?",
-    a: "Your first visit is [TODO: first-visit price], which includes labs, your consultation with a licensed provider, and your care plan. Ongoing treatment, if prescribed, starts at $199/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
+    a: "Your first visit is [$XX], which includes blood work, your consultation with a licensed provider, and your care plan. Ongoing treatment, if prescribed, starts at [$XX]/month. We don't bill insurance directly, but we accept FSA and HSA. Many patients find our transparent pricing simpler than navigating insurance approvals.",
     cta: true,
   },
   {
@@ -49,8 +49,8 @@ export const TRTFAQ = () => {
 
   return (
     <section id="faq" style={{ background: "#F5F0EB" }}>
-      <div className="max-w-[820px] mx-auto px-4 md:px-6 py-16 md:py-24">
-        <h2 className="font-bold text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(28px, 3.6vw, 40px)", letterSpacing: "-0.01em", lineHeight: 1.1 }}>
+      <div className="max-w-[820px] mx-auto px-6 py-16 md:py-24">
+        <h2 className="font-bold uppercase text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}>
           Frequently Asked Questions
         </h2>
 

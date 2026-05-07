@@ -1,17 +1,10 @@
 import { useState } from "react";
 
-const whyTodayChips = [
-  "⚡ Same-day appointments",
-  "🔬 On-site labs & results",
-  "📋 Leave with a plan",
-];
-
 export const TRTFinalCTA = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  const [tcpaConsent, setTcpaConsent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -26,7 +19,6 @@ export const TRTFinalCTA = () => {
     if (!phone.trim()) errs.phone = "Phone is required";
     else if (!validatePhone(phone)) errs.phone = "Please enter a valid phone number";
     if (!location) errs.location = "Please select a location";
-    if (!tcpaConsent) errs.tcpa = "You must consent to continue";
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
@@ -43,13 +35,13 @@ export const TRTFinalCTA = () => {
 
   const inputStyle: React.CSSProperties = {
     width: "100%",
-    height: 48,
-    background: "#FFFFFF",
-    border: "1px solid #D6DAE6",
+    height: 52,
+    background: "#F5F0EB",
+    border: "2px solid #C8C6C1",
     borderRadius: 8,
     padding: "0 16px",
     fontSize: 16,
-    color: "#0E1230",
+    color: "#000033",
     outline: "none",
     fontFamily: "Inter, sans-serif",
     transition: "border-color 200ms ease, box-shadow 200ms ease",
@@ -57,32 +49,30 @@ export const TRTFinalCTA = () => {
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
     e.currentTarget.style.borderColor = "#E8670A";
-    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.20)";
+    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(232,103,10,0.15)";
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
-    e.currentTarget.style.borderColor = "#D6DAE6";
+    e.currentTarget.style.borderColor = "#C8C6C1";
     e.currentTarget.style.boxShadow = "none";
   };
 
   return (
-    <section id="final-cta" className="py-16 md:py-24" style={{ background: "#000033" }}>
+    <section id="final-cta" className="py-14 md:py-20" style={{ background: "#000033" }}>
       <div className="max-w-[1200px] mx-auto px-6 text-center">
         <h2
-          className="font-bold"
+          className="font-bold uppercase"
           style={{
             fontFamily: "Oswald, sans-serif",
-            fontSize: "clamp(28px, 3.6vw, 40px)",
+            fontSize: "clamp(28px, 4vw, 40px)",
             color: "#FFFFFF",
             fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: "-0.01em",
           }}
         >
-          Ready to Get Tested?
+          READY TO GET TESTED?
         </h2>
-        <p className="text-base mt-3 max-w-[640px] mx-auto" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}>
-          Walk into any of our 3 Virginia centers for a same-day consultation. No commitment, no credit card.
+        <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
+          Walk into any of our 3 Virginia centers. Consultation.
         </p>
 
         {/* Stars */}
@@ -93,29 +83,9 @@ export const TRTFinalCTA = () => {
           <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>200+ Reviews</span>
         </div>
 
-        {/* Why-today chips */}
-        <div
-          className="flex flex-wrap justify-center gap-3 mt-8"
-          style={{ marginBottom: 24 }}
-        >
-          {whyTodayChips.map((chip) => (
-            <span
-              key={chip}
-              className="rounded-full px-4 py-2 text-sm font-semibold"
-              style={{
-                background: "rgba(255,255,255,0.10)",
-                color: "#FFFFFF",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
-
         {/* Form */}
         <div
-          className="mx-auto mt-2 rounded-2xl p-8"
+          className="mx-auto mt-8 rounded-2xl p-8 mx-4 md:mx-auto"
           style={{
             background: "#FFFFFF",
             maxWidth: 480,
@@ -131,20 +101,20 @@ export const TRTFinalCTA = () => {
               fontWeight: 700,
             }}
           >
-            Claim Your Free Consultation
+            Book My Consultation
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div>
               <input
                 type="text"
-                placeholder="Full Name" aria-label="Full name"
+                placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 style={inputStyle}
-                className="placeholder:text-[#8B92A8]"
+                className="placeholder:text-[#999999]"
                 autoComplete="name"
               />
               {errors.name && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.name}</p>}
@@ -153,7 +123,7 @@ export const TRTFinalCTA = () => {
             <div>
               <input
                 type="email"
-                placeholder="Email Address" aria-label="Email address"
+                placeholder="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={handleFocus}
@@ -163,7 +133,7 @@ export const TRTFinalCTA = () => {
                   else setErrors((p) => { const { email: _, ...rest } = p; return rest; });
                 }}
                 style={inputStyle}
-                className="placeholder:text-[#8B92A8]"
+                className="placeholder:text-[#999999]"
                 autoComplete="email"
               />
               {errors.email && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.email}</p>}
@@ -172,7 +142,7 @@ export const TRTFinalCTA = () => {
             <div>
               <input
                 type="tel"
-                placeholder="Phone Number" aria-label="Phone number"
+                placeholder="Phone Number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 onFocus={handleFocus}
@@ -182,14 +152,14 @@ export const TRTFinalCTA = () => {
                   else setErrors((p) => { const { phone: _, ...rest } = p; return rest; });
                 }}
                 style={inputStyle}
-                className="placeholder:text-[#8B92A8]"
+                className="placeholder:text-[#999999]"
                 autoComplete="tel"
               />
               {errors.phone && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.phone}</p>}
             </div>
 
             <div>
-              <select aria-label="Preferred clinic location"
+              <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 onFocus={handleFocus as any}
@@ -210,30 +180,6 @@ export const TRTFinalCTA = () => {
                 <option value="virginia-beach">Virginia Beach</option>
               </select>
               {errors.location && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.location}</p>}
-            </div>
-
-            {/* TCPA Consent */}
-            <div>
-              <label
-                className="flex items-start gap-2 cursor-pointer"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                <input
-                  type="checkbox"
-                  checked={tcpaConsent}
-                  onChange={(e) => {
-                    setTcpaConsent(e.target.checked);
-                    if (e.target.checked) {
-                      setErrors((p) => { const { tcpa: _, ...rest } = p; return rest; });
-                    }
-                  }}
-                  style={{ marginTop: 2, flexShrink: 0, accentColor: "#E8670A", width: 16, height: 16, cursor: "pointer" }}
-                />
-                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>
-                  I consent to receive appointment and marketing texts from Men's Wellness Centers. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out.
-                </span>
-              </label>
-              {errors.tcpa && <p className="text-xs mt-1 text-left" style={{ color: "#CC4444" }}>{errors.tcpa}</p>}
             </div>
 
             <button
@@ -269,13 +215,6 @@ export const TRTFinalCTA = () => {
               Or call: 866-344-4955
             </a>
           </p>
-        </div>
-
-        {/* Trust badge row */}
-        <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center", marginTop: 16 }}>
-          <img src="/images/badges/hipaa.png" alt="HIPAA Compliant" style={{ height: 40, filter: "grayscale(1)", opacity: 0.7 }} />
-          <img src="/images/badges/clia.png" alt="CLIA Certified" style={{ height: 40, filter: "grayscale(1)", opacity: 0.7 }} />
-          <img src="/images/badges/legitscript.png" alt="LegitScript Certified" style={{ height: 40, filter: "grayscale(1)", opacity: 0.7 }} />
         </div>
       </div>
     </section>
