@@ -1,47 +1,12 @@
-## Goal
-Remove the "Turn On Your Testosterone" Optimal/Low T toggle section (TRTSymptomToggle) from `/lp/testosterone` while preserving a clean, alternating background rhythm down the page.
+## Plan: Add physician photo as TRT hero background
 
-## Current section order & backgrounds
-1. TRTHero — navy
-2. TRTTrustBar — navy
-3. TRTInlineLeadMobile — cream (mobile only)
-4. TRTHowItWorks — cream
-5. TRTSymptomToggle — navy ← remove
-6. TRTResults — cream
-7. TRTManifesto — navy
-8. TRTMarquee — orange (divider strip)
-9. TRTPricingCTA — orange
-10. TRTPillars — navy
-11. TRTLocations — white
-12. TRTFAQ — cream
-13. TRTFinalCTA — navy
+1. Copy `user-uploads://image-51.png` → `src/assets/trt-hero-physician.webp` (saved as project asset for bundling/optimization).
+2. Update `src/components/landing/trt/TRTHero.tsx`:
+   - Import the new asset.
+   - Add a full-bleed `<img>` inside the hero `<section>` with `absolute inset-0 w-full h-full object-cover`, `object-position: right center` (keep physician visible on right; form overlays him), `loading="eager"`, `fetchpriority="high"`, `decoding="async"`, empty alt.
+   - Add a dual gradient overlay above the image: `linear-gradient(90deg, rgba(0,0,51,0.95) 0%, rgba(0,0,51,0.75) 45%, rgba(0,0,51,0.55) 100%)` plus a subtle bottom fade for text legibility.
+   - Keep `background: #000033` on the section as fallback.
+   - Ensure content wrapper stays `relative z-10` so headline, checks, and form sit above image.
+3. No layout / copy changes — only background treatment.
 
-Removing SymptomToggle would leave HowItWorks(cream) → Results(cream), breaking the rhythm.
-
-## Change
-Edit `src/pages/TRTLandingPage.tsx` only. Remove `<TRTSymptomToggle />` and reorder so cream/navy alternates:
-
-```text
-TRTHero               navy
-TRTTrustBar           navy
-TRTInlineLeadMobile   cream (mobile)
-TRTHowItWorks         cream
-TRTManifesto          navy   ← moved up
-TRTResults            cream
-TRTPillars            navy   ← moved up
-TRTMarquee            orange (divider)
-TRTPricingCTA         orange
-TRTLocations          white
-TRTFAQ                cream
-TRTFinalCTA           navy
-```
-
-Also remove the `TRTSymptomToggle` import line.
-
-## Notes
-- No component internals change; only page composition.
-- Marquee + PricingCTA stay paired as the orange "break" between the editorial cream/navy stack and the white Locations block.
-- No copy, schema, or tracking changes.
-
-## Files
-- `src/pages/TRTLandingPage.tsx` (edit imports + JSX order)
+Result: headline contrast preserved (≥7:1 on left), physician visible behind/around the form on desktop, navy overlay strengthens on mobile so text stays readable.
