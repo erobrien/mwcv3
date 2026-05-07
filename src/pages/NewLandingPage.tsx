@@ -31,9 +31,9 @@ const NewLandingPage = () => {
       <main className="flex-1">
         <TRTHero />
         <TRTTrustBar />
+        <TRTHowItWorks />
         <TRTInlineLeadMobile />
         <TRTManifesto />
-        <TRTHowItWorks />
         <TRTResults />
         <TRTPillars />
         <TRTMarquee />
