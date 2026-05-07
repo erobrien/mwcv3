@@ -5,8 +5,8 @@ const stats = [
 ];
 
 export const TRTTrustBar = () => (
-  <section style={{ background: "#000033", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-    <div className="max-w-[1200px] mx-auto px-6 py-10 md:py-14 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 text-center">
+  <section style={{ background: "#0A1628" }}>
+    <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 text-center" style={{ paddingTop: 80, paddingBottom: 80 }}>
       {stats.map((s) => (
         <div key={s.label} className="flex flex-col items-center gap-2">
           <div

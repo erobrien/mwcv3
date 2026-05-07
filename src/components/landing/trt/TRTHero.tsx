@@ -1,6 +1,6 @@
 import { Check, Star } from "lucide-react";
 import { TRTHeroForm } from "./TRTHeroForm";
-import physicianBg from "@/assets/trt-hero-physician.png";
+import chesapeakeBg from "@/assets/trt-hero-physician.png";
 
 const trustChecks = [
   "No referral needed",
@@ -9,90 +9,180 @@ const trustChecks = [
   "Licensed VA providers",
 ];
 
+const COLORS = {
+  navyDeep: "#0A1628",
+  navy: "#122036",
+  cream: "#F5F1E8",
+  orange: "#E87722",
+  gold: "#C9A961",
+};
+
 export const TRTHero = () => {
+  const scrollToForm = () => {
+    document.getElementById("hero-form")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <section
       id="hero"
-      className="relative overflow-hidden"
-      style={{ background: "#000033" }}
+      className="relative overflow-hidden flex items-center"
+      style={{
+        background: COLORS.navyDeep,
+        minHeight: 720,
+        maxHeight: "100vh",
+      }}
     >
-      <img
-        src={physicianBg}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        decoding="async"
-        // @ts-ignore
-        fetchpriority="high"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        style={{ objectPosition: "right center" }}
-      />
+      <a
+        href="#hero-form"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:bg-white focus:text-black focus:rounded"
+      >
+        Skip to lead form
+      </a>
+
+      {/* Background pattern */}
+      <picture>
+        <img
+          src={chesapeakeBg}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+          // @ts-ignore
+          fetchpriority="high"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ objectFit: "cover", objectPosition: "right center" }}
+        />
+      </picture>
+
+      {/* Gradient overlay */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(0,0,51,0.96) 0%, rgba(0,0,51,0.85) 40%, rgba(0,0,51,0.55) 75%, rgba(0,0,51,0.75) 100%)",
+            "linear-gradient(90deg, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.75) 45%, rgba(10,22,40,0.40) 100%)",
         }}
       />
+
+      {/* Subtle grain */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
-        style={{ background: "linear-gradient(180deg, rgba(0,0,51,0) 0%, rgba(0,0,51,0.85) 100%)" }}
+        className="absolute inset-0 pointer-events-none mix-blend-overlay"
+        style={{
+          opacity: 0.03,
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
       />
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-14 items-start">
+
+      {/* Bottom fade into stats bar */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+        style={{ background: `linear-gradient(180deg, rgba(10,22,40,0) 0%, ${COLORS.navyDeep} 100%)` }}
+      />
+
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 pt-28 pb-16 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-center">
+        {/* LEFT */}
         <div>
           <span
-            className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase mb-5"
-            style={{ background: "#F5F0EB", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
+            className="inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase mb-6"
+            style={{
+              background: "transparent",
+              border: `1px solid ${COLORS.cream}`,
+              color: COLORS.cream,
+              letterSpacing: "0.15em",
+              fontFamily: "Inter, sans-serif",
+            }}
           >
             Virginia's In-Person Men's Health Centers
           </span>
 
           <h1
-            className="font-bold uppercase leading-[1.05]"
+            className="font-bold uppercase"
             style={{
-              fontFamily: "Oswald, sans-serif",
-              fontSize: "clamp(32px, 5.6vw, 72px)",
-              color: "#FFFFFF",
-              fontWeight: 700,
+              fontFamily: "Oswald, 'Bebas Neue', Anton, sans-serif",
+              fontSize: "clamp(48px, 6vw, 96px)",
+              lineHeight: 0.95,
               letterSpacing: "-0.01em",
-              textShadow: "0 2px 12px rgba(0,0,0,0.4)",
+              color: COLORS.cream,
+              fontWeight: 700,
+              textShadow: "0 2px 16px rgba(0,0,0,0.5)",
             }}
           >
-            Get Your Edge Back. <span style={{ color: "#E8670A" }}>In One Visit.</span>
+            Get Your Edge Back.
+            <br />
+            <span style={{ color: COLORS.orange }}>In One Visit.</span>
           </h1>
 
           <p
-            className="mt-4 text-base md:text-lg leading-relaxed max-w-[640px]"
-            style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif", fontSize: 16 }}
+            className="mt-6 max-w-[520px]"
+            style={{
+              color: "rgba(245,241,232,0.85)",
+              fontFamily: "Inter, sans-serif",
+              fontSize: 18,
+              lineHeight: 1.5,
+            }}
           >
             Same-day labs, a face-to-face Virginia physician, and a personalized plan. Free consult, every time.
           </p>
 
-          <div className="mt-4 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}>
+          <a
+            href="https://www.google.com/search?q=Men%27s+Wellness+Centers+Virginia+reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 hover:opacity-90 transition-opacity"
+            style={{ color: COLORS.cream, fontFamily: "Inter, sans-serif", textDecoration: "none" }}
+          >
             <span className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" />)}
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-4 w-4" fill={COLORS.gold} stroke={COLORS.gold} />
+              ))}
             </span>
-            <span className="text-sm font-medium" style={{ fontSize: 14 }}>4.9 average from 200+ verified Google reviews</span>
-          </div>
+            <span style={{ fontSize: 14 }}>4.9 average from 200+ verified Google reviews</span>
+          </a>
 
-          <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 max-w-[560px]">
+          <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[560px]">
             {trustChecks.map((t) => (
-              <li key={t} className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}>
-                <Check className="h-[18px] w-[18px] flex-shrink-0" style={{ color: "#2ECC71" }} />
-                <span className="font-medium" style={{ fontSize: 16 }}>{t}</span>
+              <li
+                key={t}
+                className="flex items-center gap-2.5"
+                style={{ color: COLORS.cream, fontFamily: "Inter, sans-serif" }}
+              >
+                <Check className="h-[18px] w-[18px] flex-shrink-0" strokeWidth={3} style={{ color: COLORS.orange }} />
+                <span style={{ fontSize: 15, fontWeight: 500 }}>{t}</span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-6 text-xs" style={{ color: "rgba(255,255,255,0.45)", fontFamily: "Inter, sans-serif" }}>
+          {/* Mobile primary CTA (hidden on lg+) */}
+          <button
+            onClick={scrollToForm}
+            className="lg:hidden mt-7 w-full uppercase font-bold cursor-pointer"
+            style={{
+              height: 56,
+              background: COLORS.orange,
+              color: "#FFFFFF",
+              fontSize: 14,
+              border: "none",
+              borderRadius: 8,
+              letterSpacing: "0.08em",
+              fontFamily: "Inter, sans-serif",
+            }}
+          >
+            Book My Free Consult
+          </button>
+
+          <div
+            className="mt-6"
+            style={{ color: "rgba(245,241,232,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}
+          >
             Medically reviewed by licensed Virginia providers. Individual results vary.
           </div>
         </div>
 
-        {/* Form */}
-        <div id="hero-form" className="lg:sticky lg:top-24">
+        {/* RIGHT — form */}
+        <div id="hero-form" className="w-full flex lg:justify-end">
           <TRTHeroForm />
         </div>
       </div>
