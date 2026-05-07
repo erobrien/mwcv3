@@ -69,7 +69,7 @@ export const TRTInlineLeadMobile = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="text"
-            placeholder="Full Name"
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             style={inputBase}
