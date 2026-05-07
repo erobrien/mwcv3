@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Phone } from "lucide-react";
 
 export const TRTHeader = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -57,23 +58,42 @@ export const TRTHeader = () => {
           </button>
         </div>
 
-        {/* Mobile single CTA pill */}
-        <button
-          onClick={() => scrollTo("final-cta")}
-          className="md:hidden inline-flex items-center justify-center rounded-full px-5 font-bold uppercase cursor-pointer border-none"
-          style={{
-            height: 48,
-            minHeight: 48,
-            background: "#E8670A",
-            color: "#FFFFFF",
-            fontSize: 13,
-            letterSpacing: "0.08em",
-            fontFamily: "Inter, sans-serif",
-          }}
-          aria-label="Book My Consult"
-        >
-          Book My Consult
-        </button>
+        {/* Mobile: phone icon + pill */}
+        <div className="md:hidden flex items-center gap-3">
+          <a
+            href="tel:8663444955"
+            aria-label="Call 866-344-4955"
+            className="relative inline-flex items-center justify-center rounded-full"
+            style={{
+              width: 44,
+              height: 44,
+              background: "#E8670A",
+              color: "#FFFFFF",
+            }}
+          >
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full animate-ping"
+              style={{ background: "#E8670A", opacity: 0.5 }}
+            />
+            <Phone size={20} className="relative" strokeWidth={2.5} />
+          </a>
+          <button
+            onClick={() => scrollTo("final-cta")}
+            className="inline-flex items-center justify-center rounded-full px-4 font-bold uppercase cursor-pointer border-none"
+            style={{
+              height: 44,
+              background: "#E8670A",
+              color: "#FFFFFF",
+              fontSize: 12,
+              letterSpacing: "0.08em",
+              fontFamily: "Inter, sans-serif",
+            }}
+            aria-label="Book My Consult"
+          >
+            Book My Consult
+          </button>
+        </div>
       </div>
     </header>
   );
