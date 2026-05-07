@@ -58,15 +58,20 @@ export const TRTHeader = () => {
           </button>
         </div>
 
-        {/* Mobile phone link */}
+        {/* Mobile phone icon button */}
         <a
           href="tel:8663444955"
-          className="md:hidden flex items-center gap-2 text-sm font-semibold"
-          style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
+          className="md:hidden flex items-center justify-center rounded-full"
+          style={{
+            width: 44,
+            height: 44,
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            color: "#FFFFFF",
+          }}
           aria-label="Call 866-344-4955"
         >
-          <Phone className="h-4 w-4" />
-          (866) 344-4955
+          <Phone className="h-5 w-5" />
         </a>
       </div>
     </header>
