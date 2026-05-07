@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export const TRTHeader = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -58,28 +58,17 @@ export const TRTHeader = () => {
           </button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+        {/* Mobile phone link */}
+        <a
+          href="tel:8663444955"
+          className="md:hidden flex items-center gap-2 text-sm font-semibold"
+          style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
+          aria-label="Call 866-344-4955"
         >
-          {menuOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
-        </button>
+          <Phone className="h-4 w-4" />
+          (866) 344-4955
+        </a>
       </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 py-4 px-6 space-y-4" style={{ background: "rgba(0,0,51,0.98)" }}>
-          <a
-            href="tel:8663444955"
-            className="block text-sm font-semibold"
-            style={{ color: "#FFFFFF" }}
-          >
-            <Phone className="inline h-4 w-4 mr-2" />866-344-4955
-          </a>
-        </div>
-      )}
     </header>
   );
 };
