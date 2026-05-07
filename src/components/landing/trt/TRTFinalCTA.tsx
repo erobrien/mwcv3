@@ -3,20 +3,16 @@ import { Check, MapPin } from "lucide-react";
 
 export const TRTFinalCTA = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   const validatePhone = (v: string) => v.replace(/\D/g, "").length >= 10;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!name.trim()) errs.name = "Name is required";
-    if (!email.trim()) errs.email = "Email is required";
-    else if (!validateEmail(email)) errs.email = "Please enter a valid email";
     if (!phone.trim()) errs.phone = "Phone is required";
     else if (!validatePhone(phone)) errs.phone = "Please enter a valid phone number";
     if (!location) errs.location = "Please select a location";
@@ -24,7 +20,7 @@ export const TRTFinalCTA = () => {
     if (Object.keys(errs).length > 0) return;
 
     const params = new URLSearchParams({
-      name, email, phone, location, source: "landing-page", service: "trt",
+      name, phone, location, source: "landing-page", service: "trt",
     });
     const urls: Record<string, string> = {
       richmond: "https://menswellnesscenters.com/thank-you-richmond/",
