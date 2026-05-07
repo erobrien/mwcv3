@@ -1,5 +1,5 @@
 import imgDoctor from "@/assets/lp/provider-headshot.jpg";
-import imgLobby from "@/assets/lp/lobby-innslake.jpg";
+import imgLobby from "@/assets/lp/onsite-labs-centrifuge.jpg";
 import imgGymConfident from "@/assets/lp/man-gym-confident.jpeg";
 import imgTeam from "@/assets/lp/mwc-team.webp";
 
