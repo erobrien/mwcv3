@@ -33,7 +33,7 @@ export const TRTResults = () => (
         className="font-bold uppercase text-center"
         style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}
       >
-        Patient Reviews & Outcomes
+        Patient Reviews
       </h2>
 
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
