@@ -1,9 +1,5 @@
+import { useState } from "react";
 import { Star } from "lucide-react";
-
-const stats = [
-  { value: "2–5×", label: "Increase in total testosterone within first 2 months" },
-  { value: "84%", label: "Of patients report meaningful symptom improvement" },
-];
 
 const testimonials = [
   {
@@ -44,34 +40,66 @@ const testimonials = [
   },
 ];
 
-export const TRTResults = () => (
-  <section id="results" style={{ background: "#F5F0EB" }}>
-    <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-24">
-      <h2
-        className="font-bold uppercase text-center"
-        style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}
-      >
-        Real Members. Real Experiences.
-      </h2>
+export const TRTResults = () => {
+  const [showAll, setShowAll] = useState(false);
+  const scrollToForm = () => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
 
+  return (
+    <section id="results" style={{ background: "#F5F0EB" }}>
+      <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-24">
+        <h2
+          className="font-bold uppercase text-center"
+          style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}
+        >
+          Real Members. Real Experiences.
+        </h2>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {testimonials.map((t) => (
-          <div key={t.name} className="rounded-2xl p-6 flex flex-col" style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}>
-            <div className="flex items-center gap-0.5 mb-3">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#E8670A" stroke="#E8670A" />)}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <div
+              key={t.name}
+              className={`rounded-2xl p-6 flex flex-col ${i >= 3 && !showAll ? "hidden md:flex" : ""}`}
+              style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}
+            >
+              <div className="flex items-center gap-0.5 mb-3">
+                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#E8670A" stroke="#E8670A" />)}
+              </div>
+              <p className="text-sm italic leading-relaxed flex-1" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
+                "{t.quote}"
+              </p>
+              <div className="mt-4 pt-4 border-t" style={{ borderColor: "#E5E5EA" }}>
+                <div className="text-sm font-semibold" style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}>{t.name}</div>
+                <div className="text-xs" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
+              </div>
             </div>
-            <p className="text-sm italic leading-relaxed flex-1" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
-              "{t.quote}"
-            </p>
-            <div className="mt-4 pt-4 border-t" style={{ borderColor: "#E5E5EA" }}>
-              <div className="text-sm font-semibold" style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}>{t.name}</div>
-              <div className="text-xs" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
-            </div>
+          ))}
+        </div>
+
+        {!showAll && (
+          <div className="md:hidden text-center mt-6">
+            <button
+              onClick={() => setShowAll(true)}
+              className="text-sm font-semibold underline underline-offset-4 cursor-pointer"
+              style={{ color: "#000033", fontFamily: "Inter, sans-serif", background: "none", border: "none" }}
+            >
+              Show more reviews
+            </button>
           </div>
-        ))}
-      </div>
+        )}
 
-    </div>
-  </section>
-);
+        <div className="mt-10 text-center">
+          <p className="text-base mb-4" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
+            Join 10,000+ Virginia men who have taken the first step.
+          </p>
+          <button
+            onClick={scrollToForm}
+            className="inline-flex items-center justify-center rounded-full px-8 font-bold uppercase cursor-pointer border-none"
+            style={{ height: 56, minHeight: 56, background: "#E8670A", color: "#FFFFFF", fontSize: 15, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
+          >
+            Book My Consult
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};

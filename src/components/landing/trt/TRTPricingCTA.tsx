@@ -27,24 +27,39 @@ export const TRTPricingCTA = () => {
               fontWeight: 700,
             }}
           >
-            YOUR FIRST TRT, ED, OR WEIGHT-LOSS VISIT IS SIMPLE.
+            YOUR FIRST VISIT IS ON US.<br />HERE'S WHAT'S INCLUDED.
           </h2>
-          <p
-            className="text-base mt-3 leading-[1.6]"
-            style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
-          >
-            Book online in 5 mins. Walk into any of our 3 Virginia centers. Lab work, physician consultation, and your TRT, ED, or weight-loss plan reviewed in-visit. No commitment, no credit card.
-          </p>
-          <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}>
-            Treatment plans start at $199/month after approval.
-          </p>
+
+          <ul className="mt-6 space-y-3" style={{ fontFamily: "Inter, sans-serif" }}>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
+              <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
+                <strong>First visit: $0.</strong> Blood work, physician consult, and your plan.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
+              <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
+                <strong>Treatment, if prescribed:</strong> from $199/month.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
+              <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
+                FSA/HSA accepted.
+              </span>
+            </li>
+          </ul>
 
           <button
             onClick={scrollToForm}
-            className="mt-6 rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
+            className="mt-6 rounded-full px-8 font-bold uppercase cursor-pointer transition-colors duration-200 w-full sm:w-auto"
             style={{
+              height: 56,
+              minHeight: 56,
               background: "#FFFFFF",
               color: "#000033",
+              fontSize: 15,
               letterSpacing: "0.08em",
               fontFamily: "Inter, sans-serif",
               border: "none",
@@ -52,7 +67,7 @@ export const TRTPricingCTA = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.90)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#FFFFFF"; }}
           >
-            Book My Consultation
+            Book My Consult
           </button>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-5">

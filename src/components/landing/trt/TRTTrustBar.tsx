@@ -1,7 +1,7 @@
 const stats = [
   { value: "10,000+", label: "Men Treated Since 2015" },
-  { value: "10+", label: "Years of Experience" },
-  { value: "Same-Day", label: "Appointments Available" },
+  { value: "3", label: "Virginia Clinics" },
+  { value: "4.9★", label: "Google Rating, 200+ Reviews" },
 ];
 
 export const TRTTrustBar = () => (

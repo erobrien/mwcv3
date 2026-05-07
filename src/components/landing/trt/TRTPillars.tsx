@@ -6,22 +6,22 @@ import imgTeam from "@/assets/lp/mwc-team.webp";
 const pillars = [
   {
     title: "LICENSED PROVIDERS",
-    desc: "Licensed Virginia nurse practitioners and physicians. Not remote. Not an app. A real provider, every visit.",
+    desc: "Licensed Virginia physicians and nurse practitioners. A real provider, every visit.",
     image: imgDoctor,
   },
   {
     title: "ON-SITE LABS",
-    desc: "Blood draw and full panel done in our center. Results back before you walk out the door.",
+    desc: "Blood draw and full panel done in-center, with results back before you walk out.",
     image: imgLobby,
   },
   {
     title: "BUILT FOR MEN",
-    desc: "Every protocol, provider, and visit is built around men's hormonal health, not bolted onto a general practice.",
+    desc: "TRT, ED, and weight loss is all we do. Not a side service at a general practice.",
     image: imgGymConfident,
   },
   {
     title: "ONGOING MONITORING",
-    desc: "Regular check-ins, lab work, and protocol adjustments. We don't write a script and disappear.",
+    desc: "Regular check-ins, labs, and protocol adjustments. We don't write a script and disappear.",
     image: imgTeam,
   },
 ];

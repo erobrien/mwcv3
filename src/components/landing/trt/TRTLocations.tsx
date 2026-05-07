@@ -1,4 +1,5 @@
-import { MapPin, Phone, Clock } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Phone, Clock, ChevronDown } from "lucide-react";
 
 const locations = [
   {
@@ -10,6 +11,7 @@ const locations = [
     phone: "(804) 346-4636",
     phoneHref: "tel:8043464636",
     hours: "Mon–Sat 9:00 AM – 5:00 PM",
+    driveTime: "5 min from I-64",
   },
   {
     slug: "newport-news-va",
@@ -20,6 +22,7 @@ const locations = [
     phone: "(757) 806-6263",
     phoneHref: "tel:7578066263",
     hours: "Mon–Sat 9:00 AM – 5:00 PM",
+    driveTime: "3 min from I-64, Exit 258A",
   },
   {
     slug: "virginia-beach-va",
@@ -30,10 +33,12 @@ const locations = [
     phone: "(757) 806-6263",
     phoneHref: "tel:7578066263",
     hours: "Mon–Sat 9:00 AM – 5:00 PM",
+    driveTime: "5 min from I-264",
   },
 ];
 
 export const TRTLocations = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   const bookAt = (slug: string) => () => {
     const el = document.getElementById("booking") || document.getElementById("final-cta");
     el?.scrollIntoView({ behavior: "smooth" });
@@ -48,54 +53,64 @@ export const TRTLocations = () => {
         </h2>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {locations.map((l) => (
-            <div key={l.slug} className="rounded-2xl p-6 flex flex-col" style={{ border: "1px solid #E5E5EA", background: "#FFFFFF" }}>
-              <div className="font-bold uppercase" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: 22, letterSpacing: "0.02em" }}>
-                {l.city}
-              </div>
-              <div className="text-xs mt-1 mb-4" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{l.name}</div>
-
-              <div className="space-y-2.5 text-sm" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.name}, ${l.address}, ${l.cityStateZip}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2 hover:opacity-70 transition-opacity"
-                  style={{ color: "#1a1a2e", textDecoration: "none" }}
-                >
-                  <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: "#E8670A" }} />
-                  <div className="underline underline-offset-2">{l.address}<br />{l.cityStateZip}</div>
-                </a>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
-                  <span>{l.hours}</span>
+          {locations.map((l, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div key={l.slug} className="rounded-2xl p-6 flex flex-col" style={{ border: "1px solid #E5E5EA", background: "#FFFFFF" }}>
+                <div className="font-bold uppercase" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: 22, letterSpacing: "0.02em" }}>
+                  {l.city}
                 </div>
-                <a href={l.phoneHref} className="flex items-center gap-2 hover:opacity-70 transition-opacity" style={{ color: "#1a1a2e", textDecoration: "none" }}>
-                  <Phone className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
-                  <span className="underline underline-offset-2">{l.phone}</span>
-                </a>
-              </div>
+                <div className="text-xs mt-1 mb-3" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{l.name}</div>
+                <div className="flex items-center gap-2 mb-4 text-xs font-semibold uppercase" style={{ color: "#E8670A", fontFamily: "Inter, sans-serif", letterSpacing: "0.06em" }}>
+                  <MapPin className="h-3.5 w-3.5" /> {l.driveTime}
+                </div>
 
-              <div className="mt-5 pt-5 border-t flex flex-col gap-2" style={{ borderColor: "#E5E5EA" }}>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.name}, ${l.address}, ${l.cityStateZip}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold uppercase text-center py-2 rounded-full"
-                  style={{ color: "#000033", border: "1px solid #000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
-                >
-                  Get Directions
-                </a>
+                {/* Mobile: collapsed by default */}
                 <button
-                  onClick={bookAt(l.slug)}
-                  className="text-xs font-bold uppercase text-center py-2.5 rounded-full cursor-pointer"
-                  style={{ background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
+                  onClick={() => setOpenIdx(isOpen ? null : idx)}
+                  className="md:hidden flex items-center justify-between w-full text-sm font-semibold uppercase py-2 mb-2 cursor-pointer"
+                  style={{ color: "#000033", fontFamily: "Inter, sans-serif", background: "none", border: "none", letterSpacing: "0.06em" }}
                 >
-                  Book at this location
+                  <span>Address &amp; Hours</span>
+                  <ChevronDown className="h-4 w-4 transition-transform" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)" }} />
                 </button>
+
+                <div className={`space-y-2.5 text-sm ${isOpen ? "block" : "hidden"} md:block`} style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.name}, ${l.address}, ${l.cityStateZip}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-2 hover:opacity-70 transition-opacity"
+                    style={{ color: "#1a1a2e", textDecoration: "none" }}
+                  >
+                    <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: "#E8670A" }} />
+                    <div className="underline underline-offset-2">{l.address}<br />{l.cityStateZip}</div>
+                  </a>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
+                    <span>{l.hours}</span>
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-5 border-t flex flex-col gap-2" style={{ borderColor: "#E5E5EA" }}>
+                  <a
+                    href={l.phoneHref}
+                    className="text-xs font-semibold uppercase text-center rounded-full inline-flex items-center justify-center gap-2"
+                    style={{ height: 48, minHeight: 48, color: "#000033", border: "1px solid #000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", textDecoration: "none" }}
+                  >
+                    <Phone className="h-4 w-4" /> Call {l.phone}
+                  </a>
+                  <button
+                    onClick={bookAt(l.slug)}
+                    className="text-xs font-bold uppercase text-center rounded-full cursor-pointer inline-flex items-center justify-center"
+                    style={{ height: 48, minHeight: 48, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
+                  >
+                    Book My Consult
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

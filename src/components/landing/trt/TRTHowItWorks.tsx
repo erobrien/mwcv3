@@ -1,18 +1,18 @@
 import { X } from "lucide-react";
 
 const symptoms = [
-  "Constant fatigue no matter how much you sleep",
-  "Lost your drive, confidence, and motivation",
-  "Brain fog so bad you can't focus at work",
-  "Gaining belly fat and losing muscle despite working out",
-  'Your doctor says your labs are "normal" but you feel anything but',
+  "Persistent fatigue.",
+  "Loss of drive and motivation.",
+  "Difficulty focusing.",
+  "Stubborn belly fat and muscle loss.",
+  '"Normal" labs that do not match how you feel.',
 ];
 
 const steps = [
   {
     num: "1",
-    title: "Same-Day Blood Work",
-    desc: "On-site labs. Results typically reviewed in minutes, not 2 weeks.",
+    title: "Book Online In Under 5 Minutes",
+    desc: "Pick the location and time that works for you. No referral, no phone tag.",
   },
   {
     num: "2",
@@ -21,8 +21,8 @@ const steps = [
   },
   {
     num: "3",
-    title: "Get Your Personalized Plan",
-    desc: "Your doctor builds a plan around your labs and symptoms. Many patients are able to begin their personalized plan the same day, based on their evaluation.",
+    title: "Walk Out The Same Day With A Plan",
+    desc: "A personalized plan built around your labs and your goals. Many patients begin treatment the same day, when clinically appropriate.",
   },
 ];
 
@@ -68,12 +68,12 @@ export const TRTHowItWorks = () => {
         {/* Left: Symptoms (mobile shown second) */}
         <div className="order-2 md:order-1">
           {eyebrow("Sound Familiar?")}
-          {heading("Tired of feeling like a worse version of yourself?")}
+          {heading("Common signs men ask us about")}
           <p
             className="mt-5 text-base leading-relaxed"
             style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
           >
-            You used to have energy. You used to have drive. Now you drag yourself through the day, can't focus, can't sleep right, and the weight won't come off no matter what you do. Your doctor says your labs are "normal." You know they're wrong.
+            Many men in their 40s, 50s, and beyond tell us the same story. The energy, focus, and drive they used to have just are not there. Their doctor says their labs are "normal," but they know something is off.
           </p>
           <ul className="mt-8 space-y-4">
             {symptoms.map((s) => (
@@ -89,12 +89,6 @@ export const TRTHowItWorks = () => {
         <div className="order-1 md:order-2">
           {eyebrow("The Fix")}
           {heading("Here's how it works in one visit")}
-          <p
-            className="mt-5 text-base leading-relaxed"
-            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
-          >
-            Book your visit in under 5 minutes. Pick one of our 3 Virginia clinics, choose a same-day or next-day time, and you're set. No referral, no phone tag, no waiting weeks for care.
-          </p>
 
           <div className="mt-8 flex flex-col gap-6">
             {steps.map((s) => (
@@ -132,7 +126,7 @@ export const TRTHowItWorks = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Schedule My Consultation
+            Book My Consult
           </button>
         </div>
       </div>

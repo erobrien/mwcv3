@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Phone } from "lucide-react";
 
 export const TRTHeader = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -54,25 +53,27 @@ export const TRTHeader = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
           >
-            Book Now
+            Book My Consult
           </button>
         </div>
 
-        {/* Mobile phone icon button */}
-        <a
-          href="tel:8663444955"
-          className="md:hidden flex items-center justify-center rounded-full"
+        {/* Mobile single CTA pill */}
+        <button
+          onClick={() => scrollTo("final-cta")}
+          className="md:hidden inline-flex items-center justify-center rounded-full px-5 font-bold uppercase cursor-pointer border-none"
           style={{
-            width: 44,
-            height: 44,
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.15)",
+            height: 48,
+            minHeight: 48,
+            background: "#E8670A",
             color: "#FFFFFF",
+            fontSize: 13,
+            letterSpacing: "0.08em",
+            fontFamily: "Inter, sans-serif",
           }}
-          aria-label="Call 866-344-4955"
+          aria-label="Book My Consult"
         >
-          <Phone className="h-5 w-5" />
-        </a>
+          Book My Consult
+        </button>
       </div>
     </header>
   );
