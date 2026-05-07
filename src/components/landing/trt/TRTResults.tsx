@@ -59,20 +59,14 @@ export const TRTResults = () => (
         {testimonials.map((t) => (
           <div key={t.name} className="rounded-2xl p-6 flex flex-col" style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}>
             <div className="flex items-center gap-0.5 mb-3">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#FFC107" stroke="#FFC107" />)}
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#E8670A" stroke="#E8670A" />)}
             </div>
-            <p className="text-sm leading-relaxed flex-1" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
+            <p className="text-sm italic leading-relaxed flex-1" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
               "{t.quote}"
             </p>
             <div className="mt-4 pt-4 border-t" style={{ borderColor: "#E5E5EA" }}>
               <div className="text-sm font-semibold" style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}>{t.name}</div>
               <div className="text-xs" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
-              <div
-                className="mt-2 inline-flex items-center gap-1 text-[10px] uppercase font-semibold px-2 py-0.5 rounded"
-                style={{ background: "#E8F5E9", color: "#1B5E20", letterSpacing: "0.08em" }}
-              >
-                <ShieldCheck className="h-3 w-3" /> Verified Patient Review
-              </div>
             </div>
           </div>
         ))}
