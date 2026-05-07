@@ -16,7 +16,7 @@ const pillars = [
   },
   {
     title: "BUILT FOR MEN",
-    desc: "A men-only environment designed around your schedule, your privacy, and your goals.",
+    desc: "Every protocol, provider, and visit is built around men's hormonal health — not bolted onto a general practice.",
     image: imgGymConfident,
   },
   {
