@@ -23,7 +23,7 @@ export const TRTHero = () => {
           className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase mb-5"
           style={{ background: "#F5F0EB", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
         >
-          Virginia's In-Person Men's Health Clinics
+          Virginia's In-Person Men's Health Centers
         </span>
 
         <h1
@@ -37,14 +37,14 @@ export const TRTHero = () => {
             textShadow: "0 2px 12px rgba(0,0,0,0.4)",
           }}
         >
-          TRT &amp; ED Care, <span style={{ color: "#E8670A" }}>In One Visit</span>
+          Get Your Edge Back. <span style={{ color: "#E8670A" }}>In One Visit.</span>
         </h1>
 
         <p
           className="mt-4 text-base md:text-lg leading-relaxed max-w-[680px]"
           style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif", fontSize: 16 }}
         >
-          Same-day labs, a Virginia physician, and your plan. All booked online in minutes.
+          Same-day labs, a face-to-face Virginia physician, and a personalized plan. Treatment from $199/month if prescribed. Free consult, every time.
         </p>
 
         <div className="mt-4 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.95)", fontFamily: "Inter, sans-serif" }}>
@@ -77,7 +77,7 @@ export const TRTHero = () => {
         </div>
 
         <p className="mt-3 text-sm" style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif", fontSize: 14 }}>
-          Book entirely online. FSA/HSA accepted.
+          Free consult. No obligation. Walk out with a plan.
         </p>
 
         <div className="mt-4">

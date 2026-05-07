@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "How is this different from Hims, Hone, or online TRT?",
-    a: "We are an in-person Virginia clinic, not a telehealth app. You see the same physician at the same center, your blood is drawn on-site, and your provider knows your case. No mail-order chatbots, no rotating clinicians, no shipping delays.",
+    a: "We are an in-person Virginia Center, not a telehealth app. You see the same physician at the same Center, your labs are drawn on-site, and your provider knows your case. No mail-order chatbots, no rotating clinicians, no shipping delays.",
   },
   {
     q: "How do I know if testosterone treatment is right for me?",

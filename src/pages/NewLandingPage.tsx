@@ -44,6 +44,7 @@ const NewLandingPage = () => {
       </main>
       <TRTFooter />
       <TRTMobileCTA />
+      <div className="md:hidden" style={{ height: 56 }} aria-hidden="true" />
     </div>
   );
 };

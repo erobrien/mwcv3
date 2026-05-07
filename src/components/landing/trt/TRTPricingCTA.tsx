@@ -67,7 +67,7 @@ export const TRTPricingCTA = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.90)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#FFFFFF"; }}
           >
-            Book My Consult
+            Claim My Free Consult
           </button>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-5">
