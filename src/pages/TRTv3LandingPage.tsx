@@ -2342,7 +2342,7 @@ const Pricing = () => (
           style={{
             fontFamily: FONT_BODY,
             fontSize: 15,
-            color: "rgba(255,255,255,0.88)",
+            color: "rgba(255,255,255,0.80)",
             lineHeight: 1.65,
           }}
         >
@@ -2425,8 +2425,8 @@ const Pricing = () => (
             alignItems: "center",
             gap: 8,
             marginTop: 32,
-            background: "#fff",
-            color: "#1B2B4B",
+            background: "#E8670A",
+            color: "#fff",
             border: "none",
             borderRadius: 99,
             height: 56,
@@ -2440,10 +2440,10 @@ const Pricing = () => (
             transition: "background 0.15s, transform 0.1s",
           }}
           onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "rgba(255,255,255,0.90)")
+            (e.currentTarget.style.background = "#C95A20")
           }
           onMouseLeave={(e) =>
-            (e.currentTarget.style.background = "#fff")
+            (e.currentTarget.style.background = "#E8670A")
           }
         >
           Book My Consultation <ArrowRight size={15} />
@@ -2453,7 +2453,7 @@ const Pricing = () => (
           style={{
             fontFamily: FONT_BODY,
             fontSize: 13,
-            color: "rgba(255,255,255,0.78)",
+            color: "rgba(255,255,255,0.72)",
             marginTop: 14,
           }}
         >
@@ -2566,7 +2566,7 @@ const PillarCard = ({
 };
 
 const Pillars = () => (
-  <section style={{ background: "#1B2B4B", padding: "96px 0" }}>
+  <section style={{ background: "#F5F3F0", padding: "96px 0" }}>
     <div
       style={{
         maxWidth: 1200,
@@ -2711,7 +2711,7 @@ const TeamSection = () => (
 const Locations = () => (
   <section
     id="locations"
-    style={{ background: "#1B2B4B", padding: "96px 0" }}
+    style={{ background: "#FFFFFF", padding: "96px 0" }}
   >
     <div
       style={{
