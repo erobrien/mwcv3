@@ -65,7 +65,7 @@ export const TRTHero = () => {
           className="mt-5 text-base md:text-lg leading-relaxed max-w-[680px]"
           style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
         >
-          Walk into one of our 3 Virginia clinics for blood work, a face-to-face consultation with a licensed provider, and a personalized care plan — typically completed in under 60 minutes. Same-day and next-day appointments available.
+          Book your visit in under 5 minutes. Pick one of our 3 Virginia clinics, choose a same-day or next-day time, and you're set. No referral, no phone tag, no waiting weeks for care.
         </p>
 
         <div className="mt-5 flex items-center gap-2 flex-wrap" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "Inter, sans-serif" }}>
