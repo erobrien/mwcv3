@@ -56,18 +56,24 @@ export const TRTLocations = () => {
               <div className="text-xs mt-1 mb-4" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{l.name}</div>
 
               <div className="space-y-2.5 text-sm" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
-                <div className="flex items-start gap-2">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.name}, ${l.address}, ${l.cityStateZip}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 hover:opacity-70 transition-opacity"
+                  style={{ color: "#1a1a2e", textDecoration: "none" }}
+                >
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: "#E8670A" }} />
-                  <div>{l.address}<br />{l.cityStateZip}</div>
-                </div>
+                  <div className="underline underline-offset-2">{l.address}<br />{l.cityStateZip}</div>
+                </a>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
                   <span>{l.hours}</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <a href={l.phoneHref} className="flex items-center gap-2 hover:opacity-70 transition-opacity" style={{ color: "#1a1a2e", textDecoration: "none" }}>
                   <Phone className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
-                  <a href={l.phoneHref} className="underline underline-offset-2">{l.phone}</a>
-                </div>
+                  <span className="underline underline-offset-2">{l.phone}</span>
+                </a>
               </div>
 
               <div className="mt-5 pt-5 border-t flex flex-col gap-2" style={{ borderColor: "#E5E5EA" }}>
