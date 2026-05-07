@@ -87,8 +87,8 @@ export const TRTHero = () => {
           </button>
           <button
             onClick={scrollTo("how-it-works")}
-            className="hidden sm:inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200"
-            style={{ height: 52, background: "transparent", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "1px solid rgba(255,255,255,0.4)" }}
+            className="hidden sm:inline-flex items-center gap-2 rounded-full px-8 font-bold text-sm uppercase cursor-pointer transition-all duration-200 hover:scale-[1.02]"
+            style={{ height: 52, background: "#FFFFFF", color: "#000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "1px solid #FFFFFF" }}
           >
             See If You Qualify
           </button>
