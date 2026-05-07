@@ -33,7 +33,7 @@ export const TRTPricingCTA = () => {
             className="text-base mt-3 leading-[1.6]"
             style={{ color: "rgba(255,255,255,0.90)", fontFamily: "Inter, sans-serif" }}
           >
-            Walk into any of our 3 Virginia centers. Lab work, physician consultation, and your TRT, ED, or weight-loss plan reviewed in-visit. No commitment, no credit card.
+            Book online in 5 mins. Walk into any of our 3 Virginia centers. Lab work, physician consultation, and your TRT, ED, or weight-loss plan reviewed in-visit. No commitment, no credit card.
           </p>
           <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}>
             Treatment plans start at $199/month after approval.
