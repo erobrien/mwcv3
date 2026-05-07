@@ -16,6 +16,30 @@ export const TRTHero = () => {
       className="relative overflow-hidden"
       style={{ background: "#000033" }}
     >
+      <img
+        src={physicianBg}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        decoding="async"
+        // @ts-ignore
+        fetchpriority="high"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        style={{ objectPosition: "right center" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(0,0,51,0.96) 0%, rgba(0,0,51,0.85) 40%, rgba(0,0,51,0.55) 75%, rgba(0,0,51,0.75) 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+        style={{ background: "linear-gradient(180deg, rgba(0,0,51,0) 0%, rgba(0,0,51,0.85) 100%)" }}
+      />
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-14 items-start">
         <div>
           <span
