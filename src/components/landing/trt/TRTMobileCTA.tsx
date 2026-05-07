@@ -40,10 +40,10 @@ export const TRTMobileCTA = () => {
       </a>
       <button
         onClick={scrollToForm}
-        className="flex-1 flex items-center justify-center text-[12px] font-bold uppercase tracking-[0.06em] cursor-pointer border-none"
+        className="flex-1 flex items-center justify-center text-[14px] font-bold uppercase tracking-[0.06em] cursor-pointer border-none"
         style={{ background: "#E8670A", color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
       >
-        Book Consultation
+        Book My Consult
       </button>
     </div>
   );
