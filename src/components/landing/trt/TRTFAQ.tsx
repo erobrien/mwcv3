@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "Is the first visit really at no cost? What is included?",
-    a: "Yes. Your first visit is $0 and includes a comprehensive hormone blood panel, a face-to-face consultation with a licensed Virginia physician, and a personalized care plan based on your labs. There is no obligation to start treatment.",
+    a: "Yes. Your first visit is $0 and includes a comprehensive hormone blood panel, a face-to-face consultation with a licensed Virginia physician, and a personalized care plan based on your labs. You decide whether to begin treatment.",
   },
   {
     q: "How is this different from Hims, Hone, or online TRT?",
