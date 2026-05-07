@@ -60,33 +60,80 @@ export const TRTFinalCTA = () => {
 
   return (
     <section id="final-cta" className="py-14 md:py-20" style={{ background: "#000033" }}>
-      <div className="max-w-[1200px] mx-auto px-6 text-center">
-        <h2
-          className="font-bold uppercase"
-          style={{
-            fontFamily: "Oswald, sans-serif",
-            fontSize: "clamp(28px, 4vw, 40px)",
-            color: "#FFFFFF",
-            fontWeight: 700,
-          }}
-        >
-          READY TO START TRT, ED, OR WEIGHT-LOSS TREATMENT?
-        </h2>
-        <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-          Walk into any of our 3 Virginia centers for a same-day TRT, ED, or weight-loss consultation.
-        </p>
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="text-center">
+          <h2
+            className="font-bold uppercase"
+            style={{
+              fontFamily: "Oswald, sans-serif",
+              fontSize: "clamp(28px, 4vw, 40px)",
+              color: "#FFFFFF",
+              fontWeight: 700,
+            }}
+          >
+            READY TO START TRT, ED, OR WEIGHT-LOSS TREATMENT?
+          </h2>
+          <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
+            Walk into any of our 3 Virginia centers for a same-day TRT, ED, or weight-loss consultation.
+          </p>
 
-        {/* Stars */}
-        <div className="flex items-center justify-center gap-2 mt-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} style={{ color: "#D4A017", fontSize: "20px" }}>★</span>
-          ))}
-          <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>200+ Reviews</span>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i} style={{ color: "#D4A017", fontSize: "20px" }}>★</span>
+            ))}
+            <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.80)" }}>200+ Reviews</span>
+          </div>
         </div>
 
-        {/* Form */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+          <div className="order-2 md:order-1 md:pt-2">
+            <p
+              className="text-base md:text-lg leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "Inter, sans-serif" }}
+            >
+              This isn't about vanity. It's about getting back to being the man you've always been: sharp, confident, and performing at your level.
+            </p>
+
+            <ul className="mt-6 space-y-3">
+              {["No obligation", "Same-day appointments", "100% confidential"].map((t) => (
+                <li key={t} className="flex items-center gap-3" style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}>
+                  <Check className="h-5 w-5 flex-shrink-0" strokeWidth={3} style={{ color: "#2ECC71" }} />
+                  <span className="text-base">{t}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
+              <div
+                className="text-xs font-semibold uppercase mb-3"
+                style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.12em", fontFamily: "Inter, sans-serif" }}
+              >
+                Center Locations
+              </div>
+              <ul className="space-y-2">
+                {[
+                  { label: "Richmond, VA", to: "/locations/richmond" },
+                  { label: "Newport News, VA", to: "/locations/newport-news" },
+                  { label: "Virginia Beach, VA", to: "/locations/virginia-beach" },
+                ].map((l) => (
+                  <li key={l.label} className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
+                    <a
+                      href={l.to}
+                      className="text-base underline underline-offset-4 hover:text-white transition-colors"
+                      style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="order-1 md:order-2">
         <div
-          className="mx-auto mt-8 rounded-2xl p-8 mx-4 md:mx-auto"
+          className="mx-auto rounded-2xl p-8"
           style={{
             background: "#FFFFFF",
             maxWidth: 480,
