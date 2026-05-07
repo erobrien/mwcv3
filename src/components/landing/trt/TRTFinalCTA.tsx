@@ -69,10 +69,10 @@ export const TRTFinalCTA = () => {
             fontWeight: 700,
           }}
         >
-          READY TO GET TESTED?
+          READY TO START TRT, ED, OR WEIGHT-LOSS TREATMENT?
         </h2>
         <p className="text-base mt-2" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}>
-          Walk into any of our 3 Virginia centers. Consultation.
+          Walk into any of our 3 Virginia centers for a same-day TRT, ED, or weight-loss consultation.
         </p>
 
         {/* Stars */}

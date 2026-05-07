@@ -22,16 +22,16 @@ export const TRTManifesto = () => {
               lineHeight: 1.1,
             }}
           >
-            MEN'S HEALTH CARE<br />
-            WAS BROKEN.<br />
-            <span>WE FIXED IT.</span>
+            TRT, ED, AND WEIGHT LOSS<br />
+            FOR MEN — DONE RIGHT.<br />
+            <span>IN PERSON. IN VIRGINIA.</span>
           </h2>
 
           <p
             className="text-base mt-4 leading-[1.7]"
             style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif" }}
           >
-            Men's Wellness Centers has been treating Virginia men since 2015. Not through a screen. Not through the mail. Face-to-face, same provider, every visit.
+            Men's Wellness Centers has delivered testosterone therapy, ED treatment, and physician-supervised weight loss to Virginia men since 2015. Not through a screen. Not through the mail. Face-to-face, same provider, every visit.
           </p>
 
           <div className="flex gap-8 mt-8">
