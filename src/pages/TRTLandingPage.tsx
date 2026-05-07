@@ -5,7 +5,7 @@ import { TRTTrustBar } from "@/components/landing/trt/TRTTrustBar";
 
 
 import { TRTHowItWorks } from "@/components/landing/trt/TRTHowItWorks";
-import { TRTSymptomToggle } from "@/components/landing/trt/TRTSymptomToggle";
+
 import { TRTResults } from "@/components/landing/trt/TRTResults";
 import { TRTManifesto } from "@/components/landing/trt/TRTManifesto";
 import { TRTMarquee } from "@/components/landing/trt/TRTMarquee";
@@ -35,12 +35,11 @@ const TRTLandingPage = () => {
         
         
         <TRTHowItWorks />
-        <TRTSymptomToggle />
-        <TRTResults />
         <TRTManifesto />
+        <TRTResults />
+        <TRTPillars />
         <TRTMarquee />
         <TRTPricingCTA />
-        <TRTPillars />
         <TRTLocations />
         <TRTFAQ />
         <TRTFinalCTA />
