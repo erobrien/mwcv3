@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export const TRTHeader = () => {
   const [scrolled, setScrolled] = useState(false);
