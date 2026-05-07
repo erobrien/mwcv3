@@ -78,12 +78,12 @@ export const TRTHeroForm = () => {
           {errors.name && <p className="text-xs mt-1" style={{ color: "#CC4444" }}>{errors.name}</p>}
         </div>
         <div>
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} autoComplete="email" />
-          {errors.email && <p className="text-xs mt-1" style={{ color: "#CC4444" }}>{errors.email}</p>}
-        </div>
-        <div>
           <input type="tel" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} autoComplete="tel" />
           {errors.phone && <p className="text-xs mt-1" style={{ color: "#CC4444" }}>{errors.phone}</p>}
+        </div>
+        <div>
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} autoComplete="email" />
+          {errors.email && <p className="text-xs mt-1" style={{ color: "#CC4444" }}>{errors.email}</p>}
         </div>
         <div>
           <select
