@@ -2487,7 +2487,7 @@ const PillarCard = ({
   title,
   desc,
 }: {
-  Icon: React.ComponentType<{ size?: number | string; strokeWidth?: number; color?: string }>;
+  Icon: React.ComponentType<any>;
   title: string;
   desc: string;
 }) => {
