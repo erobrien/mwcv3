@@ -137,7 +137,7 @@ export const TRTHeroForm = () => {
           {errors.email && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="hf-loc" className="sr-only">Preferred Location</label>
+          <label htmlFor="hf-loc" className="sr-only">Location</label>
           <select
             id="hf-loc"
             value={location}
