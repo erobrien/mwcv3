@@ -39,10 +39,10 @@ export const TRTHero = () => {
         Skip to lead form
       </a>
 
-      {/* Background pattern */}
+      {/* Background image */}
       <picture>
         <img
-          src={chesapeakeBg}
+          src={heroBg}
           alt=""
           aria-hidden="true"
           loading="eager"
@@ -50,7 +50,7 @@ export const TRTHero = () => {
           // @ts-ignore
           fetchpriority="high"
           className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{ objectFit: "cover", objectPosition: "right center" }}
+          style={{ objectFit: "cover", objectPosition: "center" }}
         />
       </picture>
 
