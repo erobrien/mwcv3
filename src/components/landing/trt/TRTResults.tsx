@@ -40,7 +40,6 @@ const testimonials = [
 ];
 
 export const TRTResults = () => {
-  const [showAll, setShowAll] = useState(false);
   const scrollToForm = () => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
 
   return (
