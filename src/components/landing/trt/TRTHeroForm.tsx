@@ -137,7 +137,7 @@ export const TRTHeroForm = () => {
           {errors.email && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="hf-loc" className="sr-only">Preferred Location</label>
+          <label htmlFor="hf-loc" className="sr-only">Location</label>
           <select
             id="hf-loc"
             value={location}
@@ -154,7 +154,7 @@ export const TRTHeroForm = () => {
               paddingRight: 40,
             }}
           >
-            <option value="" disabled style={{ color: "#000814" }}>Preferred Location</option>
+            <option value="" disabled style={{ color: "#000814" }}>Location</option>
             <option value="virginia-beach" style={{ color: "#000814" }}>Virginia Beach</option>
             <option value="newport-news" style={{ color: "#000814" }}>Newport News</option>
             <option value="richmond" style={{ color: "#000814" }}>Richmond</option>
