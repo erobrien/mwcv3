@@ -127,12 +127,9 @@ export const TRTHero = () => {
             Same-day labs, a face-to-face Virginia physician, and a personalized plan. Free consult, every time.
           </p>
 
-          <a
-            href="https://www.google.com/search?q=Men%27s+Wellness+Centers+Virginia+reviews"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 hover:opacity-90 transition-opacity"
-            style={{ color: COLORS.cream, fontFamily: "Inter, sans-serif", textDecoration: "none" }}
+          <div
+            className="mt-5 inline-flex items-center gap-2"
+            style={{ color: COLORS.cream, fontFamily: "Inter, sans-serif" }}
           >
             <span className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -140,7 +137,7 @@ export const TRTHero = () => {
               ))}
             </span>
             <span style={{ fontSize: 14 }}>4.9 average from 200+ verified Google reviews</span>
-          </a>
+          </div>
 
           <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[560px]">
             {trustChecks.map((t) => (
