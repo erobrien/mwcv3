@@ -58,7 +58,7 @@ export const TRTResults = () => {
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className={`rounded-2xl p-6 flex flex-col ${i >= 3 && !showAll ? "hidden md:flex" : ""}`}
+              className="rounded-2xl p-6 flex flex-col"
               style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}
             >
               <div className="flex items-center gap-0.5 mb-3">
@@ -74,18 +74,6 @@ export const TRTResults = () => {
             </div>
           ))}
         </div>
-
-        {!showAll && (
-          <div className="md:hidden text-center mt-6">
-            <button
-              onClick={() => setShowAll(true)}
-              className="text-sm font-semibold underline underline-offset-4 cursor-pointer"
-              style={{ color: "#000033", fontFamily: "Inter, sans-serif", background: "none", border: "none" }}
-            >
-              Show more reviews
-            </button>
-          </div>
-        )}
 
         <div className="mt-10 text-center">
           <p className="text-base mb-4" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
