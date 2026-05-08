@@ -5,18 +5,31 @@ const stats = [
 ];
 
 export const TRTTrustBar = () => (
-  <section style={{ background: "#0A1628" }}>
-    <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 text-center" style={{ paddingTop: 80, paddingBottom: 80 }}>
+  <section style={{ background: "#FFFFFF" }}>
+    <div
+      className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6"
+      style={{ paddingTop: "clamp(64px, 10vw, 120px)", paddingBottom: "clamp(64px, 10vw, 120px)" }}
+    >
       {stats.map((s) => (
-        <div key={s.label} className="flex flex-col items-center gap-2">
+        <div
+          key={s.label}
+          className="flex flex-col gap-2"
+          style={{
+            background: "#FFFFFF",
+            borderLeft: "4px solid #E8670A",
+            padding: "24px 28px",
+            borderRadius: 8,
+            boxShadow: "0 2px 8px rgba(13,8,7,0.04)",
+          }}
+        >
           <div
-            className="font-bold uppercase"
             style={{
-              fontFamily: "Oswald, sans-serif",
-              color: "#FFFFFF",
-              fontSize: "clamp(36px, 5vw, 56px)",
+              fontFamily: "'Bebas Neue', sans-serif",
+              color: "#122256",
+              fontSize: "clamp(40px, 5vw, 56px)",
               lineHeight: 1,
-              letterSpacing: "-0.01em",
+              letterSpacing: "0.02em",
+              fontWeight: 400,
             }}
           >
             {s.value}
@@ -25,9 +38,9 @@ export const TRTTrustBar = () => (
             className="uppercase"
             style={{
               fontFamily: "Inter, sans-serif",
-              color: "rgba(255,255,255,0.65)",
-              fontSize: 12,
-              letterSpacing: "0.12em",
+              color: "#6B7F94",
+              fontSize: 13,
+              letterSpacing: "0.08em",
               fontWeight: 600,
             }}
           >

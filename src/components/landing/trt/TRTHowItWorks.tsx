@@ -1,5 +1,9 @@
 import { X } from "lucide-react";
 
+const NAVY = "#122256";
+const ORANGE = "#E8670A";
+const ORANGE_HOVER = "#D45A00";
+
 const symptoms = [
   "Persistent fatigue.",
   "Loss of drive and motivation.",
@@ -35,11 +39,11 @@ export const TRTHowItWorks = () => {
     <div
       className="uppercase mb-3"
       style={{
-        color: "#E8670A",
+        color: "#6B7F94",
         fontFamily: "Inter, sans-serif",
-        fontSize: 13,
-        fontWeight: 700,
-        letterSpacing: "0.12em",
+        fontSize: 12,
+        fontWeight: 600,
+        letterSpacing: "0.18em",
       }}
     >
       {text}
@@ -48,14 +52,14 @@ export const TRTHowItWorks = () => {
 
   const heading = (text: string) => (
     <h2
-      className="font-bold uppercase"
       style={{
-        fontFamily: "Oswald, sans-serif",
-        fontSize: "clamp(28px, 4vw, 44px)",
-        color: "#000033",
-        fontWeight: 700,
+        fontFamily: "'Bebas Neue', sans-serif",
+        fontSize: "clamp(32px, 4.5vw, 52px)",
+        color: NAVY,
+        fontWeight: 400,
         lineHeight: 1.05,
-        letterSpacing: "-0.01em",
+        letterSpacing: "0.02em",
+        textTransform: "uppercase",
       }}
     >
       {text}
@@ -63,22 +67,25 @@ export const TRTHowItWorks = () => {
   );
 
   return (
-    <section id="how-it-works" className="py-10 md:py-20" style={{ background: "#F5F0EB" }}>
+    <section
+      id="how-it-works"
+      style={{ background: "#F2F1EB", paddingTop: "clamp(64px, 10vw, 120px)", paddingBottom: "clamp(64px, 10vw, 120px)" }}
+    >
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Left: Symptoms (mobile shown second) */}
         <div className="order-2 md:order-1">
           {eyebrow("Sound Familiar?")}
           {heading("Common signs men ask us about")}
           <p
-            className="mt-5 text-base leading-relaxed"
-            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520 }}
+            className="mt-5 text-base"
+            style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", maxWidth: 520, lineHeight: 1.65 }}
           >
             Many men in their 40s, 50s, and beyond tell us the same story. The energy, focus, and drive they used to have just are not there. Their doctor says their labs are "normal," but they know something is off.
           </p>
           <ul className="mt-8 space-y-4">
             {symptoms.map((s) => (
               <li key={s} className="flex items-start gap-3">
-                <X className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#E8670A" }} />
+                <X className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: ORANGE }} />
                 <span className="text-base" style={{ color: "#1A1A1A", fontFamily: "Inter, sans-serif" }}>{s}</span>
               </li>
             ))}
@@ -94,18 +101,18 @@ export const TRTHowItWorks = () => {
             {steps.map((s) => (
               <div key={s.num} className="flex gap-4">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ background: "#000033" }}
+                  className="w-10 h-10 flex items-center justify-center flex-shrink-0"
+                  style={{ background: NAVY, borderRadius: 4 }}
                 >
                   <span className="font-bold text-sm" style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}>
                     {s.num}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg" style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}>
+                  <h3 className="font-bold text-lg" style={{ color: NAVY, fontFamily: "Inter, sans-serif" }}>
                     {s.title}
                   </h3>
-                  <p className="text-base mt-1 leading-relaxed" style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif" }}>
+                  <p className="text-base mt-1" style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", lineHeight: 1.65 }}>
                     {s.desc}
                   </p>
                 </div>
@@ -115,16 +122,26 @@ export const TRTHowItWorks = () => {
 
           <button
             onClick={scrollToForm}
-            className="mt-10 inline-flex items-center justify-center rounded-full px-8 py-4 font-bold text-sm uppercase cursor-pointer transition-colors duration-200"
+            className="mt-10 inline-flex items-center justify-center font-semibold text-sm uppercase cursor-pointer transition-all duration-200"
             style={{
-              background: "#E8670A",
+              background: ORANGE,
               color: "#FFFFFF",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.02em",
               fontFamily: "Inter, sans-serif",
               border: "none",
+              padding: "14px 28px",
+              borderRadius: 4,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = ORANGE_HOVER;
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(232,103,10,0.25)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = ORANGE;
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
           >
             Book My First Visit
           </button>
