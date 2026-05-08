@@ -82,7 +82,7 @@ export const TRTHero = () => {
         style={{ background: `linear-gradient(180deg, rgba(10,22,40,0) 0%, ${COLORS.navyDeep} 100%)` }}
       />
 
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 pt-28 pb-16 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 sm:px-6 pt-24 pb-12 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
         {/* LEFT */}
         <div>
           <span
