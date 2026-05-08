@@ -42,8 +42,8 @@ export const TRTHeroForm = () => {
   const inputBase = (field: string): React.CSSProperties => ({
     width: "100%",
     height: 50,
-    background: "rgba(10,22,40,0.6)",
-    border: `1px solid ${focused === field ? "#E87722" : "rgba(245,241,232,0.20)"}`,
+    background: "rgba(0,8,20,0.6)",
+    border: `1px solid ${focused === field ? "#E8670A" : "rgba(245,241,232,0.20)"}`,
     borderRadius: 8,
     padding: "0 16px",
     fontSize: 15,
@@ -135,10 +135,10 @@ export const TRTHeroForm = () => {
               paddingRight: 40,
             }}
           >
-            <option value="" disabled style={{ color: "#0A1628" }}>Preferred Location</option>
-            <option value="virginia-beach" style={{ color: "#0A1628" }}>Virginia Beach</option>
-            <option value="newport-news" style={{ color: "#0A1628" }}>Newport News</option>
-            <option value="richmond" style={{ color: "#0A1628" }}>Richmond</option>
+            <option value="" disabled style={{ color: "#000814" }}>Preferred Location</option>
+            <option value="virginia-beach" style={{ color: "#000814" }}>Virginia Beach</option>
+            <option value="newport-news" style={{ color: "#000814" }}>Newport News</option>
+            <option value="richmond" style={{ color: "#000814" }}>Richmond</option>
           </select>
           {errors.location && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.location}</p>}
         </div>
@@ -148,7 +148,7 @@ export const TRTHeroForm = () => {
           className="w-full uppercase font-bold cursor-pointer"
           style={{
             height: 56,
-            background: "#E87722",
+            background: "#E8670A",
             color: "#FFFFFF",
             fontSize: 14,
             border: "none",
@@ -158,8 +158,8 @@ export const TRTHeroForm = () => {
             marginTop: 4,
             transition: "background-color 180ms ease, transform 180ms ease",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = "#CF6A1F"; e.currentTarget.style.transform = "scale(1.01)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = "#E87722"; e.currentTarget.style.transform = "scale(1)"; }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; e.currentTarget.style.transform = "scale(1.01)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; e.currentTarget.style.transform = "scale(1)"; }}
         >
           Book My Consult
         </button>
@@ -170,7 +170,7 @@ export const TRTHeroForm = () => {
             checked={tcpa}
             onChange={(e) => setTcpa(e.target.checked)}
             className="mt-0.5 flex-shrink-0"
-            style={{ accentColor: "#E87722" }}
+            style={{ accentColor: "#E8670A" }}
           />
           <span style={{ color: "rgba(245,241,232,0.55)", fontSize: 11, lineHeight: 1.4 }}>
             I agree to receive SMS/calls about my appointment. Reply STOP to opt out. Msg & data rates may apply.
