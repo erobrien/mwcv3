@@ -10,10 +10,10 @@ const trustChecks = [
 ];
 
 const COLORS = {
-  navyDeep: "#0A1628",
-  navy: "#122036",
+  navyDeep: "#000814",
+  navy: "#0B1220",
   cream: "#F5F1E8",
-  orange: "#E87722",
+  orange: "#E8670A",
   gold: "#C9A961",
 };
 
@@ -60,7 +60,7 @@ export const TRTHero = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.75) 45%, rgba(10,22,40,0.40) 100%)",
+            "linear-gradient(90deg, rgba(0,8,20,0.95) 0%, rgba(0,8,20,0.75) 45%, rgba(0,8,20,0.40) 100%)",
         }}
       />
 
@@ -79,7 +79,7 @@ export const TRTHero = () => {
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-        style={{ background: `linear-gradient(180deg, rgba(10,22,40,0) 0%, ${COLORS.navyDeep} 100%)` }}
+        style={{ background: `linear-gradient(180deg, rgba(0,8,20,0) 0%, ${COLORS.navyDeep} 100%)` }}
       />
 
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 sm:px-6 pt-24 pb-12 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
