@@ -51,7 +51,7 @@ export const TRTManifesto = () => {
             See If You Qualify
           </button>
           <p className="mt-3 text-xs" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}>
-            Free consult. Individual results vary.
+            No-obligation consult. Individual results vary.
           </p>
         </div>
 

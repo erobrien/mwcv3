@@ -4,7 +4,7 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 const faqs = [
   {
     q: "Does insurance cover this?",
-    a: "Consults with our providers are always free, including labs review and your care plan. We don't bill insurance directly, but we accept FSA and HSA. Many men find our straightforward process simpler than navigating insurance approvals.",
+    a: "Consults with our providers are always complimentary, including labs review and your care plan. We don't bill insurance directly, but we accept FSA and HSA. Many men find our straightforward process simpler than navigating insurance approvals.",
     cta: true,
   },
   {
@@ -13,7 +13,7 @@ const faqs = [
     cta: true,
   },
   {
-    q: "Are consults really free? What is included?",
+    q: "What is included in my initial consult?",
     a: "Yes. Consultations with our providers are always at no cost. That includes a comprehensive hormone lab panel, a face-to-face visit with a licensed Virginia physician, and a personalized care plan based on your labs. You decide whether to begin treatment.",
   },
   {
