@@ -10,10 +10,10 @@ const trustChecks = [
 ];
 
 const COLORS = {
-  navyDeep: "#0A1628",
-  navy: "#122036",
+  navyDeep: "#000814",
+  navy: "#0B1220",
   cream: "#F5F1E8",
-  orange: "#E87722",
+  orange: "#E8670A",
   gold: "#C9A961",
 };
 
