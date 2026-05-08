@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -68,6 +68,32 @@
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
     --spacing: 0.25rem;
+
+    /* Yacht Tequila Sunrise palette (scoped to /New TRT page) */
+    --yacht-navy: #122256;
+    --yacht-navy-light: #1A2E6E;
+    --yacht-near-black: #0D0807;
+    --yacht-orange: #E8670A;
+    --yacht-orange-hover: #D45A00;
+    --yacht-orange-tint: #FFFAF5;
+    --yacht-slate: #8EA0B5;
+    --yacht-slate-light: #B5C4D1;
+    --yacht-slate-dark: #6B7F94;
+    --yacht-teak: #DCDAC6;
+    --yacht-teak-light: #E8E6D6;
+    --yacht-teak-border: #D0CEBC;
+    --yacht-cream: #F2F1EB;
+    --yacht-text: #1A1A1A;
+    --yacht-text-secondary: #4A4A4A;
+    --yacht-text-muted: #888888;
+    --yacht-border: #E8E5E0;
+    --yacht-success: #2D8A4E;
+    --yacht-error: #C0392B;
+    --shadow-yacht-sm: 0 1px 3px rgba(13,8,7,0.06);
+    --shadow-yacht-md: 0 4px 12px rgba(13,8,7,0.08);
+    --shadow-yacht-lg: 0 12px 32px rgba(13,8,7,0.12);
+    --shadow-yacht-card: 0 2px 8px rgba(13,8,7,0.04);
+    --shadow-yacht-orange: 0 4px 12px rgba(232,103,10,0.25);
   }
 
   .dark {

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
+const NAVY = "#122256";
+const ORANGE = "#E8670A";
+const ORANGE_HOVER = "#D45A00";
+
 const faqs = [
   {
     q: "Does insurance cover this?",
@@ -56,9 +60,15 @@ export const TRTFAQ = () => {
   };
 
   return (
-    <section id="faq" style={{ background: "#F5F0EB" }}>
-      <div className="max-w-[820px] mx-auto px-6 py-16 md:py-24">
-        <h2 className="font-bold uppercase text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}>
+    <section id="faq" style={{ background: "#FFFFFF" }}>
+      <div className="max-w-[820px] mx-auto px-6" style={{ paddingTop: "clamp(64px, 10vw, 120px)", paddingBottom: "clamp(64px, 10vw, 120px)" }}>
+        <div
+          className="uppercase mb-3 text-center"
+          style={{ color: "#6B7F94", fontFamily: "Inter, sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: "0.18em" }}
+        >
+          Common Questions
+        </div>
+        <h2 className="text-center" style={{ fontFamily: "'Bebas Neue', sans-serif", color: NAVY, fontSize: "clamp(32px, 4vw, 48px)", letterSpacing: "0.02em", fontWeight: 400, textTransform: "uppercase" }}>
           Frequently Asked Questions
         </h2>
 
@@ -66,23 +76,33 @@ export const TRTFAQ = () => {
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="rounded-xl overflow-hidden" style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}>
+              <div key={f.q} className="overflow-hidden" style={{ background: "#FFFFFF", border: "1px solid #E8E5E0", borderRadius: 8 }}>
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="w-full flex items-center justify-between gap-4 text-left px-5 py-4 cursor-pointer"
-                  style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}
+                  style={{ color: NAVY, fontFamily: "Inter, sans-serif", background: "transparent", border: "none" }}
                 >
                   <span className="font-semibold text-base">{f.q}</span>
-                  <ChevronDown className="h-5 w-5 flex-shrink-0 transition-transform duration-200" style={{ color: "#E8670A", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
+                  <ChevronDown className="h-5 w-5 flex-shrink-0 transition-transform duration-200" style={{ color: ORANGE, transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
+                  <div className="px-5 pb-5 text-sm" style={{ color: "#4A4A4A", fontFamily: "Inter, sans-serif", lineHeight: 1.65 }}>
                     <p>{f.a}</p>
                     {f.cta && (
                       <button
                         onClick={scrollToBooking}
-                        className="mt-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer"
-                        style={{ background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", border: "none" }}
+                        className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase cursor-pointer transition-all duration-200"
+                        style={{ background: ORANGE, color: "#FFFFFF", letterSpacing: "0.02em", border: "none", padding: "10px 20px", borderRadius: 4 }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = ORANGE_HOVER;
+                          e.currentTarget.style.transform = "translateY(-1px)";
+                          e.currentTarget.style.boxShadow = "0 4px 12px rgba(232,103,10,0.25)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = ORANGE;
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = "none";
+                        }}
                       >
                         Book My Consult <ArrowRight className="h-3.5 w-3.5" />
                       </button>

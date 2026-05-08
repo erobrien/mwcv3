@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Lock } from "lucide-react";
 
+const ORANGE = "#E8670A";
+const ORANGE_HOVER = "#D45A00";
+
 const formatPhone = (v: string) => {
   const d = v.replace(/\D/g, "").slice(0, 10);
   if (d.length < 4) return d;
@@ -45,12 +48,12 @@ export const TRTHeroForm = () => {
   const inputBase = (field: string): React.CSSProperties => ({
     width: "100%",
     height: 50,
-    background: "rgba(0,8,20,0.6)",
-    border: `1px solid ${focused === field ? "#E8670A" : "rgba(245,241,232,0.20)"}`,
-    borderRadius: 8,
+    background: "rgba(13,8,7,0.55)",
+    border: `1px solid ${focused === field ? ORANGE : "rgba(255,255,255,0.20)"}`,
+    borderRadius: 4,
     padding: "0 16px",
     fontSize: 15,
-    color: "#F5F1E8",
+    color: "#FFFFFF",
     outline: "none",
     fontFamily: "Inter, sans-serif",
     transition: "border-color 150ms ease",
@@ -58,32 +61,33 @@ export const TRTHeroForm = () => {
 
   return (
     <div
-      className="rounded-2xl p-7 md:p-8 w-full"
+      className="p-7 md:p-8 w-full"
       style={{
-        background: "rgba(255,255,255,0.06)",
+        background: "rgba(18,34,86,0.55)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
         border: "1px solid rgba(255,255,255,0.12)",
+        borderRadius: 16,
         maxWidth: 420,
-        boxShadow: "0 20px 60px rgba(0,0,0,0.45)",
+        boxShadow: "0 12px 32px rgba(13,8,7,0.45)",
       }}
     >
       <h2
-        className="font-bold uppercase"
         style={{
-          fontFamily: "Oswald, sans-serif",
-          fontSize: 22,
-          color: "#F5F1E8",
-          fontWeight: 700,
-          letterSpacing: "0.05em",
+          fontFamily: "'Bebas Neue', sans-serif",
+          fontSize: 28,
+          color: "#FFFFFF",
+          fontWeight: 400,
+          letterSpacing: "0.02em",
           lineHeight: 1.15,
+          textTransform: "uppercase",
         }}
       >
         Book My Consult
       </h2>
       <p
         className="mt-1.5 mb-5"
-        style={{ color: "rgba(245,241,232,0.70)", fontFamily: "Inter, sans-serif", fontSize: 14 }}
+        style={{ color: "rgba(255,255,255,0.70)", fontFamily: "Inter, sans-serif", fontSize: 14 }}
       >
         Same or next day. Takes 30 seconds.
       </p>
@@ -146,39 +150,47 @@ export const TRTHeroForm = () => {
             onBlur={() => setFocused(null)}
             style={{
               ...inputBase("location"),
-              color: location ? "#F5F1E8" : "rgba(245,241,232,0.50)",
+              color: location ? "#FFFFFF" : "rgba(255,255,255,0.55)",
               appearance: "none",
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23F5F1E8' opacity='0.6' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23FFFFFF' opacity='0.7' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "right 14px center",
               paddingRight: 40,
             }}
           >
-            <option value="" disabled style={{ color: "#000814" }}>Preferred Location</option>
-            <option value="virginia-beach" style={{ color: "#000814" }}>Virginia Beach</option>
-            <option value="newport-news" style={{ color: "#000814" }}>Newport News</option>
-            <option value="richmond" style={{ color: "#000814" }}>Richmond</option>
+            <option value="" disabled style={{ color: "#122256" }}>Preferred Location</option>
+            <option value="virginia-beach" style={{ color: "#122256" }}>Virginia Beach</option>
+            <option value="newport-news" style={{ color: "#122256" }}>Newport News</option>
+            <option value="richmond" style={{ color: "#122256" }}>Richmond</option>
           </select>
           {errors.location && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.location}</p>}
         </div>
 
         <button
           type="submit"
-          className="w-full uppercase font-bold cursor-pointer"
+          className="w-full uppercase font-semibold cursor-pointer"
           style={{
             height: 56,
-            background: "#E8670A",
+            background: ORANGE,
             color: "#FFFFFF",
             fontSize: 14,
             border: "none",
-            borderRadius: 8,
-            letterSpacing: "0.08em",
+            borderRadius: 4,
+            letterSpacing: "0.02em",
             fontFamily: "Inter, sans-serif",
             marginTop: 4,
-            transition: "background-color 180ms ease, transform 180ms ease",
+            transition: "background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = "#CF5B09"; e.currentTarget.style.transform = "scale(1.01)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = "#E8670A"; e.currentTarget.style.transform = "scale(1)"; }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = ORANGE_HOVER;
+            e.currentTarget.style.transform = "translateY(-1px)";
+            e.currentTarget.style.boxShadow = "0 4px 12px rgba(232,103,10,0.25)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = ORANGE;
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
           Book My Consult
         </button>
@@ -189,16 +201,16 @@ export const TRTHeroForm = () => {
             checked={tcpa}
             onChange={(e) => setTcpa(e.target.checked)}
             className="mt-0.5 flex-shrink-0"
-            style={{ accentColor: "#E8670A" }}
+            style={{ accentColor: ORANGE }}
           />
-          <span style={{ color: "rgba(245,241,232,0.55)", fontSize: 11, lineHeight: 1.4 }}>
+          <span style={{ color: "rgba(255,255,255,0.60)", fontSize: 11, lineHeight: 1.4 }}>
             I agree to receive SMS/calls about my appointment. Reply STOP to opt out. Msg & data rates may apply.
           </span>
         </label>
         {errors.tcpa && <p className="text-xs" style={{ color: "#FF8A8A" }}>{errors.tcpa}</p>}
       </form>
 
-      <p className="text-center mt-4 inline-flex items-center justify-center gap-1.5 w-full" style={{ color: "rgba(245,241,232,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}>
+      <p className="text-center mt-4 inline-flex items-center justify-center gap-1.5 w-full" style={{ color: "rgba(255,255,255,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}>
         <Lock size={12} /> HIPAA secure. No spam, ever.
       </p>
     </div>
