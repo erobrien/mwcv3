@@ -11,25 +11,28 @@ const formatPhone = (v: string) => {
 export const TRTHeroForm = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [tcpa, setTcpa] = useState(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [focused, setFocused] = useState<string | null>(null);
 
   const validatePhone = (v: string) => v.replace(/\D/g, "").length === 10;
+  const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!name.trim()) errs.name = "Full name is required";
     if (!validatePhone(phone)) errs.phone = "Valid 10-digit phone required";
+    if (!validateEmail(email)) errs.email = "Valid email is required";
     if (!location) errs.location = "Please select a location";
     if (!tcpa) errs.tcpa = "Consent required to continue";
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
     const params = new URLSearchParams({
-      name, phone, location, source: "landing-page-hero", service: "trt",
+      name, phone, email, location, source: "landing-page-hero", service: "trt",
     });
     const urls: Record<string, string> = {
       richmond: "https://menswellnesscenters.com/thank-you-richmond/",
@@ -116,6 +119,22 @@ export const TRTHeroForm = () => {
             inputMode="tel"
           />
           {errors.phone && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.phone}</p>}
+        </div>
+        <div>
+          <label htmlFor="hf-email" className="sr-only">Email Address</label>
+          <input
+            id="hf-email"
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value.slice(0, 255))}
+            onFocus={() => setFocused("email")}
+            onBlur={() => setFocused(null)}
+            style={inputBase("email")}
+            autoComplete="email"
+            inputMode="email"
+          />
+          {errors.email && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.email}</p>}
         </div>
         <div>
           <label htmlFor="hf-loc" className="sr-only">Preferred Location</label>
