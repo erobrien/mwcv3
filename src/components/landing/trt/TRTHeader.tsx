@@ -19,10 +19,10 @@ export const TRTHeader = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 md:bg-transparent"
       style={{
-        background: scrolled ? "rgba(0,0,51,0.95)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+        background: scrolled ? "rgba(0,0,51,0.95)" : "rgba(10,22,40,0.85)",
+        backdropFilter: "blur(12px)",
         height: 64,
       }}
     >
