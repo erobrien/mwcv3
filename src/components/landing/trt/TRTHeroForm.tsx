@@ -76,7 +76,7 @@ export const TRTHeroForm = () => {
           lineHeight: 1.15,
         }}
       >
-        Book My Free Consult
+        Book My Consult
       </h2>
       <p
         className="mt-1.5 mb-5"
@@ -161,7 +161,7 @@ export const TRTHeroForm = () => {
           onMouseEnter={(e) => { e.currentTarget.style.background = "#CF6A1F"; e.currentTarget.style.transform = "scale(1.01)"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#E87722"; e.currentTarget.style.transform = "scale(1)"; }}
         >
-          Book My Free Consult
+          Book My Consult
         </button>
 
         <label className="flex items-start gap-2 mt-3 cursor-pointer" style={{ fontFamily: "Inter, sans-serif" }}>

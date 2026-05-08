@@ -124,7 +124,7 @@ export const TRTHero = () => {
               lineHeight: 1.5,
             }}
           >
-            Same-day labs, a face-to-face Virginia physician, and a personalized plan. Free consult, every time.
+            Same-day labs, a face-to-face Virginia physician, and a personalized plan. Your first visit is on us.
           </p>
 
           <div
@@ -167,7 +167,7 @@ export const TRTHero = () => {
               fontFamily: "Inter, sans-serif",
             }}
           >
-            Book My Free Consult
+            Book My Consult
           </button>
 
           <div

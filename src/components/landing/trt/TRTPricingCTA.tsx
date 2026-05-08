@@ -27,14 +27,14 @@ export const TRTPricingCTA = () => {
               fontWeight: 700,
             }}
           >
-            CONSULTS ARE ALWAYS FREE.<br />HERE'S WHAT'S INCLUDED.
+            YOUR FIRST VISIT IS ON US.<br />HERE'S WHAT'S INCLUDED.
           </h2>
 
           <ul className="mt-6 space-y-3" style={{ fontFamily: "Inter, sans-serif" }}>
             <li className="flex items-start gap-3">
               <Check className="h-5 w-5 flex-shrink-0 mt-0.5" strokeWidth={3} style={{ color: "#FFFFFF" }} />
               <span className="text-base" style={{ color: "#FFFFFF", fontSize: 16 }}>
-                <strong>Free consult, every time.</strong> Labs, physician visit, and your plan reviewed at no cost.
+                <strong>Initial consult at no cost.</strong> Labs, physician visit, and your plan reviewed on us.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -67,7 +67,7 @@ export const TRTPricingCTA = () => {
             onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.90)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#FFFFFF"; }}
           >
-            Claim My Free Consult
+            Claim My Consult
           </button>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-5">

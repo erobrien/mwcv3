@@ -912,7 +912,6 @@ const Hero = () => (
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: "#C95A20",
-                fontWeight: 700,
               }}
             >
               Virginia's Premier Men's Health Clinic
@@ -2488,7 +2487,7 @@ const PillarCard = ({
   title,
   desc,
 }: {
-  Icon: React.ComponentType<{ size?: number; strokeWidth?: number; color?: string }>;
+  Icon: React.ComponentType<any>;
   title: string;
   desc: string;
 }) => {

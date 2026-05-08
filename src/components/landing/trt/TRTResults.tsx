@@ -96,7 +96,7 @@ export const TRTResults = () => {
             className="inline-flex items-center justify-center rounded-full px-8 font-bold uppercase cursor-pointer border-none"
             style={{ height: 56, minHeight: 56, background: "#E8670A", color: "#FFFFFF", fontSize: 15, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
           >
-            Start My Free Consult
+            Start My Consult
           </button>
         </div>
       </div>
