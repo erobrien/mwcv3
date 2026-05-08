@@ -84,19 +84,6 @@ export const TRTHero = () => {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 sm:px-6 pt-24 pb-12 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
         {/* LEFT */}
         <div>
-          <span
-            className="inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase mb-6"
-            style={{
-              background: "transparent",
-              border: `1px solid ${COLORS.cream}`,
-              color: COLORS.cream,
-              letterSpacing: "0.15em",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            Virginia's Men's Health Centers
-          </span>
-
           <h1
             className="font-bold uppercase"
             style={{
@@ -135,7 +122,7 @@ export const TRTHero = () => {
                 <Star key={i} className="h-4 w-4" fill={COLORS.gold} stroke={COLORS.gold} />
               ))}
             </span>
-            <span style={{ fontSize: 14 }}>4.9 average from 200+ verified Google reviews</span>
+            <span style={{ fontSize: 14, whiteSpace: "nowrap" }}>4.9 average from 200+ verified Google reviews</span>
           </div>
 
           <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[560px]">
