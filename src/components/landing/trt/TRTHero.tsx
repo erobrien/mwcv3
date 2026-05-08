@@ -94,7 +94,7 @@ export const TRTHero = () => {
               fontFamily: "Inter, sans-serif",
             }}
           >
-            Virginia's In-Person Men's Health Centers
+            Virginia's Men's Health Centers
           </span>
 
           <h1
