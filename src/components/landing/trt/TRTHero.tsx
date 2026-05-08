@@ -25,11 +25,10 @@ export const TRTHero = () => {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden flex items-center"
+      className="relative overflow-hidden flex items-start lg:items-center"
       style={{
         background: COLORS.navyDeep,
         minHeight: 720,
-        maxHeight: "100vh",
       }}
     >
       <a
