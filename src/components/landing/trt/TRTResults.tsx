@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
 
-const NAVY = "#122256";
-const ORANGE = "#E8670A";
-const ORANGE_HOVER = "#D45A00";
-
 const testimonials = [
   {
     quote:
@@ -49,11 +45,11 @@ export const TRTResults = () => {
   const scrollToForm = () => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="results" style={{ background: "#F2F1EB" }}>
-      <div className="max-w-[1200px] mx-auto px-6" style={{ paddingTop: "clamp(64px, 10vw, 120px)", paddingBottom: "clamp(64px, 10vw, 120px)" }}>
+    <section id="results" style={{ background: "#F5F0EB" }}>
+      <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-24">
         <h2
-          className="text-center"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", color: NAVY, fontSize: "clamp(32px, 4vw, 48px)", letterSpacing: "0.02em", fontWeight: 400, textTransform: "uppercase" }}
+          className="font-bold uppercase text-center"
+          style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}
         >
           Real Members. Real Experiences.
         </h2>
@@ -62,24 +58,18 @@ export const TRTResults = () => {
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className={`p-6 flex flex-col ${i >= 3 && !showAll ? "hidden md:flex" : ""}`}
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #D0CEBC",
-                borderTop: "3px solid #E8670A",
-                borderRadius: 8,
-                boxShadow: "0 2px 8px rgba(13,8,7,0.04)",
-              }}
+              className={`rounded-2xl p-6 flex flex-col ${i >= 3 && !showAll ? "hidden md:flex" : ""}`}
+              style={{ background: "#FFFFFF", border: "1px solid #E5E5EA" }}
             >
               <div className="flex items-center gap-0.5 mb-3">
-                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill={ORANGE} stroke={ORANGE} />)}
+                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4" fill="#E8670A" stroke="#E8670A" />)}
               </div>
-              <p className="text-sm italic flex-1" style={{ color: "#1A1A1A", fontFamily: "Inter, sans-serif", lineHeight: 1.65 }}>
+              <p className="text-sm italic leading-relaxed flex-1" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
                 "{t.quote}"
               </p>
-              <div className="mt-4 pt-4 border-t" style={{ borderColor: "#E8E5E0" }}>
-                <div className="text-sm font-semibold" style={{ color: NAVY, fontFamily: "Inter, sans-serif" }}>{t.name}</div>
-                <div className="text-xs" style={{ color: "#6B7F94", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
+              <div className="mt-4 pt-4 border-t" style={{ borderColor: "#E5E5EA" }}>
+                <div className="text-sm font-semibold" style={{ color: "#000033", fontFamily: "Inter, sans-serif" }}>{t.name}</div>
+                <div className="text-xs" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{t.city}</div>
               </div>
             </div>
           ))}
@@ -90,7 +80,7 @@ export const TRTResults = () => {
             <button
               onClick={() => setShowAll(true)}
               className="text-sm font-semibold underline underline-offset-4 cursor-pointer"
-              style={{ color: NAVY, fontFamily: "Inter, sans-serif", background: "none", border: "none" }}
+              style={{ color: "#000033", fontFamily: "Inter, sans-serif", background: "none", border: "none" }}
             >
               Show more reviews
             </button>
@@ -98,23 +88,13 @@ export const TRTResults = () => {
         )}
 
         <div className="mt-10 text-center">
-          <p className="text-base mb-4" style={{ color: "#1A1A1A", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
+          <p className="text-base mb-4" style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif", fontSize: 16 }}>
             Join 10,000+ Virginia men who have taken the first step.
           </p>
           <button
             onClick={scrollToForm}
-            className="inline-flex items-center justify-center font-semibold uppercase cursor-pointer border-none transition-all duration-200"
-            style={{ background: ORANGE, color: "#FFFFFF", fontSize: 14, letterSpacing: "0.02em", fontFamily: "Inter, sans-serif", padding: "14px 28px", borderRadius: 4 }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = ORANGE_HOVER;
-              e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(232,103,10,0.25)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = ORANGE;
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
+            className="inline-flex items-center justify-center rounded-full px-8 font-bold uppercase cursor-pointer border-none"
+            style={{ height: 56, minHeight: 56, background: "#E8670A", color: "#FFFFFF", fontSize: 15, letterSpacing: "0.08em", fontFamily: "Inter, sans-serif" }}
           >
             Start My Consult
           </button>

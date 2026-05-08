@@ -10,10 +10,10 @@ const trustChecks = [
 ];
 
 const COLORS = {
-  navy: "#122256",
-  nearBlack: "#0D0807",
+  navyDeep: "#000814",
+  navy: "#0B1220",
+  cream: "#F5F1E8",
   orange: "#E8670A",
-  orangeHover: "#D45A00",
   gold: "#C9A961",
 };
 
@@ -27,7 +27,7 @@ export const TRTHero = () => {
       id="hero"
       className="relative overflow-hidden flex items-start lg:items-center"
       style={{
-        background: COLORS.navy,
+        background: COLORS.navyDeep,
         minHeight: 720,
       }}
     >
@@ -53,13 +53,13 @@ export const TRTHero = () => {
         />
       </picture>
 
-      {/* Gradient overlay (near-black) */}
+      {/* Gradient overlay */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(13,8,7,0.95) 0%, rgba(13,8,7,0.78) 45%, rgba(13,8,7,0.45) 100%)",
+            "linear-gradient(90deg, rgba(0,8,20,0.95) 0%, rgba(0,8,20,0.75) 45%, rgba(0,8,20,0.40) 100%)",
         }}
       />
 
@@ -74,43 +74,39 @@ export const TRTHero = () => {
         }}
       />
 
-      {/* Bottom fade into next section */}
+      {/* Bottom fade into stats bar */}
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-        style={{ background: `linear-gradient(180deg, rgba(18,34,86,0) 0%, ${COLORS.navy} 100%)` }}
+        style={{ background: `linear-gradient(180deg, rgba(0,8,20,0) 0%, ${COLORS.navyDeep} 100%)` }}
       />
 
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-5 sm:px-6 pt-24 pb-12 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 sm:px-6 pt-24 pb-12 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
         {/* LEFT */}
         <div>
           <span
-            className="inline-flex items-center px-3 py-1.5 mb-6"
+            className="inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase mb-6"
             style={{
               background: "transparent",
-              border: `1px solid ${COLORS.orange}`,
-              color: COLORS.orange,
-              letterSpacing: "0.18em",
+              border: `1px solid ${COLORS.cream}`,
+              color: COLORS.cream,
+              letterSpacing: "0.15em",
               fontFamily: "Inter, sans-serif",
-              fontSize: 12,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              borderRadius: 4,
             }}
           >
             Virginia's Men's Health Centers
           </span>
 
           <h1
+            className="font-bold uppercase"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
+              fontFamily: "Oswald, 'Bebas Neue', Anton, sans-serif",
               fontSize: "clamp(48px, 6vw, 96px)",
               lineHeight: 0.95,
-              letterSpacing: "0.02em",
-              color: "#FFFFFF",
-              fontWeight: 400,
+              letterSpacing: "-0.01em",
+              color: COLORS.cream,
+              fontWeight: 700,
               textShadow: "0 2px 16px rgba(0,0,0,0.5)",
-              textTransform: "uppercase",
             }}
           >
             Get Your Edge Back.
@@ -121,10 +117,10 @@ export const TRTHero = () => {
           <p
             className="mt-6 max-w-[520px]"
             style={{
-              color: "rgba(255,255,255,0.85)",
+              color: "rgba(245,241,232,0.85)",
               fontFamily: "Inter, sans-serif",
               fontSize: 18,
-              lineHeight: 1.65,
+              lineHeight: 1.5,
             }}
           >
             Same-day labs, a face-to-face Virginia physician, and a personalized plan. Your first visit is on us.
@@ -132,14 +128,14 @@ export const TRTHero = () => {
 
           <div
             className="mt-5 inline-flex items-center gap-2"
-            style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
+            style={{ color: COLORS.cream, fontFamily: "Inter, sans-serif" }}
           >
             <span className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-4 w-4" fill={COLORS.gold} stroke={COLORS.gold} />
               ))}
             </span>
-            <span style={{ fontSize: 14, color: "rgba(255,255,255,0.85)" }}>4.9 average from 200+ verified Google reviews</span>
+            <span style={{ fontSize: 14 }}>4.9 average from 200+ verified Google reviews</span>
           </div>
 
           <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[560px]">
@@ -147,7 +143,7 @@ export const TRTHero = () => {
               <li
                 key={t}
                 className="flex items-center gap-2.5"
-                style={{ color: "#FFFFFF", fontFamily: "Inter, sans-serif" }}
+                style={{ color: COLORS.cream, fontFamily: "Inter, sans-serif" }}
               >
                 <Check className="h-[18px] w-[18px] flex-shrink-0" strokeWidth={3} style={{ color: COLORS.orange }} />
                 <span style={{ fontSize: 15, fontWeight: 500 }}>{t}</span>
@@ -158,26 +154,24 @@ export const TRTHero = () => {
           {/* Mobile primary CTA (hidden on lg+) */}
           <button
             onClick={scrollToForm}
-            className="lg:hidden mt-7 w-full uppercase font-semibold cursor-pointer transition-all duration-200"
+            className="lg:hidden mt-7 w-full uppercase font-bold cursor-pointer"
             style={{
               height: 56,
               background: COLORS.orange,
               color: "#FFFFFF",
               fontSize: 14,
               border: "none",
-              borderRadius: 4,
-              letterSpacing: "0.02em",
+              borderRadius: 8,
+              letterSpacing: "0.08em",
               fontFamily: "Inter, sans-serif",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = COLORS.orangeHover; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = COLORS.orange; }}
           >
             Book My Consult
           </button>
 
           <div
             className="mt-6"
-            style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif", fontSize: 12 }}
+            style={{ color: "rgba(245,241,232,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}
           >
             Medically reviewed by licensed Virginia providers. Individual results vary.
           </div>

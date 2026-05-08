@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { MapPin, Phone, Clock, ChevronDown } from "lucide-react";
 
-const NAVY = "#122256";
-const ORANGE = "#E8670A";
-const ORANGE_HOVER = "#D45A00";
-
 const locations = [
   {
     slug: "richmond-va",
@@ -50,15 +46,9 @@ export const TRTLocations = () => {
   };
 
   return (
-    <section id="locations" style={{ background: "#F2F1EB" }}>
-      <div className="max-w-[1200px] mx-auto px-6" style={{ paddingTop: "clamp(64px, 10vw, 120px)", paddingBottom: "clamp(64px, 10vw, 120px)" }}>
-        <div
-          className="uppercase mb-3 text-center"
-          style={{ color: "#6B7F94", fontFamily: "Inter, sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: "0.18em" }}
-        >
-          Find A Center
-        </div>
-        <h2 className="text-center" style={{ fontFamily: "'Bebas Neue', sans-serif", color: NAVY, fontSize: "clamp(32px, 4vw, 48px)", letterSpacing: "0.02em", fontWeight: 400, textTransform: "uppercase" }}>
+    <section id="locations" style={{ background: "#FFFFFF" }}>
+      <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+        <h2 className="font-bold uppercase text-center" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: "clamp(26px, 3vw, 38px)", letterSpacing: "0.02em" }}>
           3 Virginia Centers
         </h2>
 
@@ -66,12 +56,12 @@ export const TRTLocations = () => {
           {locations.map((l, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={l.slug} className="p-8 flex flex-col" style={{ border: "1px solid #E8E5E0", background: "#FFFFFF", borderRadius: 8, boxShadow: "0 2px 8px rgba(13,8,7,0.04)" }}>
-                <div style={{ fontFamily: "'Bebas Neue', sans-serif", color: NAVY, fontSize: 28, letterSpacing: "0.02em", fontWeight: 400, textTransform: "uppercase" }}>
+              <div key={l.slug} className="rounded-2xl p-6 flex flex-col" style={{ border: "1px solid #E5E5EA", background: "#FFFFFF" }}>
+                <div className="font-bold uppercase" style={{ fontFamily: "Oswald, sans-serif", color: "#000033", fontSize: 22, letterSpacing: "0.02em" }}>
                   {l.city}
                 </div>
-                <div className="text-xs mt-1 mb-3" style={{ color: "#6B7F94", fontFamily: "Inter, sans-serif" }}>{l.name}</div>
-                <div className="flex items-center gap-2 mb-4 text-xs font-semibold uppercase" style={{ color: ORANGE, fontFamily: "Inter, sans-serif", letterSpacing: "0.08em" }}>
+                <div className="text-xs mt-1 mb-3" style={{ color: "#7a7a8e", fontFamily: "Inter, sans-serif" }}>{l.name}</div>
+                <div className="flex items-center gap-2 mb-4 text-xs font-semibold uppercase" style={{ color: "#E8670A", fontFamily: "Inter, sans-serif", letterSpacing: "0.06em" }}>
                   <MapPin className="h-3.5 w-3.5" /> {l.driveTime}
                 </div>
 
@@ -79,53 +69,41 @@ export const TRTLocations = () => {
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
                   className="md:hidden flex items-center justify-between w-full text-sm font-semibold uppercase py-2 mb-2 cursor-pointer"
-                  style={{ color: NAVY, fontFamily: "Inter, sans-serif", background: "none", border: "none", letterSpacing: "0.08em" }}
+                  style={{ color: "#000033", fontFamily: "Inter, sans-serif", background: "none", border: "none", letterSpacing: "0.06em" }}
                 >
                   <span>Address &amp; Hours</span>
                   <ChevronDown className="h-4 w-4 transition-transform" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)" }} />
                 </button>
 
-                <div className={`space-y-2.5 text-sm ${isOpen ? "block" : "hidden"} md:block`} style={{ color: "#1A1A1A", fontFamily: "Inter, sans-serif" }}>
+                <div className={`space-y-2.5 text-sm ${isOpen ? "block" : "hidden"} md:block`} style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.name}, ${l.address}, ${l.cityStateZip}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-2 hover:opacity-70 transition-opacity"
-                    style={{ color: "#1A1A1A", textDecoration: "none" }}
+                    style={{ color: "#1a1a2e", textDecoration: "none" }}
                   >
-                    <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: ORANGE }} />
+                    <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: "#E8670A" }} />
                     <div className="underline underline-offset-2">{l.address}<br />{l.cityStateZip}</div>
                   </a>
                   <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 flex-shrink-0" style={{ color: ORANGE }} />
+                    <Clock className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
                     <span>{l.hours}</span>
                   </div>
                 </div>
 
-                <div className="mt-5 pt-5 border-t flex flex-col gap-2" style={{ borderColor: "#E8E5E0" }}>
+                <div className="mt-5 pt-5 border-t flex flex-col gap-2" style={{ borderColor: "#E5E5EA" }}>
                   <a
                     href={l.phoneHref}
-                    className="text-xs font-semibold uppercase text-center inline-flex items-center justify-center gap-2 transition-colors duration-200"
-                    style={{ height: 48, color: NAVY, border: `1.5px solid ${NAVY}`, letterSpacing: "0.02em", fontFamily: "Inter, sans-serif", textDecoration: "none", borderRadius: 4, background: "transparent" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.background = NAVY; e.currentTarget.style.color = "#FFFFFF"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = NAVY; }}
+                    className="text-xs font-semibold uppercase text-center rounded-full inline-flex items-center justify-center gap-2"
+                    style={{ height: 48, minHeight: 48, color: "#000033", border: "1px solid #000033", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", textDecoration: "none" }}
                   >
                     <Phone className="h-4 w-4" /> Call {l.phone}
                   </a>
                   <button
                     onClick={bookAt(l.slug)}
-                    className="text-xs font-semibold uppercase text-center cursor-pointer inline-flex items-center justify-center transition-all duration-200"
-                    style={{ height: 48, background: ORANGE, color: "#FFFFFF", letterSpacing: "0.02em", fontFamily: "Inter, sans-serif", border: "none", borderRadius: 4 }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = ORANGE_HOVER;
-                      e.currentTarget.style.transform = "translateY(-1px)";
-                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(232,103,10,0.25)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = ORANGE;
-                      e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
+                    className="text-xs font-bold uppercase text-center rounded-full cursor-pointer inline-flex items-center justify-center"
+                    style={{ height: 48, minHeight: 48, background: "#E8670A", color: "#FFFFFF", letterSpacing: "0.08em", fontFamily: "Inter, sans-serif", border: "none" }}
                   >
                     Book My Consult
                   </button>
