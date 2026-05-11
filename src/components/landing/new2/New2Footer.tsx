@@ -36,8 +36,8 @@ export const New2Footer = () => (
       <div className="flex flex-col items-start lg:items-end gap-4">
         {links.map((l) => (
           <a
-            key={l}
-            href="#hero-form"
+            key={l.label}
+            href={l.href}
             style={{
               color: COLORS.cream,
               fontFamily: "Oswald, sans-serif",
@@ -47,7 +47,7 @@ export const New2Footer = () => (
               letterSpacing: "0.02em",
             }}
           >
-            {l}
+            {l.label}
           </a>
         ))}
       </div>
