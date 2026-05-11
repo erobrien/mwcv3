@@ -25,7 +25,7 @@ const OPTIONS = [
 const BookSymptom = () => {
   const navigate = useNavigate();
   const state = useBookingSync();
-  const [selected, setSelected] = useState<string>(state.symptom || "");
+  const [selected, setSelected] = useState<string>("");
   const advanceTimer = useRef<number | null>(null);
 
   // Clean up any pending timer on unmount.
