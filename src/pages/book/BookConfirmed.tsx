@@ -98,12 +98,12 @@ const BookConfirmed = () => {
           }}
         >
           <h2
+            className="text-xl md:text-2xl"
             style={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
-              fontSize: 24,
               color: "#0B1029",
-              marginBottom: 20,
+              marginBottom: 12,
               lineHeight: 1.3,
             }}
           >
@@ -113,16 +113,13 @@ const BookConfirmed = () => {
             {summaryRows.map((r) => (
               <div
                 key={r.label}
-                className="flex items-start justify-between gap-4"
-                style={{
-                  padding: "16px 0",
-                  borderBottom: "2px solid #E5E7EB",
-                }}
+                className="flex items-start justify-between gap-3 py-3 md:py-4"
+                style={{ borderBottom: "2px solid #E5E7EB" }}
               >
                 <dt
+                  className="text-sm md:text-lg"
                   style={{
                     color: "#3A4258",
-                    fontSize: 18,
                     fontWeight: 500,
                     fontFamily: "Inter, sans-serif",
                   }}
@@ -130,9 +127,9 @@ const BookConfirmed = () => {
                   {r.label}
                 </dt>
                 <dd
+                  className="text-sm md:text-lg"
                   style={{
                     color: "#0B1029",
-                    fontSize: 18,
                     fontWeight: 700,
                     textAlign: "right",
                     fontFamily: "Inter, sans-serif",
