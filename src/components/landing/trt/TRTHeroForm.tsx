@@ -183,15 +183,15 @@ export const TRTHeroForm = () => {
           Book My Consult
         </button>
 
-        <label className="flex items-start gap-2 mt-3 cursor-pointer" style={{ fontFamily: "Inter, sans-serif" }}>
+        <label className="flex items-start gap-3 cursor-pointer -m-2 p-2 rounded-lg transition-colors hover:bg-white/5">
           <input
             type="checkbox"
             checked={tcpa}
             onChange={(e) => setTcpa(e.target.checked)}
-            className="mt-0.5 flex-shrink-0"
+            className="mt-0.5 flex-shrink-0 w-6 h-6 min-w-[24px] min-h-[24px] rounded border border-white/30 bg-transparent cursor-pointer"
             style={{ accentColor: "#E8670A" }}
           />
-          <span style={{ color: "rgba(245,241,232,0.55)", fontSize: 11, lineHeight: 1.4 }}>
+          <span style={{ color: "rgba(245,241,232,0.55)", fontSize: 12, lineHeight: 1.45 }}>
             I agree to receive SMS/calls about my appointment. Reply STOP to opt out. Msg & data rates may apply.
           </span>
         </label>
