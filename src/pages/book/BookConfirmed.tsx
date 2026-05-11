@@ -145,20 +145,38 @@ const BookConfirmed = () => {
                         marginBottom: 4,
                       }}
                     >
-                      Men's Wellness Center, {locationName}
+                      {center.centerName}
                     </p>
                     <p
                       className="text-base md:text-lg"
                       style={{ color: "#3A4258", lineHeight: 1.5, fontWeight: 500 }}
                     >
-                      {ADDRESS}
+                      {center.street}<br />
+                      {center.cityStateZip}
                     </p>
+                    <div
+                      className="inline-flex items-center gap-1.5 mt-3"
+                      style={{
+                        background: "rgba(34,197,94,0.10)",
+                        border: "1px solid rgba(34,197,94,0.35)",
+                        color: "#0F7A3A",
+                        padding: "4px 10px",
+                        borderRadius: 999,
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      <FlaskConical size={12} strokeWidth={2.5} />
+                      Same-Day Labs On Site
+                    </div>
                   </div>
                 </div>
               </div>
 
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 w-full inline-flex items-center justify-center gap-2"
