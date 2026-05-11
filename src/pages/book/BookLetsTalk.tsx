@@ -1,4 +1,4 @@
-import { Phone, MessageSquareText, Clock } from "lucide-react";
+import { Phone, MessageSquareText } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import { useBookingSync } from "@/lib/bookingState";
 
