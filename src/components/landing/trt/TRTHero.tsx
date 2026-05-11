@@ -9,9 +9,9 @@ const trustChecks = [
 ];
 
 const COLORS = {
-  navyDeep: "#000814",
-  navy: "#0B1220",
-  cream: "#F5F1E8",
+  navyDeep: "#0B1029",
+  navy: "#1B2B4B",
+  cream: "#F5F0EB",
   orange: "#E8670A",
   gold: "#C9A961",
 };
@@ -55,7 +55,7 @@ export const TRTHero = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 85% 10%, rgba(232,103,10,0.18) 0%, rgba(0,8,20,0) 60%)",
+            "radial-gradient(ellipse 60% 50% at 85% 10%, rgba(232,103,10,0.18) 0%, rgba(11,16,41,0) 60%)",
         }}
       />
 
@@ -91,7 +91,7 @@ export const TRTHero = () => {
           <p
             className="mt-6 max-w-[520px]"
             style={{
-              color: "rgba(245,241,232,0.85)",
+              color: "rgba(245,240,235,0.85)",
               fontFamily: "Inter, sans-serif",
               fontSize: 18,
               lineHeight: 1.5,
@@ -145,7 +145,7 @@ export const TRTHero = () => {
 
           <div
             className="mt-6"
-            style={{ color: "rgba(245,241,232,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}
+            style={{ color: "rgba(245,240,235,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}
           >
             Medically reviewed by licensed Virginia providers. Individual results vary.
           </div>

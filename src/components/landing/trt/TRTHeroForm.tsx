@@ -45,12 +45,12 @@ export const TRTHeroForm = () => {
   const inputBase = (field: string): React.CSSProperties => ({
     width: "100%",
     height: 50,
-    background: "rgba(0,8,20,0.6)",
-    border: `1px solid ${focused === field ? "#E8670A" : "rgba(245,241,232,0.20)"}`,
+    background: "rgba(11,16,41,0.6)",
+    border: `1px solid ${focused === field ? "#E8670A" : "rgba(245,240,235,0.20)"}`,
     borderRadius: 8,
     padding: "0 16px",
     fontSize: 15,
-    color: "#F5F1E8",
+    color: "#F5F0EB",
     outline: "none",
     fontFamily: "Inter, sans-serif",
     transition: "border-color 150ms ease",
@@ -73,7 +73,7 @@ export const TRTHeroForm = () => {
         style={{
           fontFamily: "Oswald, sans-serif",
           fontSize: 22,
-          color: "#F5F1E8",
+          color: "#F5F0EB",
           fontWeight: 700,
           letterSpacing: "0.05em",
           lineHeight: 1.15,
@@ -83,7 +83,7 @@ export const TRTHeroForm = () => {
       </h2>
       <p
         className="mt-1.5 mb-5"
-        style={{ color: "rgba(245,241,232,0.70)", fontFamily: "Inter, sans-serif", fontSize: 14 }}
+        style={{ color: "rgba(245,240,235,0.70)", fontFamily: "Inter, sans-serif", fontSize: 14 }}
       >
         Same or next day. Takes 30 seconds.
       </p>
@@ -146,7 +146,7 @@ export const TRTHeroForm = () => {
             onBlur={() => setFocused(null)}
             style={{
               ...inputBase("location"),
-              color: location ? "#F5F1E8" : "rgba(245,241,232,0.50)",
+              color: location ? "#F5F0EB" : "rgba(245,240,235,0.50)",
               appearance: "none",
               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23F5F1E8' opacity='0.6' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`,
               backgroundRepeat: "no-repeat",
@@ -154,10 +154,10 @@ export const TRTHeroForm = () => {
               paddingRight: 40,
             }}
           >
-            <option value="" disabled style={{ color: "#000814" }}>Location</option>
-            <option value="virginia-beach" style={{ color: "#000814" }}>Virginia Beach</option>
-            <option value="newport-news" style={{ color: "#000814" }}>Newport News</option>
-            <option value="richmond" style={{ color: "#000814" }}>Richmond</option>
+            <option value="" disabled style={{ color: "#0B1029" }}>Location</option>
+            <option value="virginia-beach" style={{ color: "#0B1029" }}>Virginia Beach</option>
+            <option value="newport-news" style={{ color: "#0B1029" }}>Newport News</option>
+            <option value="richmond" style={{ color: "#0B1029" }}>Richmond</option>
           </select>
           {errors.location && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.location}</p>}
         </div>
@@ -191,14 +191,14 @@ export const TRTHeroForm = () => {
             className="mt-0.5 flex-shrink-0 w-6 h-6 min-w-[24px] min-h-[24px] rounded border border-white/30 bg-transparent cursor-pointer"
             style={{ accentColor: "#E8670A" }}
           />
-          <span style={{ color: "rgba(245,241,232,0.55)", fontSize: 12, lineHeight: 1.45 }}>
+          <span style={{ color: "rgba(245,240,235,0.55)", fontSize: 12, lineHeight: 1.45 }}>
             I agree to receive SMS/calls about my appointment. Reply STOP to opt out. Msg & data rates may apply.
           </span>
         </label>
         {errors.tcpa && <p className="text-xs" style={{ color: "#FF8A8A" }}>{errors.tcpa}</p>}
       </form>
 
-      <p className="text-center mt-4 inline-flex items-center justify-center gap-1.5 w-full" style={{ color: "rgba(245,241,232,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}>
+      <p className="text-center mt-4 inline-flex items-center justify-center gap-1.5 w-full" style={{ color: "rgba(245,240,235,0.60)", fontFamily: "Inter, sans-serif", fontSize: 12 }}>
         <Lock size={12} /> HIPAA secure. No spam, ever.
       </p>
     </div>
