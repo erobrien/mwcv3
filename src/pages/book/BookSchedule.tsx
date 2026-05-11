@@ -30,8 +30,18 @@ const TESTIMONIALS = [
 ];
 
 const BookSchedule = () => {
-  const [params] = useSearchParams();
-  const missing = !params.get("symptom") || !params.get("duration");
+  const navigate = useNavigate();
+  const state = useBookingSync();
+  const missing = !state.symptom || !state.duration;
+
+  const handleConfirmDemo = () => {
+    // Demo: in production, GHL fires a webhook with the picked slot. Until then,
+    // expose a button so the funnel is end-to-end clickable.
+    const next = updateBookingState({
+      appointmentTime: "Tuesday, May 12 at 10:30 AM",
+    });
+    navigate(`/book/confirmed?${toQueryString(next)}`);
+  };
 
   return (
     <BookLayout page="schedule" title="Pick your consult time | Men's Wellness Centers">
