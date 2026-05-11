@@ -45,28 +45,28 @@ const BookLetsTalk = () => {
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(28px, 4.5vw, 40px)",
+              fontSize: "clamp(24px, 4.5vw, 40px)",
               color: "#FFFFFF",
               lineHeight: 1.2,
               letterSpacing: "-0.01em",
               textTransform: "none",
               textWrap: "balance",
-              marginBottom: 16,
+              marginBottom: 10,
             } as React.CSSProperties}
           >
             Let's talk it through.
           </h1>
           <p
+            className="text-base md:text-xl"
             style={{
               color: "rgba(255,255,255,0.88)",
-              fontSize: 22,
               fontWeight: 500,
               lineHeight: 1.45,
               maxWidth: 600,
               margin: "0 auto",
             }}
           >
-            Every guy's situation is different. A two-minute call with our
+            Every man's situation is different. A two-minute call with our
             team is the fastest way to get you matched with the right visit.
           </p>
         </div>
