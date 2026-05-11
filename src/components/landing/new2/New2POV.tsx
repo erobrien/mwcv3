@@ -67,7 +67,7 @@ export const New2POV = () => (
             textTransform: "uppercase",
           }}
         >
-          The way men handle low testosterone has already changed.
+          A care team beats a care app. Every time.
         </h2>
         <p
           className="mt-7 max-w-[460px]"
@@ -78,7 +78,7 @@ export const New2POV = () => (
             lineHeight: 1.65,
           }}
         >
-          Telehealth apps prescribe blind. Big clinics treat you like a chart number. We do it differently. Real labs, real physicians, real conversations. Same day. Right here in Virginia.
+          Telehealth apps prescribe blind. Big clinics treat you like a chart number. We do it differently. A physician, PA, and care coordinator who all know your name. Real labs, real conversations, real follow-through. Same day. Right here in Virginia.
         </p>
         <a
           href="#hero-form"
