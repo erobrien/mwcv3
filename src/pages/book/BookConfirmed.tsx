@@ -175,28 +175,44 @@ const BookConfirmed = () => {
                 </div>
               </div>
 
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 w-full inline-flex items-center justify-center gap-2"
+              <div
+                className="relative mt-8 w-full overflow-hidden"
                 style={{
-                  background: "#E8670A",
-                  color: "#FFFFFF",
-                  padding: "16px 24px",
-                  borderRadius: 10,
-                  fontWeight: 700,
-                  fontSize: 15,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  boxShadow: "0 6px 16px rgba(232,103,10,0.35)",
-                  minHeight: 56,
+                  borderRadius: 12,
+                  border: "1px solid rgba(11,16,41,0.12)",
+                  height: 280,
                 }}
               >
-                <MapPin size={18} strokeWidth={2.5} />
-                Open in Maps
-              </a>
+                <iframe
+                  title={`Map to ${center.centerName}`}
+                  src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  style={{ border: 0, width: "100%", height: "100%", display: "block" }}
+                  allowFullScreen
+                />
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inline-flex items-center gap-2"
+                  style={{
+                    top: 12,
+                    left: 12,
+                    background: "#FFFFFF",
+                    color: "#1A56DB",
+                    padding: "10px 16px",
+                    borderRadius: 8,
+                    fontWeight: 600,
+                    fontSize: 15,
+                    textDecoration: "none",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.18)",
+                  }}
+                >
+                  Open in Maps
+                  <ExternalLink size={14} strokeWidth={2.5} />
+                </a>
+              </div>
             </div>
 
             {/* Video Card */}
