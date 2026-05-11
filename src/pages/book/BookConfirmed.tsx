@@ -2,7 +2,7 @@ import { CheckCircle2, MapPin, Phone, Play, FlaskConical } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import { useBookingSync } from "@/lib/bookingState";
 
-const EXPECT_VIDEO_SRC = "https://player.vimeo.com/video/76979871?h=8272103f6e&title=0&byline=0&portrait=0";
+const EXPECT_VIDEO_SRC = "/videos/what-to-expect.mp4";
 
 type CenterInfo = {
   centerName: string;
