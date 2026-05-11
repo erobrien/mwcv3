@@ -39,7 +39,7 @@ const BookLetsTalk = () => {
   return (
     <BookLayout page="lets-talk" title="Let's talk it through | Men's Wellness Centers">
       {/* Hero band */}
-      <section style={{ background: "#0B1029", padding: "40px 16px 32px" }}>
+      <section className="px-4 py-6 md:py-10" style={{ background: "#0B1029" }}>
         <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
           <h1
             style={{
