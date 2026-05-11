@@ -21,6 +21,10 @@ import TelehealthConsent from "./pages/TelehealthConsent";
 import RefundPolicy from "./pages/RefundPolicy";
 import TRTLandingPage from "./pages/TRTLandingPage";
 import NewLandingPage from "./pages/NewLandingPage";
+import BookSymptom from "./pages/book/BookSymptom";
+import BookDuration from "./pages/book/BookDuration";
+import BookSchedule from "./pages/book/BookSchedule";
+import BookConfirmed from "./pages/book/BookConfirmed";
 import New2LandingPage from "./pages/New2LandingPage";
 import TRTv2CompliantLandingPage from "./pages/TRTv2CompliantLandingPage";
 import TRT2LandingPage from "./pages/TRT2LandingPage";
@@ -95,6 +99,10 @@ const App = () => (
           <Route path="/lp" element={<LPIndex />} />
           <Route path="/lp/testosterone" element={<TRTLandingPage />} />
           <Route path="/new" element={<NewLandingPage />} />
+          <Route path="/book/symptom" element={<BookSymptom />} />
+          <Route path="/book/duration" element={<BookDuration />} />
+          <Route path="/book/schedule" element={<BookSchedule />} />
+          <Route path="/book/confirmed" element={<BookConfirmed />} />
           <Route path="/new2" element={<New2LandingPage />} />
           <Route path="/lp/testosterone-v2" element={<TRTv2CompliantLandingPage />} />
           <Route path="/lp/trt" element={<TRTLandingPage />} />
