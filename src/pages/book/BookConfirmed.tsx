@@ -155,45 +155,43 @@ const BookConfirmed = () => {
           }}
         >
           <h2
+            className="text-xl md:text-2xl"
             style={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
-              fontSize: 26,
               color: "#0B1029",
-              marginBottom: 20,
+              marginBottom: 12,
               lineHeight: 1.3,
             }}
           >
             Before you come in
           </h2>
-          <ul className="space-y-4" style={{ marginBottom: 24 }}>
+          <ul className="space-y-2 md:space-y-4 mb-4 md:mb-6">
             {BEFORE.map((b) => (
               <li
                 key={b}
-                className="flex items-start gap-3"
+                className="flex items-start gap-3 text-base md:text-xl"
                 style={{
                   color: "#0B1029",
-                  fontSize: 20,
                   fontWeight: 500,
                   lineHeight: 1.4,
                   fontFamily: "Inter, sans-serif",
                 }}
               >
-                <Check size={28} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
+                <Check size={22} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
                 <span>{b}</span>
               </li>
             ))}
             <li
-              className="flex items-start gap-3"
+              className="flex items-start gap-3 text-base md:text-xl"
               style={{
                 color: "#0B1029",
-                fontSize: 20,
                 fontWeight: 500,
                 lineHeight: 1.4,
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              <MapPin size={28} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
+              <MapPin size={22} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
               <span>{ADDRESS}</span>
             </li>
           </ul>
