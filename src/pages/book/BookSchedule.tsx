@@ -5,6 +5,9 @@ import MissingParamBanner from "@/components/book/MissingParamBanner";
 import GHLNeoCalendarMock from "@/components/book/GHLNeoCalendarMock";
 import { useBookingSync, updateBookingState, toQueryString, labelFor } from "@/lib/bookingState";
 
+const PHONE_DISPLAY = "(866) 344-4955";
+const PHONE_TEL = "tel:8663444955";
+
 const BookSchedule = () => {
   const navigate = useNavigate();
   const state = useBookingSync();
