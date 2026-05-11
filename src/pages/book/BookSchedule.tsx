@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Phone, MapPin } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
+import GHLNeoCalendarMock from "@/components/book/GHLNeoCalendarMock";
 import { useBookingSync, updateBookingState, toQueryString, labelFor } from "@/lib/bookingState";
 
 const PHONE_DISPLAY = "(866) 344-4955";
