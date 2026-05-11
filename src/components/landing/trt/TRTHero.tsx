@@ -9,7 +9,7 @@ const trustChecks = [
 ];
 
 const COLORS = {
-  navyDeep: "#000066",
+  navyDeep: "#0B1029",
   navy: "#1B2B4B",
   cream: "#F5F0EB",
   orange: "#E8670A",
@@ -55,7 +55,7 @@ export const TRTHero = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 85% 10%, rgba(232,103,10,0.18) 0%, rgba(0,0,102,0) 60%)",
+            "radial-gradient(ellipse 60% 50% at 85% 10%, rgba(232,103,10,0.18) 0%, rgba(11,16,41,0) 60%)",
         }}
       />
 
