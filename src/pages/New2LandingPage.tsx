@@ -1,16 +1,13 @@
 import { useEffect } from "react";
 import { TRTHeader } from "@/components/landing/trt/TRTHeader";
 import { New2Hero } from "@/components/landing/new2/New2Hero";
-import { TRTTrustBar } from "@/components/landing/trt/TRTTrustBar";
-import { TRTHowItWorks } from "@/components/landing/trt/TRTHowItWorks";
-import { TRTResults } from "@/components/landing/trt/TRTResults";
-import { TRTManifesto } from "@/components/landing/trt/TRTManifesto";
-import { TRTPillars } from "@/components/landing/trt/TRTPillars";
-import { TRTLocations } from "@/components/landing/trt/TRTLocations";
-import { TRTFAQ } from "@/components/landing/trt/TRTFAQ";
-import { TRTFinalCTA } from "@/components/landing/trt/TRTFinalCTA";
-import { TRTFooter } from "@/components/landing/trt/TRTFooter";
-import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
+import { New2POV } from "@/components/landing/new2/New2POV";
+import { New2Press } from "@/components/landing/new2/New2Press";
+import { New2Approach } from "@/components/landing/new2/New2Approach";
+import { New2Cases } from "@/components/landing/new2/New2Cases";
+import { New2Services } from "@/components/landing/new2/New2Services";
+import { New2BigCTA } from "@/components/landing/new2/New2BigCTA";
+import { New2Footer } from "@/components/landing/new2/New2Footer";
 import { SectionReveal } from "@/components/landing/trt/SectionReveal";
 
 const New2LandingPage = () => {
@@ -25,22 +22,18 @@ const New2LandingPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ fontFamily: "Inter, sans-serif", background: "#000814" }}>
+    <div className="min-h-screen flex flex-col" style={{ fontFamily: "Inter, sans-serif", background: "#F5F1E8" }}>
       <TRTHeader />
       <main className="flex-1">
         <New2Hero />
-        <SectionReveal><TRTTrustBar /></SectionReveal>
-        <SectionReveal><TRTHowItWorks /></SectionReveal>
-        <SectionReveal><TRTManifesto /></SectionReveal>
-        <SectionReveal><TRTResults /></SectionReveal>
-        <SectionReveal><TRTPillars /></SectionReveal>
-        <SectionReveal><TRTLocations /></SectionReveal>
-        <SectionReveal><TRTFAQ /></SectionReveal>
-        <SectionReveal><TRTFinalCTA /></SectionReveal>
+        <SectionReveal><New2POV /></SectionReveal>
+        <SectionReveal><New2Press /></SectionReveal>
+        <SectionReveal><New2Approach /></SectionReveal>
+        <SectionReveal><New2Cases /></SectionReveal>
+        <SectionReveal><New2Services /></SectionReveal>
+        <SectionReveal><New2BigCTA /></SectionReveal>
       </main>
-      <TRTFooter />
-      <TRTMobileCTA />
-      <div className="md:hidden" style={{ height: 56 }} aria-hidden="true" />
+      <New2Footer />
     </div>
   );
 };
