@@ -55,19 +55,19 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
     >
       {/* Header */}
       <div
+        className="px-4 py-3 md:px-6 md:py-5"
         style={{
-          padding: "20px 24px",
           borderBottom: "1px solid #E5E7EB",
           background: "#FAFBFC",
         }}
       >
-        <div style={{ fontSize: 14, color: "#6B7280", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 6 }}>
+        <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 4 }}>
           Men's Wellness Centers
         </div>
-        <div style={{ fontSize: 22, fontWeight: 700, color: "#0B1029", marginBottom: 4 }}>
+        <div className="text-lg md:text-[22px]" style={{ fontWeight: 700, color: "#0B1029", marginBottom: 2 }}>
           New Patient Consultation
         </div>
-        <div style={{ fontSize: 15, color: "#6B7280" }}>
+        <div className="text-sm md:text-[15px]" style={{ color: "#6B7280" }}>
           30 min · In-person {locationLabel ? `· ${locationLabel}` : ""}
         </div>
       </div>
