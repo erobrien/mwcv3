@@ -1,18 +1,53 @@
-import { CheckCircle2, MapPin, Phone, Play } from "lucide-react";
+import { CheckCircle2, MapPin, Phone, Play, FlaskConical } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
-import { useBookingSync, labelFor } from "@/lib/bookingState";
+import { useBookingSync } from "@/lib/bookingState";
 
-const PHONE_DISPLAY = "(866) 344-4955";
-const PHONE_TEL = "tel:8663444955";
-
-const ADDRESS = "1234 Example Drive, Newport News, VA 23601";
 const EXPECT_VIDEO_SRC = "https://player.vimeo.com/video/76979871?h=8272103f6e&title=0&byline=0&portrait=0";
+
+type CenterInfo = {
+  centerName: string;
+  street: string;
+  cityStateZip: string;
+  phoneDisplay: string;
+  phoneTel: string;
+};
+
+const CENTERS: Record<string, CenterInfo> = {
+  "newport-news": {
+    centerName: "Men's Wellness Centers, Newport News",
+    street: "827 Diligence Drive, Suite 206",
+    cityStateZip: "Newport News, VA 23606",
+    phoneDisplay: "(757) 806-6263",
+    phoneTel: "tel:7578066263",
+  },
+  "virginia-beach": {
+    centerName: "Men's Wellness Centers, Virginia Beach",
+    street: "996 First Colonial Road",
+    cityStateZip: "Virginia Beach, VA 23454",
+    phoneDisplay: "(757) 806-6263",
+    phoneTel: "tel:7578066263",
+  },
+  "richmond": {
+    centerName: "Men's Wellness Centers, Richmond",
+    street: "4050 Innslake Dr, Suite 360",
+    cityStateZip: "Glen Allen, VA 23060",
+    phoneDisplay: "(804) 346-4636",
+    phoneTel: "tel:8043464636",
+  },
+};
+
+const DEFAULT_CENTER = CENTERS["newport-news"];
 
 const BookConfirmed = () => {
   const state = useBookingSync();
   const apptTime = state.appointmentTime || "Tuesday, May 12 at 10:30 AM";
-  const locationName = labelFor("location", state.location) || "Newport News";
+  const center = (state.location && CENTERS[state.location]) || DEFAULT_CENTER;
+  const fullAddress = `${center.centerName}, ${center.street}, ${center.cityStateZip}`;
+  const mapsQuery = encodeURIComponent(fullAddress);
+  const PHONE_DISPLAY = center.phoneDisplay;
+  const PHONE_TEL = center.phoneTel;
   const firstName = state.name ? state.name.split(" ")[0] : "";
+
 
   return (
     <BookLayout page="confirmed" title="You're booked | Men's Wellness Centers">
@@ -110,20 +145,38 @@ const BookConfirmed = () => {
                         marginBottom: 4,
                       }}
                     >
-                      Men's Wellness Center, {locationName}
+                      {center.centerName}
                     </p>
                     <p
                       className="text-base md:text-lg"
                       style={{ color: "#3A4258", lineHeight: 1.5, fontWeight: 500 }}
                     >
-                      {ADDRESS}
+                      {center.street}<br />
+                      {center.cityStateZip}
                     </p>
+                    <div
+                      className="inline-flex items-center gap-1.5 mt-3"
+                      style={{
+                        background: "rgba(34,197,94,0.10)",
+                        border: "1px solid rgba(34,197,94,0.35)",
+                        color: "#0F7A3A",
+                        padding: "4px 10px",
+                        borderRadius: 999,
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      <FlaskConical size={12} strokeWidth={2.5} />
+                      Same-Day Labs On Site
+                    </div>
                   </div>
                 </div>
               </div>
 
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${mapsQuery}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 w-full inline-flex items-center justify-center gap-2"
