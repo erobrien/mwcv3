@@ -1,7 +1,8 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Star, Users, Beaker, Stethoscope } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
+import { useBookingSync, updateBookingState, toQueryString, labelFor } from "@/lib/bookingState";
 
 const TRUST = [
   { icon: Star, text: "4.9★ · 200+ reviews" },
