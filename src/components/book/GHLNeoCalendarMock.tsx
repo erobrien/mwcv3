@@ -73,7 +73,7 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 0 }}>
-        <div className="md:grid md:grid-cols-[1.4fr_1fr]" style={{ display: "grid" }}>
+        <div className="md:grid md:grid-cols-2" style={{ display: "grid" }}>
           {/* Calendar */}
           <div className="p-3 md:p-5" style={{ borderRight: "1px solid #E5E7EB" }}>
             {/* Month nav */}
