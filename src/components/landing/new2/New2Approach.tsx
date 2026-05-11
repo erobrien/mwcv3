@@ -55,7 +55,7 @@ export const New2Approach = () => (
           maxWidth: 720,
         }}
       >
-        Every plan starts with a real lab draw and a real conversation with a Virginia-licensed physician. No questionnaire-only prescribing. No 90-day delays. If we see something off, we tell you straight, and we adjust the plan as your body responds.
+        Apps push pills. Teams build plans. Yours starts with a real lab draw and a real conversation with a Virginia-licensed physician, backed by a PA and a care coordinator who pick up the phone when you call. No questionnaire-only prescribing. No 90-day delays. We adjust the plan as your body responds.
       </p>
 
       <div className="mt-12 flex flex-col items-center gap-4">
