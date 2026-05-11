@@ -92,25 +92,24 @@ const SurveyCard = ({
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(28px, 4vw, 36px)",
+              fontSize: "clamp(24px, 4vw, 36px)",
               lineHeight: 1.2,
               letterSpacing: "-0.01em",
               color: "#0B1029",
               textTransform: "none",
               textWrap: "balance",
-              marginBottom: 12,
+              marginBottom: 8,
             } as React.CSSProperties}
           >
             {title}
           </h1>
           <p
-            className="text-center"
+            className="text-center text-base md:text-xl"
             style={{
-              fontSize: 20,
               fontWeight: 500,
               color: "#3A4258",
               lineHeight: 1.4,
-              marginBottom: 28,
+              marginBottom: 18,
               fontFamily: "Inter, sans-serif",
             }}
           >
@@ -118,13 +117,13 @@ const SurveyCard = ({
           </p>
 
           {/* Options */}
-          <div className="space-y-3">{children}</div>
+          <div className="space-y-2 md:space-y-3">{children}</div>
 
           {/* Helper text — tells the user how the page works */}
           <p
-            className="text-center mt-6"
+            className="text-center mt-4 md:mt-6"
             style={{
-              fontSize: 16,
+              fontSize: 14,
               color: "#5A6478",
               fontFamily: "Inter, sans-serif",
               fontStyle: "italic",
@@ -134,7 +133,7 @@ const SurveyCard = ({
           </p>
 
           {/* Back link — quiet, never competes with the options */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-3 md:mt-6">
             <button
               type="button"
               onClick={onPrev}
