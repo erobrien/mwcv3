@@ -1,14 +1,11 @@
-import { CheckCircle2, MapPin, Phone, PlayCircle } from "lucide-react";
+import { CheckCircle2, MapPin, Phone, Play } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import { useBookingSync, labelFor } from "@/lib/bookingState";
 
 const PHONE_DISPLAY = "(866) 344-4955";
 const PHONE_TEL = "tel:8663444955";
 
-// GHL merge placeholder. Replace with {{location.address}} when wired up.
 const ADDRESS = "1234 Example Drive, Newport News, VA 23601";
-
-// "What to expect" video — placeholder. Replace with real Vimeo/Wistia src.
 const EXPECT_VIDEO_SRC = "https://player.vimeo.com/video/76979871?h=8272103f6e&title=0&byline=0&portrait=0";
 
 const BookConfirmed = () => {
@@ -19,181 +16,217 @@ const BookConfirmed = () => {
 
   return (
     <BookLayout page="confirmed" title="You're booked | Men's Wellness Centers">
-      {/* Compact confirmation header */}
-      <section className="px-4 py-4 md:py-6" style={{ background: "#0B1029" }}>
-        <div className="mx-auto flex items-center justify-center gap-3 text-center" style={{ maxWidth: 760 }}>
-          <CheckCircle2 size={28} strokeWidth={2.5} style={{ color: "#22C55E", flexShrink: 0 }} />
-          <h1
-            style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(18px, 2.6vw, 26px)",
-              color: "#FFFFFF",
-              lineHeight: 1.2,
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {firstName ? `You're booked, ${firstName}.` : "You're booked."}{" "}
-            <span style={{ color: "rgba(255,255,255,0.78)", fontWeight: 500 }}>{apptTime}</span>
-          </h1>
-        </div>
-      </section>
+      <div
+        className="px-4 md:px-8 py-6 md:py-10 pb-28 md:pb-12"
+        style={{ background: "#000814" }}
+      >
+        <div className="mx-auto flex flex-col gap-8 md:gap-10" style={{ maxWidth: 1100, fontFamily: "Inter, sans-serif" }}>
 
-      <div className="px-3 md:px-6 py-4 md:py-6 space-y-4 md:space-y-5 pb-28 md:pb-10">
-        {/* PRIMARY — Center address */}
-        <section
-          className="mx-auto"
-          style={{
-            maxWidth: 760,
-            background: "#FFFFFF",
-            border: "3px solid #5A6478",
-            borderRadius: 14,
-            padding: "18px 20px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-          }}
-        >
-          <div className="flex items-start gap-3">
-            <MapPin size={28} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
-            <div className="flex-1 min-w-0">
-              <div
+          {/* Status Header */}
+          <div className="flex flex-col items-center text-center">
+            <div
+              className="flex items-center justify-center mb-4 md:mb-5"
+              style={{
+                width: 64,
+                height: 64,
+                borderRadius: 999,
+                background: "rgba(34,197,94,0.10)",
+                border: "1px solid rgba(34,197,94,0.45)",
+                boxShadow: "0 0 24px rgba(34,197,94,0.18)",
+              }}
+            >
+              <CheckCircle2 size={32} strokeWidth={2.5} style={{ color: "#22C55E" }} />
+            </div>
+            <h1
+              style={{
+                fontFamily: "Oswald, sans-serif",
+                fontWeight: 600,
+                fontSize: "clamp(28px, 4.4vw, 40px)",
+                color: "#FFFFFF",
+                textTransform: "uppercase",
+                letterSpacing: "0.04em",
+                lineHeight: 1.1,
+                marginBottom: 10,
+              }}
+            >
+              Appointment Confirmed
+            </h1>
+            <div
+              className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-base md:text-lg"
+              style={{ color: "rgba(255,255,255,0.55)" }}
+            >
+              {firstName && (
+                <>
+                  <span style={{ color: "#FFFFFF", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.02em" }}>
+                    {firstName}
+                  </span>
+                  <span style={{ opacity: 0.3 }}>|</span>
+                </>
+              )}
+              <span>
+                <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{apptTime}</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Two-column grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+
+            {/* Address Card */}
+            <div
+              className="relative flex flex-col justify-between overflow-hidden"
+              style={{
+                background: "#FFFFFF",
+                borderRadius: 14,
+                padding: "32px 28px",
+                boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
+              }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: "#E8670A" }} />
+
+              <div>
+                <h2
+                  style={{
+                    fontFamily: "Oswald, sans-serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(20px, 2.4vw, 26px)",
+                    color: "#0B1029",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.02em",
+                    marginBottom: 20,
+                  }}
+                >
+                  Center Location
+                </h2>
+                <div className="flex items-start gap-4">
+                  <MapPin size={26} strokeWidth={2.25} style={{ color: "#E8670A", flexShrink: 0, marginTop: 4 }} />
+                  <div>
+                    <p
+                      className="text-lg md:text-xl"
+                      style={{
+                        color: "#0B1029",
+                        fontWeight: 600,
+                        lineHeight: 1.25,
+                        marginBottom: 4,
+                      }}
+                    >
+                      Men's Wellness Center, {locationName}
+                    </p>
+                    <p
+                      className="text-base md:text-lg"
+                      style={{ color: "#3A4258", lineHeight: 1.5, fontWeight: 500 }}
+                    >
+                      {ADDRESS}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 w-full inline-flex items-center justify-center gap-2"
                 style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: 12,
+                  background: "#E8670A",
+                  color: "#FFFFFF",
+                  padding: "16px 24px",
+                  borderRadius: 10,
                   fontWeight: 700,
-                  letterSpacing: "0.08em",
+                  fontSize: 15,
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "#6B7280",
-                  marginBottom: 4,
+                  textDecoration: "none",
+                  boxShadow: "0 6px 16px rgba(232,103,10,0.35)",
+                  minHeight: 56,
                 }}
               >
-                Your Center
+                <MapPin size={18} strokeWidth={2.5} />
+                Open in Maps
+              </a>
+            </div>
+
+            {/* Video Card */}
+            <div
+              className="relative flex flex-col overflow-hidden"
+              style={{
+                background: "#FFFFFF",
+                borderRadius: 14,
+                boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
+              }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: "#0B1029", zIndex: 2 }} />
+
+              <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", background: "#000" }}>
+                <iframe
+                  src={EXPECT_VIDEO_SRC}
+                  title="What to expect at your visit"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: 0,
+                  }}
+                />
               </div>
-              <div
-                className="text-lg md:text-2xl"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 700,
-                  color: "#0B1029",
-                  lineHeight: 1.25,
-                }}
-              >
-                {locationName}
-              </div>
-              <div
-                className="text-base md:text-lg"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 500,
-                  color: "#3A4258",
-                  lineHeight: 1.4,
-                  marginTop: 2,
-                }}
-              >
-                {ADDRESS}
+
+              <div className="p-7 md:p-8 flex-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <Play size={18} strokeWidth={2.5} style={{ color: "#E8670A" }} />
+                  <span
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: "#E8670A",
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    2 Min Watch
+                  </span>
+                </div>
+                <h2
+                  style={{
+                    fontFamily: "Oswald, sans-serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(20px, 2.4vw, 26px)",
+                    color: "#0B1029",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.02em",
+                    marginBottom: 10,
+                  }}
+                >
+                  What To Expect
+                </h2>
+                <p
+                  className="text-base md:text-lg"
+                  style={{ color: "#3A4258", lineHeight: 1.5, fontWeight: 500 }}
+                >
+                  A short overview of your check-in and consultation. Bring photo ID. Eat normally. Arrive 10 minutes early.
+                </p>
               </div>
             </div>
           </div>
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 mt-4"
-            style={{
-              border: "2px solid #0B1029",
-              color: "#0B1029",
-              background: "#FFFFFF",
-              padding: "10px 20px",
-              borderRadius: 10,
-              fontWeight: 700,
-              fontSize: 16,
-              textDecoration: "none",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            <MapPin size={18} strokeWidth={2.5} /> Open in maps
-          </a>
-        </section>
 
-        {/* PRIMARY — What to expect video */}
-        <section
-          className="mx-auto"
-          style={{
-            maxWidth: 760,
-            background: "#FFFFFF",
-            border: "3px solid #5A6478",
-            borderRadius: 14,
-            padding: "18px 20px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-          }}
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <PlayCircle size={22} strokeWidth={2.5} style={{ color: "#E8670A" }} />
-            <h2
-              className="text-lg md:text-xl"
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 700,
-                color: "#0B1029",
-                lineHeight: 1.3,
-              }}
-            >
-              What to expect at your visit (2 min)
-            </h2>
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "100%",
-              paddingBottom: "56.25%",
-              borderRadius: 10,
-              overflow: "hidden",
-              background: "#000",
-            }}
-          >
-            <iframe
-              src={EXPECT_VIDEO_SRC}
-              title="What to expect at your visit"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                border: 0,
-              }}
-            />
-          </div>
+          {/* Footer */}
           <p
-            className="text-sm md:text-base"
-            style={{
-              color: "#3A4258",
-              fontWeight: 500,
-              fontFamily: "Inter, sans-serif",
-              marginTop: 10,
-              lineHeight: 1.4,
-            }}
+            className="text-center text-sm md:text-base"
+            style={{ color: "rgba(255,255,255,0.55)", fontFamily: "Inter, sans-serif" }}
           >
-            Bring photo ID. Eat normally. Arrive 10 minutes early.
+            Need to reschedule or running late? Call or text{" "}
+            <a
+              href={PHONE_TEL}
+              style={{ color: "#FFFFFF", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: 4 }}
+            >
+              {PHONE_DISPLAY}
+            </a>
+            .
           </p>
-        </section>
-
-        {/* SECONDARY — Need to reschedule */}
-        <p
-          className="mx-auto text-center text-sm md:text-base"
-          style={{
-            maxWidth: 760,
-            color: "#6B7280",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-          }}
-        >
-          Running late or need to move it? Call or text{" "}
-          <a href={PHONE_TEL} style={{ color: "#0B1029", fontWeight: 700, textDecoration: "underline" }}>
-            {PHONE_DISPLAY}
-          </a>
-          .
-        </p>
+        </div>
       </div>
 
       {/* Sticky mobile tap-to-call */}
