@@ -28,7 +28,7 @@ export const TRTMobileCTA = () => {
         background: "rgba(10,22,40,0.85)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
-        borderTop: "1px solid rgba(245,241,232,0.12)",
+        borderTop: "1px solid rgba(245,240,235,0.12)",
       }}
     >
       <button
@@ -43,10 +43,10 @@ export const TRTMobileCTA = () => {
         className="flex-1 flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em]"
         style={{
           background: "transparent",
-          color: "#F5F1E8",
+          color: "#F5F0EB",
           textDecoration: "none",
           fontFamily: "Inter, sans-serif",
-          borderLeft: "1px solid rgba(245,241,232,0.12)",
+          borderLeft: "1px solid rgba(245,240,235,0.12)",
         }}
       >
         <Phone size={14} /> Call Us
