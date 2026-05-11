@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Phone, MapPin } from "lucide-react";
+import { Phone } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
 import GHLNeoCalendarMock from "@/components/book/GHLNeoCalendarMock";
@@ -7,12 +7,6 @@ import { useBookingSync, updateBookingState, toQueryString, labelFor } from "@/l
 
 const PHONE_DISPLAY = "(866) 344-4955";
 const PHONE_TEL = "tel:8663444955";
-
-const STEPS = [
-  { n: 1, text: "Tap a day on the calendar below." },
-  { n: 2, text: "Tap a time that works for you." },
-  { n: 3, text: "Confirm your details." },
-];
 
 const BookSchedule = () => {
   const navigate = useNavigate();
@@ -34,25 +28,6 @@ const BookSchedule = () => {
 
   return (
     <BookLayout page="schedule" title="Pick your consult time | Men's Wellness Centers">
-      {/* Hero band */}
-      <section className="px-4 py-5 md:py-8" style={{ background: "#0B1029" }}>
-        <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
-          <h1
-            style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(22px, 3.4vw, 32px)",
-              color: "#FFFFFF",
-              lineHeight: 1.25,
-              letterSpacing: "0",
-              textTransform: "none",
-              textWrap: "balance",
-            } as React.CSSProperties}
-          >
-            Pick a day, then a time.
-          </h1>
-        </div>
-      </section>
 
       <div className="px-3 md:px-6 py-4 md:py-8 space-y-4 md:space-y-8 pb-28 md:pb-12">
         {missing && <MissingParamBanner />}
