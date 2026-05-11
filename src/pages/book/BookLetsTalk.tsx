@@ -38,201 +38,210 @@ const BookLetsTalk = () => {
 
   return (
     <BookLayout page="lets-talk" title="Let's talk it through | Men's Wellness Centers">
-      {/* Hero band */}
-      <section className="px-4 py-6 md:py-10" style={{ background: "#0B1029" }}>
-        <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
-          <h1
-            style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(24px, 4.5vw, 40px)",
-              color: "#FFFFFF",
-              lineHeight: 1.2,
-              letterSpacing: "-0.01em",
-              textTransform: "none",
-              textWrap: "balance",
-              marginBottom: 10,
-            } as React.CSSProperties}
-          >
-            Let's talk it through.
-          </h1>
+      <div className="px-4 md:px-6 pt-8 md:pt-14 pb-28 md:pb-16">
+        <div className="mx-auto" style={{ maxWidth: 760 }}>
+          {/* Header */}
+          <div className="text-center mb-8 md:mb-12">
+            <div
+              className="inline-flex items-center gap-2 mb-4 md:mb-5"
+              style={{
+                padding: "6px 12px",
+                borderRadius: 999,
+                background: "rgba(232,103,10,0.12)",
+                border: "1px solid rgba(232,103,10,0.35)",
+                color: "#FFB07A",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+              }}
+            >
+              <span style={{ width: 6, height: 6, borderRadius: 999, background: "#22C55E" }} />
+              Team available now
+            </div>
+            <h1
+              style={{
+                fontFamily: "Inter, system-ui, sans-serif",
+                fontWeight: 700,
+                fontSize: "clamp(28px, 5vw, 44px)",
+                color: "#FFFFFF",
+                lineHeight: 1.15,
+                letterSpacing: "-0.02em",
+                textWrap: "balance",
+                marginBottom: 12,
+              } as React.CSSProperties}
+            >
+              Let's talk it through.
+            </h1>
+            <p
+              className="text-base md:text-lg"
+              style={{
+                color: "rgba(255,255,255,0.72)",
+                fontWeight: 400,
+                lineHeight: 1.5,
+                maxWidth: 560,
+                margin: "0 auto",
+              }}
+            >
+              Every man's situation is different. A two-minute call is the
+              fastest way to get matched with the right visit.
+            </p>
+          </div>
+
+          {/* Contact cards — side by side on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            {/* PRIMARY: Call */}
+            <section
+              style={{
+                background: "#FFFFFF",
+                borderRadius: 14,
+                padding: "20px",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span
+                  aria-hidden="true"
+                  className="flex items-center justify-center flex-shrink-0"
+                  style={{ width: 40, height: 40, borderRadius: 10, background: "#E8670A" }}
+                >
+                  <Phone size={20} strokeWidth={2.25} style={{ color: "#FFFFFF" }} />
+                </span>
+                <div>
+                  <h2
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+                      fontSize: 18,
+                      color: "#0B1029",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    Call us
+                  </h2>
+                  <p style={{ color: "#5A6478", fontSize: 14, fontWeight: 500, lineHeight: 1.35, marginTop: 2 }}>
+                    A real person picks up. No phone tree.
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href={PHONE_TEL}
+                onClick={trackCallClick}
+                className="flex items-center justify-center gap-2 transition-transform hover:-translate-y-[1px]"
+                style={{
+                  width: "100%",
+                  minHeight: 60,
+                  background: "#E8670A",
+                  color: "#FFFFFF",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 700,
+                  fontSize: 20,
+                  borderRadius: 10,
+                  textDecoration: "none",
+                  padding: "14px 20px",
+                  boxShadow: "0 6px 16px rgba(232,103,10,0.35)",
+                  marginTop: "auto",
+                }}
+              >
+                <Phone size={20} strokeWidth={2.5} />
+                <span>{PHONE_DISPLAY}</span>
+              </a>
+
+              <div
+                className="flex items-center justify-center gap-2 mt-3"
+                style={{ color: "#5A6478", fontSize: 13, fontWeight: 500 }}
+              >
+                <Clock size={14} />
+                <span>Mon–Fri 8a–6p · Sat 9a–1p ET</span>
+              </div>
+            </section>
+
+            {/* SECONDARY: Text */}
+            <section
+              style={{
+                background: "#FFFFFF",
+                borderRadius: 14,
+                padding: "20px",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span
+                  aria-hidden="true"
+                  className="flex items-center justify-center flex-shrink-0"
+                  style={{ width: 40, height: 40, borderRadius: 10, background: "#FFF5EE" }}
+                >
+                  <MessageSquareText size={20} strokeWidth={2.25} style={{ color: "#E8670A" }} />
+                </span>
+                <div>
+                  <h2
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+                      fontSize: 18,
+                      color: "#0B1029",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    Prefer to text?
+                  </h2>
+                  <p style={{ color: "#5A6478", fontSize: 14, fontWeight: 500, lineHeight: 1.35, marginTop: 2 }}>
+                    Same number. Replies in under 10 minutes.
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href={SMS_HREF}
+                onClick={trackSmsClick}
+                className="flex items-center justify-center gap-2 transition-transform hover:-translate-y-[1px]"
+                style={{
+                  width: "100%",
+                  minHeight: 60,
+                  background: "#FFFFFF",
+                  color: "#0B1029",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 700,
+                  fontSize: 20,
+                  borderRadius: 10,
+                  textDecoration: "none",
+                  padding: "14px 20px",
+                  border: "2px solid #0B1029",
+                  marginTop: "auto",
+                }}
+              >
+                <MessageSquareText size={20} strokeWidth={2.5} />
+                <span>{PHONE_DISPLAY}</span>
+              </a>
+
+              <div
+                className="flex items-center justify-center gap-2 mt-3"
+                style={{ color: "#5A6478", fontSize: 13, fontWeight: 500 }}
+              >
+                <span>Standard messaging rates apply</span>
+              </div>
+            </section>
+          </div>
+
+          {/* Reassurance */}
           <p
-            className="text-base md:text-xl"
+            className="text-center mt-8 md:mt-10 mx-auto"
             style={{
-              color: "rgba(255,255,255,0.88)",
-              fontWeight: 500,
-              lineHeight: 1.45,
-              maxWidth: 600,
-              margin: "0 auto",
+              maxWidth: 520,
+              color: "rgba(255,255,255,0.55)",
+              fontSize: 14,
+              fontWeight: 400,
+              lineHeight: 1.55,
             }}
           >
-            Every man's situation is different. A two-minute call with our
-            team is the fastest way to get you matched with the right visit.
+            No pressure, no sales pitch. We'll listen, point you in the right
+            direction, and book a visit if it's the right fit.
           </p>
-        </div>
-      </section>
-
-      <div className="px-3 md:px-6 py-4 md:py-8 space-y-4 md:space-y-8 pb-28 md:pb-12">
-        {/* PRIMARY: Call card */}
-        <section
-          className="mx-auto"
-          style={{
-            maxWidth: 720,
-            background: "#FFFFFF",
-            border: "3px solid #5A6478",
-            borderRadius: 16,
-            padding: "18px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
-          }}
-        >
-          <div className="flex items-start gap-3 mb-4 md:mb-6">
-            <span
-              aria-hidden="true"
-              className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
-              style={{ borderRadius: 10, background: "#E8670A" }}
-            >
-              <Phone size={24} strokeWidth={2.25} style={{ color: "#FFFFFF" }} />
-            </span>
-            <div>
-              <h2
-                className="text-xl md:text-2xl"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 700,
-                  color: "#0B1029",
-                  lineHeight: 1.25,
-                  marginBottom: 4,
-                }}
-              >
-                Call us
-              </h2>
-              <p
-                className="text-base md:text-xl"
-                style={{
-                  color: "#3A4258",
-                  lineHeight: 1.4,
-                  fontWeight: 500,
-                }}
-              >
-                A real person picks up. No phone tree.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href={PHONE_TEL}
-            onClick={trackCallClick}
-            className="flex items-center justify-center gap-3"
-            style={{
-              width: "100%",
-              minHeight: 72,
-              background: "#E8670A",
-              color: "#FFFFFF",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 700,
-              fontSize: 24,
-              borderRadius: 12,
-              textDecoration: "none",
-              padding: "16px 24px",
-              boxShadow: "0 4px 12px rgba(232,103,10,0.35)",
-            }}
-          >
-            <Phone size={26} strokeWidth={2.5} />
-            <span>CALL {PHONE_DISPLAY}</span>
-          </a>
-
-          <div
-            className="flex items-center justify-center gap-2 mt-4"
-            style={{ color: "#5A6478", fontSize: 16, fontWeight: 500 }}
-          >
-            <Clock size={18} />
-            <span>Mon–Fri 8am to 6pm ET · Sat 9am to 1pm ET</span>
-          </div>
-        </section>
-
-        {/* SECONDARY: Text us card */}
-        <section
-          className="mx-auto"
-          style={{
-            maxWidth: 720,
-            background: "#FFFFFF",
-            border: "3px solid #5A6478",
-            borderRadius: 16,
-            padding: "18px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
-          }}
-        >
-          <div className="flex items-start gap-3 mb-4 md:mb-6">
-            <span
-              aria-hidden="true"
-              className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
-              style={{ borderRadius: 10, background: "#FFF5EE" }}
-            >
-              <MessageSquareText size={24} strokeWidth={2.25} style={{ color: "#E8670A" }} />
-            </span>
-            <div>
-              <h2
-                className="text-xl md:text-2xl"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 700,
-                  color: "#0B1029",
-                  lineHeight: 1.25,
-                  marginBottom: 4,
-                }}
-              >
-                Prefer to text?
-              </h2>
-              <p
-                className="text-base md:text-xl"
-                style={{
-                  color: "#3A4258",
-                  lineHeight: 1.4,
-                  fontWeight: 500,
-                }}
-              >
-                Same number. We usually reply in under 10 minutes during business hours.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href={SMS_HREF}
-            onClick={trackSmsClick}
-            className="flex items-center justify-center gap-3"
-            style={{
-              width: "100%",
-              minHeight: 64,
-              background: "#FFFFFF",
-              color: "#0B1029",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 700,
-              fontSize: 22,
-              borderRadius: 12,
-              textDecoration: "none",
-              padding: "16px 24px",
-              border: "3px solid #0B1029",
-            }}
-          >
-            <MessageSquareText size={24} strokeWidth={2.5} />
-            <span>TEXT {PHONE_DISPLAY}</span>
-          </a>
-        </section>
-
-        {/* Reassurance strip */}
-        <div
-          className="mx-auto text-center"
-          style={{
-            maxWidth: 720,
-            color: "rgba(255,255,255,0.88)",
-            fontSize: 18,
-            fontWeight: 500,
-            lineHeight: 1.5,
-            padding: "0 8px",
-          }}
-        >
-          No pressure, no sales pitch. We'll listen, point you in the right
-          direction, and book you a visit if it's the right fit.
         </div>
       </div>
 
