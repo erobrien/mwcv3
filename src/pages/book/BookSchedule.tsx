@@ -68,68 +68,6 @@ const BookSchedule = () => {
           />
         </section>
 
-        {/* SAFETY NET — repeat the phone CTA below the calendar */}
-        <section
-          className="mx-auto text-center"
-          style={{
-            maxWidth: 720,
-            background: "#FFFFFF",
-            border: "3px solid #5A6478",
-            borderRadius: 12,
-            padding: 28,
-            boxShadow: "0 2px 4px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontSize: 22,
-              fontWeight: 600,
-              color: "#0B1029",
-              lineHeight: 1.4,
-              marginBottom: 16,
-            }}
-          >
-            Still stuck? We'll do the work for you.
-          </p>
-          <a
-            href={PHONE_TEL}
-            onClick={trackCallClick}
-            className="inline-flex items-center justify-center gap-3"
-            style={{
-              minHeight: 64,
-              width: "100%",
-              background: "#E8670A",
-              color: "#FFFFFF",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 700,
-              fontSize: 22,
-              borderRadius: 8,
-              textDecoration: "none",
-              padding: "16px 24px",
-              boxShadow: "0 2px 6px rgba(232,103,10,0.35)",
-            }}
-          >
-            <Phone size={24} strokeWidth={2.5} />
-            <span>CALL {PHONE_DISPLAY}</span>
-          </a>
-        </section>
-
-        {/* Address / location strip — kept minimal, large type */}
-        {state.location && (
-          <div
-            className="mx-auto flex items-center justify-center gap-2 text-center"
-            style={{
-              maxWidth: 720,
-              color: "#FFFFFF",
-              fontSize: 18,
-              fontWeight: 500,
-            }}
-          >
-            <MapPin size={20} style={{ color: "#E8670A" }} />
-            <span>Your visit will be at our {labelFor("location", state.location)} center.</span>
-          </div>
-        )}
       </div>
 
       {/* STICKY MOBILE TAP-TO-CALL BAR — schedule page only.
