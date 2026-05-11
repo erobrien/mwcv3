@@ -45,7 +45,7 @@ export const TRTHeroForm = () => {
   const inputBase = (field: string): React.CSSProperties => ({
     width: "100%",
     height: 50,
-    background: "rgba(11,16,41,0.6)",
+    background: "rgba(0,0,102,0.6)",
     border: `1px solid ${focused === field ? "#E8670A" : "rgba(245,240,235,0.20)"}`,
     borderRadius: 8,
     padding: "0 16px",
@@ -154,10 +154,10 @@ export const TRTHeroForm = () => {
               paddingRight: 40,
             }}
           >
-            <option value="" disabled style={{ color: "#0B1029" }}>Location</option>
-            <option value="virginia-beach" style={{ color: "#0B1029" }}>Virginia Beach</option>
-            <option value="newport-news" style={{ color: "#0B1029" }}>Newport News</option>
-            <option value="richmond" style={{ color: "#0B1029" }}>Richmond</option>
+            <option value="" disabled style={{ color: "#000066" }}>Location</option>
+            <option value="virginia-beach" style={{ color: "#000066" }}>Virginia Beach</option>
+            <option value="newport-news" style={{ color: "#000066" }}>Newport News</option>
+            <option value="richmond" style={{ color: "#000066" }}>Richmond</option>
           </select>
           {errors.location && <p className="text-xs mt-1" style={{ color: "#FF8A8A" }}>{errors.location}</p>}
         </div>

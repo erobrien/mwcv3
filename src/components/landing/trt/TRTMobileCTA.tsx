@@ -25,7 +25,7 @@ export const TRTMobileCTA = () => {
         height: 64,
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
-        background: "rgba(10,22,40,0.85)",
+        background: "rgba(0,0,102,0.85)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         borderTop: "1px solid rgba(245,240,235,0.12)",
