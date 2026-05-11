@@ -72,7 +72,7 @@ const BookLetsTalk = () => {
         </div>
       </section>
 
-      <div className="px-4 md:px-6 py-8 space-y-8" style={{ paddingBottom: 140 }}>
+      <div className="px-3 md:px-6 py-4 md:py-8 space-y-4 md:space-y-8 pb-28 md:pb-12">
         {/* PRIMARY: Call card */}
         <section
           className="mx-auto"
