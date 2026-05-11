@@ -59,7 +59,7 @@ export const New2BigCTA = () => (
               {c.body}
             </p>
             <a
-              href="#hero-form"
+              href={c.href}
               className="inline-flex items-center gap-2"
               style={{
                 color: COLORS.orange,
