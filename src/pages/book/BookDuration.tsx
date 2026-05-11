@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Clock } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import SurveyCard from "@/components/book/SurveyCard";
 import OptionRow from "@/components/book/OptionRow";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
+import { useBookingSync, updateBookingState, toQueryString } from "@/lib/bookingState";
 
 const OPTIONS = [
   { value: "lt6mo", label: "Less than 6 months" },
@@ -15,27 +16,22 @@ const OPTIONS = [
 
 const BookDuration = () => {
   const navigate = useNavigate();
-  const [params] = useSearchParams();
-  const symptom = params.get("symptom");
-  const [selected, setSelected] = useState<string>(params.get("duration") || "");
+  const state = useBookingSync();
+  const [selected, setSelected] = useState<string>(state.duration || "");
 
   const handleNext = () => {
     if (!selected) return;
-    const sp = new URLSearchParams();
-    if (symptom) sp.set("symptom", symptom);
-    sp.set("duration", selected);
-    navigate(`/book/schedule?${sp.toString()}`);
+    const next = updateBookingState({ duration: selected });
+    navigate(`/book/schedule?${toQueryString(next)}`);
   };
 
   const handlePrev = () => {
-    const sp = new URLSearchParams();
-    if (symptom) sp.set("symptom", symptom);
-    navigate(`/book/symptom${sp.toString() ? "?" + sp.toString() : ""}`);
+    navigate(`/book/symptom?${toQueryString(state)}`);
   };
 
   return (
     <BookLayout page="duration" title="How long has this been going on? | Men's Wellness Centers">
-      {!symptom && (
+      {!state.symptom && (
         <div className="px-4 md:px-6 pt-6">
           <MissingParamBanner />
         </div>

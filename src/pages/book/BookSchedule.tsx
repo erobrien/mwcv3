@@ -1,7 +1,8 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Star, Users, Beaker, Stethoscope } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
+import { useBookingSync, updateBookingState, toQueryString, labelFor } from "@/lib/bookingState";
 
 const TRUST = [
   { icon: Star, text: "4.9★ · 200+ reviews" },
@@ -29,8 +30,18 @@ const TESTIMONIALS = [
 ];
 
 const BookSchedule = () => {
-  const [params] = useSearchParams();
-  const missing = !params.get("symptom") || !params.get("duration");
+  const navigate = useNavigate();
+  const state = useBookingSync();
+  const missing = !state.symptom || !state.duration;
+
+  const handleConfirmDemo = () => {
+    // Demo: in production, GHL fires a webhook with the picked slot. Until then,
+    // expose a button so the funnel is end-to-end clickable.
+    const next = updateBookingState({
+      appointmentTime: "Tuesday, May 12 at 10:30 AM",
+    });
+    navigate(`/book/confirmed?${toQueryString(next)}`);
+  };
 
   return (
     <BookLayout page="schedule" title="Pick your consult time | Men's Wellness Centers">
@@ -73,7 +84,7 @@ const BookSchedule = () => {
         >
           <div
             id="ghl-calendar-embed"
-            className="flex items-center justify-center text-center"
+            className="flex flex-col items-center justify-center text-center gap-4"
             style={{
               minHeight: 700,
               border: "1px dashed #E5E7EB",
@@ -83,8 +94,23 @@ const BookSchedule = () => {
               padding: 24,
             }}
           >
-            GHL Calendar Widget — Loaded in production
+            <div>GHL Calendar Widget. Loaded in production.</div>
+            {state.location && (
+              <div className="text-xs">Booking for: {labelFor("location", state.location)}</div>
+            )}
+            <button
+              type="button"
+              onClick={handleConfirmDemo}
+              className="uppercase font-bold text-white"
+              style={{
+                background: "#E8670A", padding: "14px 28px", borderRadius: 6,
+                fontSize: 14, letterSpacing: "0.05em", cursor: "pointer", border: 0,
+              }}
+            >
+              Pick This Slot (demo) →
+            </button>
           </div>
+
         </div>
 
         {/* Trust strip */}
