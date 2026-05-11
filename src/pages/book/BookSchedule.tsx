@@ -1,18 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { Phone, MapPin } from "lucide-react";
+import { Phone } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
 import GHLNeoCalendarMock from "@/components/book/GHLNeoCalendarMock";
 import { useBookingSync, updateBookingState, toQueryString, labelFor } from "@/lib/bookingState";
-
-const PHONE_DISPLAY = "(866) 344-4955";
-const PHONE_TEL = "tel:8663444955";
-
-const STEPS = [
-  { n: 1, text: "Tap a day on the calendar below." },
-  { n: 2, text: "Tap a time that works for you." },
-  { n: 3, text: "Confirm your details." },
-];
 
 const BookSchedule = () => {
   const navigate = useNavigate();
