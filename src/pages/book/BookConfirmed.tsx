@@ -18,6 +18,20 @@ const BEFORE = [
 const ADDRESS = "1234 Example Drive, Newport News, VA";
 
 const BookConfirmed = () => {
+  const state = useBookingSync();
+  const apptTime = state.appointmentTime || "Tuesday, May 12 at 10:30 AM";
+  const locationName = labelFor("location", state.location) || "Newport News";
+  const firstName = state.name ? state.name.split(" ")[0] : "";
+  const summaryRows: { label: string; value: string }[] = [
+    { label: "Date & time", value: apptTime },
+    { label: "Center", value: locationName },
+    ...(state.symptom ? [{ label: "Primary concern", value: labelFor("symptom", state.symptom) }] : []),
+    ...(state.duration ? [{ label: "Duration", value: labelFor("duration", state.duration) }] : []),
+    ...(state.name ? [{ label: "Name", value: state.name }] : []),
+    ...(state.phone ? [{ label: "Phone", value: state.phone }] : []),
+    ...(state.email ? [{ label: "Email", value: state.email }] : []),
+  ];
+
   return (
     <BookLayout page="confirmed" title="You're booked | Men's Wellness Centers">
       {/* Top band */}
@@ -36,14 +50,39 @@ const BookConfirmed = () => {
               textWrap: "balance",
             } as React.CSSProperties}
           >
-            You're Booked.
+            {firstName ? `You're Booked, ${firstName}.` : "You're Booked."}
           </h1>
           <p className="mt-3" style={{ color: "rgba(255,255,255,0.85)", fontSize: 20 }}>
             {/* GHL merge: {{appointment.time}} · {{location.name}} */}
-            Tuesday, May 12 at 10:30 AM · Newport News
+            {apptTime} · {locationName}
           </p>
         </div>
       </section>
+
+      <div className="px-4 md:px-6 py-10 space-y-10">
+        {/* Booking summary */}
+        <section
+          className="mx-auto"
+          style={{
+            maxWidth: 720,
+            background: "#FFFFFF",
+            border: "1px solid #E5E7EB",
+            borderRadius: 12,
+            padding: 24,
+          }}
+        >
+          <div className="uppercase mb-3" style={{ color: "#8A95AD", fontSize: 12, letterSpacing: "0.1em", fontWeight: 700 }}>
+            Your Booking
+          </div>
+          <dl className="divide-y" style={{ borderColor: "#E5E7EB" }}>
+            {summaryRows.map((r) => (
+              <div key={r.label} className="flex items-center justify-between py-3 gap-4">
+                <dt style={{ color: "#5A6478", fontSize: 14 }}>{r.label}</dt>
+                <dd style={{ color: "#0B1029", fontSize: 14, fontWeight: 600, textAlign: "right" }}>{r.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
 
       <div className="px-4 md:px-6 py-10 space-y-10">
         {/* Video card */}
