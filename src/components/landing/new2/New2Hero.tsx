@@ -84,12 +84,13 @@ export const New2Hero = () => {
               fontWeight: 700,
             }}
           >
-            Get Your Edge Back.{" "}
+            Get Your Edge Back.
+            <br />
             <span
               style={{
                 color: COLORS.orange,
-                borderBottom: `4px solid ${COLORS.orange}`,
-                paddingBottom: 4,
+                boxShadow: `inset 0 -0.12em 0 0 ${COLORS.orange}`,
+                paddingBottom: 6,
               }}
             >
               In One Visit.
