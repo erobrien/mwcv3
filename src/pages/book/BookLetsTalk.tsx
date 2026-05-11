@@ -1,4 +1,4 @@
-import { Phone, MessageSquareText, Clock } from "lucide-react";
+import { Phone, MessageSquareText } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import { useBookingSync } from "@/lib/bookingState";
 
@@ -150,13 +150,6 @@ const BookLetsTalk = () => {
                 <span>{PHONE_DISPLAY}</span>
               </a>
 
-              <div
-                className="flex items-center justify-center gap-2 mt-3"
-                style={{ color: "#5A6478", fontSize: 13, fontWeight: 500 }}
-              >
-                <Clock size={14} />
-                <span>Mon–Fri 8a–6p · Sat 9a–1p ET</span>
-              </div>
             </section>
 
             {/* SECONDARY: Text */}
