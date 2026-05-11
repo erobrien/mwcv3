@@ -232,24 +232,24 @@ const BookConfirmed = () => {
           }}
         >
           <h2
+            className="text-xl md:text-2xl"
             style={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
-              fontSize: 24,
               color: "#0B1029",
-              marginBottom: 12,
+              marginBottom: 8,
               lineHeight: 1.3,
             }}
           >
             Running late or need to move it?
           </h2>
           <p
+            className="text-base md:text-xl"
             style={{
-              fontSize: 20,
               fontWeight: 500,
               color: "#3A4258",
               lineHeight: 1.4,
-              marginBottom: 20,
+              marginBottom: 14,
               fontFamily: "Inter, sans-serif",
             }}
           >
