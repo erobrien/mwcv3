@@ -40,9 +40,9 @@ export const New2Approach = () => (
           maxWidth: 900,
         }}
       >
-        We don't ship pills and disappear.{" "}
+        You don't need another app.{" "}
         <span style={{ borderBottom: `4px solid ${COLORS.orange}` }}>
-          We treat you face to face.
+          You need a team.
         </span>
       </h2>
       <p
