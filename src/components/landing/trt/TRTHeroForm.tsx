@@ -13,7 +13,7 @@ export const TRTHeroForm = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
-  const [tcpa, setTcpa] = useState(true);
+  const [tcpa, setTcpa] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [focused, setFocused] = useState<string | null>(null);
 
