@@ -154,7 +154,7 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
             <div style={{ fontSize: 15, fontWeight: 700, color: "#0B1029", marginBottom: 14 }}>
               Tuesday, May {selectedDay}
             </div>
-            <div className="flex flex-col gap-2" style={{ maxHeight: 360, overflowY: "auto", paddingRight: 4 }}>
+            <div className="grid grid-cols-2 gap-2" style={{ maxHeight: 360, overflowY: "auto", paddingRight: 4 }}>
               {times.map((t) => {
                 const active = t === selectedTime;
                 return (
@@ -163,12 +163,12 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
                     type="button"
                     onClick={() => setSelectedTime(t)}
                     style={{
-                      padding: "14px 16px",
+                      padding: "10px 12px",
                       borderRadius: 8,
                       border: active ? "2px solid #0B1029" : "1px solid #D1D5DB",
                       background: active ? "#0B1029" : "#FFFFFF",
                       color: active ? "#FFFFFF" : "#0B1029",
-                      fontSize: 15,
+                      fontSize: 14,
                       fontWeight: 600,
                       textAlign: "center",
                       cursor: "pointer",
