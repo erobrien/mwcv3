@@ -23,7 +23,7 @@ const OPTIONS = [
 const BookDuration = () => {
   const navigate = useNavigate();
   const state = useBookingSync();
-  const [selected, setSelected] = useState<string>(state.duration || "");
+  const [selected, setSelected] = useState<string>("");
   const advanceTimer = useRef<number | null>(null);
 
   useEffect(() => () => {
