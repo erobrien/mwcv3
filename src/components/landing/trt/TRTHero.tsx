@@ -81,7 +81,6 @@ export const TRTHero = () => {
               letterSpacing: "-0.01em",
               color: COLORS.cream,
               fontWeight: 700,
-              textShadow: "0 2px 16px rgba(0,0,0,0.5)",
             }}
           >
             Get Your Edge Back.
