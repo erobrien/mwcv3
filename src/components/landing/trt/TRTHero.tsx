@@ -37,47 +37,36 @@ export const TRTHero = () => {
         Skip to lead form
       </a>
 
-      {/* Background image */}
-      <picture>
-        <img
-          src={heroBg}
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          decoding="async"
-          // @ts-ignore
-          fetchpriority="high"
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
-      </picture>
+      {/* Grain texture */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: 0.06,
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          backgroundSize: "220px 220px",
+        }}
+      />
 
-      {/* Gradient overlay */}
+      {/* Subtle orange radial glow top-right */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(0,8,20,0.95) 0%, rgba(0,8,20,0.75) 45%, rgba(0,8,20,0.40) 100%)",
+            "radial-gradient(ellipse 60% 50% at 85% 10%, rgba(232,103,10,0.18) 0%, rgba(0,8,20,0) 60%)",
         }}
       />
 
-      {/* Subtle grain */}
+      {/* Vignette */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          opacity: 0.03,
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          background:
+            "radial-gradient(ellipse 100% 80% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%)",
         }}
-      />
-
-      {/* Bottom fade into stats bar */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-        style={{ background: `linear-gradient(180deg, rgba(0,8,20,0) 0%, ${COLORS.navyDeep} 100%)` }}
       />
 
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 sm:px-6 pt-24 pb-12 lg:pt-32 lg:pb-24 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-16 items-center">
