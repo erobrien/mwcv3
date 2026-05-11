@@ -211,16 +211,18 @@ const BookConfirmed = () => {
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: "#0B1029", zIndex: 2 }} />
 
               <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", background: "#000" }}>
-                <iframe
+                <video
                   src={EXPECT_VIDEO_SRC}
                   title="What to expect at your visit"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
+                  controls
+                  playsInline
+                  preload="metadata"
                   style={{
                     position: "absolute",
                     inset: 0,
                     width: "100%",
                     height: "100%",
+                    objectFit: "cover",
                     border: 0,
                   }}
                 />
