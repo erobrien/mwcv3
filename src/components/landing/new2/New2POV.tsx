@@ -31,11 +31,11 @@ const cards = [
     cta: "How pricing works",
   },
   {
-    eyebrow: "TRUST",
-    stat: "10+",
-    title: "Years caring for Virginia men",
-    body: "Provider-led centers in Richmond, Newport News, and Virginia Beach. Licensed Virginia physicians.",
-    cta: "Meet our providers",
+    eyebrow: "YOUR CARE TEAM",
+    stat: "1:1",
+    title: "Physician, PA, and coordinator on your case",
+    body: "You see the same providers every visit. They know your labs, your goals, and what you tried last month. No app, no chatbot, no rotating prescribers.",
+    cta: "Meet the team",
   },
 ];
 
