@@ -84,13 +84,15 @@ export const New2Hero = () => {
               fontWeight: 700,
             }}
           >
-            Get Your Edge Back.
-            <br />
+            Get Your Edge Back.{" "}
             <span
               style={{
                 color: COLORS.orange,
-                boxShadow: `inset 0 -0.12em 0 0 ${COLORS.orange}`,
-                paddingBottom: 6,
+                textDecoration: "underline",
+                textDecorationColor: COLORS.orange,
+                textDecorationThickness: "0.08em",
+                textUnderlineOffset: "0.12em",
+                textDecorationSkipInk: "none",
               }}
             >
               In One Visit.
