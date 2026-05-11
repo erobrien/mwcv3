@@ -1,4 +1,4 @@
-import { CheckCircle2, MapPin, Phone, Play, FlaskConical } from "lucide-react";
+import { CheckCircle2, MapPin, Phone, Play, FlaskConical, ExternalLink } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import { useBookingSync } from "@/lib/bookingState";
 
