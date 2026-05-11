@@ -33,9 +33,9 @@ export const New2Services = () => (
             textTransform: "uppercase",
           }}
         >
-          You Don't Need Another App.{" "}
+          One Team.{" "}
           <span style={{ borderBottom: `4px solid ${COLORS.orange}` }}>
-            You Need a Center.
+            Every Part of Men's Health.
           </span>
         </h2>
         <p
@@ -47,7 +47,7 @@ export const New2Services = () => (
             lineHeight: 1.65,
           }}
         >
-          A team of physicians, PAs, and care coordinators who know your name. Walk into the same office, see the same provider, and build a plan that actually fits your life.
+          Physicians, PAs, and care coordinators under one roof. The same people manage your testosterone, weight, ED care, and labs. Walk into the same office. See the same provider. Build a plan that actually fits your life.
         </p>
       </div>
 
