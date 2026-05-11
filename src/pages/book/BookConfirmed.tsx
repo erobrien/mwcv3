@@ -2,7 +2,7 @@ import { CheckCircle2, MapPin, Phone, Play, FlaskConical } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import { useBookingSync } from "@/lib/bookingState";
 
-const EXPECT_VIDEO_SRC = "https://player.vimeo.com/video/76979871?h=8272103f6e&title=0&byline=0&portrait=0";
+const EXPECT_VIDEO_SRC = "/videos/what-to-expect.mp4";
 
 type CenterInfo = {
   centerName: string;
@@ -211,16 +211,18 @@ const BookConfirmed = () => {
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: "#0B1029", zIndex: 2 }} />
 
               <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", background: "#000" }}>
-                <iframe
+                <video
                   src={EXPECT_VIDEO_SRC}
                   title="What to expect at your visit"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
+                  controls
+                  playsInline
+                  preload="metadata"
                   style={{
                     position: "absolute",
                     inset: 0,
                     width: "100%",
                     height: "100%",
+                    objectFit: "cover",
                     border: 0,
                   }}
                 />
