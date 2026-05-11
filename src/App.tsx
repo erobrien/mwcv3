@@ -95,6 +95,10 @@ const App = () => (
           <Route path="/lp" element={<LPIndex />} />
           <Route path="/lp/testosterone" element={<TRTLandingPage />} />
           <Route path="/new" element={<NewLandingPage />} />
+          <Route path="/book/symptom" element={<BookSymptom />} />
+          <Route path="/book/duration" element={<BookDuration />} />
+          <Route path="/book/schedule" element={<BookSchedule />} />
+          <Route path="/book/confirmed" element={<BookConfirmed />} />
           <Route path="/new2" element={<New2LandingPage />} />
           <Route path="/lp/testosterone-v2" element={<TRTv2CompliantLandingPage />} />
           <Route path="/lp/trt" element={<TRTLandingPage />} />
