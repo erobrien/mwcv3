@@ -31,11 +31,11 @@ const cards = [
     cta: "How pricing works",
   },
   {
-    eyebrow: "TRUST",
-    stat: "10+",
-    title: "Years caring for Virginia men",
-    body: "Provider-led centers in Richmond, Newport News, and Virginia Beach. Licensed Virginia physicians.",
-    cta: "Meet our providers",
+    eyebrow: "YOUR CARE TEAM",
+    stat: "1:1",
+    title: "Physician, PA, and coordinator on your case",
+    body: "You see the same providers every visit. They know your labs, your goals, and what you tried last month. No app, no chatbot, no rotating prescribers.",
+    cta: "Meet the team",
   },
 ];
 
@@ -67,7 +67,7 @@ export const New2POV = () => (
             textTransform: "uppercase",
           }}
         >
-          The way men handle low testosterone has already changed.
+          A care team beats a care app. Every time.
         </h2>
         <p
           className="mt-7 max-w-[460px]"
@@ -78,7 +78,7 @@ export const New2POV = () => (
             lineHeight: 1.65,
           }}
         >
-          Telehealth apps prescribe blind. Big clinics treat you like a chart number. We do it differently. Real labs, real physicians, real conversations. Same day. Right here in Virginia.
+          Telehealth apps prescribe blind. Big clinics treat you like a chart number. We do it differently. A physician, PA, and care coordinator who all know your name. Real labs, real conversations, real follow-through. Same day. Right here in Virginia.
         </p>
         <a
           href="#hero-form"

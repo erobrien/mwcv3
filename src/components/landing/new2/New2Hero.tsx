@@ -108,7 +108,7 @@ export const New2Hero = () => {
               lineHeight: 1.6,
             }}
           >
-            Same-day labs, a face-to-face Virginia physician, and a personalized plan. Your first visit is on us.
+            No app. No questionnaire. A real Virginia care team. Same-day labs, a face-to-face physician, and a plan built around you. Your first visit is on us.
           </p>
 
           <div className="mt-6 flex items-center gap-3" style={{ fontFamily: "Inter, sans-serif" }}>
