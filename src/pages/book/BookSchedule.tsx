@@ -84,7 +84,7 @@ const BookSchedule = () => {
         >
           <div
             id="ghl-calendar-embed"
-            className="flex items-center justify-center text-center"
+            className="flex flex-col items-center justify-center text-center gap-4"
             style={{
               minHeight: 700,
               border: "1px dashed #E5E7EB",
@@ -94,8 +94,23 @@ const BookSchedule = () => {
               padding: 24,
             }}
           >
-            GHL Calendar Widget — Loaded in production
+            <div>GHL Calendar Widget. Loaded in production.</div>
+            {state.location && (
+              <div className="text-xs">Booking for: {labelFor("location", state.location)}</div>
+            )}
+            <button
+              type="button"
+              onClick={handleConfirmDemo}
+              className="uppercase font-bold text-white"
+              style={{
+                background: "#E8670A", padding: "14px 28px", borderRadius: 6,
+                fontSize: 14, letterSpacing: "0.05em", cursor: "pointer", border: 0,
+              }}
+            >
+              Pick This Slot (demo) →
+            </button>
           </div>
+
         </div>
 
         {/* Trust strip */}
