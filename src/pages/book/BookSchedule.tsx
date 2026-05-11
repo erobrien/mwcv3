@@ -35,13 +35,13 @@ const BookSchedule = () => {
   return (
     <BookLayout page="schedule" title="Pick your consult time | Men's Wellness Centers">
       {/* Hero band */}
-      <section style={{ background: "#0B1029", padding: "32px 16px 24px" }}>
+      <section className="px-4 py-5 md:py-8" style={{ background: "#0B1029" }}>
         <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
           <h1
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(26px, 3.4vw, 32px)",
+              fontSize: "clamp(22px, 3.4vw, 32px)",
               color: "#FFFFFF",
               lineHeight: 1.25,
               letterSpacing: "0",
@@ -54,7 +54,7 @@ const BookSchedule = () => {
         </div>
       </section>
 
-      <div className="px-4 md:px-6 py-8 space-y-8" style={{ paddingBottom: 120 }}>
+      <div className="px-3 md:px-6 py-4 md:py-8 space-y-4 md:space-y-8 pb-28 md:pb-12">
         {missing && <MissingParamBanner />}
 
         {/* CALENDAR — GHL Neo widget mockup */}

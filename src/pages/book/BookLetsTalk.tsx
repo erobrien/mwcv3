@@ -39,40 +39,40 @@ const BookLetsTalk = () => {
   return (
     <BookLayout page="lets-talk" title="Let's talk it through | Men's Wellness Centers">
       {/* Hero band */}
-      <section style={{ background: "#0B1029", padding: "40px 16px 32px" }}>
+      <section className="px-4 py-6 md:py-10" style={{ background: "#0B1029" }}>
         <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
           <h1
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(28px, 4.5vw, 40px)",
+              fontSize: "clamp(24px, 4.5vw, 40px)",
               color: "#FFFFFF",
               lineHeight: 1.2,
               letterSpacing: "-0.01em",
               textTransform: "none",
               textWrap: "balance",
-              marginBottom: 16,
+              marginBottom: 10,
             } as React.CSSProperties}
           >
             Let's talk it through.
           </h1>
           <p
+            className="text-base md:text-xl"
             style={{
               color: "rgba(255,255,255,0.88)",
-              fontSize: 22,
               fontWeight: 500,
               lineHeight: 1.45,
               maxWidth: 600,
               margin: "0 auto",
             }}
           >
-            Every guy's situation is different. A two-minute call with our
+            Every man's situation is different. A two-minute call with our
             team is the fastest way to get you matched with the right visit.
           </p>
         </div>
       </section>
 
-      <div className="px-4 md:px-6 py-8 space-y-8" style={{ paddingBottom: 140 }}>
+      <div className="px-3 md:px-6 py-4 md:py-8 space-y-4 md:space-y-8 pb-28 md:pb-12">
         {/* PRIMARY: Call card */}
         <section
           className="mx-auto"
@@ -81,36 +81,34 @@ const BookLetsTalk = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
-          <div className="flex items-start gap-4 mb-6">
+          <div className="flex items-start gap-3 mb-4 md:mb-6">
             <span
               aria-hidden="true"
-              className="flex items-center justify-center flex-shrink-0"
-              style={{
-                width: 56, height: 56, borderRadius: 12, background: "#E8670A",
-              }}
+              className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
+              style={{ borderRadius: 10, background: "#E8670A" }}
             >
-              <Phone size={32} strokeWidth={2.25} style={{ color: "#FFFFFF" }} />
+              <Phone size={24} strokeWidth={2.25} style={{ color: "#FFFFFF" }} />
             </span>
             <div>
               <h2
+                className="text-xl md:text-2xl"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 700,
-                  fontSize: 26,
                   color: "#0B1029",
                   lineHeight: 1.25,
-                  marginBottom: 6,
+                  marginBottom: 4,
                 }}
               >
                 Call us
               </h2>
               <p
+                className="text-base md:text-xl"
                 style={{
-                  fontSize: 20,
                   color: "#3A4258",
                   lineHeight: 1.4,
                   fontWeight: 500,
@@ -160,36 +158,34 @@ const BookLetsTalk = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
-          <div className="flex items-start gap-4 mb-6">
+          <div className="flex items-start gap-3 mb-4 md:mb-6">
             <span
               aria-hidden="true"
-              className="flex items-center justify-center flex-shrink-0"
-              style={{
-                width: 56, height: 56, borderRadius: 12, background: "#FFF5EE",
-              }}
+              className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
+              style={{ borderRadius: 10, background: "#FFF5EE" }}
             >
-              <MessageSquareText size={32} strokeWidth={2.25} style={{ color: "#E8670A" }} />
+              <MessageSquareText size={24} strokeWidth={2.25} style={{ color: "#E8670A" }} />
             </span>
             <div>
               <h2
+                className="text-xl md:text-2xl"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 700,
-                  fontSize: 26,
                   color: "#0B1029",
                   lineHeight: 1.25,
-                  marginBottom: 6,
+                  marginBottom: 4,
                 }}
               >
                 Prefer to text?
               </h2>
               <p
+                className="text-base md:text-xl"
                 style={{
-                  fontSize: 20,
                   color: "#3A4258",
                   lineHeight: 1.4,
                   fontWeight: 500,

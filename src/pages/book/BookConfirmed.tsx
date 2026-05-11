@@ -45,14 +45,14 @@ const BookConfirmed = () => {
   return (
     <BookLayout page="confirmed" title="You're booked | Men's Wellness Centers">
       {/* SECTION 1 — Confirmation hero + booking summary */}
-      <section style={{ background: "#0B1029", padding: "40px 16px 32px" }}>
+      <section className="px-4 py-6 md:py-10" style={{ background: "#0B1029" }}>
         <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
-          <CheckCircle2 size={72} strokeWidth={2.25} style={{ color: "#22C55E", margin: "0 auto 16px" }} />
+          <CheckCircle2 size={56} strokeWidth={2.25} style={{ color: "#22C55E", margin: "0 auto 10px" }} />
           <h1
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(32px, 5vw, 44px)",
+              fontSize: "clamp(26px, 5vw, 44px)",
               color: "#FFFFFF",
               lineHeight: 1.15,
               letterSpacing: "-0.01em",
@@ -63,10 +63,9 @@ const BookConfirmed = () => {
             {firstName ? `You're booked, ${firstName}.` : "You're booked."}
           </h1>
           <p
-            className="mt-4"
+            className="mt-3 text-lg md:text-2xl"
             style={{
               color: "rgba(255,255,255,0.92)",
-              fontSize: 22,
               fontWeight: 600,
               lineHeight: 1.4,
             }}
@@ -74,10 +73,9 @@ const BookConfirmed = () => {
             {apptTime}
           </p>
           <p
-            className="mt-1"
+            className="mt-1 text-base md:text-xl"
             style={{
               color: "rgba(255,255,255,0.78)",
-              fontSize: 20,
               fontWeight: 500,
             }}
           >
@@ -86,7 +84,7 @@ const BookConfirmed = () => {
         </div>
       </section>
 
-      <div className="px-4 md:px-6 py-8 space-y-8" style={{ paddingBottom: 120 }}>
+      <div className="px-3 md:px-6 py-4 md:py-8 space-y-4 md:space-y-8 pb-28 md:pb-12">
         {/* Booking summary card */}
         <section
           className="mx-auto"
@@ -95,17 +93,17 @@ const BookConfirmed = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
           <h2
+            className="text-xl md:text-2xl"
             style={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
-              fontSize: 24,
               color: "#0B1029",
-              marginBottom: 20,
+              marginBottom: 12,
               lineHeight: 1.3,
             }}
           >
@@ -115,16 +113,13 @@ const BookConfirmed = () => {
             {summaryRows.map((r) => (
               <div
                 key={r.label}
-                className="flex items-start justify-between gap-4"
-                style={{
-                  padding: "16px 0",
-                  borderBottom: "2px solid #E5E7EB",
-                }}
+                className="flex items-start justify-between gap-3 py-3 md:py-4"
+                style={{ borderBottom: "2px solid #E5E7EB" }}
               >
                 <dt
+                  className="text-sm md:text-lg"
                   style={{
                     color: "#3A4258",
-                    fontSize: 18,
                     fontWeight: 500,
                     fontFamily: "Inter, sans-serif",
                   }}
@@ -132,9 +127,9 @@ const BookConfirmed = () => {
                   {r.label}
                 </dt>
                 <dd
+                  className="text-sm md:text-lg"
                   style={{
                     color: "#0B1029",
-                    fontSize: 18,
                     fontWeight: 700,
                     textAlign: "right",
                     fontFamily: "Inter, sans-serif",
@@ -155,50 +150,48 @@ const BookConfirmed = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
           <h2
+            className="text-xl md:text-2xl"
             style={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
-              fontSize: 26,
               color: "#0B1029",
-              marginBottom: 20,
+              marginBottom: 12,
               lineHeight: 1.3,
             }}
           >
             Before you come in
           </h2>
-          <ul className="space-y-4" style={{ marginBottom: 24 }}>
+          <ul className="space-y-2 md:space-y-4 mb-4 md:mb-6">
             {BEFORE.map((b) => (
               <li
                 key={b}
-                className="flex items-start gap-3"
+                className="flex items-start gap-3 text-base md:text-xl"
                 style={{
                   color: "#0B1029",
-                  fontSize: 20,
                   fontWeight: 500,
                   lineHeight: 1.4,
                   fontFamily: "Inter, sans-serif",
                 }}
               >
-                <Check size={28} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
+                <Check size={22} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
                 <span>{b}</span>
               </li>
             ))}
             <li
-              className="flex items-start gap-3"
+              className="flex items-start gap-3 text-base md:text-xl"
               style={{
                 color: "#0B1029",
-                fontSize: 20,
                 fontWeight: 500,
                 lineHeight: 1.4,
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              <MapPin size={28} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
+              <MapPin size={22} strokeWidth={2.5} style={{ color: "#E8670A", flexShrink: 0, marginTop: 2 }} />
               <span>{ADDRESS}</span>
             </li>
           </ul>
@@ -234,29 +227,29 @@ const BookConfirmed = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
           <h2
+            className="text-xl md:text-2xl"
             style={{
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
-              fontSize: 24,
               color: "#0B1029",
-              marginBottom: 12,
+              marginBottom: 8,
               lineHeight: 1.3,
             }}
           >
             Running late or need to move it?
           </h2>
           <p
+            className="text-base md:text-xl"
             style={{
-              fontSize: 20,
               fontWeight: 500,
               color: "#3A4258",
               lineHeight: 1.4,
-              marginBottom: 20,
+              marginBottom: 14,
               fontFamily: "Inter, sans-serif",
             }}
           >

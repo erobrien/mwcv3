@@ -29,7 +29,7 @@ const SurveyCard = ({
   prevLabel = "Back", onPrev,
 }: SurveyCardProps) => {
   return (
-    <div className="px-4 md:px-6 py-8 md:py-12 flex justify-center" style={{ paddingBottom: 48 }}>
+    <div className="px-3 md:px-6 py-4 md:py-12 pb-8 md:pb-12 flex justify-center">
       <div
         className="w-full"
         style={{
@@ -40,7 +40,7 @@ const SurveyCard = ({
           boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="p-6 md:p-10">
+        <div className="p-4 md:p-10">
           {/* Step indicator */}
           <div
             className="mb-3 text-center"
@@ -57,7 +57,7 @@ const SurveyCard = ({
           </div>
 
           {/* Progress bar — completed steps full orange, current step half-filled */}
-          <div className="flex gap-2 mb-8" role="progressbar" aria-valuemin={1} aria-valuemax={total} aria-valuenow={step}>
+          <div className="flex gap-2 mb-5 md:mb-8" role="progressbar" aria-valuemin={1} aria-valuemax={total} aria-valuenow={step}>
             {Array.from({ length: total }).map((_, i) => {
               const isComplete = i < step - 1;
               const isCurrent = i === step - 1;
@@ -92,25 +92,24 @@ const SurveyCard = ({
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(28px, 4vw, 36px)",
+              fontSize: "clamp(24px, 4vw, 36px)",
               lineHeight: 1.2,
               letterSpacing: "-0.01em",
               color: "#0B1029",
               textTransform: "none",
               textWrap: "balance",
-              marginBottom: 12,
+              marginBottom: 8,
             } as React.CSSProperties}
           >
             {title}
           </h1>
           <p
-            className="text-center"
+            className="text-center text-base md:text-xl"
             style={{
-              fontSize: 20,
               fontWeight: 500,
               color: "#3A4258",
               lineHeight: 1.4,
-              marginBottom: 28,
+              marginBottom: 18,
               fontFamily: "Inter, sans-serif",
             }}
           >
@@ -118,13 +117,13 @@ const SurveyCard = ({
           </p>
 
           {/* Options */}
-          <div className="space-y-3">{children}</div>
+          <div className="space-y-2 md:space-y-3">{children}</div>
 
           {/* Helper text — tells the user how the page works */}
           <p
-            className="text-center mt-6"
+            className="text-center mt-4 md:mt-6"
             style={{
-              fontSize: 16,
+              fontSize: 14,
               color: "#5A6478",
               fontFamily: "Inter, sans-serif",
               fontStyle: "italic",
@@ -134,7 +133,7 @@ const SurveyCard = ({
           </p>
 
           {/* Back link — quiet, never competes with the options */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-3 md:mt-6">
             <button
               type="button"
               onClick={onPrev}
