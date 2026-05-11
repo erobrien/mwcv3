@@ -21,6 +21,7 @@ import TelehealthConsent from "./pages/TelehealthConsent";
 import RefundPolicy from "./pages/RefundPolicy";
 import TRTLandingPage from "./pages/TRTLandingPage";
 import NewLandingPage from "./pages/NewLandingPage";
+import New2LandingPage from "./pages/New2LandingPage";
 import TRTv2CompliantLandingPage from "./pages/TRTv2CompliantLandingPage";
 import TRT2LandingPage from "./pages/TRT2LandingPage";
 import TRT2ThankYou from "./pages/TRT2ThankYou";
@@ -94,6 +95,7 @@ const App = () => (
           <Route path="/lp" element={<LPIndex />} />
           <Route path="/lp/testosterone" element={<TRTLandingPage />} />
           <Route path="/new" element={<NewLandingPage />} />
+          <Route path="/new2" element={<New2LandingPage />} />
           <Route path="/lp/testosterone-v2" element={<TRTv2CompliantLandingPage />} />
           <Route path="/lp/trt" element={<TRTLandingPage />} />
           <Route path="/lp/trt2" element={<TRT2LandingPage />} />
