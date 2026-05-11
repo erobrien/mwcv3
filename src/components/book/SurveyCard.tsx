@@ -57,7 +57,7 @@ const SurveyCard = ({
           </div>
 
           {/* Progress bar — completed steps full orange, current step half-filled */}
-          <div className="flex gap-2 mb-8" role="progressbar" aria-valuemin={1} aria-valuemax={total} aria-valuenow={step}>
+          <div className="flex gap-2 mb-5 md:mb-8" role="progressbar" aria-valuemin={1} aria-valuemax={total} aria-valuenow={step}>
             {Array.from({ length: total }).map((_, i) => {
               const isComplete = i < step - 1;
               const isCurrent = i === step - 1;
