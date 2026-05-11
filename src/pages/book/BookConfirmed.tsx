@@ -62,15 +62,15 @@ const BookConfirmed = () => {
             <div
               className="flex items-center justify-center mb-4 md:mb-5"
               style={{
-                width: 64,
-                height: 64,
+                width: 48,
+                height: 48,
                 borderRadius: 999,
                 background: "rgba(34,197,94,0.10)",
                 border: "1px solid rgba(34,197,94,0.45)",
                 boxShadow: "0 0 24px rgba(34,197,94,0.18)",
               }}
             >
-              <CheckCircle2 size={32} strokeWidth={2.5} style={{ color: "#22C55E" }} />
+              <CheckCircle2 size={24} strokeWidth={2.5} style={{ color: "#22C55E" }} />
             </div>
             <h1
               style={{
