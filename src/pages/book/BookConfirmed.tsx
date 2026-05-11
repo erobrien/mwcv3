@@ -93,7 +93,7 @@ const BookConfirmed = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
@@ -153,7 +153,7 @@ const BookConfirmed = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
@@ -232,7 +232,7 @@ const BookConfirmed = () => {
             background: "#FFFFFF",
             border: "3px solid #5A6478",
             borderRadius: 16,
-            padding: 28,
+            padding: "18px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
