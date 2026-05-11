@@ -1,28 +1,42 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Clock } from "lucide-react";
+import { CalendarClock, CalendarDays, CalendarRange, History } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import SurveyCard from "@/components/book/SurveyCard";
 import OptionRow from "@/components/book/OptionRow";
 import MissingParamBanner from "@/components/book/MissingParamBanner";
 import { useBookingSync, updateBookingState, toQueryString } from "@/lib/bookingState";
 
+// Distinct icons help AMD users distinguish options at a glance even if the
+// text is hard to read.
 const OPTIONS = [
-  { value: "lt6mo", label: "Less than 6 months" },
-  { value: "6to12mo", label: "6 to 12 months" },
-  { value: "1to2yr", label: "1 to 2 years" },
-  { value: "gt2yr", label: "More than 2 years" },
-];
+  { value: "lt6mo", label: "Less than 6 months", icon: CalendarClock },
+  { value: "6to12mo", label: "6 to 12 months", icon: CalendarDays },
+  { value: "1to2yr", label: "1 to 2 years", icon: CalendarRange },
+  { value: "gt2yr", label: "More than 2 years", icon: History },
+] as const;
 
+/**
+ * Q2: How long has this been going on?
+ * Single-tap auto-advance → /book/schedule.
+ */
 const BookDuration = () => {
   const navigate = useNavigate();
   const state = useBookingSync();
   const [selected, setSelected] = useState<string>(state.duration || "");
+  const advanceTimer = useRef<number | null>(null);
 
-  const handleNext = () => {
-    if (!selected) return;
-    const next = updateBookingState({ duration: selected });
-    navigate(`/book/schedule?${toQueryString(next)}`);
+  useEffect(() => () => {
+    if (advanceTimer.current) window.clearTimeout(advanceTimer.current);
+  }, []);
+
+  const handleSelect = (value: string) => {
+    if (advanceTimer.current) return;
+    setSelected(value);
+    const next = updateBookingState({ duration: value });
+    advanceTimer.current = window.setTimeout(() => {
+      navigate(`/book/schedule?${toQueryString(next)}`);
+    }, 600);
   };
 
   const handlePrev = () => {
@@ -39,21 +53,18 @@ const BookDuration = () => {
       <SurveyCard
         step={2}
         total={2}
-        title="How Long Has This Been Going On?"
-        subtitle="This helps your physician prepare for your visit."
-        prevLabel="PREV"
-        nextLabel="See Available Times"
+        title="How long has this been going on?"
+        subtitle="A rough estimate is fine."
+        prevLabel="Back"
         onPrev={handlePrev}
-        onNext={handleNext}
-        nextDisabled={!selected}
       >
         {OPTIONS.map((o) => (
           <OptionRow
             key={o.value}
-            icon={Clock}
+            icon={o.icon}
             label={o.label}
             selected={selected === o.value}
-            onClick={() => setSelected(o.value)}
+            onClick={() => handleSelect(o.value)}
           />
         ))}
       </SurveyCard>

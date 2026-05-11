@@ -1,16 +1,41 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Star } from "lucide-react";
 import { TCPAConsent } from "@/components/ui/TCPAConsent";
+import { updateBookingState, toQueryString } from "@/lib/bookingState";
 
 export const HeroForm = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [consent, setConsent] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Native required attributes catch missing text fields. Consent is a
+    // checkbox so we validate it explicitly.
+    if (!consent) {
+      setError("Please agree to receive messages so we can confirm your visit.");
+      return;
+    }
+    if (!name || !phone || !email || !location) {
+      setError("Please fill out all four fields.");
+      return;
+    }
+    setError("");
+    // Persist hero form fields into booking state, then advance to the
+    // symptom question. URL params keep state alive across refresh / GHL.
+    const next = updateBookingState({
+      name: name.trim(),
+      phone: phone.trim(),
+      email: email.trim(),
+      location,
+      source: "hero_form",
+    });
+    navigate(`/book/symptom?${toQueryString(next)}`);
   };
 
   const inputStyle: React.CSSProperties = {
@@ -109,6 +134,23 @@ export const HeroForm = () => {
         <div className="pt-1">
           <TCPAConsent consent={consent} onChange={setConsent} variant="dark" id="hero-consent" />
         </div>
+
+        {error && (
+          <div
+            role="alert"
+            style={{
+              background: "rgba(220, 38, 38, 0.12)",
+              border: "1px solid rgba(248, 113, 113, 0.4)",
+              color: "#FCA5A5",
+              borderRadius: 6,
+              padding: "10px 12px",
+              fontSize: 13,
+              lineHeight: 1.4,
+            }}
+          >
+            {error}
+          </div>
+        )}
 
         <button
           type="submit"

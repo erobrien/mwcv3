@@ -25,6 +25,7 @@ import BookSymptom from "./pages/book/BookSymptom";
 import BookDuration from "./pages/book/BookDuration";
 import BookSchedule from "./pages/book/BookSchedule";
 import BookConfirmed from "./pages/book/BookConfirmed";
+import BookLetsTalk from "./pages/book/BookLetsTalk";
 import New2LandingPage from "./pages/New2LandingPage";
 import TRTv2CompliantLandingPage from "./pages/TRTv2CompliantLandingPage";
 import TRT2LandingPage from "./pages/TRT2LandingPage";
@@ -103,6 +104,7 @@ const App = () => (
           <Route path="/book/duration" element={<BookDuration />} />
           <Route path="/book/schedule" element={<BookSchedule />} />
           <Route path="/book/confirmed" element={<BookConfirmed />} />
+          <Route path="/book/lets-talk" element={<BookLetsTalk />} />
           <Route path="/new2" element={<New2LandingPage />} />
           <Route path="/lp/testosterone-v2" element={<TRTv2CompliantLandingPage />} />
           <Route path="/lp/trt" element={<TRTLandingPage />} />

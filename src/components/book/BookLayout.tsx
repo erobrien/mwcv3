@@ -3,7 +3,7 @@ import { TRTHeader } from "@/components/landing/trt/TRTHeader";
 import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 
 interface BookLayoutProps {
-  page: "symptom" | "duration" | "schedule" | "confirmed";
+  page: "symptom" | "duration" | "schedule" | "confirmed" | "lets-talk";
   title: string;
   children: ReactNode;
 }
