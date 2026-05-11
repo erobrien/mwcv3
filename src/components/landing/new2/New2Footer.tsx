@@ -4,7 +4,10 @@ const COLORS = {
   muted: "rgba(245,241,232,0.55)",
 };
 
-const links = ["Locations", "Services", "Providers", "How It Works"];
+const links: { label: string; href: string }[] = [
+  { label: "Book a Visit", href: "#hero-form" },
+  { label: "Call 866-344-4955", href: "tel:8663444955" },
+];
 
 export const New2Footer = () => (
   <footer style={{ background: COLORS.navy }} className="py-20">
