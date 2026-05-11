@@ -85,32 +85,30 @@ const BookLetsTalk = () => {
             boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
           }}
         >
-          <div className="flex items-start gap-4 mb-6">
+          <div className="flex items-start gap-3 mb-4 md:mb-6">
             <span
               aria-hidden="true"
-              className="flex items-center justify-center flex-shrink-0"
-              style={{
-                width: 56, height: 56, borderRadius: 12, background: "#E8670A",
-              }}
+              className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
+              style={{ borderRadius: 10, background: "#E8670A" }}
             >
-              <Phone size={32} strokeWidth={2.25} style={{ color: "#FFFFFF" }} />
+              <Phone size={24} strokeWidth={2.25} style={{ color: "#FFFFFF" }} />
             </span>
             <div>
               <h2
+                className="text-xl md:text-2xl"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 700,
-                  fontSize: 26,
                   color: "#0B1029",
                   lineHeight: 1.25,
-                  marginBottom: 6,
+                  marginBottom: 4,
                 }}
               >
                 Call us
               </h2>
               <p
+                className="text-base md:text-xl"
                 style={{
-                  fontSize: 20,
                   color: "#3A4258",
                   lineHeight: 1.4,
                   fontWeight: 500,
