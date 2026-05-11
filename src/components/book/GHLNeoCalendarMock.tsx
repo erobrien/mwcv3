@@ -75,7 +75,7 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
       <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 0 }}>
         <div className="md:grid md:grid-cols-[1.4fr_1fr]" style={{ display: "grid" }}>
           {/* Calendar */}
-          <div style={{ padding: 20, borderRight: "1px solid #E5E7EB" }}>
+          <div className="p-3 md:p-5" style={{ borderRight: "1px solid #E5E7EB" }}>
             {/* Month nav */}
             <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
               <button
@@ -150,7 +150,7 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
           </div>
 
           {/* Time slots */}
-          <div style={{ padding: 20, background: "#FAFBFC" }}>
+          <div className="p-3 md:p-5" style={{ background: "#FAFBFC" }}>
             <div style={{ fontSize: 15, fontWeight: 700, color: "#0B1029", marginBottom: 14 }}>
               Tuesday, May {selectedDay}
             </div>
@@ -184,7 +184,7 @@ const GHLNeoCalendarMock = ({ onConfirm, locationLabel }: Props) => {
       </div>
 
       {/* Footer / Confirm */}
-      <div style={{ padding: 20, borderTop: "1px solid #E5E7EB", background: "#FFFFFF" }}>
+      <div className="p-3 md:p-5" style={{ borderTop: "1px solid #E5E7EB", background: "#FFFFFF" }}>
         <button
           type="button"
           onClick={handleConfirm}
