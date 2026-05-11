@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Zap, Heart, Scale, HelpCircle } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
 import SurveyCard from "@/components/book/SurveyCard";
 import OptionRow from "@/components/book/OptionRow";
+import { useBookingSync, updateBookingState, toQueryString } from "@/lib/bookingState";
 
 const OPTIONS = [
   { value: "energy", label: "Low Energy / Fatigue", icon: Zap },
@@ -14,12 +15,13 @@ const OPTIONS = [
 
 const BookSymptom = () => {
   const navigate = useNavigate();
-  const [params] = useSearchParams();
-  const [selected, setSelected] = useState<string>(params.get("symptom") || "");
+  const state = useBookingSync();
+  const [selected, setSelected] = useState<string>(state.symptom || "");
 
   const handleNext = () => {
     if (!selected) return;
-    navigate(`/book/duration?symptom=${selected}`);
+    const next = updateBookingState({ symptom: selected });
+    navigate(`/book/duration?${toQueryString(next)}`);
   };
 
   return (

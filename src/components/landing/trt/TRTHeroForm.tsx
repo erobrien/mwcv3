@@ -33,10 +33,12 @@ export const TRTHeroForm = () => {
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
-    const params = new URLSearchParams({
-      name, phone, email, location, source: "landing-page-hero", service: "trt",
+    import("@/lib/bookingState").then(({ updateBookingState, toQueryString }) => {
+      const state = updateBookingState({
+        name, phone, email, location, source: "landing-page-hero", service: "trt",
+      });
+      navigate(`/book/symptom?${toQueryString(state)}`);
     });
-    navigate(`/book/symptom?${params.toString()}`);
   };
 
   const inputBase = (field: string): React.CSSProperties => ({
