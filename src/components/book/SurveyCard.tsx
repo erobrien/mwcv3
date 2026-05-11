@@ -29,7 +29,7 @@ const SurveyCard = ({
   prevLabel = "Back", onPrev,
 }: SurveyCardProps) => {
   return (
-    <div className="px-4 md:px-6 py-8 md:py-12 flex justify-center" style={{ paddingBottom: 48 }}>
+    <div className="px-3 md:px-6 py-4 md:py-12 pb-8 md:pb-12 flex justify-center">
       <div
         className="w-full"
         style={{
@@ -40,7 +40,7 @@ const SurveyCard = ({
           boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="p-6 md:p-10">
+        <div className="p-4 md:p-10">
           {/* Step indicator */}
           <div
             className="mb-3 text-center"
