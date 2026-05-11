@@ -23,15 +23,12 @@ const OptionRow = ({ icon: Icon, label, selected, onClick }: OptionRowProps) => 
     type="button"
     onClick={onClick}
     aria-pressed={selected}
-    className="flex w-full items-center gap-4 transition-colors focus:outline-none focus-visible:ring-4"
+    className="flex w-full items-center gap-3 md:gap-4 transition-colors focus:outline-none focus-visible:ring-4 min-h-[68px] md:min-h-[88px] p-3 md:p-5"
     style={{
-      minHeight: 88,
-      padding: "20px 20px 20px 24px",
       borderRadius: 12,
       border: `${selected ? 4 : 3}px solid ${selected ? "#E8670A" : "#5A6478"}`,
       background: selected ? "#FFF5EE" : "#FFFFFF",
       cursor: "pointer",
-      // shift inner padding when border thickens so content doesn't reflow
       marginTop: selected ? -1 : 0,
       marginBottom: selected ? -1 : 0,
       transition: "border-color 120ms, background-color 120ms, box-shadow 120ms",
@@ -45,26 +42,23 @@ const OptionRow = ({ icon: Icon, label, selected, onClick }: OptionRowProps) => 
   >
     <span
       aria-hidden="true"
-      className="flex items-center justify-center flex-shrink-0"
+      className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
       style={{
-        width: 56,
-        height: 56,
-        borderRadius: 12,
+        borderRadius: 10,
         background: selected ? "#E8670A" : "#FFF5EE",
         transition: "background-color 120ms",
       }}
     >
       <Icon
-        size={32}
+        size={26}
         strokeWidth={2.25}
         style={{ color: selected ? "#FFFFFF" : "#E8670A" }}
       />
     </span>
     <span
-      className="flex-1 text-left"
+      className="flex-1 text-left text-[17px] md:text-[22px]"
       style={{
         color: "#0B1029",
-        fontSize: 22,
         fontWeight: selected ? 700 : 600,
         lineHeight: 1.3,
         fontFamily: "Inter, sans-serif",
@@ -73,7 +67,7 @@ const OptionRow = ({ icon: Icon, label, selected, onClick }: OptionRowProps) => 
       {label}
     </span>
     <ChevronRight
-      size={32}
+      size={26}
       strokeWidth={2.5}
       style={{ color: selected ? "#E8670A" : "#5A6478", flexShrink: 0 }}
       aria-hidden="true"
