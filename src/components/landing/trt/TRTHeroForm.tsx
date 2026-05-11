@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Lock } from "lucide-react";
 
 const formatPhone = (v: string) => {
@@ -9,6 +10,7 @@ const formatPhone = (v: string) => {
 };
 
 export const TRTHeroForm = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -34,12 +36,7 @@ export const TRTHeroForm = () => {
     const params = new URLSearchParams({
       name, phone, email, location, source: "landing-page-hero", service: "trt",
     });
-    const urls: Record<string, string> = {
-      richmond: "https://menswellnesscenters.com/thank-you-richmond/",
-      "newport-news": "https://menswellnesscenters.com/thank-you-newport-news/",
-      "virginia-beach": "https://menswellnesscenters.com/thank-you-virginia-beach/",
-    };
-    window.location.href = `${urls[location]}?${params.toString()}`;
+    navigate(`/book/symptom?${params.toString()}`);
   };
 
   const inputBase = (field: string): React.CSSProperties => ({
