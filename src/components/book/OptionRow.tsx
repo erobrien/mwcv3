@@ -8,68 +8,64 @@ interface OptionRowProps {
 }
 
 /**
- * AMD-friendly tappable option row.
- *
- * Design targets a 60yo male with macular degeneration on mobile:
- *   - 88px min tap target (single-tap auto-advance; no need to chase a NEXT button)
- *   - 22px label, weight 600, Inter (no Oswald display face)
- *   - 3px slate border so the boundary is unambiguous in peripheral vision
- *   - On selection: 4px orange border + orange tint fill + bold label color shift
- *   - Right-side chevron is the universal "tap to continue" affordance
- *   - WCAG AA contrast: #0B1029 on #FFFFFF and on #FFF5EE both >7:1
+ * Refined survey option row.
+ * - Soft default border (#E5E7EB) — clean, not boxy
+ * - Hover lifts and tints the icon chip
+ * - Selection: orange ring + warm cream fill, no thick border jump
+ * - 17/20px Inter, 600 weight, generous tap target
  */
 const OptionRow = ({ icon: Icon, label, selected, onClick }: OptionRowProps) => (
   <button
     type="button"
     onClick={onClick}
     aria-pressed={selected}
-    className="flex w-full items-center gap-3 md:gap-4 transition-colors focus:outline-none focus-visible:ring-4 min-h-[68px] md:min-h-[88px] p-3 md:p-5"
+    data-selected={selected}
+    className="group flex w-full items-center gap-3 md:gap-4 transition-all focus:outline-none focus-visible:ring-4 min-h-[68px] md:min-h-[84px] px-4 md:px-5 py-3 md:py-4 hover:-translate-y-[1px]"
     style={{
-      borderRadius: 12,
-      border: `${selected ? 4 : 3}px solid ${selected ? "#E8670A" : "#5A6478"}`,
-      background: selected ? "#FFF5EE" : "#FFFFFF",
+      borderRadius: 14,
+      border: `2px solid ${selected ? "#E8670A" : "#E5E7EB"}`,
+      background: selected ? "#FFF7F0" : "#FFFFFF",
       cursor: "pointer",
-      marginTop: selected ? -1 : 0,
-      marginBottom: selected ? -1 : 0,
-      transition: "border-color 120ms, background-color 120ms, box-shadow 120ms",
+      transition: "border-color 160ms, background-color 160ms, box-shadow 160ms, transform 160ms",
       outlineColor: "#E8670A",
       outlineOffset: 2,
       boxShadow: selected
-        ? "0 0 0 4px rgba(232,103,10,0.18), 0 2px 4px rgba(0,0,0,0.06)"
-        : "0 1px 2px rgba(0,0,0,0.04)",
+        ? "0 0 0 4px rgba(232,103,10,0.15), 0 6px 16px -8px rgba(232,103,10,0.35)"
+        : "0 1px 2px rgba(15,23,42,0.04)",
       WebkitTapHighlightColor: "transparent",
     }}
   >
     <span
       aria-hidden="true"
-      className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-14 md:h-14"
+      className="flex items-center justify-center flex-shrink-0 w-11 h-11 md:w-12 md:h-12 transition-colors group-hover:bg-[#FFEDDD]"
       style={{
         borderRadius: 10,
-        background: selected ? "#E8670A" : "#FFF5EE",
-        transition: "background-color 120ms",
+        background: selected ? "#E8670A" : "#FFF1E3",
       }}
     >
       <Icon
-        size={26}
+        size={22}
         strokeWidth={2.25}
         style={{ color: selected ? "#FFFFFF" : "#E8670A" }}
       />
     </span>
     <span
-      className="flex-1 text-left text-[17px] md:text-[22px]"
+      className="flex-1 text-left text-[17px] md:text-[19px]"
       style={{
         color: "#0B1029",
-        fontWeight: selected ? 700 : 600,
+        fontWeight: 600,
         lineHeight: 1.3,
+        letterSpacing: "-0.005em",
         fontFamily: "Inter, sans-serif",
       }}
     >
       {label}
     </span>
     <ChevronRight
-      size={26}
-      strokeWidth={2.5}
-      style={{ color: selected ? "#E8670A" : "#5A6478", flexShrink: 0 }}
+      size={22}
+      strokeWidth={2.25}
+      className="transition-transform group-hover:translate-x-0.5"
+      style={{ color: selected ? "#E8670A" : "#9CA3AF", flexShrink: 0 }}
       aria-hidden="true"
     />
   </button>
