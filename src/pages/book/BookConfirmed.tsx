@@ -1,5 +1,6 @@
 import { CheckCircle2, Play, MapPin, Check, CalendarPlus, Phone } from "lucide-react";
 import BookLayout from "@/components/book/BookLayout";
+import { useBookingSync, labelFor } from "@/lib/bookingState";
 
 const STEPS = [
   { n: 1, title: "Quick check-in", body: "5 minutes, photo ID required." },
