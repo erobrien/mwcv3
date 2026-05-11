@@ -4,7 +4,10 @@ const COLORS = {
   muted: "rgba(245,241,232,0.55)",
 };
 
-const links = ["Locations", "Services", "Providers", "How It Works"];
+const links: { label: string; href: string }[] = [
+  { label: "Book a Visit", href: "#hero-form" },
+  { label: "Call 866-344-4955", href: "tel:8663444955" },
+];
 
 export const New2Footer = () => (
   <footer style={{ background: COLORS.navy }} className="py-20">
@@ -33,8 +36,8 @@ export const New2Footer = () => (
       <div className="flex flex-col items-start lg:items-end gap-4">
         {links.map((l) => (
           <a
-            key={l}
-            href="#hero-form"
+            key={l.label}
+            href={l.href}
             style={{
               color: COLORS.cream,
               fontFamily: "Oswald, sans-serif",
@@ -44,7 +47,7 @@ export const New2Footer = () => (
               letterSpacing: "0.02em",
             }}
           >
-            {l}
+            {l.label}
           </a>
         ))}
       </div>

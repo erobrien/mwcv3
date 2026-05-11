@@ -14,11 +14,13 @@ const ctaCards = [
     title: "Book Your First Visit",
     body: "Same-day labs, face-to-face physician, personalized plan. Your first visit is on us.",
     cta: "Get started",
+    href: "#hero-form",
   },
   {
     title: "Talk to Our Team",
     body: "Have questions about cost, what's tested, or what to expect? Call us. A real person picks up.",
     cta: "Call 866-344-4955",
+    href: "tel:8663444955",
   },
 ];
 
@@ -57,7 +59,7 @@ export const New2BigCTA = () => (
               {c.body}
             </p>
             <a
-              href="#hero-form"
+              href={c.href}
               className="inline-flex items-center gap-2"
               style={{
                 color: COLORS.orange,
