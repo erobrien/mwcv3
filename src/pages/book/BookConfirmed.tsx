@@ -45,14 +45,14 @@ const BookConfirmed = () => {
   return (
     <BookLayout page="confirmed" title="You're booked | Men's Wellness Centers">
       {/* SECTION 1 — Confirmation hero + booking summary */}
-      <section style={{ background: "#0B1029", padding: "40px 16px 32px" }}>
+      <section className="px-4 py-6 md:py-10" style={{ background: "#0B1029" }}>
         <div className="mx-auto text-center" style={{ maxWidth: 720 }}>
-          <CheckCircle2 size={72} strokeWidth={2.25} style={{ color: "#22C55E", margin: "0 auto 16px" }} />
+          <CheckCircle2 size={56} strokeWidth={2.25} style={{ color: "#22C55E", margin: "0 auto 10px" }} />
           <h1
             style={{
               fontFamily: "Inter, system-ui, sans-serif",
               fontWeight: 700,
-              fontSize: "clamp(32px, 5vw, 44px)",
+              fontSize: "clamp(26px, 5vw, 44px)",
               color: "#FFFFFF",
               lineHeight: 1.15,
               letterSpacing: "-0.01em",
@@ -63,10 +63,9 @@ const BookConfirmed = () => {
             {firstName ? `You're booked, ${firstName}.` : "You're booked."}
           </h1>
           <p
-            className="mt-4"
+            className="mt-3 text-lg md:text-2xl"
             style={{
               color: "rgba(255,255,255,0.92)",
-              fontSize: 22,
               fontWeight: 600,
               lineHeight: 1.4,
             }}
@@ -74,10 +73,9 @@ const BookConfirmed = () => {
             {apptTime}
           </p>
           <p
-            className="mt-1"
+            className="mt-1 text-base md:text-xl"
             style={{
               color: "rgba(255,255,255,0.78)",
-              fontSize: 20,
               fontWeight: 500,
             }}
           >
