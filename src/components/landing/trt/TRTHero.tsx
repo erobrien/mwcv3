@@ -1,6 +1,5 @@
 import { Check, Star } from "lucide-react";
 import { TRTHeroForm } from "./TRTHeroForm";
-import heroBg from "@/assets/trt-hero-bg-clean.jpg";
 
 const trustChecks = [
   "No referral needed",
