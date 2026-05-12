@@ -106,12 +106,12 @@ export const useBookingSync = (): BookingState => {
   const [params] = useSearchParams();
 
   const fromUrl = useMemo(() => {
-    const out: Partial<BookingState> = {};
+    const out: Record<string, string> = {};
     FIELDS.forEach((f) => {
       const v = params.get(f);
-      if (v) out[f] = v;
+      if (v) out[f] = f === "symptom" ? (normalizeSymptom(v) as string) : v;
     });
-    return out;
+    return out as Partial<BookingState>;
   }, [params]);
 
   useEffect(() => {
