@@ -2,32 +2,50 @@ import { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
 
 interface SurveyCardProps {
-  step: number;        // 1-indexed current step
-  total: number;       // total number of steps
+  /** Optional override label, e.g. "Almost done. 2 quick questions" */
+  progressLabel?: string;
+  /** Number of segments filled (orange). Defaults derived from step/total. */
+  filledSegments?: number;
+  /** Total segments in the bar. Defaults to 3. */
+  totalSegments?: number;
+  /** Legacy: 1-indexed step (used when progressLabel/filledSegments not provided). */
+  step?: number;
+  total?: number;
   title: string;
   subtitle: string;
+  /** Optional small muted helper line under the subtitle. */
+  helperText?: string;
   children: ReactNode;
   prevLabel?: string;
   onPrev: () => void;
 }
 
-/**
- * AMD-friendly survey card.
- *
- * Key changes from prior version:
- *   - Auto-advance is the contract (options call onClick → onSelect → navigate).
- *     There is NO orange NEXT button. The orange bar at the bottom was being
- *     mistaken for a primary CTA over the options themselves.
- *   - Back is a quiet ghost link, not a competing primary action.
- *   - Progress bar shows completed steps as orange and the CURRENT step as a
- *     half-filled orange-on-slate so it's obvious you're not done yet.
- *   - Title uses Inter at 32–40px sentence case (no Oswald display face).
- *   - Borders thickened to 3px slate so the card outline is visible to AMD users.
- */
 const SurveyCard = ({
-  step, total, title, subtitle, children,
-  prevLabel = "Back", onPrev,
+  progressLabel,
+  filledSegments,
+  totalSegments = 3,
+  step,
+  total,
+  title,
+  subtitle,
+  helperText,
+  children,
+  prevLabel = "Back",
+  onPrev,
 }: SurveyCardProps) => {
+  const filled =
+    typeof filledSegments === "number"
+      ? filledSegments
+      : typeof step === "number"
+      ? step
+      : 1;
+  const segs = totalSegments;
+  const label =
+    progressLabel ??
+    (typeof step === "number" && typeof total === "number"
+      ? `Step ${step} of ${total}`
+      : "");
+
   return (
     <div className="px-3 md:px-6 py-4 md:py-12 pb-8 md:pb-12 flex justify-center">
       <div
@@ -41,41 +59,43 @@ const SurveyCard = ({
         }}
       >
         <div className="p-4 md:p-10">
-          {/* Step indicator */}
-          <div
-            className="mb-3 text-center"
-            style={{
-              fontSize: 16,
-              color: "#3A4258",
-              letterSpacing: "0.04em",
-              fontWeight: 700,
-              fontFamily: "Inter, sans-serif",
-              textTransform: "uppercase",
-            }}
-          >
-            Step {step} of {total}
-          </div>
+          {label && (
+            <div
+              className="mb-3 text-center"
+              style={{
+                fontSize: 14,
+                color: "#3A4258",
+                letterSpacing: "0.04em",
+                fontWeight: 700,
+                fontFamily: "Inter, sans-serif",
+                textTransform: "uppercase",
+              }}
+            >
+              {label}
+            </div>
+          )}
 
-          {/* Progress bar — completed steps full orange, current step half-filled */}
-          <div className="flex gap-2 mb-5 md:mb-8" role="progressbar" aria-valuemin={1} aria-valuemax={total} aria-valuenow={step}>
-            {Array.from({ length: total }).map((_, i) => {
-              const isComplete = i < step - 1;
-              const isCurrent = i === step - 1;
+          {/* 3-segment progress bar */}
+          <div
+            className="flex gap-2 mb-5 md:mb-8"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={segs}
+            aria-valuenow={filled}
+          >
+            {Array.from({ length: segs }).map((_, i) => {
+              const isFilled = i < filled;
               return (
                 <div
                   key={i}
                   className="flex-1 relative overflow-hidden"
-                  style={{
-                    height: 8,
-                    borderRadius: 4,
-                    background: "#E5E7EB",
-                  }}
+                  style={{ height: 8, borderRadius: 4, background: "#E5E7EB" }}
                 >
                   <div
                     style={{
                       position: "absolute",
                       inset: 0,
-                      width: isComplete ? "100%" : isCurrent ? "50%" : "0%",
+                      width: isFilled ? "100%" : "0%",
                       background: "#E8670A",
                       borderRadius: 4,
                       transition: "width 240ms ease",
@@ -86,7 +106,7 @@ const SurveyCard = ({
             })}
           </div>
 
-          {/* Title — Inter sentence case, AMD-readable */}
+          {/* Title */}
           <h1
             className="text-center"
             style={{
@@ -109,30 +129,29 @@ const SurveyCard = ({
               fontWeight: 500,
               color: "#3A4258",
               lineHeight: 1.4,
-              marginBottom: 18,
+              marginBottom: helperText ? 4 : 18,
               fontFamily: "Inter, sans-serif",
             }}
           >
             {subtitle}
           </p>
+          {helperText && (
+            <p
+              className="text-center text-sm"
+              style={{
+                color: "#6B7280",
+                fontFamily: "Inter, sans-serif",
+                marginBottom: 18,
+              }}
+            >
+              {helperText}
+            </p>
+          )}
 
-          {/* Options */}
+          {/* Options / content */}
           <div className="space-y-2 md:space-y-3">{children}</div>
 
-          {/* Helper text — tells the user how the page works */}
-          <p
-            className="text-center mt-4 md:mt-6"
-            style={{
-              fontSize: 14,
-              color: "#5A6478",
-              fontFamily: "Inter, sans-serif",
-              fontStyle: "italic",
-            }}
-          >
-            Tap an option to continue.
-          </p>
-
-          {/* Back link — quiet, never competes with the options */}
+          {/* Back link */}
           <div className="flex justify-center mt-3 md:mt-6">
             <button
               type="button"
@@ -161,3 +180,4 @@ const SurveyCard = ({
 };
 
 export default SurveyCard;
+
