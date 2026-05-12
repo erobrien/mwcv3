@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
+export type UrgencyTier = "early" | "building" | "overdue" | "long_overdue";
+
 export interface BookingState {
   name?: string;
   phone?: string;
@@ -8,16 +10,21 @@ export interface BookingState {
   location?: string;       // "richmond" | "newport-news" | "virginia-beach"
   service?: string;        // "trt" | "ed" | "weight-loss" | ...
   source?: string;
-  symptom?: string;        // "energy" | "libido" | "weight" | "other"
+  symptom?: string;        // "energy" | "sexual" | "weight" | "other"
   duration?: string;       // "lt6mo" | "6to12mo" | "1to2yr" | "gt2yr"
+  urgencyTier?: UrgencyTier;
+  note?: string;
   appointmentTime?: string;
 }
 
 const KEY = "mwc_booking_state_v1";
 const FIELDS: (keyof BookingState)[] = [
   "name", "phone", "email", "location", "service", "source",
-  "symptom", "duration", "appointmentTime",
+  "symptom", "duration", "urgencyTier", "note", "appointmentTime",
 ];
+
+// Back-compat: legacy "libido" → "sexual"
+const normalizeSymptom = (v?: string) => (v === "libido" ? "sexual" : v);
 
 const readSession = (): BookingState => {
   if (typeof window === "undefined") return {};
