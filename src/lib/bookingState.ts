@@ -82,7 +82,8 @@ const LABELS = {
   } as Record<string, string>,
   symptom: {
     energy: "Low Energy / Fatigue",
-    libido: "Low Sex Drive / ED",
+    sexual: "Sexual Health Concerns",
+    libido: "Sexual Health Concerns",
     weight: "Weight Gain / Difficulty Losing Weight",
     other: "Something else",
   } as Record<string, string>,
